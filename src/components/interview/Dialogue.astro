@@ -1,0 +1,131 @@
+---
+interface Props {
+  speaker: string;
+  avatar: string;
+  isInterviewer?: boolean;
+}
+
+const { speaker, avatar, isInterviewer = false } = Astro.props;
+---
+
+<div class={`dialogue-block ${isInterviewer ? 'interviewer' : 'interviewee'}`}>
+  <div class="speaker-info">
+    <img src={avatar} alt={speaker} class="avatar" />
+    <span class="name">{speaker}</span>
+  </div>
+  <div class="message-bubble">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .dialogue-block {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    align-items: flex-start;
+  }
+
+  .interviewer {
+    flex-direction: row;
+  }
+
+  .interviewee {
+    flex-direction: row-reverse;
+  }
+
+  .speaker-info {
+    flex-shrink: 0;
+    width: 100px;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border: 3px solid #eee;
+  }
+
+  .name {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #666;
+  }
+
+  .message-bubble {
+    flex-grow: 1;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    position: relative;
+    border: 1px solid #eee;
+    line-height: 1.7;
+    font-size: 1.05rem;
+  }
+
+  /* Triangle for the bubble */
+  .message-bubble::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    border-width: 10px;
+    border-style: solid;
+  }
+
+  .interviewer .message-bubble::before {
+    left: -20px;
+    border-color: transparent #eee transparent transparent;
+  }
+  .interviewer .message-bubble::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -19px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+  }
+
+  .interviewee .message-bubble::before {
+    right: -20px;
+    border-color: transparent transparent transparent #eee;
+  }
+  .interviewee .message-bubble::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -19px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+  }
+
+  @media (max-width: 600px) {
+    .dialogue-block {
+      flex-direction: column !important;
+      gap: 0.5rem;
+    }
+    .speaker-info {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+    }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0;
+    }
+    .message-bubble::before, .message-bubble::after {
+      display: none;
+    }
+    .message-bubble {
+        padding: 1rem;
+    }
+  }
+</style>

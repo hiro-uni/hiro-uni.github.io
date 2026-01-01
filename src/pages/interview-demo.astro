@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import InterviewHeader from '../components/interview/InterviewHeader.astro';
+import InterviewIntro from '../components/interview/InterviewIntro.astro';
+import InterviewBody from '../components/interview/InterviewBody.astro';
+import Dialogue from '../components/interview/Dialogue.astro';
+
+const interviewer = {
+  name: "広報担当 A",
+  avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=A"
+};
+
+const interviewee = {
+  name: "Unityエンジニア B",
+  avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=B"
+};
+---
+
+<Layout title="インタビューデモ | 広島Unity勉強会">
+  <InterviewHeader 
+    title="「技術の共有が、コミュニティを強くする」広島Unity勉強会が目指す未来"
+    category="INTERVIEW"
+    date="2026.01.01"
+    heroImage="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop"
+    heroAlt="打ち合わせの様子"
+  />
+
+  <InterviewBody>
+    <InterviewIntro>
+      広島で活動する「広島Unity勉強会」。有志で集まったこのコミュニティは、どのようにして技術を高め合い、今の形になったのでしょうか。今回は中心メンバーであるBさんに、コミュニティへの思いを伺いました。
+    </InterviewIntro>
+
+    <h2>勉強会の始まりと、そこにある想い</h2>
+
+    <Dialogue speaker={interviewer.name} avatar={interviewer.avatar} isInterviewer={true}>
+      まず最初に、広島Unity勉強会を始めたきっかけを教えてください。
+    </Dialogue>
+
+    <Dialogue speaker={interviewee.name} avatar={interviewee.avatar}>
+      もともとは、広島でUnityについて気軽に相談できる場所が欲しかったんです。一人で開発していると、どうしても詰まってしまうことがありますよね。そんな時に「これ、どうやって解決した？」と聞ける仲間がいれば、もっと楽しく開発できると思ったのがきっかけです。
+    </Dialogue>
+
+    <p>
+      Bさんは、当時の様子を振り返りながら穏やかに話し始めました。最初は数人でのスタートでしたが、今では多くのエンジニアやクリエイターが参加するコミュニティに成長しています。
+    </p>
+
+    <Dialogue speaker={interviewer.name} avatar={interviewer.avatar} isInterviewer={true}>
+      当初から「教え合う」という文化を大切にされていたんですか？
+    </Dialogue>
+
+    <Dialogue speaker={interviewee.name} avatar={interviewee.avatar}>
+      はい。一方的に教えるのではなく、お互いの知見を持ち寄る形にこだわりました。Unityは表現の幅が広いので、一人ひとりが違う得意分野を持っています。それを共有することで、全員のスキルがボトムアップしていくんです。
+    </Dialogue>
+
+    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop" alt="作業中の風景" />
+    <figcaption>実際の勉強会での作業風景。皆さん真剣そのものです。</figcaption>
+
+    <h2>これからのコミュニティに期待すること</h2>
+
+    <Dialogue speaker={interviewer.name} avatar={interviewer.avatar} isInterviewer={true}>
+      今後はどのような活動を予定していますか？
+    </Dialogue>
+
+    <Dialogue speaker={interviewee.name} avatar={interviewee.avatar}>
+      これまではオフラインが中心でしたが、オンラインでももっと密に繋がれる仕組みを考えています。また、初心者の方でも参加しやすい「もくもく会」を増やして、広島のUnity開発者の裾野を広げていきたいですね。
+    </Dialogue>
+
+    <p>
+      「技術を独り占めせず、みんなで楽しむ」。その姿勢が、広島のクリエイターたちを引き付ける理由なのかもしれません。
+    </p>
+
+    <div style="margin-top: 4rem; padding: 2rem; border-top: 1px solid #eee; text-align: center;">
+      <p style="font-weight: bold;">[編集後記]</p>
+      <p>Bさんの熱い想いを聞き、地方でのコミュニティ活動の重要性を再認識しました。今後も広島のUnityシーンから目が離せません。（編集部）</p>
+    </div>
+  </InterviewBody>
+</Layout>
+
+<style>
+  /* デモページ専用のスタイル調整があればここに */
+</style>
