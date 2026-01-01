@@ -28,13 +28,14 @@ const { title = "広島Unity勉強会" } = Astro.props;
 						<li><a href="/about">活動について</a></li>
 						<li><a href="/mokumoku">もくもく会</a></li>
 						<li><a href="/contact">お問い合わせ</a></li>
+						<li><a href="/interview-demo">インタビュー</a></li>
 					</ul>
 				</nav>
 			</div>
 		</header>
 
 		<main class="container">
-			<h1 class="page-title">{title}</h1>
+			<h2 class="page-title">{title}</h2>
 			<slot />
 		</main>
 
@@ -74,6 +75,7 @@ const { title = "広島Unity勉強会" } = Astro.props;
 	}
 
 	.container {
+		width: 100%;
 		max-width: var(--container-width);
 		margin: 0 auto;
 		padding: 0 20px;
