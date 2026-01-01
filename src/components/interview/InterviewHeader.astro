@@ -12,7 +12,6 @@ const { title, category, date, heroImage, heroAlt } = Astro.props;
 
 <header class="interview-header">
   <div class="category">{category}</div>
-  <h1 class="title">{title}</h1>
   <div class="meta">
     <time datetime={date}>{date}</time>
   </div>
@@ -29,22 +28,13 @@ const { title, category, date, heroImage, heroAlt } = Astro.props;
 
   .category {
     display: inline-block;
-    background: #000;
+    background: var(--primary, #000);
     color: #fff;
     padding: 2px 12px;
     font-size: 0.8rem;
     font-weight: bold;
     margin-bottom: 1rem;
     letter-spacing: 0.1em;
-  }
-
-  .title {
-    font-size: 2.5rem;
-    line-height: 1.3;
-    margin: 0 auto 1.5rem;
-    max-width: 900px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
   }
 
   .meta {
