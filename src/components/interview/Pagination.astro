@@ -1,0 +1,105 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl: string;
+}
+
+const { currentPage, totalPages, baseUrl } = Astro.props;
+
+const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+---
+
+<nav class="pagination" aria-label="ページナビゲーション">
+  <ul class="page-list">
+    {pages.map((page) => (
+      <li class="page-item">
+        <a 
+          href={`${baseUrl}${page === 1 ? '' : page}`} 
+          class={`page-link ${page === currentPage ? 'active' : ''}`}
+          aria-current={page === currentPage ? 'page' : undefined}
+        >
+          {page}
+        </a>
+      </li>
+    ))}
+    {currentPage < totalPages && (
+      <li class="page-item next">
+        <a href={`${baseUrl}${currentPage + 1}`} class="page-link next-link">
+          次へ <span class="arrow">&gt;</span>
+        </a>
+      </li>
+    )}
+  </ul>
+</nav>
+
+<style>
+  .pagination {
+    margin: 4rem 0 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .page-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    text-decoration: none;
+    color: var(--text, #333);
+    font-weight: bold;
+    border: 2px solid #eee;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  .page-link:hover {
+    border-color: var(--secondary, #e43983);
+    color: var(--secondary, #e43983);
+  }
+
+  .page-link.active {
+    background-color: var(--secondary, #e43983);
+    border-color: var(--secondary, #e43983);
+    color: #fff;
+  }
+
+  .next-link {
+    width: auto;
+    padding: 0 1.5rem;
+    margin-left: 1rem;
+    background-color: #f8f9fa;
+  }
+
+  .next-link:hover {
+    background-color: var(--secondary, #e43983);
+    color: #fff;
+    border-color: var(--secondary, #e43983);
+  }
+
+  .arrow {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 600px) {
+    .page-link {
+      width: 36px;
+      height: 36px;
+      font-size: 0.9rem;
+    }
+    .next-link {
+      padding: 0 1rem;
+      margin-left: 0.5rem;
+    }
+  }
+</style>
