@@ -1,5 +1,5 @@
 ---
-title: "広島Unity勉強会へようこそ"
+title: "新しい広島Unity勉強会Webサイトへようこそ！"
 pubDate: 2026-01-05
 description: "広島Unity勉強会の新しいウェブサイトを公開しました。"
 ---
