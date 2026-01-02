@@ -45,6 +45,20 @@ const { Content } = await entry.render();
 	.markdown-body :global(ul) {
 		margin: 1rem 0;
 	}
+	.markdown-body :global(table) {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1.5rem 0;
+	}
+	.markdown-body :global(th),
+	.markdown-body :global(td) {
+		border: 1px solid #ddd;
+		padding: 8px 12px;
+		text-align: left;
+	}
+	.markdown-body :global(th) {
+		background-color: #f9f9f9;
+	}
 	.news-footer {
 		margin-top: 4rem;
 		padding-top: 2rem;
