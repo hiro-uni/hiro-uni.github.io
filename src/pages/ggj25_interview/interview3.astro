@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InterviewHeader from '../../components/interview/InterviewHeader.astro';
+import InterviewIntro from '../../components/interview/InterviewIntro.astro';
+import InterviewBody from '../../components/interview/InterviewBody.astro';
+import Dialogue from '../../components/interview/Dialogue.astro';
+import Pagination from '../../components/interview/Pagination.astro';
+import BlogCard from '../../components/interview/BlogCard.astro';
+
+import iconKamera25 from '../../assets/ggj25_interview/icon_kamera25.jpg';
+import iconYamane from '../../assets/ggj25_interview/icon_yamane.jpg';
+import iconNumata from '../../assets/ggj25_interview/icon_numata.jpg';
+
+const interview_kamera25 = {
+  name: "広ユニ ナカオク",
+  avatar: iconKamera25.src
+};
+
+const interview_yamane = {
+  name: "広ユニ 山根信二",
+  avatar: iconYamane.src
+};
+
+const interview_numata = {
+  name: "沼田",
+  avatar: iconNumata.src
+};
+---
+
+<Layout title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える」の力">
+  <InterviewHeader 
+    title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える」の力"
+    category="INTERVIEW"
+  />
+
+  <InterviewBody>
+
+    <h2>東京ゲームショウで感じた「同志」への想い</h2>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      沼田さんは、IGDA日本（国際ゲーム開発者協会日本支部）のスカラーシップ（奨学金制度）を利用して東京ゲームショウ（TGS）に参加されたそうですね。これはどのような経緯だったのですか？
+    </Dialogue>
+
+    <BlogCard 
+      url="https://www.igda.jp/2025/10/02/15814/"
+      title="TGS 2025 スカラーシップ体験レポート①沼田 理貴"
+      description="総合学園ヒューマンアカデミー広島校 ゲームカレッジ プランナー専攻2年の沼田理貴です。今回、IGDA日本様のスカラーシップに採択していただき、東京ゲームショウ(TGS)2025に4日間、出展者として参加させていただきました。"
+      image="https://i0.wp.com/www.igda.jp/wp-content/uploads/2025/05/image-2.png?ssl=1"
+      siteName="IGDA日本"
+    />
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      きっかけは bitsummit game jam 2025 でした。そこで同じチームになったプランナーの方から「こういうイベントがあるよ」と教えてもらったんです。 日本最大級のTGSという場で自分のゲームを出展できるのは、自分のためになると思いましたし、何より多くの人からアドバイスや意見をもらえるチャンスだと思って申し込みました。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      実際に参加されてみて、いかがでしたか？
+    </Dialogue>
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      まず、インディーゲームのブースがすごく広くて、今とても盛り上がっているなという印象を受けました。 ただ、意外だったのが「恐竜のゲームを出しているところがほとんどなかった」ということです。「これだけ広いのに、恐竜ゲームがないなんて」と驚きました。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      おや、それは意外ですね。 ビジネス的な視点で見れば、ライバルがいない「ブルーオーシャン」だとも捉えられますが、沼田さんはどう感じましたか？
+    </Dialogue>
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      ビジネス面で言えば、確かに「ハマれば独占できる」チャンスかもしれません。 でも、僕としては「お金を稼ぎたい」という気持ちよりも「恐竜を知ってほしい」という気持ちの方が強いんです。だから、ライバルがいないことを喜ぶというよりは、「恐竜の魅力を知っている人がまだ少ないんだな」と少し残念に思いました。 ライバルが増えるというよりは、恐竜好きの「同志」が増えてほしい。そういう感覚の方が強いかもしれません。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      「ライバル」ではなく「同志」が増えてほしい。ですか。
+    </Dialogue>
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      YouTubeなどを見ていると最近は恐竜ゲームも少しずつ増えてきてはいるんですが、TGSのような大きな場に出てきていないということは、まだまだその魅力を伝えきれていないのかなと感じました。だからこそ、より一層「自分が作っていかなきゃ」という気になりましたね。
+    </Dialogue>
+
+    <h2>海外の学生から受けた刺激と「覚悟」の違い</h2>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      TGSのスカラーシップでは、海外の学生さんたちとも交流があったと伺いました。山根先生、今年は特に海外からの参加者が多かったそうですね？
+    </Dialogue>
+
+    <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
+      ええ、今年は過去最大規模の海外勢が来ていましたね。 彼らと日本の学生が交流することで、学校の中だけでは得られない経験をしてほしいという狙いもあります。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      沼田さんは海外の学生さんとお話しされて、何か違いを感じることはありましたか？
+    </Dialogue>
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      はい。スカラーシップが終わった後に食事に行ったり、ブースで話したりしたんですが、一番驚いたのは「就職活動」に対する考え方の違いです。 日本だと「新卒一括採用」という枠組みがありますが、海外にはそれがないんですよね。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      海外のゲーム会社では、日本以上に即戦力が求められているということでしょうか？
+    </Dialogue>
+
+    <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
+      まさにその通りで、海外では新卒採用という枠がないため、学生であっても中途採用のベテランと同じ土俵で枠を争わなければなりません。 だからこそ、学生のうちから実績を上げることを非常に重視しています。最近の海外の学生は、「まずはインディーゲームを出して実績を作り、その後にゲーム会社へ行く」というキャリアパスを考える人も増えていますね。
+    </Dialogue>
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      そういった話を聞いて、「海外の学生はすごいな」と圧倒されました。 自分のゲームを作る、実績を作るということに対するハングリー精神が全然違うなと。
+    </Dialogue>
+
+    <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
+      彼らは在学中から、長期的に自分のキャリアを考えていますからね。 例えば「副業ができるゲームスタジオに就職して、週に1日は自分のインディーゲーム開発に充てる」といった具体的な戦略を持っている学生もいます。そういったアクティブな姿勢に触れられたのは、沼田くんにとって非常に良い体験だったと思います。
+    </Dialogue>
+
+    <Pagination 
+      currentPage={3} 
+      totalPages={3} 
+      baseUrl="/ggj25_interview/interview" 
+    />
+
+  </InterviewBody>
+</Layout>
+
+<style>
+  /* デモページ専用のスタイル調整があればここに */
+</style>
