@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const newsEntries = await getCollection('news');
+	return newsEntries.map(entry => ({
+		params: { slug: entry.slug }, props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={`${entry.data.title}`}>
+	<div class="news-content">
+		<header class="news-header">
+			<time datetime={entry.data.pubDate.toISOString()}>
+				{entry.data.pubDate.toLocaleDateString('ja-JP')}
+			</time>
+		</header>
+		
+		<div class="markdown-body">
+			<Content />
+		</div>
+
+	</div>
+</Layout>
+
+<style>
+	.news-header {
+		margin-bottom: 2rem;
+		color: #666;
+	}
+	.markdown-body {
+		line-height: 1.8;
+	}
+	.markdown-body :global(h1) {
+		display: none; /* Layoutのtitleと重複するため */
+	}
+	.markdown-body :global(h2) {
+		margin-top: 2rem;
+	}
+	.markdown-body :global(ul) {
+		margin: 1rem 0;
+	}
+	.news-footer {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid #eee;
+	}
+	.back-link {
+		text-decoration: none;
+		font-weight: bold;
+	}
+	.back-link:hover {
+		text-decoration: underline;
+	}
+</style>
