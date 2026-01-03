@@ -18,4 +18,4 @@ description: "Unity Japan公式チャンネル - Unityコミュニティトー�
 
 ぜひご視聴いただけますと幸いです！
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hryeaiy7hko?si=1q7wlpDR6H3c4wYq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="90%" height="315" src="https://www.youtube.com/embed/hryeaiy7hko?si=1q7wlpDR6H3c4wYq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
