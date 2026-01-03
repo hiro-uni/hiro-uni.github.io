@@ -3,24 +3,194 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="お問い合わせ">
-	<p>広島Unity勉強会が主催するイベントへの参加希望や、お問い合わせは以下のSNS・コミュニティをご利用ください。</p>
+	<div class="contact-intro">
+		<p>広島Unity勉強会が主催するイベントへの参加希望や、お問い合わせは以下のSNS・コミュニティをご利用ください。</p>
+	</div>
 
-	<h3>イベント参加申し込み</h3>
-	<p>イベントの告知と参加申し込みは主にconnpassで行っています。</p>
-	<ul>
-		<li><a href="https://hirouni.connpass.com/" target="_blank" rel="noopener noreferrer">connpass (広島Unity勉強会)</a></li>
-	</ul>
+	<div class="contact-grid">
+		<section class="contact-card">
+			<div class="card-header">
+				<i class="fa-solid fa-calendar-check"></i>
+				<h3>イベント参加申し込み</h3>
+			</div>
+			<p>イベントの告知と参加申し込みは主にconnpassで行っています。</p>
+			<div class="action-area">
+				<a href="https://hirouni.connpass.com/" target="_blank" rel="noopener noreferrer" class="btn connpass">
+					connpass グループを表示
+				</a>
+			</div>
+		</section>
 
-	<h3>アナウンス・SNS</h3>
-	<ul>
-		<li><a href="https://www.facebook.com/hiroshimaunity" target="_blank" rel="noopener noreferrer">Facebookページ</a></li>
-		<li><a href="https://x.com/HiroshimaUnity/" target="_blank" rel="noopener noreferrer">X</a></li>
-	</ul>
+		<section class="contact-card">
+			<div class="card-header">
+				<i class="fa-solid fa-bullhorn"></i>
+				<h3>アナウンス・SNS</h3>
+			</div>
+			<p>最新情報やお知らせ、活動の様子を配信しています。</p>
+			<div class="sns-list">
+				<a href="https://www.facebook.com/hiroshimaunity" target="_blank" rel="noopener noreferrer" class="sns-item facebook">
+					<i class="fa-brands fa-facebook"></i> Facebook
+				</a>
+				<a href="https://x.com/HiroshimaUnity/" target="_blank" rel="noopener noreferrer" class="sns-item x-twitter">
+					<i class="fa-brands fa-x-twitter"></i> X (Twitter)
+				</a>
+			</div>
+		</section>
 
-	<h3>ユーザコミュニティ</h3>
-	<ul>
-		<li><a href="https://discord.gg/RkfvMRq" target="_blank" rel="noopener noreferrer">ヒロユニ Discordサーバ</a></li>
-	</ul>
+		<section class="contact-card">
+			<div class="card-header">
+				<i class="fa-brands fa-discord"></i>
+				<h3>ユーザコミュニティ</h3>
+			</div>
+			<p>開発の相談や雑談など、Discordサーバでお待ちしています。</p>
+			<div class="action-area">
+				<a href="https://discord.gg/RkfvMRq" target="_blank" rel="noopener noreferrer" class="btn discord">
+					Discordに参加する
+				</a>
+			</div>
+		</section>
+	</div>
 
-	<p>※直接のメッセージや詳細な質問は、イベント会場や上記SNSでお気軽にお声がけください。</p>
+	<div class="contact-note">
+		<p>※個別のご相談や詳細なご質問は、イベント会場や上記SNS、Discordにてお気軽にお声がけください。</p>
+	</div>
 </Layout>
+
+<style>
+	.contact-intro {
+		margin-bottom: 3rem;
+		text-align: left;
+		font-size: 1.1rem;
+		color: #555;
+	}
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-bottom: 3rem;
+	}
+
+	.contact-card {
+		background: #fff;
+		border: 1px solid #eee;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+	}
+
+	.contact-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+	}
+
+	.card-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.card-header i {
+		font-size: 1.5rem;
+		color: var(--secondary);
+		background: #fff1f6;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 10px;
+	}
+
+	.card-header h3 {
+		margin: 0;
+		font-size: 1.25rem;
+		border-bottom: none;
+	}
+
+	.contact-card p {
+		margin-bottom: 1.5rem;
+		flex-grow: 1;
+		color: #666;
+		font-size: 0.95rem;
+	}
+
+	.action-area {
+		margin-top: auto;
+	}
+
+	.btn {
+		display: block;
+		text-align: center;
+		padding: 0.8rem;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: bold;
+		transition: filter 0.2s;
+	}
+
+	.btn.connpass {
+		background-color: #d31d00;
+		color: white;
+	}
+
+	.btn.discord {
+		background-color: #5865F2;
+		color: white;
+	}
+
+	.btn:hover {
+		filter: brightness(1.1);
+		text-decoration: none;
+	}
+
+	.sns-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+
+	.sns-item {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		text-decoration: none;
+		padding: 0.8rem;
+		border-radius: 8px;
+		font-weight: bold;
+		border: 1px solid #eee;
+		transition: background-color 0.2s;
+	}
+
+	.sns-item.facebook {
+		color: #1877F2;
+	}
+
+	.sns-item.x-twitter {
+		color: #000;
+	}
+
+	.sns-item:hover {
+		background-color: #f8f9fa;
+		text-decoration: none;
+	}
+
+	.contact-note {
+		background-color: #f8f9fa;
+		padding: 1.5rem;
+		border-radius: 8px;
+		text-align: center;
+		color: #777;
+		font-size: 0.9rem;
+	}
+
+	@media (max-width: 600px) {
+		.contact-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
