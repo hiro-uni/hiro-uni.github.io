@@ -4,4 +4,6 @@ pubDate: 2014-03-13
 description: "五日市のIT企業、株式会社システムフレンドによるKinect×Unity事例の紹介。..."
 ---
 
-五日市のIT企業、株式会社システムフレンドによるKinect×Unity事例の紹介。
+広島県の五日市にあるIT企業 [株式会社システムフレンド](https://www.systemfriend.co.jp/)さんが、KinectとUnityを組み合わせて的当てを作られました。
+
+詳しくは[こちら](http://www.systemfriend.co.jp/node/546)をご覧ください。
