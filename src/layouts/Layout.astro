@@ -14,7 +14,19 @@ const { title = "広島Unity勉強会" } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
+		<!-- OGP -->
+		<meta property="og:title" content={`${title} - 広島Unity勉強会`} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:image" content={new URL('/hirouni.png', Astro.url)} />
+		<meta property="og:site_name" content="広島Unity勉強会" />
+		<meta property="og:description" content="広島で活動するUnityユーザーのためのコミュニティ、広島Unity勉強会の公式サイトです。" />
+		<meta name="twitter:card" content="summary_large_image" />
+
 		<title>{title} - 広島Unity勉強会</title>
+		
+
 	</head>
 	<body>
 		<header>
