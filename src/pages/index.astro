@@ -3,25 +3,203 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="広島Unity勉強会へようこそ！">
-	<section>
-		<p>広島Unity勉強会は、ゲームエンジンUnityの地域コミュニティです。</p>
-		<p>広島で Unityを楽しく扱える仲間を増やすこと を目指し、モバイルアプリやゲーム開発者、VRChat・VTuber技術、XR に興味のあるエンジニアや学生が交流しながらスキルを高め合う、地域密着型の Unity コミュニティです。</p>
-		<p>初心者の方も大歓迎です！一緒にUnityを楽しみましょう。</p>
+	<section class="hero">
+		<div class="hero-content">
+			<h1>広島でUnityを<br />楽しく学べるコミュニティ</h1>
+			<p class="hero-description">
+				初心者からプロまで、ゲーム開発やXR技術に興味がある仲間が集まり、交流しながらスキルを高め合う地域密着型のコミュニティです。
+			</p>
+			<div class="hero-buttons">
+				<a href="https://hirouni.connpass.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+					<i class="fa-solid fa-calendar-check"></i> イベントに参加する
+				</a>
+				<a href="/about" class="btn btn-secondary-outline">
+					活動について詳しく <i class="fa-solid fa-arrow-right"></i>
+				</a>
+			</div>
+		</div>
 	</section>
 
-	<section>
-		<h2>主な活動内容</h2>
-		<ul>
-			<li><strong>もくもく会:</strong> 参加者が各自の作業に集中するセッションです。</li>
-			<li><strong>Unityセミナー・講座:</strong> Unityに関する様々なテーマで学習します。</li>
-			<li><strong>ゲームジャム:</strong> 短期間でゲームを制作するイベントです。</li>
-			<li><strong>技術相談:</strong> Unityや素材作成に関する相談も受け付けています。</li>
-		</ul>
+	<section class="activities">
+		<h2 class="section-title">主な活動内容</h2>
+		<div class="activity-grid">
+			<div class="activity-card">
+				<div class="icon-wrapper"><i class="fa-solid fa-laptop-code"></i></div>
+				<h3>もくもく会</h3>
+				<p>各自の作業に集中するセッションです。分からないところを教え合ったり、雑談したりもします。</p>
+			</div>
+			<div class="activity-card">
+				<div class="icon-wrapper"><i class="fa-solid fa-chalkboard-user"></i></div>
+				<h3>セミナー・講座</h3>
+				<p>Unityに関する様々なテーマで学習します。初心者向けのハンズオンも開催しています。</p>
+			</div>
+			<div class="activity-card">
+				<div class="icon-wrapper"><i class="fa-solid fa-gamepad"></i></div>
+				<h3>ゲームジャム</h3>
+				<p>短期間で集中してゲームを制作するイベントです。チーム開発の楽しさを体験できます。</p>
+			</div>
+			<div class="activity-card">
+				<div class="icon-wrapper"><i class="fa-solid fa-comments"></i></div>
+				<h3>技術・交流会</h3>
+				<p>Unityや素材作成、XR技術など、幅広いテーマで情報交換や相談を行っています。</p>
+			</div>
+		</div>
 	</section>
 
-	<section>
-		<h2>最新情報</h2>
-		<p>最新のイベント情報の掲載や参加申し込みは、connpassで行っています。</p>
-		<p><a href="https://hirouni.connpass.com/" target="_blank" rel="noopener noreferrer">広島Unity勉強会 connpassページ</a></p>
+	<section class="latest-info">
+		<div class="info-card">
+			<h2 class="section-title">最新情報</h2>
+			<p>最新のイベント情報の掲載や参加申し込みは、connpassで行っています。ぜひグループをフォローしてください！</p>
+			<a href="https://hirouni.connpass.com/" target="_blank" rel="noopener noreferrer" class="connpass-banner">
+				<i class="fa-solid fa-external-link-alt"></i> 広島Unity勉強会 connpassページ
+			</a>
+		</div>
 	</section>
 </Layout>
+
+<style>
+	/* Hero Section */
+	.hero {
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, #b30b54 0%, #ff4d94 100%);
+		border-radius: 12px;
+		color: white;
+		margin-bottom: 3rem;
+		text-align: center;
+	}
+	.hero-content h1 {
+		font-size: 2.5rem;
+		font-weight: 800;
+		margin-bottom: 1.5rem;
+		line-height: 1.2;
+	}
+	.hero-description {
+		font-size: 1.1rem;
+		max-width: 600px;
+		margin: 0 auto 2rem;
+		opacity: 0.9;
+	}
+	.hero-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	/* Buttons */
+	.btn {
+		display: inline-block;
+		padding: 0.8rem 1.5rem;
+		border-radius: 50px;
+		font-weight: bold;
+		text-decoration: none;
+		transition: all 0.2s;
+	}
+	.btn-primary {
+		background-color: white;
+		color: #b30b54;
+	}
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	}
+	.btn-secondary-outline {
+		background-color: transparent;
+		color: white;
+		border: 2px solid white;
+	}
+	.btn-secondary-outline:hover {
+		background-color: rgba(255,255,255,0.1);
+	}
+
+	/* Sections */
+	.section-title {
+		text-align: center;
+		margin-bottom: 2.5rem;
+		border-bottom: none;
+		position: relative;
+		padding-bottom: 1rem;
+	}
+	.section-title::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 50px;
+		height: 3px;
+		background-color: #b30b54;
+	}
+
+	/* Activity Grid */
+	.activity-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 2rem;
+		margin-bottom: 4rem;
+	}
+	.activity-card {
+		background: #f8f9fa;
+		padding: 2rem;
+		border-radius: 12px;
+		transition: transform 0.2s;
+		text-align: center;
+	}
+	.activity-card:hover {
+		transform: translateY(-5px);
+		background: white;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+	}
+	.icon-wrapper {
+		font-size: 2.5rem;
+		color: #b30b54;
+		margin-bottom: 1rem;
+	}
+	.activity-card h3 {
+		margin-bottom: 1rem;
+	}
+	.activity-card p {
+		font-size: 0.9rem;
+		color: #666;
+		margin: 0;
+	}
+
+	/* Latest Info */
+	.latest-info {
+		margin-bottom: 2rem;
+	}
+	.info-card {
+		padding: 3rem 2rem;
+		background: white;
+		border: 1px solid #eee;
+		border-radius: 12px;
+		text-align: center;
+	}
+	.connpass-banner {
+		display: inline-block;
+		margin-top: 1.5rem;
+		padding: 1rem 2rem;
+		background-color: #3498db;
+		color: white;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: bold;
+		transition: background-color 0.2s;
+	}
+	.connpass-banner:hover {
+		background-color: #2980b9;
+	}
+
+	@media (max-width: 600px) {
+		.hero {
+			padding: 3rem 1rem;
+		}
+		.hero-content h1 {
+			font-size: 1.8rem;
+		}
+		.activity-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
