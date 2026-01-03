@@ -1,19 +1,468 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import mokumoku1 from '../assets/mokumoku/mokumoku1.jpg';
+import mokumoku2 from '../assets/mokumoku/mokumoku2.jpg';
+import mokumoku3 from '../assets/mokumoku/mokumoku3.jpg';
 ---
 
-<Layout title="もくもく会 - 広島Unity勉強会">
-	<h2>もくもく会とは</h2>
-	<p>「もくもく会」は、参加者が集まってそれぞれ「もくもく（黙々）」と自分の作業や勉強をする会です。</p>
+<Layout title="もくもく会">
+	<div class="mokumoku-hero">
+		<div class="hero-c	ontent">
+			<h1>一人で悩むより、<br /><span class="highlight">みんなでもくもく。</span></h1>
+			<p class="hero-sub">Unity開発、作品制作、学習を加速させる「サードプレイス」</p>
+		</div>
+	</div>
 
-	<h3>活動内容</h3>
-	<ul>
-		<li>各自のプロジェクト進行</li>
-		<li>Unityの学習</li>
-		<li>アセット制作（メタセコイア, Blender, Inkscape等）</li>
-		<li>参加者同士のゆるい技術交流・相談</li>
-	</ul>
+	<section class="intro-section">
+		<div class="content-grid">
+			<div class="text-content">
+				<h2>もくもく会とは？</h2>
+				<p>
+					「もくもく会」は、参加者が集まってそれぞれ「もくもく（黙々）」と自分の作業や勉強をする会です。<br />
+					家だとついついYouTubeを見てしまう、モチベーションが続かない...そんな悩みを持つ方のための、最もゆるい、でも最も捗る勉強会です。
+				</p>
+				<div class="info-badges">
+					<span class="badge">3ヶ月に1度開催（年4回程度）</span>
+					<span class="badge">広島市内のコワーキング(port.cloud)等</span>
+				</div>
+				<div class="tag-container">
+					<span class="tag"><i class="fa-brands fa-unity"></i> Unity</span>
+					<span class="tag"><i class="fas fa-code"></i> C#</span>
+					<span class="tag"><i class="fas fa-vr-cardboard"></i> XR</span>
+					<span class="tag"><i class="fas fa-video"></i> VTuber</span>
+					<span class="tag"><i class="fas fa-cube"></i> Blender</span>
+					<span class="tag"><i class="fas fa-cubes"></i> Voxel</span>
+					<span class="tag"><i class="fas fa-robot"></i> Godot</span>
+					<span class="tag"><i class="fas fa-chess"></i> GameDesign</span>
+				</div>
+			</div>
+			<div class="image-wrapper">
+				<Image src={mokumoku1} alt="もくもく会の様子1" class="featured-image" />
+			</div>
+		</div>
+	</section>
 
-	<h3>開催場所</h3>
-	<p>広島市内の公共施設（大学施設など）や、オンラインで開催しています。詳細は各イベントの募集要項をご確認ください。</p>
+	<section class="appeals">
+		<div class="appeal-card">
+			<div class="icon">🚀</div>
+			<h3>圧倒的な作業効率</h3>
+			<p>周囲が集中している環境は、あなたの開発スピードを劇的に引き上げます。「今日はこれを完成させる！」という目標を持って参加しましょう。</p>
+		</div>
+		<div class="appeal-card">
+			<div class="icon">🤝</div>
+			<h3>ゆるい繋がりと相談</h3>
+			<p>詰まった時に誰かに聞ける。そんな環境がここにはあります。開発者や、同じ志を持つ学生同士で情報交換が可能です。</p>
+		</div>
+		<div class="appeal-card">
+			<div class="icon">🎮</div>
+			<h3>技術の幅を広げる</h3>
+			<p>Unityだけでなく、Blenderやゲームメカニクス研究など、多様な経験者が参加しています。</p>
+		</div>
+	</section>
+
+	<section class="gallery-section">
+		<h2>活動の雰囲気</h2>
+		<div class="gallery-grid">
+			<div class="gallery-item">
+				<Image src={mokumoku2} alt="もくもく会の様子2" />
+				<p class="caption">最新デバイスとアナログゲームを組み合わせた、最新デバイスのゲームを試遊したり。</p>
+			</div>
+			<div class="gallery-item">
+				<Image src={mokumoku3} alt="もくもく会の様子3" />
+				<p class="caption">自分のペースで作業。時には隣の人と情報交換。</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="student-message">
+		<div class="message-box">
+			<h2>学生のみなさんへ</h2>
+			<p>
+				就活に向けたポートフォリオ制作、卒業研究、個人開発...。<br />
+				一人で抱え込んでいませんか？広島Unity勉強会には、ゲーム制作経験がある技術者も参加します。
+			</p>
+			<div class="target-roles">
+				<span>大学歓迎</span>
+				<span>専門学校歓迎</span>
+				<span>初心者歓迎</span>
+				<span>今日からゲーム制作をしてみたい人歓迎</span>
+			</div>
+			<p class="sub-text">※就活の相談や、作品のブラッシュアップのアドバイスももらえるかもしれません。</p>
+		</div>
+	</section>
+
+	<section class="faq-section">
+		<h2>よくある質問（学生向け）</h2>
+		<div class="faq-grid">
+			<div class="faq-item">
+				<h4>初心者でも大丈夫ですか？</h4>
+				<p>もちろんです！「Unityを触り始めたばかり」という方も多く参加されています。むしろ、最初の一歩で詰まっている方にこそ、もくもく会の環境はおすすめです。</p>
+			</div>
+			<div class="faq-item">
+				<h4>何を持っていけばいいですか？</h4>
+				<p>基本は自分のノートPC（Unity等インストール済み）と電源アダプタです。必要であればマウスやイヤホン、参考書なども自由にお持ちください。</p>
+			</div>
+			<div class="faq-item">
+				<h4>ずっと作業していないとダメですか？</h4>
+				<p>そんなことはありません。休憩中に他の人の作品を見せてもらったり、技術的な雑談をしたりするのも醍醐味の一つです。自分のペースを大切にして参加してください。</p>
+			</div>
+			<div class="faq-item">
+				<h4>参加費はかかりますか？</h4>
+				<p>会場（コワーキングスペース等）の利用料実費（数百円〜千円程度）が必要になる場合があります。<br>イベントごとの募集要項（connpass）をご確認ください。</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-section">
+		<h2>まずは、気軽に参加してみませんか？</h2>
+		<p>開催情報はconnpassで随時更新しています。まずは雰囲気を覗きに来るだけでも大歓迎です！</p>
+		<a href="https://hirouni.connpass.com/" target="_blank" rel="noopener noreferrer" class="cta-button">
+			イベント一覧を見る（connpass）
+		</a>
+	</section>
 </Layout>
+
+<style>
+	/* Hero Section */
+	.mokumoku-hero {
+		background: linear-gradient(135deg, #b30b54 0%, #3498db 100%);
+		padding: 5rem 2rem;
+		border-radius: 12px;
+		color: white;
+		margin-bottom: 3rem;
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.mokumoku-hero::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 60%);
+		pointer-events: none;
+	}
+
+	.hero-content h1 {
+		font-size: 3rem;
+		margin: 0;
+		line-height: 1.2;
+		font-weight: 800;
+	}
+
+	.highlight {
+		color: #ffd700;
+		text-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+	}
+
+	.hero-sub {
+		font-size: 1.3rem;
+		margin-top: 1.5rem;
+		opacity: 0.95;
+		font-weight: 500;
+	}
+
+	/* Sections */
+	section {
+		margin-bottom: 6rem;
+	}
+
+	h2 {
+		font-size: 2.2rem;
+		margin-bottom: 2rem;
+		color: #2c3e50;
+		text-align: center;
+		position: relative;
+		padding-bottom: 1rem;
+	}
+
+	h2::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 60px;
+		height: 4px;
+		background: var(--secondary);
+		border-radius: 2px;
+	}
+
+	/* Intro */
+	.content-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+
+	.intro-section h2 {
+		text-align: left;
+	}
+	.intro-section h2::after {
+		left: 0;
+		transform: none;
+	}
+
+	.info-badges {
+		display: flex;
+		gap: 1rem;
+		margin: 1.5rem 0;
+	}
+
+	.badge {
+		background: #0b2456ff;
+		color: #edeee8ff;
+		padding: 0.4rem 1rem;
+		border-radius: 6px;
+		font-size: 0.95rem;
+		font-weight: 700;
+		border: 1px solid rgba(179, 11, 84, 0.2);
+	}
+
+	.featured-image {
+		width: 100%;
+		height: auto;
+		border-radius: 20px;
+		box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+	}
+
+	.tag-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 2rem;
+	}
+
+	.tag {
+		background: #f0f2f5;
+		color: #555;
+		padding: 0.4rem 1.2rem;
+		border-radius: 50px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		transition: all 0.3s ease;
+	}
+
+	.tag i {
+		font-size: 0.85rem;
+		color: #b30b54;
+	}
+
+	.tag:hover {
+		background: #e1e4e8;
+		transform: translateY(-2px);
+	}
+
+	/* Appeals */
+	.appeals {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2.5rem;
+	}
+
+	.appeal-card {
+		background: #fff;
+		padding: 3rem 2rem;
+		border-radius: 24px;
+		border: 1px solid #f0f0f0;
+		transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+		text-align: center;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.appeal-card:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+		border-color: #eee;
+	}
+
+	.appeal-card .icon {
+		font-size: 3.5rem;
+		margin-bottom: 1.5rem;
+		display: block;
+	}
+
+	.appeal-card h3 {
+		margin-bottom: 1.2rem;
+		color: #b30b54;
+		font-size: 1.4rem;
+	}
+
+	/* Gallery */
+	.gallery-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2.5rem;
+	}
+
+	.gallery-item {
+		overflow: hidden;
+		border-radius: 16px;
+	}
+
+	.gallery-item img {
+		width: 100%;
+		height: 300px;
+		object-fit: cover;
+		border-radius: 16px;
+		transition: transform 0.5s ease;
+	}
+
+	.gallery-item:hover img {
+		transform: scale(1.05);
+	}
+
+	.caption {
+		font-size: 0.95rem;
+		color: #666;
+		margin-top: 1rem;
+		text-align: center;
+		font-weight: 500;
+	}
+
+	/* Student Message */
+	.message-box {
+		background: linear-gradient(to right, #f8faff, #ffffff);
+		border-left: 8px solid #3498db;
+		padding: 4rem;
+		border-radius: 0 24px 24px 0;
+		box-shadow: 0 10px 30px rgba(52, 152, 219, 0.05);
+	}
+
+	.student-message h2 {
+		text-align: left;
+		margin-bottom: 2rem;
+	}
+	.student-message h2::after {
+		left: 0;
+		transform: none;
+		background: #3498db;
+	}
+
+	.target-roles {
+		display: flex;
+		gap: 1.2rem;
+		margin: 2rem 0;
+	}
+
+	.target-roles span {
+		background: #3498db;
+		color: white;
+		padding: 0.5rem 1.2rem;
+		border-radius: 8px;
+		font-size: 0.95rem;
+		font-weight: 700;
+	}
+
+	.sub-text {
+		font-size: 1rem;
+		color: #666;
+		margin-top: 1.5rem;
+		padding: 1rem;
+		background: rgba(52, 152, 219, 0.05);
+		border-radius: 8px;
+		display: inline-block;
+	}
+
+	/* FAQ */
+	.faq-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+
+	.faq-item {
+		background: #fff;
+		padding: 2rem;
+		border-radius: 16px;
+		border-bottom: 4px solid #eee;
+	}
+
+	.faq-item h4 {
+		color: #2c3e50;
+		font-size: 1.15rem;
+		margin-bottom: 1rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.faq-item h4::before {
+		content: "Q.";
+		color: #b30b54;
+		font-weight: 900;
+	}
+
+	.faq-item p {
+		color: #666;
+		font-size: 0.95rem;
+		line-height: 1.7;
+	}
+
+	/* CTA Section */
+	.cta-section {
+		text-align: center;
+		padding: 5rem 2rem;
+		background: #fff5f8;
+		border-radius: 24px;
+		border: 2px dashed rgba(179, 11, 84, 0.1);
+	}
+
+	.cta-section h2::after {
+		display: none;
+	}
+
+	.cta-button {
+		display: inline-block;
+		background: #b30b54;
+		color: white;
+		padding: 1.4rem 3.5rem;
+		border-radius: 100px;
+		text-decoration: none;
+		font-weight: 800;
+		font-size: 1.2rem;
+		margin-top: 2.5rem;
+		transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		box-shadow: 0 15px 30px rgba(179, 11, 84, 0.25);
+	}
+
+	.cta-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 20px 40px rgba(179, 11, 84, 0.35);
+		background: #d4146a;
+		color: white;
+	}
+
+	/* Responsive */
+	@media (max-width: 900px) {
+		.faq-grid, .content-grid, .gallery-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.mokumoku-hero {
+			padding: 4rem 1.5rem;
+		}
+
+		.hero-content h1 {
+			font-size: 2.2rem;
+		}
+
+		.message-box {
+			padding: 2.5rem 1.5rem;
+		}
+		
+		.target-roles {
+			flex-wrap: wrap;
+			gap: 0.8rem;
+		}
+	}
+</style>
+

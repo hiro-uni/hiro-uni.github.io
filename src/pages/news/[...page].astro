@@ -11,7 +11,7 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props;
-const title = `最新ニュース ${page.currentPage > 1 ? `(Page ${page.currentPage})` : ''} - 広島Unity勉強会`;
+const title = `最新ニュース ${page.currentPage > 1 ? `(Page ${page.currentPage})` : ''}`;
 ---
 
 <Layout title={title}>
