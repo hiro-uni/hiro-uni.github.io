@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import hiroshimaImg from '../assets/hiroshima.png';
 ---
 
 <Layout title="広島Unity勉強会へようこそ！">
@@ -61,11 +62,20 @@ import Layout from '../layouts/Layout.astro';
 	/* Hero Section */
 	.hero {
 		padding: 4rem 2rem;
-		background: linear-gradient(135deg, #b30b54 0%, #ff4d94 100%);
+		background: linear-gradient(135deg, rgba(179, 11, 84, 0.9) 0%, rgba(255, 77, 148, 0.8) 100%), url(/src/assets/hiroshima.png);
+		background-size: cover;
+		background-position: center;
+		background-blend-mode: multiply;
 		border-radius: 12px;
 		color: white;
 		margin-bottom: 3rem;
 		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+	/* Fallback for environments where the image path might differ */
+	.hero {
+		background-image: linear-gradient(135deg, rgba(179, 11, 84, 0.9) 0%, rgba(255, 77, 148, 0.8) 100%), url('../assets/hiroshima.png');
 	}
 	.hero-content h1 {
 		font-size: 2.5rem;
