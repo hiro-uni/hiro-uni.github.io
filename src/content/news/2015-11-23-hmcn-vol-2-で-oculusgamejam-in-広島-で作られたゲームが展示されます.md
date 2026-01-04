@@ -4,7 +4,7 @@ pubDate: 2015-11-23
 description: "Oculus Game Jamの作品展示告知。..."
 ---
 
-広島市で11月28日と29日に [Oculus Game Jam 広島会場](/news/2015-09-29-広島県で初のVRゲームジャムが開催されます) が開催されることをお伝えしました。
+広島市で11月28日と29日に [Oculus Game Jam 広島会場](/news/2015-09-29-広島県で初のvrゲームジャムが開催されます) が開催されることをお伝えしました。
 そのゲームの試遊ができるイベントが開催されます。
 
 今年誕生した、 [Hiroshima MotionControl Network](https://hmcn.doorkeeper.jp/) が2回目のイベントを12月12日(土)に開きます。
