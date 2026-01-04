@@ -4,12 +4,20 @@ import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
 	const newsEntries = await getCollection('news');
-	return newsEntries.map(entry => ({
-		params: { slug: entry.slug }, props: { entry },
+	// 日付順（新しい順）に並べ替え
+	const sortedNews = newsEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+	return sortedNews.map((entry, index) => ({
+		params: { slug: entry.slug },
+		props: {
+			entry,
+			prev: index < sortedNews.length - 1 ? sortedNews[index + 1] : null, // 古い記事
+			next: index > 0 ? sortedNews[index - 0 - 1] : null, // 新しい記事
+		},
 	}));
 }
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
 const { Content } = await entry.render();
 ---
 
@@ -25,6 +33,24 @@ const { Content } = await entry.render();
 			<Content />
 		</div>
 
+		<nav class="news-navigation">
+			<div class="nav-next">
+				{next && (
+					<a href={`/news/${next.slug}`}>
+						<span class="nav-label">&larr; 次の記事</span>
+						<span class="nav-title">{next.data.title}</span>
+					</a>
+				)}
+			</div>
+			<div class="nav-prev">
+				{prev && (
+					<a href={`/news/${prev.slug}`}>
+						<span class="nav-label">前の記事 &rarr;</span>
+						<span class="nav-title">{prev.data.title}</span>
+					</a>
+				)}
+			</div>
+		</nav>
 	</div>
 </Layout>
 
@@ -59,16 +85,49 @@ const { Content } = await entry.render();
 	.markdown-body :global(th) {
 		background-color: #f9f9f9;
 	}
-	.news-footer {
+
+	.news-navigation {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
 		margin-top: 4rem;
 		padding-top: 2rem;
+		padding-bottom: 2rem;
 		border-top: 1px solid #eee;
 	}
-	.back-link {
+	.nav-prev, .nav-next {
+		display: flex;
+	}
+	.nav-prev {
+		justify-content: flex-end;
+		text-align: right;
+	}
+	.news-navigation a {
 		text-decoration: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		max-width: 100%;
+	}
+	.nav-label {
+		font-size: 0.85rem;
+		color: #888;
 		font-weight: bold;
 	}
-	.back-link:hover {
+	.nav-title {
+		color: var(--accent);
+		font-weight: bold;
+		line-height: 1.4;
+	}
+	.news-navigation a:hover .nav-title {
 		text-decoration: underline;
 	}
+
+	@media (max-width: 600px) {
+		.news-navigation {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+	}
 </style>
+
