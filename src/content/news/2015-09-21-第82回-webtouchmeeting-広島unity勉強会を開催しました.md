@@ -26,5 +26,5 @@ Unityハンズオンでは参加者全員が玉ころがしゲームの作成に
  
 [ハンズオンで利用したスライドはこのリンクから閲覧できます。(親川大樹さん / GoogleSlide)](https://docs.google.com/presentation/d/1E5o3PKrUlOnYuRLZRsJ2pDtWy0sx_SYVnAgfZbdR3F4/edit#slide=id.g9d05a3f61_0_4)
  
-参加者の感想・ブログ
+## 参加者の感想・ブログ
 [Web Touch Meetingに初参加して来ました。- Webクリエイターな備忘録　(倉佐さん)](http://koolweb37.com/wp/2015/09/25/web-touch-meetingに初参加して来ました%E3%80%82/)
