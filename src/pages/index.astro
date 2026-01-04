@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import hiroshimaImg from '../assets/hiroshima.png';
+import ggjBanner from '../assets/ggj26_banner.png';
+import { Image } from 'astro:assets';
 ---
 
 <Layout title="広島Unity勉強会へようこそ！">
@@ -50,7 +52,15 @@ import hiroshimaImg from '../assets/hiroshima.png';
 	<section class="latest-info">
 		<div class="info-card">
 			<h2 class="section-title">最新情報</h2>
-			<p>最新のイベント情報の掲載や参加申し込みは、connpassで行っています。ぜひグループをフォローしてください！</p>
+			
+			<div class="special-event">
+				<a href="https://hirouni.connpass.com/event/373294/" target="_blank" rel="noopener noreferrer" class="ggj-banner-link">
+					<Image src={ggjBanner} alt="Global Game Jam 2026 Hiroshima" class="ggj-banner-img" />
+				</a>
+				<p>2026年1月30日より3日間! GGJ広島参加者募集中！ <i class="fa-solid fa-arrow-right"></i></p>
+			</div>
+
+			<p>最新のイベント情報の掲載や参加申し込みは、connpassで行っています。<br>ぜひグループをフォローしてください！</p>
 			<a href="https://hirouni.connpass.com/" target="_blank" rel="noopener noreferrer" class="connpass-banner">
 				<i class="fa-solid fa-external-link-alt"></i> 広島Unity勉強会 connpassページ
 			</a>
@@ -185,6 +195,55 @@ import hiroshimaImg from '../assets/hiroshima.png';
 		border-radius: 12px;
 		text-align: center;
 	}
+
+	/* Special Event Banner */
+	.special-event {
+		margin: 0 auto 2.5rem;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+	.special-event:hover {
+		transform: scale(1.02);
+		box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+	}
+	.ggj-banner-link {
+		display: block;
+		position: relative;
+		text-decoration: none;
+	}
+	.ggj-banner-img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	.banner-overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: linear-gradient(transparent, rgba(0,0,0,0.7));
+		color: white;
+		padding: 2rem 1rem 1rem;
+		opacity: 0;
+		transition: opacity 0.3s;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+	}
+	.ggj-banner-link:hover .banner-overlay {
+		opacity: 1;
+	}
+	.banner-overlay span {
+		background: #b30b54;
+		padding: 0.5rem 1.5rem;
+		border-radius: 50px;
+		font-weight: bold;
+		font-size: 0.9rem;
+		box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+	}
+
 	.connpass-banner {
 		display: inline-block;
 		margin-top: 1.5rem;
@@ -210,6 +269,12 @@ import hiroshimaImg from '../assets/hiroshima.png';
 		.activity-grid {
 			grid-template-columns: 1fr;
 		}
+		.banner-overlay {
+			opacity: 1;
+			padding: 1rem;
+			background: rgba(0,0,0,0.3);
+		}
 	}
 </style>
+
 
