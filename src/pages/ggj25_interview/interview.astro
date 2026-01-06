@@ -12,6 +12,8 @@ import iconYamane from '../../assets/ggj25_interview/icon_yamane.jpg';
 import iconNumata from '../../assets/ggj25_interview/icon_numata.jpg';
 import raptorImage from '../../assets/ggj25_interview/raptor_header.jpg';
 
+import raptorHeader from '../../assets/ggj25_interview/raptor4.png';
+
 const interview_kamera25 = {
   name: "広ユニ ナカオク",
   avatar: iconKamera25.src
@@ -28,12 +30,12 @@ const interview_numata = {
 };
 ---
 
-<Layout title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える」の力">
+<Layout title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」">
   <InterviewHeader 
-    title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える」の力"
+    title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」"
     category="INTERVIEW"
     date="2026.01.04"
-    heroImage="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop"
+    heroImage={raptorHeader.src}
     heroAlt="打ち合わせの様子"
   />
 
@@ -89,7 +91,7 @@ const interview_numata = {
     </Dialogue>
 
     <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      「遊べなくなったから、自分で作る」。とても純粋で、力強い動機ですね（笑）。
+      「遊べなくなったから、自分で作る」。とても純粋で、力強い動機ですね。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>

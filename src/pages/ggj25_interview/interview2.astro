@@ -11,6 +11,9 @@ import iconKamera25 from '../../assets/ggj25_interview/icon_kamera25.jpg';
 import iconYamane from '../../assets/ggj25_interview/icon_yamane.jpg';
 import iconNumata from '../../assets/ggj25_interview/icon_numata.jpg';
 
+import raptorHeader from '../../assets/ggj25_interview/raptor2.png';
+import bitsummitHeader from '../../assets/ggj25_interview/bitsummit1.png';
+
 const interview_kamera25 = {
   name: "広ユニ ナカオク",
   avatar: iconKamera25.src
@@ -27,10 +30,12 @@ const interview_numata = {
 };
 ---
 
-<Layout title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える」の力">
+<Layout title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」">
   <InterviewHeader 
-    title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える」の力"
+    title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」"
     category="INTERVIEW"
+    heroImage={raptorHeader.src}
+    heroAlt="恐竜の様子"
   />
 
   <InterviewBody>
@@ -50,7 +55,13 @@ const interview_numata = {
     />
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      きっかけは bitsummit game jam 2025 でした。そこで同じチームになったプランナーの方から「こういうイベントがあるよ」と教えてもらったんです。 日本最大級のTGSという場で自分のゲームを出展できるのは、自分のためになると思いましたし、何より多くの人からアドバイスや意見をもらえるチャンスだと思って申し込みました。
+      きっかけは <a href="https://www.creators-guild.com/bitsummit-game-jam-2025">BitSummit Game Jam 2025</a> でした。
+    </Dialogue>
+
+    <img src={bitsummitHeader.src} alt="Bitsummit 2025の展示風景" />
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      そこで同じチームになったプランナーの方から「こういうイベントがあるよ」と教えてもらったんです。 日本最大級のTGSという場で自分のゲームを出展できるのは、自分のためになると思いましたし、何より多くの人からアドバイスや意見をもらえるチャンスだと思って申し込みました。
     </Dialogue>
 
     <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>

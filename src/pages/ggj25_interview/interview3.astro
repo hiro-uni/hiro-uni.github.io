@@ -11,6 +11,11 @@ import iconKamera25 from '../../assets/ggj25_interview/icon_kamera25.jpg';
 import iconYamane from '../../assets/ggj25_interview/icon_yamane.jpg';
 import iconNumata from '../../assets/ggj25_interview/icon_numata.jpg';
 
+import raptorHeader from '../../assets/ggj25_interview/raptor3.png';
+import ggjBanner from '../../assets/ggj26_banner.png';
+
+import { Image } from 'astro:assets';
+
 const interview_kamera25 = {
   name: "広ユニ ナカオク",
   avatar: iconKamera25.src
@@ -27,89 +32,146 @@ const interview_numata = {
 };
 ---
 
-<Layout title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える」の力">
+<Layout title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」">
   <InterviewHeader 
-    title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える」の力"
+    title="【冬休み特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」"
     category="INTERVIEW"
+    heroImage={raptorHeader.src}
+    heroAlt="恐竜の様子"
   />
 
   <InterviewBody>
 
-    <h2>東京ゲームショウで感じた「同志」への想い</h2>
+    <h2>ゲームジャムでの苦戦と「多能プランナー」への目覚め</h2>
 
     <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      沼田さんは、IGDA日本（国際ゲーム開発者協会日本支部）のスカラーシップ（奨学金制度）を利用して東京ゲームショウ（TGS）に参加されたそうですね。これはどのような経緯だったのですか？
+      ここからは「ゲームジャム」での経験についてお聞きします。 沼田さんがゲームジャムとして初参加された<a href="https://hirouni.connpass.com/event/325586/">グローバルゲームジャム2025 瀬戸内会場 in 広島</a>では、少し大変なチーム構成だったとか？
     </Dialogue>
 
     <BlogCard 
-      url="https://www.igda.jp/2025/10/02/15814/"
-      title="TGS 2025 スカラーシップ体験レポート①沼田 理貴"
-      description="総合学園ヒューマンアカデミー広島校 ゲームカレッジ プランナー専攻2年の沼田理貴です。今回、IGDA日本様のスカラーシップに採択していただき、東京ゲームショウ(TGS)2025に4日間、出展者として参加させていただきました。"
-      image="https://i0.wp.com/www.igda.jp/wp-content/uploads/2025/05/image-2.png?ssl=1"
-      siteName="IGDA日本"
+      url="https://hirouni.connpass.com/event/325586/"
+      title="グローバルゲームジャム2025 瀬戸内会場 in 広島"
+      description="今年も広島でGGJ開催！48時間でデジタル＆アナログゲームを一緒に作ろう！"
+      image="https://media.connpass.com/thumbs/8b/94/8b9497ed1a281345f7c96dbea1d388ae.png"
+      siteName="connpass"
     />
 
+
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      きっかけは bitsummit game jam 2025 でした。そこで同じチームになったプランナーの方から「こういうイベントがあるよ」と教えてもらったんです。 日本最大級のTGSという場で自分のゲームを出展できるのは、自分のためになると思いましたし、何より多くの人からアドバイスや意見をもらえるチャンスだと思って申し込みました。
+      そうなんです（苦笑）。 プランナーとして参加したのですが、チーム構成が「プランナー3人、プログラマー1人」という、かなり偏ったチームになってしまって。
     </Dialogue>
 
     <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      実際に参加されてみて、いかがでしたか？
+      それは……プログラマーさんの負担がものすごいことになりそうですね。
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      まず、インディーゲームのブースがすごく広くて、今とても盛り上がっているなという印象を受けました。 ただ、意外だったのが「恐竜のゲームを出しているところがほとんどなかった」ということです。「これだけ広いのに、恐竜ゲームがないなんて」と驚きました。
+      はい、本当におっしゃる通りで、プログラマーへの負担が大きすぎてしまいました。 その時に痛感したんです。「プランナーだからといって、仕様や企画を考えるだけじゃダメなんだ」と。自分自身も手を動かしてゲームを作れるようにならないと、チーム制作は回らないんだと気づかされました。
     </Dialogue>
 
     <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      おや、それは意外ですね。 ビジネス的な視点で見れば、ライバルがいない「ブルーオーシャン」だとも捉えられますが、沼田さんはどう感じましたか？
-    </Dialogue>
-
-    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      ビジネス面で言えば、確かに「ハマれば独占できる」チャンスかもしれません。 でも、僕としては「お金を稼ぎたい」という気持ちよりも「恐竜を知ってほしい」という気持ちの方が強いんです。だから、ライバルがいないことを喜ぶというよりは、「恐竜の魅力を知っている人がまだ少ないんだな」と少し残念に思いました。 ライバルが増えるというよりは、恐竜好きの「同志」が増えてほしい。そういう感覚の方が強いかもしれません。
-    </Dialogue>
-
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      「ライバル」ではなく「同志」が増えてほしい。ですか。
-    </Dialogue>
-
-    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      YouTubeなどを見ていると最近は恐竜ゲームも少しずつ増えてきてはいるんですが、TGSのような大きな場に出てきていないということは、まだまだその魅力を伝えきれていないのかなと感じました。だからこそ、より一層「自分が作っていかなきゃ」という気になりましたね。
-    </Dialogue>
-
-    <h2>海外の学生から受けた刺激と「覚悟」の違い</h2>
-
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      TGSのスカラーシップでは、海外の学生さんたちとも交流があったと伺いました。山根先生、今年は特に海外からの参加者が多かったそうですね？
+      「企画職だから企画だけやればいい」という意識では、現場では通用しないということですね。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      ええ、今年は過去最大規模の海外勢が来ていましたね。 彼らと日本の学生が交流することで、学校の中だけでは得られない経験をしてほしいという狙いもあります。
+      そこは教育現場でも大きな課題ですね。日本の専門学校だと、入学時点で「プログラマー」「プランナー」とコースが分かれているため、どうしても専門分野に特化しがちです。 一方で、海外の大学で学んだ人たちは、基礎的なスキルを積んだ上で専門性を深めるため、いざとなれば「一人二役」ができるんです。
     </Dialogue>
 
     <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      沼田さんは海外の学生さんとお話しされて、何か違いを感じることはありましたか？
+      ああ、なるほど。「僕はプランナーだけど、サブのプログラムなら書けるよ」というような動きができるわけですね。
+    </Dialogue>
+
+    <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
+      そうです。この「基礎的な体力」があるかないかで、ゲームジャムのような突発的なチーム編成での柔軟性が変わってきます。 沼田くんがそこで「職種の不自由さ」を痛感したのは、とても良い学びだったと思いますよ。
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      はい。スカラーシップが終わった後に食事に行ったり、ブースで話したりしたんですが、一番驚いたのは「就職活動」に対する考え方の違いです。 日本だと「新卒一括採用」という枠組みがありますが、海外にはそれがないんですよね。
+      本当にそう思います。 それからは、「自分でもゲームを作れるようになろう」という強い意思を持って、Unityなどの開発ツールを触るようになりました。 もちろん、自分の得意分野は進行管理やチームをまとめ上げることなんですが、そこに加えてプログラマーとしての知識もあれば、例えば自分より年下の子がリーダーをやりたいと言った時に、僕はプログラマーとしてサポートに回ることもできますから。
     </Dialogue>
 
     <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      海外のゲーム会社では、日本以上に即戦力が求められているということでしょうか？
-    </Dialogue>
-
-    <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      まさにその通りで、海外では新卒採用という枠がないため、学生であっても中途採用のベテランと同じ土俵で枠を争わなければなりません。 だからこそ、学生のうちから実績を上げることを非常に重視しています。最近の海外の学生は、「まずはインディーゲームを出して実績を作り、その後にゲーム会社へ行く」というキャリアパスを考える人も増えていますね。
+      「自分の役割はこれだ」と決めつけず、どんなボール(役割)でも取ることがチーム制作では大切ですよね。
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      そういった話を聞いて、「海外の学生はすごいな」と圧倒されました。 自分のゲームを作る、実績を作るということに対するハングリー精神が全然違うなと。
+      そう思います。あと今は、学校内のゲームジャムで作った作品を、長期プロジェクトとして継続して開発しています。 ゲームジャムの作品って、どうしても「作って終わり」になりがちじゃないですか。「一回遊んだら十分」というクオリティで止まってしまう。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      「動いた！よかった！終了！」ってなりがちですよね（笑）。
+    </Dialogue>
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      そうなんです（笑）。でも、そこからさらにブラッシュアップして、より良いゲームにしていく経験ができれば、チームメンバーとも長く関われるし、新しい学びもあるんじゃないかと思って挑戦しています。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      彼らは在学中から、長期的に自分のキャリアを考えていますからね。 例えば「副業ができるゲームスタジオに就職して、週に1日は自分のインディーゲーム開発に充てる」といった具体的な戦略を持っている学生もいます。そういったアクティブな姿勢に触れられたのは、沼田くんにとって非常に良い体験だったと思います。
+      それは素晴らしい視点です。 実は最近、投資ファンドがゲームジャムに注目し始めているんですよ。「企画書はいらないから、動くプロトタイプを見せてくれ」と。 ゲームジャムで作ったプロトタイプが面白ければ、そこに投資をして、製品版として完成させるための資金を提供する。そういった「アメリカンドリーム」的な流れも出てきています。
     </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      「試作」で終わらせず、それを「製品」にまで育て上げる力。それを学生のうちから意識されているのは時代の流れなのかもしれませんねぇ。
+    </Dialogue>
+
+    <h2>「遊ぶ人」から「創る人」へ</h2>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      最後に、これからゲーム業界を目指す学生さんたちに向けて、お二人が伝えたいことを教えてください。 特に、沼田さんは現役の学生として、周囲を見ていて感じることはありますか？
+    </Dialogue>
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      そうですね……少し厳しい言い方になるかもしれませんが、「ゲームをプレイする意識」から「ゲームを作る意識」へ、ちゃんと切り替えてほしいなと思います。 <br /><br />
+      すごく厳しい言い方をすると周りの人を見ても、ゲーム制作をしている時間よりも、ゲームを遊んでいる時間の方が圧倒的に長い人が多いんです。もちろん、ゲームが好きで遊ぶこと自体はいいことなんですが、寝る時間を削ってまで遊んでいるのは…ゲームに遊ばれてしまっているのではないかと。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      「消費者」の視点のまま学校に来てしまっている、ということでしょうか。
+    </Dialogue>
+
+    <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
+      はい。「本当にゲームを作るためにここに来ているのかな？」と感じてしまうことがあります。 だからこそ、これから目指す人には「ひたすらチャレンジしてほしい」「たくさんゲームを作ってほしい」と伝えたいです。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      山根先生はいかがですか？ 昔は「浴びるほどゲームを遊んだ人間が、やがて作り手になる」というような道筋もありましたが。
+    </Dialogue>
+
+    <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
+      ええ、昔はそういう「ゲーマーから作り手へ」という神話のようなものがありました。でも今は、ゲームを極めた先には「プロゲーマー」という道もあるので、必ずしも作り手に回るわけではありません。 最近の世代を見ていて思うのは、「人に何かを伝えたい」「人の心を動かしたい」というパッション（情熱）を持っているかどうかが、決定的な差になるということです。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      単に「ゲームが好き」というだけではなく、「表現したい」という欲求が必要だと。
+    </Dialogue>
+
+    <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
+      そうです。IGDA日本の TGS スカラーシップ でも、実はゲームのスキルそのものより「作文（エッセイ）」を重視しています。「あなたは何をやりたいのか」「何を伝えたいのか」。この想いは学校では教えられませんから。 過去には、経済学部の学生で「ゲーム業界を知りたい」という熱意だけで採用された例もあります。技術は後からついてきますが、この「核」となる想いは、持っているかどうかが全てなんです。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      沼田さんにとっての「恐竜」のように、自分の中に揺るぎない「伝えたいこと」があるか。それが、一つの作品を完成させるエネルギーになるわけですね。
+    </Dialogue>
+
+    <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
+      まさにそうです。 安田女子大学でも教えていますが、私は学生に「ゲームをいっぱい遊べ」とは言いません。「あなたはどういう想いを人に伝えたいか」を大事にしなさいと伝えています。
+    </Dialogue>
+
+    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+      今日はとても濃いお話を聞くことができました。 「好きなもの」を原点に持ち、足りない技術は学び、世界を見て視野を広げ、そして「創る人」としての覚悟を持つ。 沼田さんのような若いクリエイターが、これからのゲーム業界に新しい風を巻き起こしてくれることを楽しみにしています。本日はありがとうございました。
+    </Dialogue>
+
+    <InterviewIntro>
+      沼田さんが作成したゲーム Raptor は <a href="https://store.steampowered.com/app/3846520/Raptor/">現在Streamで配信中です！</a><br />
+      ぜひご購入して、遊んでみてください。<br /><br />
+      また本インタビューにあたってご協力いただきました、沼田さん、山根先生、ヒューマン広島校の竹口先生に感謝いたします。
+    </InterviewIntro>
+    
+    <div class="special-event">
+				<a href="https://hirouni.connpass.com/event/373294/" target="_blank" rel="noopener noreferrer" class="ggj-banner-link">
+					<Image src={ggjBanner} alt="Global Game Jam 2026 Hiroshima" class="ggj-banner-img" />
+				</a>
+				<p>&nbsp;沼田さんも参加したGGJが今年も広島で開催決定。1月末はみんなでゲーム制作をしよう！ </p>
+		</div>
 
     <Pagination 
       currentPage={3} 
@@ -121,5 +183,51 @@ const interview_numata = {
 </Layout>
 
 <style>
-  /* デモページ専用のスタイル調整があればここに */
+	/* Special Event Banner */
+	.special-event {
+		margin: 0 auto 2.5rem;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+	.special-event:hover {
+		transform: scale(1.02);
+		box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+	}
+	.ggj-banner-link {
+		display: block;
+		position: relative;
+		text-decoration: none;
+	}
+	.ggj-banner-img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	.banner-overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: linear-gradient(transparent, rgba(0,0,0,0.7));
+		color: white;
+		padding: 2rem 1rem 1rem;
+		opacity: 0;
+		transition: opacity 0.3s;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+	}
+	.ggj-banner-link:hover .banner-overlay {
+		opacity: 1;
+	}
+	.banner-overlay span {
+		background: #b30b54;
+		padding: 0.5rem 1.5rem;
+		border-radius: 50px;
+		font-weight: bold;
+		font-size: 0.9rem;
+		box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+	}
 </style>
