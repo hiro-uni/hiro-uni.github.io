@@ -1,18 +1,18 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import InterviewHeader from '../../components/interview/InterviewHeader.astro';
-import InterviewIntro from '../../components/interview/InterviewIntro.astro';
-import InterviewBody from '../../components/interview/InterviewBody.astro';
-import Dialogue from '../../components/interview/Dialogue.astro';
-import Pagination from '../../components/interview/Pagination.astro';
-import BlogCard from '../../components/interview/BlogCard.astro';
+import Layout from '../../../layouts/Layout.astro';
+import InterviewHeader from '../../../components/interview/InterviewHeader.astro';
+import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
+import InterviewBody from '../../../components/interview/InterviewBody.astro';
+import Dialogue from '../../../components/interview/Dialogue.astro';
+import Pagination from '../../../components/interview/Pagination.astro';
+import BlogCard from '../../../components/interview/BlogCard.astro';
 
-import iconKamera25 from '../../assets/ggj25_interview/icon_kamera25.jpg';
-import iconYamane from '../../assets/ggj25_interview/icon_yamane.jpg';
-import iconNumata from '../../assets/ggj25_interview/icon_numata.jpg';
+import iconKamera25 from '../../../assets/ggj25_interview/icon_kamera25.jpg';
+import iconYamane from '../../../assets/ggj25_interview/icon_yamane.jpg';
+import iconNumata from '../../../assets/ggj25_interview/icon_numata.jpg';
 
-import raptorHeader from '../../assets/ggj25_interview/raptor3.png';
-import ggjBanner from '../../assets/ggj26_banner.png';
+import raptorHeader from '../../../assets/ggj25_interview/raptor3.png';
+import ggjBanner from '../../../assets/ggj26_banner.png';
 
 import { Image } from 'astro:assets';
 
@@ -177,7 +177,7 @@ const interview_numata = {
     <Pagination 
       currentPage={3} 
       totalPages={3} 
-      baseUrl="/ggj25_interview/interview" 
+      baseUrl="/interview/ggj25/page" 
     />
 
   </InterviewBody>

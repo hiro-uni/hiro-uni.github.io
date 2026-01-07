@@ -1,18 +1,18 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import InterviewHeader from '../../components/interview/InterviewHeader.astro';
-import InterviewIntro from '../../components/interview/InterviewIntro.astro';
-import InterviewBody from '../../components/interview/InterviewBody.astro';
-import Dialogue from '../../components/interview/Dialogue.astro';
-import Pagination from '../../components/interview/Pagination.astro';
-import BlogCard from '../../components/interview/BlogCard.astro';
+import Layout from '../../../layouts/Layout.astro';
+import InterviewHeader from '../../../components/interview/InterviewHeader.astro';
+import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
+import InterviewBody from '../../../components/interview/InterviewBody.astro';
+import Dialogue from '../../../components/interview/Dialogue.astro';
+import Pagination from '../../../components/interview/Pagination.astro';
+import BlogCard from '../../../components/interview/BlogCard.astro';
 
-import iconKamera25 from '../../assets/ggj25_interview/icon_kamera25.jpg';
-import iconYamane from '../../assets/ggj25_interview/icon_yamane.jpg';
-import iconNumata from '../../assets/ggj25_interview/icon_numata.jpg';
+import iconKamera25 from '../../../assets/ggj25_interview/icon_kamera25.jpg';
+import iconYamane from '../../../assets/ggj25_interview/icon_yamane.jpg';
+import iconNumata from '../../../assets/ggj25_interview/icon_numata.jpg';
 
-import raptorHeader from '../../assets/ggj25_interview/raptor2.png';
-import bitsummitHeader from '../../assets/ggj25_interview/bitsummit1.png';
+import raptorHeader from '../../../assets/ggj25_interview/raptor2.png';
+import bitsummitHeader from '../../../assets/ggj25_interview/bitsummit1.png';
 
 const interview_kamera25 = {
   name: "広ユニ ナカオク",
@@ -133,7 +133,7 @@ const interview_numata = {
     <Pagination 
       currentPage={2} 
       totalPages={3} 
-      baseUrl="/ggj25_interview/interview" 
+      baseUrl="/interview/ggj25/page" 
     />
 
   </InterviewBody>
