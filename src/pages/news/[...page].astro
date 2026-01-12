@@ -11,11 +11,11 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props;
-const title = `最新ニュース ${page.currentPage > 1 ? `(Page ${page.currentPage})` : ''}`;
+const title = `ニュース ${page.currentPage > 1 ? `(Page ${page.currentPage})` : ''}`;
 ---
 
 <Layout title={title}>
-	<p>コミュニティの動向や過去のイベント記録などをお知らせします。</p>
+	<p>広島Unity勉強会および広島界隈のニュース、イベントレポートなど。</p>
 
 	<div class="news-list">
 		{page.data.map((entry) => (
