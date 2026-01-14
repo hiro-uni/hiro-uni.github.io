@@ -1,46 +1,74 @@
-# Astro Starter Kit: Basics
+# 広島Unity勉強会 公式サイト
 
+広島Unity勉強会の公式サイト（[hiro-uni.github.io](https://hiro-uni.github.io/)）のリポジトリです。Astroを使用して構築されています。
+
+## 🚀 ローカルでの開発・確認方法
+
+本プロジェクトの編集内容をローカル環境で確認する手順です。
+
+### 1. 準備
+Node.js（LTS推奨）がインストールされていることを確認してください。
+
+- **macOS**: Homebrewを使用して `brew install node` を実行してください。
+- **Windows**: パッケージマネージャーを使用して `winget install OpenJS.NodeJS` を実行してください。
+
+### 2. インストール
+ターミナルでリポジトリのルートディレクトリに移動し、依存関係をインストールします。
 ```sh
-npm create astro@latest -- --template basics
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### 3. ローカルサーバーの起動
+以下のコマンドを実行して、ローカルサーバーを起動します。
+```sh
+npm run dev
+```
 
-## 🚀 Project Structure
+### 4. ブラウザで確認
+コマンド実行後、ターミナルに表示されるURL（通常は `http://localhost:4321/`）をブラウザで開くと、現在のサイトの状態を確認できます。ファイルを編集すると、ブラウザが自動的に更新されます。
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📝 ニュースの追加方法
+
+新しいニュースやお知らせを追加するには、`src/content/news/` ディレクトリにMarkdown（.md）ファイルを追加します。
+
+### 手順
+1. **ファイルの作成**
+   `src/content/news/` 内に新しいファイルを作成します。  
+   ファイル名は `2024-01-14-title.md` のように、**日付から始める**ことを推奨します。
+
+2. **メタデータの記述 (Frontmatter)**
+   ファイルの先頭に、以下のように記事の情報をハイフン3つ（`---`）で囲んで記述します。
+
+   ```markdown
+   ---
+   title: "記事のタイトル"
+   pubDate: 2024-01-14
+   description: "記事の概要（一覧ページ等で表示されます）"
+   ---
+   ```
+
+3. **本文の記述**
+   メタデータの下に、Markdown形式で本文を自由に記述してください。
+
+4. **デプロイ（公開）**
+   作成したファイルをGitHubのメインブランチ（`main`）にプッシュ（またはGitHub上で追加）すると、自動的にGitHub Actionsが実行され、数分以内に公式サイトへ反映されます。
+
+## 📁 プロジェクト構造
+
+主要なディレクトリ構成は以下の通りです。
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+├── src/
+│   ├── content/
+│   │   └── news/      <-- ニュースのMarkdownファイル
+│   ├── assets/        <-- 画像などのアセット
+│   ├── layouts/       <-- 共通レイアウト
+│   └── pages/         <-- ページファイル (.astro)
+├── public/            <-- 公開ファイル
+└── package.json       <-- スクリプト定義
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 📄 ライセンス
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+本プロジェクトのライセンスについては、[LICENSE.md](./LICENSE.md) を参照してください。
