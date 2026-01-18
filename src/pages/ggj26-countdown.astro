@@ -131,7 +131,7 @@ title: "GGJ 2026 Countdown"
     </div>
 
     <div class="countdown-info">
-        <div class="event-details">Global Game Jam 2026 Setouchi in Hiroshima Starts In</div>
+        <div class="event-details">GGJ 2026 Setouchi in Hiroshima Starts In</div>
         <div id="countdown-text" class="target-date">00Days 00:00:00</div>
     </div>
 
@@ -293,81 +293,10 @@ title: "GGJ 2026 Countdown"
         fontLoader.load(FONT_URL, (font) => {
             loadedFont = font;
             console.log("Font loaded");
-            updateText('?');
         }, undefined, (err) => {
             console.error("Font failed to load", err);
         });
 
-        function updateText(char) {
-            if (!loadedFont) return;
-            
-            const oldMesh = textMesh;
-
-            const textGeom = new TextGeometry(char, {
-                font: loadedFont,
-                size: 3.5,
-                height: 0.4,
-                curveSegments: 12,
-                bevelEnabled: true,
-                bevelThickness: 0.05,
-                bevelSize: 0.02,
-                bevelOffset: 0,
-                bevelSegments: 5
-            });
-            textGeom.computeBoundingBox();
-            const centerOffset = -0.5 * (textGeom.boundingBox.max.x - textGeom.boundingBox.min.x);
-            
-            textMesh = new THREE.Mesh(textGeom, new THREE.MeshPhongMaterial({ 
-                color: 0xffffff,
-                emissive: 0x333333,
-                shininess: 100
-            }));
-            
-            // Positioning like BBC - Large number overlaying the globe on the right
-            textMesh.position.x = 1.0; 
-            textMesh.position.y = -1.5;
-            textMesh.position.z = 2.5; 
-            scene.add(textMesh);
-
-            // Animate scale and opacity for transition
-            textMesh.scale.set(0.5, 0.5, 0.5);
-            textMesh.material.transparent = true;
-            textMesh.material.opacity = 0;
-
-            if (oldMesh) {
-                // Fade out old mesh
-                let op = 1;
-                const fadeOut = () => {
-                    op -= 0.1;
-                    oldMesh.material.opacity = op;
-                    oldMesh.position.z += 0.1;
-                    if (op > 0) requestAnimationFrame(fadeOut);
-                    else {
-                        scene.remove(oldMesh);
-                        oldMesh.geometry.dispose();
-                        oldMesh.material.dispose();
-                    }
-                };
-                fadeOut();
-            }
-
-            // Fade in new mesh
-            let inOp = 0;
-            let inScale = 0.5;
-            const fadeIn = () => {
-                inOp += 0.1;
-                inScale += 0.05;
-                if (textMesh) {
-                    textMesh.material.opacity = inOp;
-                    textMesh.scale.set(inScale, inScale, inScale);
-                }
-                if (inOp < 1) requestAnimationFrame(fadeIn);
-                else if (textMesh) {
-                     textMesh.scale.set(1, 1, 1);
-                }
-            };
-            fadeIn();
-        }
 
         // --- Animation Loop ---
         function animate() {
@@ -385,7 +314,6 @@ title: "GGJ 2026 Countdown"
             if (timeData && timeData.seconds !== currentSecond) {
                 currentSecond = timeData.seconds;
                 const lastDigit = currentSecond.toString().slice(-1);
-                updateText(lastDigit); 
                 createWave();
             }
 
