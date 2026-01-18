@@ -1,0 +1,402 @@
+---
+title: "GGJ 2026 Countdown"
+---
+
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GGJ 2026 Countdown - 広島Unity勉強会</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bbc-red: #BB1919;
+            --bbc-black: #000000;
+            --bg-light: #f4f4f4;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #ffffff 0%, #e0e0e0 100%);
+            font-family: 'Inter', sans-serif;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            z-index: 10;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .bbc-style-logo {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-box {
+            background: var(--bbc-black);
+            color: white;
+            font-weight: 900;
+            font-size: 3rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .sub-logo {
+            color: var(--bbc-red);
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-top: -10px;
+        }
+
+        .location-tag {
+            color: #666;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .countdown-info {
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+            z-index: 10;
+            color: #333;
+        }
+
+        .event-details {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .target-date {
+            font-size: 1.5rem;
+            color: var(--bbc-red);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .logo-box { width: 40px; height: 40px; font-size: 1.5rem; }
+            .sub-logo { font-size: 2rem; }
+            .location-tag { font-size: 0.8rem; letter-spacing: 2px; }
+            .overlay { left: 50%; transform: translate(-50%, -150%); text-align: center; width: 100%; justify-content: center; display: flex; flex-direction: column; align-items: center; }
+            .bbc-style-logo { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div class="overlay">
+        <div class="bbc-style-logo">
+            <div class="logo-box">G</div>
+            <div class="logo-box">G</div>
+            <div class="logo-box">J</div>
+        </div>
+        <div class="sub-logo">2026</div>
+        <div class="location-tag">SETOUCHI in HIROSHIMA</div>
+    </div>
+
+    <div class="countdown-info">
+        <div class="event-details">Global Game Jam 2026 Setouchi in Hiroshima Starts In</div>
+        <div id="countdown-text" class="target-date">00Days 00:00:00</div>
+    </div>
+
+    <script>
+        import * as THREE from 'three';
+        import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
+        import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
+
+        // --- Logic ---
+        const targetDate = new Date('2026-01-30T17:00:00').getTime();
+        const countdownElem = document.getElementById('countdown-text');
+
+        function updateCountdownText() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                if (countdownElem) countdownElem.innerHTML = "JAM HAS STARTED!";
+                return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (countdownElem) {
+                countdownElem.innerHTML = `${days.toString().padStart(2, '0')}Days ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+            
+            return { days, hours, minutes, seconds };
+        }
+
+        // --- Three.js Setup ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        
+        // Better background gradient using CSS and transparent renderer
+        scene.background = null; 
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 6;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // --- Lighting ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xffffff, 1.2);
+        pointLight.position.set(10, 10, 10);
+        scene.add(pointLight);
+
+        const spotLight = new THREE.SpotLight(0xffffff, 1);
+        spotLight.position.set(-10, 5, 10);
+        scene.add(spotLight);
+
+        // --- The Globe ---
+        const globeGroup = new THREE.Group();
+        scene.add(globeGroup);
+
+        const sphereGeom = new THREE.SphereGeometry(2, 64, 64);
+        
+        // Globe Base
+        const globeMaterial = new THREE.MeshPhongMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.2,
+            wireframe: true
+        });
+        const globeSphere = new THREE.Mesh(sphereGeom, globeMaterial);
+        globeGroup.add(globeSphere);
+
+        // Inner solid sphere for depth
+        const innerSphere = new THREE.Mesh(
+            new THREE.SphereGeometry(1.95, 64, 64),
+            new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.05 })
+        );
+        globeGroup.add(innerSphere);
+
+        // Styled "Landmasses" - More detailed
+        const landMaterial = new THREE.MeshPhongMaterial({ color: 0xBB1919, side: THREE.DoubleSide });
+        for (let i = 0; i < 40; i++) {
+            const phi = Math.random() * Math.PI * 2;
+            const theta = Math.random() * Math.PI;
+            const size = Math.random() * 0.4 + 0.1;
+            
+            const landGeom = new THREE.SphereGeometry(2.02, 16, 16, phi, size, theta, size);
+            const land = new THREE.Mesh(landGeom, landMaterial);
+            globeGroup.add(land);
+        }
+
+        // --- Ribbons ---
+        const ribbonsArr = [];
+        const createRibbon = (radius, width, speed, color, opacity = 0.6) => {
+            const ribbonGeom = new THREE.TorusGeometry(radius, width, 8, 128);
+            const ribbonMat = new THREE.MeshPhongMaterial({ 
+                color: color, 
+                transparent: true, 
+                opacity: opacity,
+                shininess: 100
+            });
+            const ribbon = new THREE.Mesh(ribbonGeom, ribbonMat);
+            ribbon.rotation.x = Math.random() * Math.PI;
+            ribbon.rotation.y = Math.random() * Math.PI;
+            scene.add(ribbon);
+            ribbonsArr.push({ mesh: ribbon, speed: speed });
+        };
+
+        createRibbon(2.8, 0.04, 0.008, 0xBB1919, 0.8);
+        createRibbon(3.1, 0.015, -0.012, 0xaaaaaa, 0.4);
+        createRibbon(2.6, 0.08, 0.004, 0xBB1919, 0.3);
+        createRibbon(3.5, 0.005, 0.02, 0xBB1919, 0.2);
+
+        // --- Rings (Waves) ---
+        const wavesArr = [];
+        const createWave = () => {
+             const waveGeom = new THREE.RingGeometry(2, 2.02, 128);
+             const waveMat = new THREE.MeshBasicMaterial({ color: 0xBB1919, transparent: true, opacity: 0.8, side: THREE.DoubleSide });
+             const wave = new THREE.Mesh(waveGeom, waveMat);
+             // Orient wave randomly or to camera
+             wave.lookAt(camera.position);
+             scene.add(wave);
+             wavesArr.push({ mesh: wave, scale: 1, opacity: 0.8 });
+        };
+
+        // --- Floating Numbers ---
+        let currentSecond = -1;
+        let textMesh;
+        const fontLoader = new FontLoader();
+        let loadedFont;
+
+        // Use a relative path for the font if possible or a more stable CDN
+        const FONT_URL = 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/fonts/helvetiker_bold.typeface.json';
+
+        fontLoader.load(FONT_URL, (font) => {
+            loadedFont = font;
+            console.log("Font loaded");
+            updateText('?');
+        }, undefined, (err) => {
+            console.error("Font failed to load", err);
+        });
+
+        function updateText(char) {
+            if (!loadedFont) return;
+            
+            const oldMesh = textMesh;
+
+            const textGeom = new TextGeometry(char, {
+                font: loadedFont,
+                size: 3.5,
+                height: 0.4,
+                curveSegments: 12,
+                bevelEnabled: true,
+                bevelThickness: 0.05,
+                bevelSize: 0.02,
+                bevelOffset: 0,
+                bevelSegments: 5
+            });
+            textGeom.computeBoundingBox();
+            const centerOffset = -0.5 * (textGeom.boundingBox.max.x - textGeom.boundingBox.min.x);
+            
+            textMesh = new THREE.Mesh(textGeom, new THREE.MeshPhongMaterial({ 
+                color: 0xffffff,
+                emissive: 0x333333,
+                shininess: 100
+            }));
+            
+            // Positioning like BBC - Large number overlaying the globe on the right
+            textMesh.position.x = 1.0; 
+            textMesh.position.y = -1.5;
+            textMesh.position.z = 2.5; 
+            scene.add(textMesh);
+
+            // Animate scale and opacity for transition
+            textMesh.scale.set(0.5, 0.5, 0.5);
+            textMesh.material.transparent = true;
+            textMesh.material.opacity = 0;
+
+            if (oldMesh) {
+                // Fade out old mesh
+                let op = 1;
+                const fadeOut = () => {
+                    op -= 0.1;
+                    oldMesh.material.opacity = op;
+                    oldMesh.position.z += 0.1;
+                    if (op > 0) requestAnimationFrame(fadeOut);
+                    else {
+                        scene.remove(oldMesh);
+                        oldMesh.geometry.dispose();
+                        oldMesh.material.dispose();
+                    }
+                };
+                fadeOut();
+            }
+
+            // Fade in new mesh
+            let inOp = 0;
+            let inScale = 0.5;
+            const fadeIn = () => {
+                inOp += 0.1;
+                inScale += 0.05;
+                if (textMesh) {
+                    textMesh.material.opacity = inOp;
+                    textMesh.scale.set(inScale, inScale, inScale);
+                }
+                if (inOp < 1) requestAnimationFrame(fadeIn);
+                else if (textMesh) {
+                     textMesh.scale.set(1, 1, 1);
+                }
+            };
+            fadeIn();
+        }
+
+        // --- Animation Loop ---
+        function animate() {
+            requestAnimationFrame(animate);
+
+            globeGroup.rotation.y += 0.003;
+            
+            ribbonsArr.forEach(r => {
+                r.mesh.rotation.z += r.speed;
+                r.mesh.rotation.x += r.speed * 0.2;
+            });
+
+            // Handle Timing
+            const timeData = updateCountdownText();
+            if (timeData && timeData.seconds !== currentSecond) {
+                currentSecond = timeData.seconds;
+                const lastDigit = currentSecond.toString().slice(-1);
+                updateText(lastDigit); 
+                createWave();
+            }
+
+            // Animate Waves
+            for (let i = wavesArr.length - 1; i >= 0; i--) {
+                const w = wavesArr[i];
+                w.scale += 0.03;
+                w.opacity -= 0.015;
+                w.mesh.scale.set(w.scale, w.scale, w.scale);
+                w.mesh.material.opacity = w.opacity;
+
+                if (w.opacity <= 0) {
+                    scene.remove(w.mesh);
+                    w.mesh.geometry.dispose();
+                    w.mesh.material.dispose();
+                    wavesArr.splice(i, 1);
+                }
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle Resize
+        window.addEventListener('resize', () => {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        });
+
+    </script>
+
+</body>
+</html>
