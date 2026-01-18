@@ -13,7 +13,9 @@ title: "GGJ 2026 Countdown"
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bbc-red: #BB1919;
+            --ggj-yellow: #f1f22e;
+            --ggj-logo: #BB1919;
+            --ggj-purple: #553a65;
             --bbc-black: #000000;
             --bg-light: #f4f4f4;
         }
@@ -24,7 +26,7 @@ title: "GGJ 2026 Countdown"
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: radial-gradient(circle at center, #ffffff 0%, #e0e0e0 100%);
+            background: radial-gradient(circle at center, #ffffff 0%, #d5d5e5 100%);
             font-family: 'Inter', sans-serif;
         }
 
@@ -67,15 +69,16 @@ title: "GGJ 2026 Countdown"
         }
 
         .sub-logo {
-            color: var(--bbc-red);
+            color: var(--ggj-logo);
             font-size: 4rem;
             font-weight: 900;
             letter-spacing: 2px;
             margin-top: -10px;
+            text-shadow: 2px 2px 0px rgba(85, 58, 101, 0.3);
         }
 
         .location-tag {
-            color: #666;
+            color: var(--ggj-purple);
             font-size: 1.2rem;
             font-weight: 700;
             margin-top: 5px;
@@ -101,7 +104,7 @@ title: "GGJ 2026 Countdown"
 
         .target-date {
             font-size: 1.5rem;
-            color: var(--bbc-red);
+            color: var(--ggj-purple);
             font-weight: 700;
         }
 
@@ -134,6 +137,7 @@ title: "GGJ 2026 Countdown"
 
     <script>
         import * as THREE from 'three';
+        import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
         import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
         import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 
@@ -178,51 +182,70 @@ title: "GGJ 2026 Countdown"
         container.appendChild(renderer.domElement);
 
         // --- Lighting ---
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
 
-        const pointLight = new THREE.PointLight(0xffffff, 1.2);
+        const pointLight = new THREE.PointLight(0x3498db, 0.8); // Softer blueish light
         pointLight.position.set(10, 10, 10);
         scene.add(pointLight);
 
-        const spotLight = new THREE.SpotLight(0xffffff, 1);
+        const spotLight = new THREE.SpotLight(0xffffff, 0.8);
         spotLight.position.set(-10, 5, 10);
         scene.add(spotLight);
 
-        // --- The Globe ---
+        // --- The Globe (External Model) ---
         const globeGroup = new THREE.Group();
         scene.add(globeGroup);
 
-        const sphereGeom = new THREE.SphereGeometry(2, 64, 64);
-        
-        // Globe Base
-        const globeMaterial = new THREE.MeshPhongMaterial({
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.2,
-            wireframe: true
-        });
-        const globeSphere = new THREE.Mesh(sphereGeom, globeMaterial);
-        globeGroup.add(globeSphere);
+        const gltfLoader = new GLTFLoader();
+        let earthModel;
 
-        // Inner solid sphere for depth
-        const innerSphere = new THREE.Mesh(
-            new THREE.SphereGeometry(1.95, 64, 64),
-            new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.05 })
-        );
-        globeGroup.add(innerSphere);
-
-        // Styled "Landmasses" - More detailed
-        const landMaterial = new THREE.MeshPhongMaterial({ color: 0xBB1919, side: THREE.DoubleSide });
-        for (let i = 0; i < 40; i++) {
-            const phi = Math.random() * Math.PI * 2;
-            const theta = Math.random() * Math.PI;
-            const size = Math.random() * 0.4 + 0.1;
+        gltfLoader.load('/assets/ggj/earth.glb', (gltf) => {
+            earthModel = gltf.scene;
             
-            const landGeom = new THREE.SphereGeometry(2.02, 16, 16, phi, size, theta, size);
-            const land = new THREE.Mesh(landGeom, landMaterial);
-            globeGroup.add(land);
-        }
+            // Apply blue vertical gradient transparency
+            earthModel.traverse((child) => {
+                if (child.isMesh) {
+                    child.material.transparent = true;
+                    // Inject custom shader logic for vertical transparency
+                    child.material.onBeforeCompile = (shader) => {
+                        shader.vertexShader = shader.vertexShader.replace(
+                            '#include <common>',
+                            `#include <common>
+                             varying vec3 vWorldPos;`
+                        );
+                        shader.vertexShader = shader.vertexShader.replace(
+                            '#include <begin_vertex>',
+                            `#include <begin_vertex>
+                             vWorldPos = (modelMatrix * vec4(position, 1.0)).xyz;`
+                        );
+                        shader.fragmentShader = shader.fragmentShader.replace(
+                            '#include <common>',
+                            `#include <common>
+                             varying vec3 vWorldPos;`
+                        );
+                        // Modify alpha based on Y coordinate
+                        // Assuming globe is around y=0 with radius ~2-3
+                        shader.fragmentShader = shader.fragmentShader.replace(
+                            '#include <opaque_fragment>',
+                            `#include <opaque_fragment>
+                             float grad = clamp((vWorldPos.y + 1.2) / 2.4, 0.0, 1.0);
+                             gl_FragColor.a *= grad;`
+                        );
+                    };
+                    
+                    // Lighten the tint to let the texture show through more
+                    if (child.material.color) {
+                        child.material.color.setHex(0xaaccff); 
+                    }
+                    child.material.needsUpdate = true;
+                }
+            });
+
+            // Adjust scale if needed (depends on the model)
+            earthModel.scale.set(0.8, 0.8, 0.8);
+            globeGroup.add(earthModel);
+        });
 
         // --- Ribbons ---
         const ribbonsArr = [];
@@ -241,16 +264,16 @@ title: "GGJ 2026 Countdown"
             ribbonsArr.push({ mesh: ribbon, speed: speed });
         };
 
-        createRibbon(2.8, 0.04, 0.008, 0xBB1919, 0.8);
-        createRibbon(3.1, 0.015, -0.012, 0xaaaaaa, 0.4);
-        createRibbon(2.6, 0.08, 0.004, 0xBB1919, 0.3);
-        createRibbon(3.5, 0.005, 0.02, 0xBB1919, 0.2);
+        createRibbon(2.8, 0.04, 0.008, 0xf1f22e, 0.8); // GGJ Yellow
+        createRibbon(3.1, 0.015, -0.012, 0x553a65, 0.6); // GGJ Purple
+        createRibbon(2.6, 0.08, 0.004, 0xf1f22e, 0.3);
+        createRibbon(3.5, 0.005, 0.02, 0x2cb4e8, 0.4); // GGJ Cyan
 
         // --- Rings (Waves) ---
         const wavesArr = [];
         const createWave = () => {
              const waveGeom = new THREE.RingGeometry(2, 2.02, 128);
-             const waveMat = new THREE.MeshBasicMaterial({ color: 0xBB1919, transparent: true, opacity: 0.8, side: THREE.DoubleSide });
+             const waveMat = new THREE.MeshBasicMaterial({ color: 0xf1f22e, transparent: true, opacity: 0.8, side: THREE.DoubleSide });
              const wave = new THREE.Mesh(waveGeom, waveMat);
              // Orient wave randomly or to camera
              wave.lookAt(camera.position);
