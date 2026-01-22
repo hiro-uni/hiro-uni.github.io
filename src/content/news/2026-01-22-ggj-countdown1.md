@@ -61,7 +61,7 @@ https://unity3d.jp/news/unity-and-epic-games/
 
 ※なお、Unite2025では同社のティム・スウィーニーCEOが、「僕らも"U"から始まるゲームエンジンを作っていて…(笑」と発言し、会場を賑わせました。  
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8yzjL5-kIHc?si=Wb1R4ceZBpC84K0_&amp;start=663" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="500px" src="https://www.youtube.com/embed/8yzjL5-kIHc?si=Wb1R4ceZBpC84K0_&amp;start=663" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 この機会に Unreal Engine に挑戦してみたい方も、普段から使っている方も、
