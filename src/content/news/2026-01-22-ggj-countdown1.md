@@ -16,7 +16,7 @@ description: "GGJはついに来週金曜日開催です！併せてデザイナ
 
 ## GGJ2026瀬戸内会場 in 広島、引き続き参加者募集中です
 
-遂にグローバルゲームジャム(GGJ) 2026の開催が来週金曜日(1/30)となりました！
+遂にグローバルゲームジャム(GGJ) 2026の開催が来週金曜日(1/30)となりました！  
 即席でチームを作成し、週末48時間でゲームを1本作成するイベントです。
 
 https://hirouni.connpass.com/event/373294/
@@ -26,7 +26,9 @@ https://hirouni.connpass.com/event/373294/
 そんな今年のグローバルゲームジャム広島ですが、ありがたいことに参加者の多くが「エンジニアさん」です。
 
 ここで少し運営からのお願いとなります。
-もし「デザイナーさん」で参加してみようかな、という方がいれば、ぜひ参加と幸いです。年に一度のGGJで「ちょっと見た目も楽しいゲーム」を作れたら嬉しいな、と思っています。
+もし「デザイナーさん」で参加してみようかな、という方がいれば、ぜひ参加と幸いです。
+
+年に一度のGGJで「ちょっと見た目も楽しいゲーム」を作れたら嬉しいな、と思っています。
 
 「私、UnityやUnreal Engineとか触ったことないし…」という方、全く問題ありません。
 「描いた絵がゲームの中で動いた！」 という感動を、体験できるかもしれません。
@@ -49,18 +51,21 @@ GGJでは現時点〜今週末にかけて、さまざまオンラインのセ�
 ## Epic Games Japan 様より、ご協賛を頂きました！
 
 世界中で使われているゲームエンジン「Unreal Engine」を開発・提供する
-Epic Games の日本法人「Epic Games Japan 様」が、広島会場にご協賛いただけることになりました！
+Epic Games の日本法人「Epic Games Japan 様」が、GGJ2026瀬戸内会場 in 広島にご協賛いただけることになりました！
 
 Epic Gamesのマーケットプレイス「Fab」では、Unity用のアセットも販売しています。
 https://www.fab.com/channels/unity
 
 昨年秋のUnite2025では、同社がリリースするFortniteにてUnity製ゲームをリリース可能となることを発表するなど、親密な協業関係を築いています。
-※なお、Unite2025では同社のティム・スウィーニーCEOが、「僕らも"U"から始まるゲームエンジンを作っていて…」と発言し、会場を賑わせました。
 https://unity3d.jp/news/unity-and-epic-games/
+
+※なお、Unite2025では同社のティム・スウィーニーCEOが、「僕らも"U"から始まるゲームエンジンを作っていて…(笑」と発言し、会場を賑わせました。  
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8yzjL5-kIHc?si=Wb1R4ceZBpC84K0_&amp;start=663" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 この機会に Unreal Engine に挑戦してみたい方も、普段から使っている方も、
-ぜひ一緒に「GGJ瀬戸内会場in広島」で盛り上がりましょう！
+ぜひ一緒に「GGJ瀬戸内会場 in 広島」で盛り上がりましょう！
 
 ■Epic Games Japan - 公式Webページ
 https://www.unrealengine.com/ja
