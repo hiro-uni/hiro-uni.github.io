@@ -1,0 +1,14 @@
+{
+  "https://globalgamejam.org/": {
+    "title": "Global Game Jam®",
+    "description": "Global Game Jam® is the world's largest game jam event (game creation) taking place around the world.",
+    "image": "",
+    "siteName": "globalgamejam.org"
+  },
+  "https://hiro-uni.github.io": {
+    "title": "広島Unity勉強会へようこそ！ - 広島Unity勉強会",
+    "description": "広島で活動するUnityユーザーのためのコミュニティ、広島Unity勉強会の公式サイトです。",
+    "image": "https://hiro-uni.github.io/hirouni.png",
+    "siteName": "広島Unity勉強会"
+  }
+}

@@ -20,5 +20,12 @@ https://www.youtube.com/playlist?list=PLB9zPVXQouyoT8xYxsuzYeH9p84wchFRl
 https://globalgamejam.org/group/31042/games
 
 
+
+[ogp:https://globalgamejam.org]
+
+
+
 また来年、この広島でグローバルゲームジャム2027瀬戸内会場 in 広島 を行う予定です！  
 その時は、ぜひ広島でお会いしましょうー。
+
+[ogp:https://hiro-uni.github.io]
