@@ -5,7 +5,7 @@ import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
 import InterviewBody from '../../../components/interview/InterviewBody.astro';
 import Dialogue from '../../../components/interview/Dialogue.astro';
 import Pagination from '../../../components/interview/Pagination.astro';
-import BlogCard from '../../../components/interview/BlogCard.astro';
+import OGP from '../../../layouts/OGP.astro';
 
 import iconKamera25 from '../../../assets/ggj25_interview/icon_kamera25.jpg';
 import iconYamane from '../../../assets/ggj25_interview/icon_yamane.jpg';
@@ -46,13 +46,7 @@ const interview_numata = {
       沼田さんは、IGDA日本（国際ゲーム開発者協会日本支部）のスカラーシップ（奨学金制度）を利用して東京ゲームショウ（TGS）に参加されたそうですね。これはどのような経緯だったのですか？
     </Dialogue>
 
-    <BlogCard 
-      url="https://www.igda.jp/2025/10/02/15814/"
-      title="TGS 2025 スカラーシップ体験レポート①沼田 理貴"
-      description="総合学園ヒューマンアカデミー広島校 ゲームカレッジ プランナー専攻2年の沼田理貴です。今回、IGDA日本様のスカラーシップに採択していただき、東京ゲームショウ(TGS)2025に4日間、出展者として参加させていただきました。"
-      image="https://i0.wp.com/www.igda.jp/wp-content/uploads/2025/05/image-2.png?ssl=1"
-      siteName="IGDA日本"
-    />
+    <OGP url="https://www.igda.jp/2025/10/02/15814/" />
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
       きっかけは <a href="https://www.creators-guild.com/bitsummit-game-jam-2025">BitSummit Game Jam 2025</a> でした。

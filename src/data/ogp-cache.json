@@ -64,5 +64,29 @@
     "description": "",
     "image": "",
     "siteName": "ggj.igda.jp"
+  },
+  "https://www.yasuda-u.ac.jp/course/informatics/staff/": {
+    "title": "教員紹介｜情報科学科｜学部・学科・大学院｜安田女子大学/安田女子短期大学",
+    "description": "女子大で6年制薬学部がある広島市内の総合大学です。",
+    "image": "",
+    "siteName": "www.yasuda-u.ac.jp"
+  },
+  "https://store.steampowered.com/app/3846520/Raptor/": {
+    "title": "Raptor on Steam",
+    "description": "The protagonist, a reporter, receives information that a laboratory is conducting experiments that defy the law. He visits the laboratory to find out what the experiment is, but regrets his decision to come... A 3D escape horror in which he explores while being chased by a tracker using only lights!",
+    "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3846520/a73e0284792a0d47bccc74502748fbf6cd286d50/capsule_616x353.jpg?t=1766234551",
+    "siteName": "store.steampowered.com"
+  },
+  "https://www.igda.jp/2025/10/02/15814/": {
+    "title": "TGS 2025 スカラーシップ体験レポート①沼田 理貴 | 国際ゲーム開発者協会日本",
+    "description": "",
+    "image": "https://www.igda.jp/wp-content/uploads/2025/10/PXL_20250925_003436705.PORTRAIT-EDIT.jpg",
+    "siteName": "国際ゲーム開発者協会日本 | ゲーム開発者個人を対象とした国際NPO"
+  },
+  "https://hirouni.connpass.com/event/325586/": {
+    "title": "Global Game Jam 2025 瀬戸内会場 in 広島 (2025/01/24 16:00〜)",
+    "description": "# 🏃‍♂️ 作成されたゲームについて  GGJ2025瀬戸内(広島・岡山)で作成されたゲームは、Unityroomで公開してます！  🎮 Unityroomで遊ぶ！  # グローバルゲームジャム2025、広島で開催します！  # 👾 ゲームジャムとは？  週末の限られた時間の中で、ゲームをゼロから1本作ります。 ノートパソコンを持ち寄って、即席でチームを組み、役割分担はそれぞれの自己申告で決まります。   初めて会う人達で多くの問題を解決し、エキサイティングなチーム開発が楽しめます！    * 若者がオリジナルゲームづくりに挑戦 高梁 - NHK   * 楽しくて病みつきになるゲームジ...",
+    "image": "https://media.connpass.com/thumbs/8b/94/8b9497ed1a281345f7c96dbea1d388ae.png",
+    "siteName": "connpass"
   }
 }

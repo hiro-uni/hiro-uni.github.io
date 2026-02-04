@@ -5,7 +5,7 @@ import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
 import InterviewBody from '../../../components/interview/InterviewBody.astro';
 import Dialogue from '../../../components/interview/Dialogue.astro';
 import Pagination from '../../../components/interview/Pagination.astro';
-import BlogCard from '../../../components/interview/BlogCard.astro';
+import OGP from '../../../layouts/OGP.astro';
 
 import iconKamera25 from '../../../assets/ggj25_interview/icon_kamera25.jpg';
 import iconYamane from '../../../assets/ggj25_interview/icon_yamane.jpg';
@@ -55,12 +55,7 @@ const interview_numata = {
       山根 信二と申します。国際ゲーム開発者協会日本（IGDA日本）理事で、2025年春より広島市にある 安田女子大学 情報科学科 にてゲーム開発も含めた学生教育に携わっています。
     </Dialogue>
 
-    <BlogCard 
-      url="https://www.yasuda-u.ac.jp/course/informatics/staff/"
-      title="安田女子大学 情報科学科 教員紹介"
-      description="山根　信二"
-      siteName="安田女子大学"
-    />    
+    <OGP url="https://www.yasuda-u.ac.jp/course/informatics/staff/" />
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
       沼田です。昨年 グローバルゲームジャム瀬戸内会場 in 広島 に参加をキッカケに自身の実力不足を痛感し、それ以降に色々なことに挑戦しました。その過程で東京ゲームショウ2025の「TGS 2025 スカラシップ」に出展、2025年末には自身のゲーム「Raptor」をSteamにリリースすることができました。
@@ -113,13 +108,7 @@ const interview_numata = {
       はい。昨年、恐竜をテーマにしたゲーム「Raptor」を作りSteamでリリースしました。
     </Dialogue>
 
-    <BlogCard 
-      url="https://store.steampowered.com/app/3846520/Raptor/"
-      title="Raptor"
-      description="新聞社で働く主人公は、良い記事が書けず、後がない状態に陥った。そんな中、突如舞い込んできた一つの情報。それは、ある有名な研究所で法律を無視した実験が行われているというものだった。主人公はこのビッグチャンスをものにすべく、研究所を訪れることにした。しかし、訪れたことで後悔することになる…"
-      image={raptorImage.src} 
-      siteName="Steam"
-    />
+    <OGP url="https://store.steampowered.com/app/3846520/Raptor/" />
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
       僕には「恐竜の魅力を他の人にも知ってもらいたい」という想いが強くあるんです。小さい頃は恐竜が好きだった人も、大人になるにつれて興味が薄れていってしまうことが多いじゃないですか。それが少し寂しくて。

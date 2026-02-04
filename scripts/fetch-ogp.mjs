@@ -35,7 +35,7 @@ function getFilesRecursively(dir) {
         const stat = fs.statSync(file);
         if (stat && stat.isDirectory()) {
             results = results.concat(getFilesRecursively(file));
-        } else if (file.endsWith('.md') || file.endsWith('.mdx')) {
+        } else if (file.endsWith('.md') || file.endsWith('.mdx') || file.endsWith('.astro')) {
             results.push(file);
         }
     });

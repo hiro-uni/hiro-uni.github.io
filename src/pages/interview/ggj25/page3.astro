@@ -5,7 +5,7 @@ import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
 import InterviewBody from '../../../components/interview/InterviewBody.astro';
 import Dialogue from '../../../components/interview/Dialogue.astro';
 import Pagination from '../../../components/interview/Pagination.astro';
-import BlogCard from '../../../components/interview/BlogCard.astro';
+import OGP from '../../../layouts/OGP.astro';
 
 import iconKamera25 from '../../../assets/ggj25_interview/icon_kamera25.jpg';
 import iconYamane from '../../../assets/ggj25_interview/icon_yamane.jpg';
@@ -48,14 +48,7 @@ const interview_numata = {
       ここからは「ゲームジャム」での経験についてお聞きします。 沼田さんがゲームジャムとして初参加された<a href="https://hirouni.connpass.com/event/325586/">グローバルゲームジャム2025 瀬戸内会場 in 広島</a>では、少し大変なチーム構成だったとか？
     </Dialogue>
 
-    <BlogCard 
-      url="https://hirouni.connpass.com/event/325586/"
-      title="グローバルゲームジャム2025 瀬戸内会場 in 広島"
-      description="今年も広島でGGJ開催！48時間でデジタル＆アナログゲームを一緒に作ろう！"
-      image="https://media.connpass.com/thumbs/8b/94/8b9497ed1a281345f7c96dbea1d388ae.png"
-      siteName="connpass"
-    />
-
+    <OGP url="https://hirouni.connpass.com/event/325586/" />
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
       そうなんです（苦笑）。 プランナーとして参加したのですが、チーム構成が「プランナー3人、プログラマー1人」という、かなり偏ったチームになってしまって。
