@@ -1,0 +1,41 @@
+---
+import BlogCard from '../components/interview/BlogCard.astro';
+import ogpCache from '../data/ogp-cache.json';
+
+interface Props {
+  url: string;
+}
+
+const { url } = Astro.props;
+
+// Look up the URL in the cache
+const data = (ogpCache as Record<string, any>)[url];
+---
+
+{data ? (
+  <BlogCard
+    url={url}
+    title={data.title}
+    description={data.description}
+    image={data.image}
+    siteName={data.siteName}
+  />
+) : (
+  <div class="ogp-fallback">
+    <a href={url}>{url}</a>
+  </div>
+)}
+
+<style>
+  .ogp-fallback {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+  .ogp-fallback a {
+    color: var(--primary, #3b82f6);
+    text-decoration: underline;
+  }
+</style>
