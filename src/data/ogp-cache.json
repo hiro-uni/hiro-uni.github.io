@@ -1,14 +1,68 @@
 {
-  "https://globalgamejam.org/": {
-    "title": "Global Game Jam®",
-    "description": "Global Game Jam® is the world's largest game jam event (game creation) taking place around the world.",
+  "https://www.youtube.com/playlist?list=PLB9zPVXQouyoT8xYxsuzYeH9p84wchFRl": {
+    "title": "グローバルゲームジャム2026 瀬戸内会場 in 岡山/香川/広島 Live!",
+    "description": "グローバルゲームジャム2026 瀬戸内会場(岡山/香川/広島) の合同ライブ放送のリストです。 #ggj2026 #globalgamejam #gamejam #ggj",
+    "image": "https://i.ytimg.com/vi/Nk62KmxXhGE/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAbBeJc1QeQtWvCClZT8LE20mUuug&days_since_epoch=20488",
+    "siteName": "YouTube"
+  },
+  "https://globalgamejam.org/group/31042/games": {
+    "title": "グローバルゲームジャム2026 瀬戸内会場 - ゲームページ",
+    "description": "グローバルゲームジャム2026 瀬戸内会場のゲームページです。",
     "image": "",
-    "siteName": "globalgamejam.org"
+    "siteName": "Global Game Jam"
+  },
+  "https://globalgamejam.org/": {
+    "title": "Global Game Jam",
+    "description": "Global Game Jam",
+    "image": "https://globalgamejam.org/ogp.png",
+    "siteName": "Global Game Jam"
+  },
+  "https://hirouni.connpass.com/event/373294/": {
+    "title": "Global Game Jam 2026 瀬戸内会場 in 広島 (2026/01/30 17:00〜)",
+    "description": "# 🎮 グローバルゲームジャム2026、広島でも開催します！  ## 年に1回、全世界のゲームクリエイターと同時にゲームを作る特別な3日間。    * 🕹️ 開発開始からゲームの完成までは、たったの48時間。   * 💡 たまたま集まった仲間と、ゲームを面白くするアイデアを出し合って…。   * 🌍 世界92か国のゲーム制作者と、同じ週で1万本を超えるゲーム作る…！   「一年に一回。ちょっとゲームを作る」  ――そんな特別な時間を GGJ瀬戸内会場 in 広島 で過ごしませんか？  ## 🧗‍♂️ こんな人にオススメ！    * ゲーム開発初心者 : 最近ゲーム開発を始めた方や、これを...",
+    "image": "https://media.connpass.com/thumbs/0c/41/0c411620491ad1a4e9e636746a785035.png",
+    "siteName": "connpass"
+  },
+  "https://www.igda.jp/2026/01/20/16273/": {
+    "title": "Global Game Jam 2026 参加者募集中・直前イベント情報 | 国際ゲーム開発者協会日本",
+    "description": "",
+    "image": "https://www.igda.jp/wp-content/uploads/2020/12/ggj21_hero_v2.jpg",
+    "siteName": "国際ゲーム開発者協会日本 | ゲーム開発者個人を対象とした国際NPO"
+  },
+  "https://www.fab.com/channels/unity": {
+    "title": "Fab - Unity",
+    "description": "",
+    "image": "",
+    "siteName": "www.fab.com"
+  },
+  "https://unity3d.jp/news/unity-and-epic-games/": {
+    "title": "Unity と Epic Games 、オープンで相互運用可能なゲームの未来を共に推進 | ユニティ・テクノロジーズ・ジャパン株式会社",
+    "description": "Unity の開発者は自分のゲームを『フォートナイト』に展開可能に、また Unity の強化されたコマースプラットフォームが Unreal Engine にも対応へ ゲームやインタラクティブな体験の構築と成長のための世界をリードするプラット",
+    "image": "https://unity3d.jp/wp-content/uploads/2025/11/image1-2.png",
+    "siteName": "ユニティ・テクノロジーズ・ジャパン株式会社"
+  },
+  "https://www.unrealengine.com/ja": {
+    "title": "Unreal Engine - Epic Games",
+    "description": "",
+    "image": "",
+    "siteName": "www.unrealengine.com"
   },
   "https://hiro-uni.github.io/": {
     "title": "広島Unity勉強会へようこそ！ - 広島Unity勉強会",
     "description": "広島で活動するUnityユーザーのためのコミュニティ、広島Unity勉強会の公式サイトです。",
     "image": "https://hiro-uni.github.io/hirouni.png",
     "siteName": "広島Unity勉強会"
+  },
+  "https://hiro-uni.github.io/interview/ggj25/page/": {
+    "title": "【特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」 - 広島Unity勉強会",
+    "description": "広島で活動するUnityユーザーのためのコミュニティ、広島Unity勉強会の公式サイトです。",
+    "image": "https://hiro-uni.github.io/hirouni.png",
+    "siteName": "広島Unity勉強会"
+  },
+  "https://ggj.igda.jp/site-list/": {
+    "title": "日本の会場一覧 | Global Game Jam JAPAN",
+    "description": "",
+    "image": "",
+    "siteName": "ggj.igda.jp"
   }
 }
