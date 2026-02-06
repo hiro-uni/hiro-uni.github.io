@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import hiroshimaImg from '../assets/hiroshima.png';
 import ggjBanner from '../assets/ggj26_banner.png';
+import unityMokumokuBanner from '../assets/mokumoku_banner.png';
 import { Image } from 'astro:assets';
 ---
 
@@ -54,8 +55,15 @@ import { Image } from 'astro:assets';
 			<h2 class="section-title">最新情報</h2>
 			
 			<div class="special-event">
-				<a href="https://globalgamejam.org/group/31042/games" target="_blank" rel="noopener noreferrer" class="ggj-banner-link">
-					<Image src={ggjBanner} alt="Global Game Jam 2026 Hiroshima" class="ggj-banner-img" />
+				<a href="https://hirouni.connpass.com/event/383865/" target="_blank" rel="noopener noreferrer" class="top-banner-link">
+					<Image src={unityMokumokuBanner} alt="Unityもくもく会" class="top-banner-img" />
+				</a>
+				<p>3月8日(日)Unityもくもく会開催決定。GGJ26瀬戸内会場in広島の打ち上げも同時開催します！ <i class="fa-solid fa-arrow-right"></i></p>
+			</div>
+
+			<div class="special-event">
+				<a href="https://globalgamejam.org/group/31042/games" target="_blank" rel="noopener noreferrer" class="top-banner-link">
+					<Image src={ggjBanner} alt="Global Game Jam 2026 Hiroshima" class="top-banner-img" />
 				</a>
 				<p>GGJ2026広島で作成したゲームを公開中。ここからレッツプレイ！ <i class="fa-solid fa-arrow-right"></i></p>
 			</div>
@@ -208,12 +216,12 @@ import { Image } from 'astro:assets';
 		transform: scale(1.02);
 		box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 	}
-	.ggj-banner-link {
+	.top-banner-link {
 		display: block;
 		position: relative;
 		text-decoration: none;
 	}
-	.ggj-banner-img {
+	.top-banner-img {
 		width: 100%;
 		height: auto;
 		display: block;
@@ -232,7 +240,7 @@ import { Image } from 'astro:assets';
 		justify-content: center;
 		align-items: flex-end;
 	}
-	.ggj-banner-link:hover .banner-overlay {
+	.top-banner-link:hover .banner-overlay {
 		opacity: 1;
 	}
 	.banner-overlay span {
