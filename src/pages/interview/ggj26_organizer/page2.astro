@@ -1,0 +1,110 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import InterviewHeader from '../../../components/interview/InterviewHeader.astro';
+import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
+import InterviewBody from '../../../components/interview/InterviewBody.astro';
+import Dialogue from '../../../components/interview/Dialogue.astro';
+import Pagination from '../../../components/interview/Pagination.astro';
+import OGP from '../../../layouts/OGP.astro';
+
+import iconNakaoku from '../../../assets/ggj26_organizer/icon_nakaoku.jpg';
+import iconYamane from '../../../assets/ggj26_organizer/icon_yamane.jpg';
+import iconKafu from '../../../assets/ggj26_organizer/icon_kafu.png';
+import iconDai from '../../../assets/ggj26_organizer/icon_dai.png';
+import iconVeltina from '../../../assets/ggj26_organizer/icon_veltina.png';
+import heroImage from '../../../assets/ggj26_organizer/hero_ggj26_setouchi.png';
+
+const participants = {
+  nakaoku: {
+    name: "ナカオク",
+    avatar: iconNakaoku.src
+  },
+  yamane: {
+    name: "山根",
+    avatar: iconYamane.src
+  },
+  kafu: {
+    name: "かふう",
+    avatar: iconKafu.src
+  },
+  dai: {
+    name: "大",
+    avatar: iconDai.src
+  },
+  veltina: {
+    name: "VeLTiNA",
+    avatar: iconVeltina.src
+  }
+};
+---
+
+<Layout title="社長が聞く：Global Game Jam 2026 瀬戸内会場 合同トーク">
+  <InterviewHeader 
+    title="社長が聞く：Global Game Jam 2026 瀬戸内会場 合同トーク"
+    category="INTERVIEW"
+    date="2026.02.15"
+    heroImage={heroImage.src}
+    heroAlt="GGJ2026 瀬戸内会場 合同トーク"
+  />
+
+  <InterviewBody>
+    <h2>3. 「実験室」としてのゲームジャムと、AIという新たな相棒</h2>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      今年の開発風景を見ていて、技術的なトレンドや変化は感じましたか？
+    </Dialogue>
+
+    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
+      **AIの進化と普及**がすごいですね。
+      去年はまだ「日本語は苦手だな」という感じだったのが、この1年でガラッと変わりました。誰に教わらなくても、みんな当たり前のようにAIツールを使っています。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      確かに！ 瀬戸内界隈の人たちは、GitHub CopilotやAIツールを使ってゲームを作るのがもはや「当たり前」になっていますよね。
+      Web系の勉強会よりも、むしろゲームジャムのコミュニティの方が積極的にAIを導入しているんじゃないかと思うくらいです。
+    </Dialogue>
+
+    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
+      それはやっぱり、ゲームジャムが**「普段やらない実験をする場」**だからでしょうね。
+      職場ではセキュリティやルールの関係でAI利用にリミッターをかけている人たちも、ここではリミッターを外して、「AIを全開で使ったらどうなるんだろう？」という実験をしているんです。
+    </Dialogue>
+
+    <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
+      うちのチームでも、実験的に**AIエージェントを進捗管理役としてDiscordに追加**してみました。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      えっ、AIがチームメンバーとしてDiscordに常駐しているんですか？（笑）
+    </Dialogue>
+
+    <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
+      はい。「クレジットに名前を載せようか」なんて話も出ています（笑）。AIとの共同作業がすごくやりやすくなりましたね。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      「AI初のジャマー（参加者）」が岡山から生まれるかもしれませんね（笑）。
+      かつてUnityというゲームエンジンが登場した時、プロのベテランが学生に遅れを取るような現象が起きましたけど、今まさにAIで同じことが起きている気がします。
+    </Dialogue>
+
+    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
+      そうですね。15年経ってまた新しい波が来ている。「先生が一番やばい（ついていけない）」みたいな状況も含めて、新たな実験の時代が来ているなと思います。
+    </Dialogue>
+
+    <Dialogue speaker={participants.veltina.name} avatar={participants.veltina.avatar}>
+      どうも、遅れてすみません。今のAIの話、面白いですね。
+      岡山チームなんて、プログラマ1人で何でもこなせちゃうから、もう「AI失業」が先に岡山に来てるんじゃないかと思うくらいですよ（笑）。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      あ、VeLTiNAさん！ お待ちしていました。
+      確かに、プログラムの補助だけでなく、バグ修正からSNSの監視まで、AIがやる領域はどんどん広がっていますね。
+    </Dialogue>
+
+    <Pagination 
+      currentPage={2} 
+      totalPages={3} 
+      baseUrl="/interview/ggj26_organizer/page" 
+    />
+
+  </InterviewBody>
+</Layout>

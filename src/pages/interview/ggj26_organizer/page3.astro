@@ -1,0 +1,160 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import InterviewHeader from '../../../components/interview/InterviewHeader.astro';
+import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
+import InterviewBody from '../../../components/interview/InterviewBody.astro';
+import Dialogue from '../../../components/interview/Dialogue.astro';
+import Pagination from '../../../components/interview/Pagination.astro';
+import OGP from '../../../layouts/OGP.astro';
+
+import iconNakaoku from '../../../assets/ggj26_organizer/icon_nakaoku.jpg';
+import iconYamane from '../../../assets/ggj26_organizer/icon_yamane.jpg';
+import iconKafu from '../../../assets/ggj26_organizer/icon_kafu.png';
+import iconDai from '../../../assets/ggj26_organizer/icon_dai.png';
+import iconVeltina from '../../../assets/ggj26_organizer/icon_veltina.png';
+import heroImage from '../../../assets/ggj26_organizer/hero_ggj26_setouchi.png';
+
+const participants = {
+  nakaoku: {
+    name: "ナカオク",
+    avatar: iconNakaoku.src
+  },
+  yamane: {
+    name: "山根",
+    avatar: iconYamane.src
+  },
+  kafu: {
+    name: "かふう",
+    avatar: iconKafu.src
+  },
+  dai: {
+    name: "大",
+    avatar: iconDai.src
+  },
+  veltina: {
+    name: "VeLTiNA",
+    avatar: iconVeltina.src
+  }
+};
+---
+
+<Layout title="社長が聞く：Global Game Jam 2026 瀬戸内会場 合同トーク">
+  <InterviewHeader 
+    title="社長が聞く：Global Game Jam 2026 瀬戸内会場 合同トーク"
+    category="INTERVIEW"
+    date="2026.02.15"
+    heroImage={heroImage.src}
+    heroAlt="GGJ2026 瀬戸内会場 合同トーク"
+  />
+
+  <InterviewBody>
+    <h2>4. うどんからパスタへ、お好み焼きからVRへ</h2>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      技術といえば、大さんのところ（香川）はいつもユニークなハードウェアやコントローラーを作っているイメージがあります。今回はどうですか？
+    </Dialogue>
+
+    <Dialogue speaker={participants.dai.name} avatar={participants.dai.avatar}>
+      そうですね、モニターの中に囚われないゲーム制作というか、**「独自のコントローラーを作る」**という流れができています。
+      ちょっとヨタ話として聞いてほしいんですけど……僕、**「うどんから連想できることは何でもやってみよう」**と思ってるんですよ。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      うどん、ですか（笑）。
+    </Dialogue>
+
+    <Dialogue speaker={participants.dai.name} avatar={participants.dai.avatar}>
+      はい。例えばVRなどの疑似感覚デバイスの研究ってありますよね。そこで「うどんをすするデバイス」とかどうかなと。
+      口に加えて「ふーっ」てやると、なんかこう、麺が動くような振動が来るみたいな（笑）。
+      こういうバカバカしいアプローチって、「うどん」を起点にしないと辿り着けない発想なんですよ。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      確かに、ニーズがなさすぎて誰も作らない（笑）。
+    </Dialogue>
+
+    <Dialogue speaker={participants.dai.name} avatar={participants.dai.avatar}>
+      でも、これって「イタリアのパスタ」に置き換えても成立するし、「そば」でもいけるかもしれない。つまり、**うどんで辿り着いた答えは、世界中に輸出できる**んです。
+      これを僕は**「メンターテインメント（麺＋エンターテインメント）」**と名付けようかと……。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      （笑）
+    </Dialogue>
+
+    <Dialogue speaker={participants.dai.name} avatar={participants.dai.avatar}>
+      「手打ちゲーム制作所」として、原点回帰していこうかなと思っています。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      面白い！ まさにイノベーションですね。
+      そうなると広島も負けてられません。「お好み焼き」で対抗しないと。鉄板をひっくり返すコントローラーとか？
+    </Dialogue>
+
+    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
+      実は広島にはすでにあるんですよ。**オタフクソースさんが「お好み焼きVR」を作っている**んです。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      ええっ、本当ですか！？
+    </Dialogue>
+
+    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
+      東京でのデモを見ましたが、ヘッドセットを被ると、ちゃんとソースの匂いが漂ってくるんです。嗅覚まで再現したVRで、お好み焼きの焼き方を学べるようになっている。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      すごい……。職人の技術継承という意味でも、VRや新しいデバイスは可能性がありますね。
+      うどんからパスタへ、お好み焼きから世界へ. ローカルな文化と最先端技術が融合しているのが、この瀬戸内コミュニティの面白いところですね。
+    </Dialogue>
+
+    <h2>5. 次世代への継承と、これからのコミュニティ</h2>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      さて、そろそろお時間も迫ってきました。最後に、これからのコミュニティやゲームジャムへの想いを聞かせてください。
+    </Dialogue>
+
+    <Dialogue speaker={participants.veltina.name} avatar={participants.veltina.avatar}>
+      これからの時代、AIが子どもたちのSNSを見守る「ガーディアン」になったり、孤独な人の話し相手になったりと、教育や生活の中にどんどん入ってくると思います. 
+      そういった新しい技術とどう付き合っていくか、人間がどう成長していくかを試す場としても、ゲームジャムは重要ですよね。
+    </Dialogue>
+
+    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
+      そうですね。私が岡山に来た頃は、「あそこの大学がやっているから行かない」といった変な垣根を恐れて、毎回会場を変えて開催してきました。
+      その結果、特定の場所中心ではなく、あちこちで自律的にコミュニティが育ってくれたのが本当に良かった。
+      これからも、どこかが中心になるのではなく、**「どこでも、みんなが中心」**という形で繋がっていきたいですね。
+    </Dialogue>
+
+    <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
+      山根先生が撒いた種が育って、学生さんたちが複数人で開発する経験を得て、成長していく。このサイクルは本当にいいイベントだなと思います。
+      来年には参加者が全員AIになっているかもしれませんが（笑）、それまでは人間も頑張りましょう。
+    </Dialogue>
+
+    <Dialogue speaker={participants.dai.name} avatar={participants.dai.avatar}>
+      僕は最初、技術も人脈もない孤独なところからスタートしました。だからこそ、県を越えてこうやって皆さんと一緒にモノづくりができている時間が本当に嬉しいんです。
+      この瀬戸内エリアには今、すごく良い開発環境ができていると感じます。これを絶やさず、続けていきたいですね。
+    </Dialogue>
+
+    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+      皆さん、ありがとうございました。
+      Global Game Jamは、単にゲームを作るだけでなく、**「経験を作る」**場所でもあります。
+      AIが台頭しようとも、うどんデバイスが生まれようとも（笑）、こうやってみんなで集まってワイワイ開発する楽しさは変わりません。
+
+      これからも、大阪、九州、東京、北海道……全国の皆さんが、この熱い瀬戸内に遊びに来てくれるのを待っています。
+      来年は人間がいるか、AIだけになっているかわかりませんが（笑）、最後の日まで一緒にゲーム開発を楽しみましょう！
+
+      本日は本当にありがとうございました！
+    </Dialogue>
+
+    <Dialogue speaker="一同" avatar={participants.yamane.avatar}>
+      ありがとうございました！
+    </Dialogue>
+
+    <Pagination 
+      currentPage={3} 
+      totalPages={3} 
+      baseUrl="/interview/ggj26_organizer/page" 
+    />
+
+  </InterviewBody>
+</Layout>
