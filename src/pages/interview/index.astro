@@ -12,24 +12,32 @@ const interviews = [
     title: "社長が聞く：Global Game Jam 2026 瀬戸内会場 合同トーク",
     image: heroGGJ26,
     date: "2026.02.15",
-    category: "REPORT"
+    category: "トーク"
   },
   {
     href: "/interview/ggj25/page",
     title: "【特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」",
     image: heroGGJ25,
     date: "2026.01.12",
-    category: "INTERVIEW"
+    category: "インタビュー"
   }
 ];
+
+const interviews2 = [
+  {
+    href: "/interview/ggj25/page",
+    title: "【特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」",
+    image: heroGGJ25,
+    date: "2026.01.12",
+    category: "インタビュー"
+  }
+];
+
 ---
 
-<Layout title="INTERVIEW | 広島Unity勉強会">
+<Layout title="インタビュー">
+	<p>広島のUnityクリエイター、瀬戸内ゲーム制作コミュニティメンバーへのインタビュー記事一覧です。</p>
   <div class="interview-index">
-    <header class="page-header">
-      <h1 class="page-title">INTERVIEW</h1>
-      <p class="page-description">広島Unity勉強会に関わる人々や、地域の活動についてのインタビュー記事一覧です。</p>
-    </header>
 
     <div class="interview-grid">
       {interviews.map((interview) => (

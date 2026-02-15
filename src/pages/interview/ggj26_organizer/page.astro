@@ -16,19 +16,19 @@ import heroImage from '../../../assets/ggj26_organizer/hero_ggj26_setouchi.png';
 
 const participants = {
   nakaoku: {
-    name: "ナカオク",
+    name: "広ユニ　ナカオク",
     avatar: iconNakaoku.src
   },
   yamane: {
-    name: "山根",
+    name: "広ユニ 山根",
     avatar: iconYamane.src
   },
   kafu: {
-    name: "かふう",
+    name: "岡ユニ かふう",
     avatar: iconKafu.src
   },
   dai: {
-    name: "大",
+    name: "讃岐GameN 大",
     avatar: iconDai.src
   },
   veltina: {
@@ -38,29 +38,20 @@ const participants = {
 };
 ---
 
-<Layout title="社長が聞く：Global Game Jam 2026 瀬戸内会場 合同トーク">
+<Layout title="【GGJ26瀬戸内】瀬戸内地方ゲーム開発コミュニティ オーガナイザートーク">
   <InterviewHeader 
-    title="社長が聞く：Global Game Jam 2026 瀬戸内会場 合同トーク"
+    title="【GGJ26瀬戸内】瀬戸内地方ゲーム開発コミュニティ オーガナイザートーク"
     category="INTERVIEW"
     date="2026.02.15"
     heroImage={heroImage.src}
-    heroAlt="GGJ2026 瀬戸内会場 合同トーク"
+    heroAlt="GGJ26瀬戸内 オーガナイザートーク"
   />
 
   <InterviewBody>
     <InterviewIntro>
-      今回は、世界最大規模のゲーム開発ハッカソン「Global Game Jam（GGJ） 2026」の開催中に、瀬戸内エリア（広島・岡山・香川）の各会場を中継で繋ぎ、コミュニティのリーダーたちが行った合同トークの模様を、「社長が聞く」のようなインタビュー形式でまとめました。<br /><br />
-      残り時間 18 時間を切った開発の佳境で、彼らは何を語り、どのような未来を見据えているのか。地方コミュニティの熱量から、AI時代の開発手法、そして「うどん」と「お好み焼き」によるイノベーションまで、たっぷりと語っていただきました。
+      2026年1月30日から開催された、世界最大規模のゲームジャム「Global Game Jam（GGJ） 2026」の開催中に、瀬戸内エリア（広島・岡山・香川）の各会場を中継で繋ぎ、コミュニティのリーダーたちが行った合同トークの模様をまとめました。<br /><br />
+      地方コミュニティの熱量から、AI時代の開発手法、そして「うどん」と「お好み焼き」によるイノベーションまで、たっぷりと語っていただきました。
     </InterviewIntro>
-
-    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
-      本日は、Global Game Jam（以下、GGJ）の開催中という非常にお忙しい中、お時間をいただきありがとうございます。
-      今はちょうど、開発終了まで残り18時間を切って、折り返し地点を過ぎたあたりですね。
-    </Dialogue>
-
-    <Dialogue speaker="一同" avatar={participants.yamane.avatar}>
-      よろしくお願いします。
-    </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
       今回は、広島、岡山、香川という瀬戸内エリアの3つのコミュニティを繋いでの合同トークとなります。
@@ -137,7 +128,7 @@ const participants = {
     </Dialogue>
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
-      やっぱり**「世界同時多発」**であることですね。
+      やっぱり<strong>「世界同時多発」</strong>であることですね。
       今この瞬間も、同じテーマ、同じ条件で開発している人が世界中にいるという感覚が強烈にあります。
       Twitchなどで海外会場の実況を見ていると、明らかに我々とは昼夜が逆だったりして、「ああ、地球は丸いんだな」と実感できるんです。
     </Dialogue>
@@ -158,7 +149,7 @@ const participants = {
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
       ええ。最近は、自分たちの文化や民話をゲームという形で発信しようという動きが、世界各地、例えば北極圏の方々の間などで出てきています。
-      ドキュメンタリー映画などで誰かに紹介してもらうのではなく、**「自分たちを表現する最強のメディア」**としてゲームを選んでいる。これはゲーム文化が世界を変えている証拠だと思います。
+      ドキュメンタリー映画などで誰かに紹介してもらうのではなく、<strong>「自分たちを表現する最強のメディア」</strong>としてゲームを選んでいる。これはゲーム文化が世界を変えている証拠だと思います。
     </Dialogue>
 
     <Pagination 

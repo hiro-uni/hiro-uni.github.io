@@ -16,19 +16,19 @@ import heroImage from '../../../assets/ggj26_organizer/hero_ggj26_setouchi.png';
 
 const participants = {
   nakaoku: {
-    name: "ナカオク",
+    name: "広ユニ　ナカオク",
     avatar: iconNakaoku.src
   },
   yamane: {
-    name: "山根",
+    name: "広ユニ 山根",
     avatar: iconYamane.src
   },
   kafu: {
-    name: "かふう",
+    name: "岡ユニ かふう",
     avatar: iconKafu.src
   },
   dai: {
-    name: "大",
+    name: "讃岐GameN 渡辺",
     avatar: iconDai.src
   },
   veltina: {
@@ -55,8 +55,8 @@ const participants = {
     </Dialogue>
 
     <Dialogue speaker={participants.dai.name} avatar={participants.dai.avatar}>
-      そうですね、モニターの中に囚われないゲーム制作というか、**「独自のコントローラーを作る」**という流れができています。
-      ちょっとヨタ話として聞いてほしいんですけど……僕、**「うどんから連想できることは何でもやってみよう」**と思ってるんですよ。
+      そうですね、モニターの中に囚われないゲーム制作というか、<strong>「独自のコントローラーを作る」</strong>という流れができています。
+      ちょっとヨタ話として聞いてほしいんですけど……僕、<strong>「うどんから連想できることは何でもやってみよう」</strong>と思ってるんですよ。
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
@@ -92,7 +92,7 @@ const participants = {
     </Dialogue>
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
-      実は広島にはすでにあるんですよ。**オタフクソースさんが「お好み焼きVR」を作っている**んです。
+      実は広島にはすでにあるんですよ。<strong>オタフクソースさんが「お好み焼きVR」を作っている</strong>んです。
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
@@ -114,15 +114,10 @@ const participants = {
       さて、そろそろお時間も迫ってきました。最後に、これからのコミュニティやゲームジャムへの想いを聞かせてください。
     </Dialogue>
 
-    <Dialogue speaker={participants.veltina.name} avatar={participants.veltina.avatar}>
-      これからの時代、AIが子どもたちのSNSを見守る「ガーディアン」になったり、孤独な人の話し相手になったりと、教育や生活の中にどんどん入ってくると思います. 
-      そういった新しい技術とどう付き合っていくか、人間がどう成長していくかを試す場としても、ゲームジャムは重要ですよね。
-    </Dialogue>
-
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
       そうですね。私が岡山に来た頃は、「あそこの大学がやっているから行かない」といった変な垣根を恐れて、毎回会場を変えて開催してきました。
       その結果、特定の場所中心ではなく、あちこちで自律的にコミュニティが育ってくれたのが本当に良かった。
-      これからも、どこかが中心になるのではなく、**「どこでも、みんなが中心」**という形で繋がっていきたいですね。
+      これからも、どこかが中心になるのではなく、<strong>「どこでも、みんなが中心」</strong>という形で繋がっていきたいですね。
     </Dialogue>
 
     <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
@@ -137,7 +132,7 @@ const participants = {
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
       皆さん、ありがとうございました。
-      Global Game Jamは、単にゲームを作るだけでなく、**「経験を作る」**場所でもあります。
+    Global Game Jamは、単にゲームを作るだけでなく、<strong>「経験を作る」</strong>場所でもあります。
       AIが台頭しようとも、うどんデバイスが生まれようとも（笑）、こうやってみんなで集まってワイワイ開発する楽しさは変わりません。
 
       これからも、大阪、九州、東京、北海道……全国の皆さんが、この熱い瀬戸内に遊びに来てくれるのを待っています。
@@ -146,9 +141,12 @@ const participants = {
       本日は本当にありがとうございました！
     </Dialogue>
 
-    <Dialogue speaker="一同" avatar={participants.yamane.avatar}>
-      ありがとうございました！
-    </Dialogue>
+    <InterviewIntro>
+    瀬戸内コミュニティの皆さん、ありがとうございました！
+  　本トークの模様は以下のYouTubeリンクからフル版をご覧いただけます。
+   </InterviewIntro>
+
+   <OGP url="https://www.youtube.com/watch?v=6orleMzqsDY&t=691s" />
 
     <Pagination 
       currentPage={3} 

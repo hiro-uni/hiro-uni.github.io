@@ -16,19 +16,19 @@ import heroImage from '../../../assets/ggj26_organizer/hero_ggj26_setouchi.png';
 
 const participants = {
   nakaoku: {
-    name: "ナカオク",
+    name: "広ユニ　ナカオク",
     avatar: iconNakaoku.src
   },
   yamane: {
-    name: "山根",
+    name: "広ユニ 山根",
     avatar: iconYamane.src
   },
   kafu: {
-    name: "かふう",
+    name: "岡ユニ かふう",
     avatar: iconKafu.src
   },
   dai: {
-    name: "大",
+    name: "讃岐GameN 渡辺",
     avatar: iconDai.src
   },
   veltina: {
@@ -55,7 +55,7 @@ const participants = {
     </Dialogue>
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
-      **AIの進化と普及**がすごいですね。
+      <strong>AIの進化と普及</strong>がすごいですね。
       去年はまだ「日本語は苦手だな」という感じだったのが、この1年でガラッと変わりました。誰に教わらなくても、みんな当たり前のようにAIツールを使っています。
     </Dialogue>
 
@@ -65,12 +65,12 @@ const participants = {
     </Dialogue>
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
-      それはやっぱり、ゲームジャムが**「普段やらない実験をする場」**だからでしょうね。
+      それはやっぱり、ゲームジャムが<strong>「普段やらない実験をする場」</strong>だからでしょうね。
       職場ではセキュリティやルールの関係でAI利用にリミッターをかけている人たちも、ここではリミッターを外して、「AIを全開で使ったらどうなるんだろう？」という実験をしているんです。
     </Dialogue>
 
     <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
-      うちのチームでも、実験的に**AIエージェントを進捗管理役としてDiscordに追加**してみました。
+      うちのチームでも、実験的に<strong>AIエージェントを進捗管理役としてDiscordに追加</strong>してみました。
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
@@ -88,16 +88,6 @@ const participants = {
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
       そうですね。15年経ってまた新しい波が来ている。「先生が一番やばい（ついていけない）」みたいな状況も含めて、新たな実験の時代が来ているなと思います。
-    </Dialogue>
-
-    <Dialogue speaker={participants.veltina.name} avatar={participants.veltina.avatar}>
-      どうも、遅れてすみません。今のAIの話、面白いですね。
-      岡山チームなんて、プログラマ1人で何でもこなせちゃうから、もう「AI失業」が先に岡山に来てるんじゃないかと思うくらいですよ（笑）。
-    </Dialogue>
-
-    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
-      あ、VeLTiNAさん！ お待ちしていました。
-      確かに、プログラムの補助だけでなく、バグ修正からSNSの監視まで、AIがやる領域はどんどん広がっていますね。
     </Dialogue>
 
     <Pagination 
