@@ -11,8 +11,10 @@ import iconNakaoku from '../../../assets/ggj26_organizer/icon_nakaoku.jpg';
 import iconYamane from '../../../assets/ggj26_organizer/icon_yamane.jpg';
 import iconKafu from '../../../assets/ggj26_organizer/icon_kafu.png';
 import iconDai from '../../../assets/ggj26_organizer/icon_dai.png';
-import iconVeltina from '../../../assets/ggj26_organizer/icon_veltina.png';
 import heroImage from '../../../assets/ggj26_organizer/hero_ggj26_setouchi.png';
+import ggjearth from '../../../assets/ggj26_organizer/ggj_earth.png';
+
+import Image from 'astro/components/Image.astro';
 
 const participants = {
   nakaoku: {
@@ -28,19 +30,15 @@ const participants = {
     avatar: iconKafu.src
   },
   dai: {
-    name: "讃岐GameN 大",
+    name: "讃岐GameN 渡辺",
     avatar: iconDai.src
-  },
-  veltina: {
-    name: "VeLTiNA",
-    avatar: iconVeltina.src
   }
 };
 ---
 
-<Layout title="【GGJ26瀬戸内】瀬戸内地方ゲーム開発コミュニティ オーガナイザートーク">
+<Layout title="【GGJ26瀬戸内】瀬戸内ゲーム開発コミュニティ オーガナイザートーク">
   <InterviewHeader 
-    title="【GGJ26瀬戸内】瀬戸内地方ゲーム開発コミュニティ オーガナイザートーク"
+    title="【GGJ26瀬戸内】瀬戸内ゲーム開発コミュニティ オーガナイザートーク"
     category="INTERVIEW"
     date="2026.02.15"
     heroImage={heroImage.src}
@@ -49,21 +47,37 @@ const participants = {
 
   <InterviewBody>
     <InterviewIntro>
-      2026年1月30日から開催された、世界最大規模のゲームジャム「Global Game Jam（GGJ） 2026」の開催中に、瀬戸内エリア（広島・岡山・香川）の各会場を中継で繋ぎ、コミュニティのリーダーたちが行った合同トークの模様をまとめました。<br /><br />
+      2026年1月30日から開催された、世界最大規模のゲームジャム「Global Game Jam（GGJ） 2026」。<br><br>
+      瀬戸内地域（広島・岡山・香川）の各会場を中継で繋ぎ、コミュニティのリーダーたちが行った合同トークの模様をまとめました。<br /><br />
       地方コミュニティの熱量から、AI時代の開発手法、そして「うどん」と「お好み焼き」によるイノベーションまで、たっぷりと語っていただきました。
     </InterviewIntro>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
-      今回は、広島、岡山、香川という瀬戸内エリアの3つのコミュニティを繋いでの合同トークとなります。
-      この地域はゲーム制作コミュニティ同士の交流が非常に盛んですが、まずはそれぞれの会場の様子や、これまでの経緯についてお話しいただけますか。まずは広島会場の山根先生、お願いします。
+      今回は、広島、岡山、香川という瀬戸内エリアの3つのコミュニティを繋いでの合同トークとなります。<br>
+      この地域はゲーム制作コミュニティ同士の交流が非常に盛んですが、まずはそれぞれの会場の様子や、これまでの経緯についてお話しいただけますか。<br>
+      まずは山根先生、お願いします。
     </Dialogue>
 
     <h2>1. 瀬戸内と札幌、日本のゲームジャムの熱源</h2>
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
-      はい。私が広島の安田女子大学に赴任したのが2010年で、それからもう随分と時間が経ちました。
-      当時は「大学単独ではゲームは作れない」という状況だったので、あちこちに声をかけて人が集まり始めたのがきっかけでしたね。
-      それから10年以上が経ち、日本中でゲームジャムが広まりましたが、コロナ禍を経て少し下火になってしまった地域もあります。そんな中で、いま日本で何度もゲームジャムを開催し、熱量を維持できている「ホットな場所」といえば、北の「札幌」と、ここ「瀬戸内」くらいしかないんじゃないかと思っています。
+      はい。私が最初に瀬戸内地方に赴任したのは2014年で、岡山理科大学の情報学部で、それからもう随分と時間が経ちました。
+      当時は「瀬戸内地方はゲーム制作の空白地帯」「大学単独ではゲームジャムは開催できない」という状況だったので、あちこちに声をかけて人が集まり始めたのがきっかけでしたね。
+   </Dialogue>
+
+    <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
+      岡山Unity勉強会でかふうです。岡山県でUnityやAIを使ったゲーム開発コミュニティを運営しています。
+    </Dialogue>
+
+    <OGP url="https://okauni.jimdofree.com" />
+
+    <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
+      懐かしいです。山根先生が中四国で初めてゲームジャムを開催された時から影響を受けて開催するようになり、もう長くやっています。
+    </Dialogue>
+
+    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
+      それから10年以上が経ち、日本中でゲームジャムが広まりましたが、コロナ禍を経て少し下火になってしまった地域もあります。<br>
+      そんな中で、いま日本で何度もゲームジャムを開催し、熱量を維持できている「ホットな場所」といえば、<strong>北の「札幌」と、ここ「瀬戸内」</strong>くらいしかないんじゃないかと思っています。
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
@@ -76,22 +90,22 @@ const participants = {
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
-      なるほど. 大都市主導ではなく、地方が自律的に盛り上がっているのが今の日本の特徴なんですね. では続いて、岡山の様子はいかがでしょうか？ かふうさん。
+      なるほど。今年は中部地方からの学生さんも広島に参加されたりしていますね。大都市主導ではなく、地方が自律的に盛り上がっているのが今の日本の特徴なんですね。<br> では続いて、岡山の様子はいかがでしょうか？ かふうさん。
     </Dialogue>
 
     <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
-      はい、岡山Unity勉強会のかふうです。
-      我々も、山根先生が中四国で初めてゲームジャムを開催された時から影響を受けて開催するようになり、もう長くやっています。
       今年の岡山会場は、昨年よりも人数が増えて10名ほどが集まっています。今はみんなお風呂に行っちゃって、僕一人なんですけど（笑）。
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
-      （笑）。リラックスできる環境があるのは良いことですね。
+      （笑）。<br>岡山会場は なのです社の休憩スペース で開催されていますよね。<br>私も先日行きまして、とてもリラックスできる環境なのですよね。
     </Dialogue>
 
+    <OGP url="https://nanodes.jp" />    
+
     <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
-      そうですね。あと、今年は非常に国際色が豊かでして。
-      愛媛県の新居浜に住んでいるイタリア人の方が、「Global Game Jamに参加したい」と公式サイトを見て、わざわざこの岡山会場を見つけて来てくれたんです。
+      ありがとうございます。あと、今年は非常に国際色が豊かでして。<br>
+      <strong>愛媛県の新居浜に住んでいるイタリア人の方が、「Global Game Jamに参加したい」と公式サイトを見て、わざわざこの岡山会場を見つけて来てくれたんです。</strong>
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
@@ -107,10 +121,15 @@ const participants = {
     </Dialogue>
 
     <Dialogue speaker={participants.dai.name} avatar={participants.dai.avatar}>
-      はい、香川の讃岐GameNの大です。
+      はい、香川でUnityコミュニティを主催している、讃岐GameNの 渡辺 大 です。<br>
       僕らは2018年から活動を始めて、最初は僕一人だったんですが、だんだん学生さんや仲間が増えていきました。
-      今回は、2026年に向けてどう動くかを決めるような、集中開発合宿という形をとっています。
-      やっぱりGGJのタイミングって、世界中から「みんなでモノづくりしようぜ」という風が吹いてくるんですよね。
+   </Dialogue>
+
+    <OGP url="https://www.sanukigamen.com" />
+
+    <Dialogue speaker={participants.dai.name} avatar={participants.dai.avatar}>
+      過去にGGJを開催したこともあったんですが、今回は、2026年に向けてどう動くかを決めるような、集中開発合宿という形をとっています。<br>
+      やっぱりGGJのタイミングって、<strong>新年早々に世界中から「みんなでモノづくりしようぜ」という風が吹いてくるのが魅力</strong>だと思ってます。
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
@@ -121,7 +140,7 @@ const participants = {
       その風に乗って、都心を超えて人と人が繋がり、一緒に開発できるというのは、本当に幸せなことだなと感じています。
     </Dialogue>
 
-    <h2>2. 「地球が丸い」を感じる瞬間</h2>
+    <h2>2. 1年に1回、「地球は丸い」を感じる瞬間</h2>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
       皆さんの話を聞いていると、GGJには他のイベントとは違う特別な「空気感」があるように思います。
@@ -129,26 +148,31 @@ const participants = {
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
       やっぱり<strong>「世界同時多発」</strong>であることですね。
+    </Dialogue>
+
+    <Image src={ggjearth} alt="GGJ Earth" />
+
+    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
       今この瞬間も、同じテーマ、同じ条件で開発している人が世界中にいるという感覚が強烈にあります。
       Twitchなどで海外会場の実況を見ていると、明らかに我々とは昼夜が逆だったりして、「ああ、地球は丸いんだな」と実感できるんです。
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
-      わかります. ハワイ会場がまだ始まってなかったり、逆に時差で先に終わる地域があったりして. 
+      わかります。 ハワイ会場がまだ始まってなかったり、逆に時差で先に終わる地域があったりして。 
     </Dialogue>
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
-      そうそう。かつては南極会場があったり、アルゼンチンの世界最南端の都市でやっていたりと、北極圏から最南端まで繋がっている感覚がありました。
-      今年は南極会場が見当たらないので、そこは少し寂しいですが（笑）。
+      そうそう。かつては南極会場があったり、アルゼンチンの世界最南端の都市でやっていたりと、北極圏から最南端まで繋がっている感覚がありました。<br>
+      今年は南極会場が見当たらないので、そこは少し寂しいですが（笑）。<br>
       以前、スイスの会場で参加したことがあるという人が岡山会場に来てくれたりして、「みんなゲームジャムの仲間だ」という意識が得られるんです。これは学生限定のコンテストなんかでは味わえない、GGJならではの魅力ですね。
     </Dialogue>
 
     <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
-      国境を越えて、例えばアルゼンチン発のGodotエンジンのようなツールを使って開発することで、不思議な連帯感が生まりますよね。
+      国境を越えて、例えばアルゼンチン発の <a href="https://godotengine.org" target="_blank">Godot Engine</a> のようなツールを使って開発することで、不思議な連帯感が生まりますよね。
     </Dialogue>
 
     <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
-      ええ。最近は、自分たちの文化や民話をゲームという形で発信しようという動きが、世界各地、例えば北極圏の方々の間などで出てきています。
+      ええ。最近は、自分たちの文化や民話をゲームという形で発信しようという動きが、世界各地、例えば北極圏の方々の間などで出てきています。<br>
       ドキュメンタリー映画などで誰かに紹介してもらうのではなく、<strong>「自分たちを表現する最強のメディア」</strong>としてゲームを選んでいる。これはゲーム文化が世界を変えている証拠だと思います。
     </Dialogue>
 
@@ -160,3 +184,9 @@ const participants = {
 
   </InterviewBody>
 </Layout>
+
+<style is:global>
+  .content-wrapper strong {
+    background: linear-gradient(transparent 60%, rgba(179, 11, 84, 0.2) 60%);
+  }
+</style>
