@@ -148,5 +148,323 @@
     "description": "アラスカの原住民・イヌピアットの伝承をベースとしたアクションゲーム『Never Alone(Kisima Ingitchuna)』は、ゲームという形式を用いた優れたドキュメンタリー作品である。",
     "image": "https://gamerszone.jp/images/upload/2019/08/991bd19960aa3f2c412a1c81964a1a68.jpg",
     "siteName": "GAMERS ZONE"
+  },
+  "http://hiroshimaunity.doorkeeper.jp/events/11138": {
+    "title": "すごいUnity in 広島 #3  (旧・五日市Unity初心者もくもく会)  - 広島Unity勉強会\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hiroshimaunity.doorkeeper.jp"
+  },
+  "http://hiroshimaunity.doorkeeper.jp/events/11552": {
+    "title": "すごいUnity in 広島 #4 - 広島Unity勉強会\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hiroshimaunity.doorkeeper.jp"
+  },
+  "http://hiroshimaunity.doorkeeper.jp/events/12225": {
+    "title": "すごいUnity in 広島 #5 - 広島Unity勉強会\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hiroshimaunity.doorkeeper.jp"
+  },
+  "http://hiroshimaunity.doorkeeper.jp/events/12473": {
+    "title": "すごいUnity in 広島 #6 (もくもく会) - 広島Unity勉強会\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hiroshimaunity.doorkeeper.jp"
+  },
+  "http://hiroshimaunity.doorkeeper.jp/events/13019": {
+    "title": "すごいUnity in 広島 #7 (もくもく会) - 広島Unity勉強会\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hiroshimaunity.doorkeeper.jp"
+  },
+  "http://hiroshimaunity.doorkeeper.jp/events/14854": {
+    "title": "すごいUnity in 広島 #9  - 広島Unity勉強会\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hiroshimaunity.doorkeeper.jp"
+  },
+  "http://codezine.jp/article/detail/8026": {
+    "title": "速習 Unity 2Dゲーム開発　～第1回　Unity ２D機能の基礎",
+    "description": "Unityは3Dゲームを作成するためのゲームエンジンとして登場しました。それ以降、開発効率の高さなどにより一気に広まり、それに合わせて3Dゲーム開発の敷居もぐっと下がりました。そのUnityが、バージョン4.3で2D機能を大幅に強化しました。それ以前のUnityで2D表現が不可能だったわけではありませんが、「できなくはない」というものでした。本記事で扱うUnityの2D向けゲーム開発機能は、この4.3以降出追加された機能をさすものとします。これから何回かにわたり、Unityによる2Dゲーム開発の基礎をサンプルのゲームを作りながら紹介していこうと思います。",
+    "image": "https://codezine.jp/static/images/article/8026/8026_arena.png",
+    "siteName": "CodeZine"
+  },
+  "http://great-h.doorkeeper.jp/events/17711": {
+    "title": "すごい広島 #80 with すごいUnity - すごい広島\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "great-h.doorkeeper.jp"
+  },
+  "http://great-h.doorkeeper.jp/events/18140": {
+    "title": "すごい広島 #87 with すごいUnity - すごい広島\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "great-h.doorkeeper.jp"
+  },
+  "http://great-h.doorkeeper.jp/events/19712": {
+    "title": "すごい広島 #92 with すごいUnity - すごい広島\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "great-h.doorkeeper.jp"
+  },
+  "https://great-h.doorkeeper.jp/events/21232": {
+    "title": "すごい広島 #96 with すごいUnity - すごい広島\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "great-h.doorkeeper.jp"
+  },
+  "https://github.com/kamera25/great-h-96-unitysample": {
+    "title": "GitHub - kamera25/great-h-96-unitysample: すごい広島 #96 with すごいUnity のUnity5説明で利用した資料です。",
+    "description": "すごい広島 #96 with すごいUnity のUnity5説明で利用した資料です。. Contribute to kamera25/great-h-96-unitysample development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/26750fad743a1b99a6930f2c26a6f881f9600cb405123e5bf377c5dcd5207ad5/kamera25/great-h-96-unitysample",
+    "siteName": "GitHub"
+  },
+  "https://great-h.doorkeeper.jp/events/22433": {
+    "title": "すごい広島 #101 with すごいUnity - すごい広島\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "great-h.doorkeeper.jp"
+  },
+  "http://okayama.open-seminar.org/": {
+    "title": "オープンセミナー2025@岡山",
+    "description": "オープンセミナー2025@岡山公式ページ。オープンセミナーはソフトウェア技術をテーマにした無料セミナーです。",
+    "image": "https://okayama.open-seminar.org/images/ogp_image.png",
+    "siteName": "オープンセミナー2025@岡山"
+  },
+  "https://great-h.doorkeeper.jp/events/24848": {
+    "title": "すごい広島 #105 with すごいUnity(もくもく会) - すごい広島\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "great-h.doorkeeper.jp"
+  },
+  "https://twitter.com/csc_kamera25": {
+    "title": "",
+    "description": "",
+    "image": "",
+    "siteName": "twitter.com"
+  },
+  "http://www.webtouchmeeting.com/meeting/2015/08/82wtm-unity.html": {
+    "title": "WEB TOUCH MEETING",
+    "description": "ウェブ周りの技術や知識に関して触り部分を共有しあう会",
+    "image": "",
+    "siteName": "WEB TOUCH MEETING"
+  },
+  "https://docs.google.com/presentation/d/1E5o3PKrUlOnYuRLZRsJ2pDtWy0sx_SYVnAgfZbdR3F4/edit#slide=id.g9d05a3f61_0_4": {
+    "title": "Unity5でボールころがしゲームを作ろう",
+    "description": "Unity5で ボールころがしゲームを 作ろう！ 琉球大学工学部情報工学科3年次 親川大樹 @daiki_all で",
+    "image": "https://lh7-us.googleusercontent.com/docs/AHkbwyJP7E47mSHfhBNY6rcY0jX-NQQLqsl1HCxXXq6s8NvlpWMXVtuDsf8YwQ3I-89Bj1tfVo7VM5csWHOpNTUsrgS7CUKbUClBd1VfdB8eWSfJwSbqbOoJ=w1200-h630-p",
+    "siteName": "Google Docs"
+  },
+  "http://koolweb37.com/wp/2015/09/25/web-touch-meetingに初参加して来ました%E3%80%82/": {
+    "title": "Web Touch Meetingに初参加して来ました。",
+    "description": "少し掲載まで時間が掛かってしまいましたが、2015年9月13日に開催された第82回Web Touch Meet&hellip;",
+    "image": "http://koolweb37.com/wp/wp-content/uploads/2015/09/20150925-1.png",
+    "siteName": "Webクリエイターな備忘録"
+  },
+  "https://8976d403b09c0c67dbbd26956e.doorkeeper.jp/events/31698": {
+    "title": "VR Game Jam in Japan 広島会場 - HSC (Hiroshima Student Community)\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "8976d403b09c0c67dbbd26956e.doorkeeper.jp"
+  },
+  "https://8976d403b09c0c67dbbd26956e.doorkeeper.jp/events/32706": {
+    "title": "VR Game Jam in Japan 広島会場 で作るゲーム案を考えよう！ - HSC (Hiroshima Student Community)\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "8976d403b09c0c67dbbd26956e.doorkeeper.jp"
+  },
+  "https://8976d403b09c0c67dbbd26956e.doorkeeper.jp/events/32703": {
+    "title": "Unity 勉強会 + VR勉強会 + 有料アセットお試し会 - HSC (Hiroshima Student Community)\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "8976d403b09c0c67dbbd26956e.doorkeeper.jp"
+  },
+  "https://hmcn.doorkeeper.jp/events/34823": {
+    "title": "Hiroshima MotionControl Network vol.2  - HMCN(Hiroshima MotionControl Network)\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hmcn.doorkeeper.jp"
+  },
+  "https://great-h.doorkeeper.jp/events/36186": {
+    "title": "すごい広島 #138 with すごいUnity(もくもく会) - すごい広島\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "great-h.doorkeeper.jp"
+  },
+  "http://peatix.com/event/130292/": {
+    "title": "GlobalGameJam2015 宇部アトミテック会場",
+    "description": "宇部日報社このまちメディアWeb「旧宇部銀行館にゲームイベント会場」に取り上げて頂きました！本サイトでの申し込みの他に、中学生、高校生、宇部高専生ら7名の方が参加されます。昨年、長... powered by Peatix : More than a ticket.",
+    "image": "https://cdn.peatix.com/assets/production/static/images/peatix-ogimage-a78a90280bd8403b7f912a2e6fd6d75b.png",
+    "siteName": "Peatix"
+  },
+  "http://globalgamejam.org/2016/jam-sites/okayama": {
+    "title": "Attention Required! | Cloudflare",
+    "description": "",
+    "image": "",
+    "siteName": "globalgamejam.org"
+  },
+  "https://hsc15.doorkeeper.jp/events/36857": {
+    "title": "ゲーム製作体験  「小さい子が楽しめるゲームを作ろう！」 - HSC (Hiroshima Student Community)\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hsc15.doorkeeper.jp"
+  },
+  "https://hiroshimaunity.doorkeeper.jp/events/39804": {
+    "title": "もっとUnityを使いたくなる勉強会 in 広島ものジム - 広島Unity勉強会\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hiroshimaunity.doorkeeper.jp"
+  },
+  "http://www.slideshare.net/takashijona/game-jam-51128855": {
+    "title": "Page no longer exists",
+    "description": "",
+    "image": "",
+    "siteName": "www.slideshare.net"
+  },
+  "https://hsc15.doorkeeper.jp/events/41569": {
+    "title": "1日で迷路ゲームを作ってみよう！ - HSC (Hiroshima Student Community)\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hsc15.doorkeeper.jp"
+  },
+  "https://oso-web.doorkeeper.jp/events/42344": {
+    "title": "オープンセミナー2016@岡山 - オープンセミナー岡山\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "oso-web.doorkeeper.jp"
+  },
+  "https://hsc15.doorkeeper.jp/events/45087": {
+    "title": "Japan VR Hackathon 2016【広島会場】 - HSC (Hiroshima Student Community)\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hsc15.doorkeeper.jp"
+  },
+  "https://hsc15.doorkeeper.jp/events/44573": {
+    "title": "Unityでパーティクルを学ぼう！！ - HSC (Hiroshima Student Community)\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hsc15.doorkeeper.jp"
+  },
+  "https://webtouchmeeting.doorkeeper.jp/events/45053": {
+    "title": "第91回「WTM ＋ 広島Unity勉強会」 - WEB TOUCH MEETING\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "webtouchmeeting.doorkeeper.jp"
+  },
+  "https://hiroshimaunity.doorkeeper.jp/events/48545": {
+    "title": "福島GameJam 2016 in Hiroshima - 広島Unity勉強会\n | Doorkeeper",
+    "description": "",
+    "image": "",
+    "siteName": "hiroshimaunity.doorkeeper.jp"
+  },
+  "http://fgj.igda.jp/dokuwiki/doku.php?id=team:hirosima_2016_1": {
+    "title": "404 Not Found",
+    "description": "",
+    "image": "",
+    "siteName": "fgj.igda.jp"
+  },
+  "http://www.slideshare.net/kamera25/unity-52956133": {
+    "title": "ユニティちゃんだけじゃない! オープンソースとUnityの未来",
+    "description": "オープンソースカンファレンス2015広島で発表した資料です。\r\nhttp://www.ospn.jp/osc2015-hiroshima/ - Download as a PDF, PPTX or view online for free",
+    "image": "https://cdn.slidesharecdn.com/ss_thumbnails/unity-150919055404-lva1-app6892-thumbnail.jpg?width=640&height=640&fit=bounds",
+    "siteName": "Slideshare"
+  },
+  "http://www.ospn.jp/osc2016-hiroshima/": {
+    "title": "�����ץ󥽡�������ե����2016 Hiroshima - �����ץ󥽡�����ʸ���ס�",
+    "description": "�����ץ󥽡����κǿ�ư���˴ؤ���Ÿ�������ߥʡ����٥�ȡ�����̵����",
+    "image": "",
+    "siteName": "www.ospn.jp"
+  },
+  "https://hirouni.connpass.com/event/57125/": {
+    "title": "ひろしまUnity&CoderDojoもくもく会 #1 (2017/05/17 11:00〜)",
+    "description": "## 広島で久々にUnity&CoderDojoもくもく会します!  もくもく会というのは参加者同士で黙々と作業をしつつ、相談などができる会です。   Unityやゲーム制作でわからない事、知りたい事などを相談し合いましょう〜  また今回はCoderDojo広島とも共同で開催しています。Scratchについて学びたい、 メンターをやってみたい、教材作りたいという方もウェルカム！  今回は少し長めに時間を取っています。途中参加も自由退出もOKです。見に来るだけでも大歓迎です！  また下のツールや技術に興味がある方も大歓迎です！みんなで楽しく勉強していきましょう。    * MikuMiku...",
+    "image": "https://media.connpass.com/thumbs/b2/b0/b2b0d9a5c235cce76eb195fbce3a594a.png",
+    "siteName": "connpass"
+  },
+  "https://hirofuro.org/vr.html": {
+    "title": "Page not found &middot; GitHub Pages",
+    "description": "",
+    "image": "",
+    "siteName": "hirofuro.org"
+  },
+  "https://hirouni.connpass.com/event/59561/": {
+    "title": "福島GameJam 2017 in Hiroshima (2017/08/19 09:00〜)",
+    "description": "# 広島サテライトについて  今年は株式会社ワールドエリアネットワークス様にご協力頂き、7月オープンのクリエイターのためのコワーキングスペース「デジタルものづくりスペース デジハコ」様で開催します！  広島市中区大手町2丁目2-13 （ザ・ガーデンプレイス紙屋町5F）   ※広島電鉄・宮島線(広島駅から)「紙屋町西」から徒歩5分  # 福島GameJam 2017 in Hiroshima 参加方法    1. 公式サイトの開催概要と最新情報を確認   2. 本ページから参加申し込みを行う（自動返信メールが届く）  # 注意事項  2017年の福島ゲームジャムのページをご確認いただき、イ...",
+    "image": "https://media.connpass.com/thumbs/57/34/57346761f8d4ff874684e5c67cbd9707.png",
+    "siteName": "connpass"
+  },
+  "https://www.facebook.com/HumanFesta.hiro/": {
+    "title": "Error",
+    "description": "",
+    "image": "",
+    "siteName": "www.facebook.com"
+  },
+  "http://ha.athuman.com/hiroshima/": {
+    "title": "広島の専門の学校 | 総合学園ヒューマンアカデミー広島校",
+    "description": "広島の専門の学校をお探しの方は、総合学園ヒューマンアカデミーへ。豊富な講座、業界のプロの講師陣、多彩なカリキュラムであなたを全力サポート。ヒューマンアカデミーで自分のなりたい職業を目指しましょう。",
+    "image": "",
+    "siteName": "ha.athuman.com"
+  },
+  "https://hsc.connpass.com/event/69957/": {
+    "title": "XR Gamejamに向けてUnityを勉強しよう！ (2017/10/29 13:00〜)",
+    "description": "# イベント概要  本イベントは、Unityを使ってゲーム開発をしたい方向けのハンズオン勉強会です。 プログラミングがあまりわからなくてもゲーム開発をすることができます！  ユニティ・テクノロジーズ・ジャパン合同会社 アセットストアマネージャー・Everyplay エバンジェリストの常名隆司氏をお迎えしてハンズオンを行います！  ## Unityとは  Unity はVRやAR、センサー等のデバイスとの接続等が簡単に作ることができるゲーム開発エンジンです。   AndroidやiOS、PCゲームなどのゲームデータをを一つのプロジェクトから作ることが出来ます。  ## XR Game Ja...",
+    "image": "https://media.connpass.com/thumbs/db/c0/dbc0f302624f217222304a10f5095c97.png",
+    "siteName": "connpass"
+  },
+  "https://hiroshima-unity.jimdofree.com/": {
+    "title": "Attention Required! | Cloudflare",
+    "description": "",
+    "image": "",
+    "siteName": "hiroshima-unity.jimdofree.com"
+  },
+  "https://www.hi-joho.ac.jp/syukasai2017/": {
+    "title": "ページが見つかりませんでした | JOHO広島情報専門学校",
+    "description": "",
+    "image": "",
+    "siteName": "www.hi-joho.ac.jp"
+  },
+  "https://www.hi-joho.ac.jp/": {
+    "title": "JOHO広島情報専門学校",
+    "description": "",
+    "image": "",
+    "siteName": "www.hi-joho.ac.jp"
+  },
+  "http://www.hsc.ac.jp/": {
+    "title": "広島コンピュータ専門学校",
+    "description": "広島コンピュータ専門学校は、コンピュータ、デザイン、ゲーム、サウンドの専門学校です。",
+    "image": "",
+    "siteName": "広島コンピュータ専門学校"
+  },
+  "http://www.anabukih.ac.jp/news.cgi?Snumber=1003": {
+    "title": "404 File Not Found",
+    "description": "",
+    "image": "",
+    "siteName": "www.anabukih.ac.jp"
+  },
+  "http://www.anabukih.ac.jp/": {
+    "title": "穴吹デザイン専門学校　デザイナーがデザイナーを育てる環境",
+    "description": "広島で30年以上の歴史をもつデザインの専門学校。グラフィック、イラスト、写真、マンガ、アニメ、ゲーム、映像、企画、プロダクト、家具、アクセサリ、インテリア、建築など総合的に学べるデザイン学校です。デザイン業界で多くの卒業生が活躍しています。学科紹介、学生作品、公式ブログ、入学案内、オープンキャンパス情報などを掲載。",
+    "image": "https://web.anabukih.ac.jp/wp-content/themes/anabuki-theme/cmn/img/common/ogp4.jpg",
+    "siteName": "穴吹デザイン専門学校　デザイナーがデザイナーを育てる環境"
+  },
+  "https://www.youtube.com/watch?v=hryeaiy7hko": {
+    "title": "Unityコミュニティトーク",
+    "description": "日本国内では様々なUnityのコミュニティが活動しています。Unityコミュニティトークでは様々なコミュニティに携わる4名の方にお越しいただき、それぞれの地域のコミュニティ活動について語っていただきました。00:00 イントロ01:17 広島Unity勉強会09:37 岡山Unity勉強会16:19 讃岐Game...",
+    "image": "https://i.ytimg.com/vi/hryeaiy7hko/maxresdefault.jpg",
+    "siteName": "YouTube"
+  },
+  "https://ue-hiroshima.connpass.com/event/379637/": {
+    "title": "Unreal Engine Meetup Hiroshima #3 (2026/02/21 13:30〜)",
+    "description": "# イベント概要  Unreal Engine の 勉強会/交流会 です   Unreal Engine に興味がある人なら誰でも参加OK！      今回は 建築/CG/映像などのノンゲームがテーマ   ・ゲーム制作の手法が建築やCGにも応用できる...?   ・仕事や実務に活かせるヒントが見つかるかも...！      とにかく幅広いシーンで活躍する Unreal Engine への理解を深めましょう！   そんなイベントです！      お一人様で参加しやすい気軽なイベントなので   Unreal Engine に興味ある方はぜひご参加ください！       # Unreal En...",
+    "image": "https://media.connpass.com/thumbs/29/93/2993e9d9f46e6e892c704ce632ec8d2f.png",
+    "siteName": "connpass"
+  },
+  "https://www.chugoku.meti.go.jp/r7fy/event/digital/251217.html": {
+    "title": "最先端テクノロジーやサイバーセキュリティに関するセミナーイベント「 Tech To The Future 2026 」を開催します。 - 中国経済産業局",
+    "description": "",
+    "image": "",
+    "siteName": "www.chugoku.meti.go.jp"
   }
 }
