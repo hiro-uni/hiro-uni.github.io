@@ -466,5 +466,17 @@
     "description": "",
     "image": "",
     "siteName": "www.chugoku.meti.go.jp"
+  },
+  "https://fes.hsc.ac.jp/": {
+    "title": "ゲーム・デザインコース学生作品展2018　情報サイト",
+    "description": "広島情報専門学校の学生作品展の情報サイトです。",
+    "image": "",
+    "siteName": "fes.hsc.ac.jp"
+  },
+  "https://www.it-hiroshima.ac.jp/news/2026/02/global-game-jam-2026-in.html": {
+    "title": "世界最大級の国際ゲーム制作イベント「Global Game Jam 2026 瀬戸内会場 in 広島」を開催しました - 広島工業大学",
+    "description": "IoT・AI・データサイエンス教育研究推進センター（センター長：松本慎平）は、広島Unity勉強会および中四国ゲームジャム実行委員会との共催により、「Global Game Jam 2026 瀬戸内会場 in 広島」を開催しました。",
+    "image": "",
+    "siteName": "www.it-hiroshima.ac.jp"
   }
 }
