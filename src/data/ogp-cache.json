@@ -484,5 +484,11 @@
     "description": "",
     "image": "",
     "siteName": "okayamaunity.doorkeeper.jp"
+  },
+  "https://hirouni.connpass.com/event/390352": {
+    "title": "ゲーム開発もくもく会#3 in 広島 (2026/05/09 14:00〜)",
+    "description": "# ゲーム開発もくもく会を開催します！ 🎮 【Unity/Godot/UE5等】  デジタルゲームの開発者、およびゲームメカニクス設計（アナログ開発）を行っているエンジニア・クリエイターが集まる、 ゲーム開発もくもく会 を広島で開催します！    * いつもと違う環境で集中してコーディングや実装を進めたい。   * 他の開発者と技術的な意見交換や、設計の相談がしたい。   * 開発中ゲームのQAテストや、UXのフィードバック、Google Play ストアにリリースするため、クローズドテストの参加者を集めたい。  そんな ゲームエンジニアや制作者 が、技術的な相談がしながら作業できる オ...",
+    "image": "https://media.connpass.com/thumbs/45/f5/45f5c140d2e498709c627fd364a3650d.png",
+    "siteName": "connpass"
   }
 }
