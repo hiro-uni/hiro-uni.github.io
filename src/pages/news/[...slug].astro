@@ -86,6 +86,35 @@ const { Content } = await entry.render();
 		background-color: #f9f9f9;
 	}
 
+	.markdown-body :global(blockquote) {
+		margin: 2.5rem 0;
+		padding: 2rem 2.5rem;
+		background: linear-gradient(145deg, #ffffff, #fbf0f4);
+		border-left: 5px solid #e43983;
+		border-radius: 0 16px 16px 0;
+		box-shadow: 0 4px 15px rgba(228, 57, 131, 0.05);
+		position: relative;
+		overflow: hidden;
+	}
+	.markdown-body :global(blockquote::before) {
+		font-family: serif;
+		font-size: 8rem;
+		color: rgba(228, 57, 131, 0.08);
+		position: absolute;
+		top: -2rem;
+		left: 0.5rem;
+		line-height: 1;
+	}
+	.markdown-body :global(blockquote p) {
+		margin: 0;
+		position: relative;
+		z-index: 1;
+		font-size: 1.15rem;
+		line-height: 1.8;
+		color: #333;
+		font-weight: 500;
+	}
+
 	.news-navigation {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
