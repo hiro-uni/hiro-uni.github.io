@@ -502,5 +502,11 @@
     "description": "# 👾 みんなと。AIで。ゲームを作ったら、それが神ゲー…になるかも？  私たちの世界を 毎日アップデート<更新> する、AIたち。   そして、彼らは幻覚<ハルシネーション>を見て、時々間違える。  彼らが作った「壊れた面白さ」と私たちの創造性を武器にした   AIと限界を超えるゲームたとえば。    * ジャンプしたら宇宙に消える。   * HPがマイナスでも生き続ける。   * 敵にあたっても 当たり判定がどこにもない。  失敗しても大丈夫。時間はたったの9時間。1Dayゲームジャム を、この広島で。  ## 🧗‍♂️ こんな人にオススメ！    * ゲーム開発初心者 : 最近ゲー...",
     "image": "https://media.connpass.com/thumbs/04/05/0405b1c42015d27cd692a58ab28bad45.png",
     "siteName": "connpass"
+  },
+  "https://kamera25.github.io/godot_recipes/4.x/ja/": {
+    "title": "ホーム :: Godot 4 レシピ",
+    "description": "Godot Engineを用いたゲーム開発のチュートリアルや実装例を豊富に含んだ非公式日本語訳サイトです。",
+    "image": "https://kamera25.github.io/godot_recipes/4.x/img/godot-chan.png",
+    "siteName": "Godot 4 レシピ"
   }
 }
