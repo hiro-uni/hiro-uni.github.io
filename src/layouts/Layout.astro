@@ -1,9 +1,91 @@
 ---
 interface Props {
 	title?: string;
+	description?: string;
+	ogImage?: string;
+	pubDate?: Date;
+	articleJsonLd?: boolean;
 }
 
-const { title = "広島Unity勉強会" } = Astro.props;
+const {
+	title = "広島Unity勉強会",
+	description = "広島で活動するUnityユーザーのためのコミュニティ、広島Unity勉強会の公式サイトです。",
+	ogImage = "/hirouni.png",
+	pubDate,
+	articleJsonLd = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://hiro-uni.github.io");
+
+// JSON-LD Schemas
+const schemas = [];
+
+// Base Organization Schema
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": "広島Unity勉強会",
+	"alternateName": "Hiroshima Unity Study Group",
+	"url": "https://hiro-uni.github.io",
+	"logo": "https://hiro-uni.github.io/hirouni.png",
+	"sameAs": [
+		"https://hirouni.connpass.com/"
+	]
+};
+
+// Base WebSite Schema
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"name": "広島Unity勉強会",
+	"url": "https://hiro-uni.github.io"
+};
+
+if (Astro.url.pathname === "/" || Astro.url.pathname === "") {
+	schemas.push(organizationSchema);
+	schemas.push(websiteSchema);
+} else {
+	// For other pages, we can also link back to organization
+	schemas.push({
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"name": title,
+		"description": description,
+		"url": canonicalURL.toString(),
+		"isPartOf": {
+			"@type": "WebSite",
+			"name": "広島Unity勉強会",
+			"url": "https://hiro-uni.github.io"
+		}
+	});
+}
+
+if (articleJsonLd) {
+	const articleSchema = {
+		"@context": "https://schema.org",
+		"@type": "NewsArticle",
+		"headline": title,
+		"image": [
+			new URL(ogImage, "https://hiro-uni.github.io").toString()
+		],
+		"datePublished": pubDate ? pubDate.toISOString() : new Date().toISOString(),
+		"author": {
+			"@type": "Organization",
+			"name": "広島Unity勉強会",
+			"url": "https://hiro-uni.github.io"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "広島Unity勉強会",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://hiro-uni.github.io/hirouni.png"
+			}
+		},
+		"description": description
+	};
+	schemas.push(articleSchema);
+}
 ---
 
 <!doctype html>
@@ -15,21 +97,23 @@ const { title = "広島Unity勉強会" } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<meta name="google-site-verification" content="H29i6_QX8KTq9pqelrSH4lJ15fO52n0W3sfD5qaj8R8" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<link rel="canonical" href="https://hiro-uni.github.io" />
+		<link rel="canonical" href={canonicalURL} />
 		
 		<!-- OGP -->
 		<meta property="og:title" content={`${title} - 広島Unity勉強会`} />
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={articleJsonLd ? "article" : "website"} />
 		<meta property="og:url" content={Astro.url} />
-		<meta property="og:image" content={new URL('/hirouni.png', Astro.url)} />
+		<meta property="og:image" content={new URL(ogImage, Astro.url)} />
 		<meta property="og:site_name" content="広島Unity勉強会" />
 		<meta property="og:locale" content="ja_JP" />
-		<meta property="og:description" content="広島で活動するUnityユーザーのためのコミュニティ、広島Unity勉強会の公式サイトです。" />
+		<meta property="og:description" content={description} />
 		<meta name="twitter:card" content="summary_large_image" />
 
 		<title>{title} - 広島Unity勉強会</title>
 		
-
+		{schemas.map((schema) => (
+			<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+		))}
 	</head>
 	<body>
 		<div id="redirect-banner" class="redirect-banner" style="display: none;">

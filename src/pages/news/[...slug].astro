@@ -21,7 +21,13 @@ const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Layout title={`${entry.data.title}`}>
+<Layout
+	title={entry.data.title}
+	description={entry.data.description}
+	pubDate={entry.data.pubDate}
+	ogImage={entry.data.image?.src}
+	articleJsonLd={true}
+>
 	<div class="news-content">
 		<header class="news-header">
 			<time datetime={entry.data.pubDate.toISOString()}>
