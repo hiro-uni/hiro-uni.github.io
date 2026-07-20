@@ -15,6 +15,7 @@ const { title = "広島Unity勉強会" } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<meta name="google-site-verification" content="H29i6_QX8KTq9pqelrSH4lJ15fO52n0W3sfD5qaj8R8" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="canonical" href="https://hiro-uni.github.io" />
 		
 		<!-- OGP -->
 		<meta property="og:title" content={`${title} - 広島Unity勉強会`} />
@@ -31,6 +32,60 @@ const { title = "広島Unity勉強会" } = Astro.props;
 
 	</head>
 	<body>
+		<div id="redirect-banner" class="redirect-banner" style="display: none;">
+			<div class="container banner-inner">
+				<span class="banner-text">
+					<i class="fa-solid fa-circle-info"></i>広島Unity勉強会 Webサイト のURLが変更となりました。ブックマークやリンクの変更をお願いします。
+					<button id="copy-url-btn" class="copy-url-btn" title="URLをコピー">
+						<i class="fa-regular fa-copy"></i> URLをコピー
+					</button>
+				</span>
+				<button id="close-redirect-banner" class="banner-close" aria-label="閉じる">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+		</div>
+
+		<script is:inline>
+			(function() {
+				const banner = document.getElementById('redirect-banner');
+				const closeBtn = document.getElementById('close-redirect-banner');
+				const copyBtn = document.getElementById('copy-url-btn');
+				if (!banner || !closeBtn) return;
+
+				const isDismissed = sessionStorage.getItem('redirect-banner-dismissed');
+				if (isDismissed) return;
+
+				const referrer = document.referrer || '';
+				const urlParams = new URLSearchParams(window.location.search);
+				const isFromJimdo = referrer.includes('hiroshima-unity.jimdofree.com') || urlParams.has('redirected');
+
+				if (isFromJimdo) {
+					banner.style.display = 'block';
+					closeBtn.addEventListener('click', function() {
+						banner.style.display = 'none';
+						sessionStorage.setItem('redirect-banner-dismissed', 'true');
+					});
+				}
+
+				if (copyBtn) {
+					copyBtn.addEventListener('click', function() {
+						navigator.clipboard.writeText('https://hiro-uni.github.io').then(() => {
+							const origHTML = copyBtn.innerHTML;
+							copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> コピーしました';
+							copyBtn.classList.add('copied');
+							setTimeout(() => {
+								copyBtn.innerHTML = origHTML;
+								copyBtn.classList.remove('copied');
+							}, 2000);
+						}).catch(err => {
+							console.error('Failed to copy: ', err);
+						});
+					});
+				}
+			})();
+		</script>
+
 		<header>
 			<div class="container">
 				<a href="/" class="logo-link">
@@ -88,6 +143,75 @@ const { title = "広島Unity勉強会" } = Astro.props;
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+	}
+
+	.redirect-banner {
+		background-color: #fff3cd;
+		color: #856404;
+		border-bottom: 1px solid #ffeeba;
+		padding: 0.75rem 0;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+
+	.banner-inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.banner-text {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		text-align: left;
+		flex-wrap: wrap;
+	}
+
+	.copy-url-btn {
+		background-color: #ffffff;
+		border: 1px solid #c8a332;
+		color: #856404;
+		border-radius: 4px;
+		padding: 0.25rem 0.6rem;
+		font-size: 0.75rem;
+		font-weight: bold;
+		cursor: pointer;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		transition: all 0.2s ease;
+		margin-left: 0.5rem;
+	}
+
+	.copy-url-btn:hover {
+		background-color: #ffeeba;
+		border-color: #856404;
+	}
+
+	.copy-url-btn.copied {
+		background-color: #d4edda;
+		border-color: #c3e6cb;
+		color: #155724;
+	}
+
+	.banner-close {
+		background: none;
+		border: none;
+		color: #856404;
+		cursor: pointer;
+		font-size: 1.2rem;
+		padding: 0 0.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0.7;
+		transition: opacity 0.2s;
+	}
+
+	.banner-close:hover {
+		opacity: 1;
 	}
 
 	.container {
