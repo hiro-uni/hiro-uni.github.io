@@ -10,8 +10,8 @@
     "fetch-ogp": "node scripts/fetch-ogp.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "astro": "^5.17.2",
+    "@astrojs/mdx": "^7.0.3",
+    "astro": "^7.1.1",
     "three": "^0.182.0"
   }
 }

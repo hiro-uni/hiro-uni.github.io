@@ -26,7 +26,7 @@ const title = `ニュース ${page.currentPage > 1 ? `(Page ${page.currentPage})
 						{entry.data.pubDate.toLocaleDateString('ja-JP')}
 					</time>
 					<h3>
-						<a href={`/news/${entry.slug}`}>{entry.data.title}</a>
+						<a href={`/news/${entry.id}`}>{entry.data.title}</a>
 					</h3>
 					<p>{entry.data.description}</p>
 				</div>

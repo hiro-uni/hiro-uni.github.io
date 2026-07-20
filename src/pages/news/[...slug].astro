@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
@@ -8,7 +8,7 @@ export async function getStaticPaths() {
 	const sortedNews = newsEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 	return sortedNews.map((entry, index) => ({
-		params: { slug: entry.slug },
+		params: { slug: entry.id },
 		props: {
 			entry,
 			prev: index < sortedNews.length - 1 ? sortedNews[index + 1] : null, // 古い記事
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { entry, prev, next } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <Layout title={`${entry.data.title}`}>
@@ -36,7 +36,7 @@ const { Content } = await entry.render();
 		<nav class="news-navigation">
 			<div class="nav-next">
 				{next && (
-					<a href={`/news/${next.slug}`}>
+					<a href={`/news/${next.id}`}>
 						<span class="nav-label">&larr; 次の記事</span>
 						<span class="nav-title">{next.data.title}</span>
 					</a>
@@ -44,7 +44,7 @@ const { Content } = await entry.render();
 			</div>
 			<div class="nav-prev">
 				{prev && (
-					<a href={`/news/${prev.slug}`}>
+					<a href={`/news/${prev.id}`}>
 						<span class="nav-label">前の記事 &rarr;</span>
 						<span class="nav-title">{prev.data.title}</span>
 					</a>
