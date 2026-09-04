@@ -508,5 +508,17 @@
     "description": "Godot Engineを用いたゲーム開発のチュートリアルや実装例を豊富に含んだ非公式日本語訳サイトです。",
     "image": "https://kamera25.github.io/godot_recipes/4.x/img/godot-chan.png",
     "siteName": "Godot 4 レシピ"
+  },
+  "https://gjtakahashi.okayamaunity.com": {
+    "title": "Game Jam Takahashi 2026 | ゲームジャム高梁",
+    "description": "岡山県高梁市で開催する30時間のゲーム制作イベント。プログラマー、デザイナー、学生、初心者も大歓迎。2026年10月17日・18日、吉備国際大学で開催。",
+    "image": "https://gjtakahashi.okayamaunity.com/images/2026/ogp/ogp.png",
+    "siteName": "Game Jam Takahashi (ゲームジャム高梁)"
+  },
+  "https://hirouni.connpass.com/event/398030": {
+    "title": "ゲームジャム高梁2026 事前勉強会 (2026/09/26 13:00〜)",
+    "description": "# ゲームジャム高梁2026に向けて、事前勉強会を開催します！  こちらは事前勉強会のページです。本編は準備中です。  ## ゲームジャム高梁 事前勉強会とは？  岡山県高梁市でゲームを開発するイベントゲームジャム高梁2026を今年も10月17日(土)〜18日(日) に開催予定です。  このゲームジャム高梁の開催に先立ち、瀬戸内ゲーム制作コミュニティのメンバーが集まり、楽しくスムーズにゲームジャムに参加できるように事前勉強会を開催します！  もちろん勉強会は、ゲーム制作に興味がある方ならどなたでも参加できます。   ゲームジャム高梁へ参加検討中の方ももちろん、他のゲームジャムの準備として...",
+    "image": "https://media.connpass.com/thumbs/3c/93/3c935fe448510bc0c2c4d1f997afbe35.png",
+    "siteName": "connpass"
   }
 }
