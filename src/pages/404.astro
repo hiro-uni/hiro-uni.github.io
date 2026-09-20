@@ -4,10 +4,13 @@ import notfound from '../assets/not_found.png';
 import { Image } from 'astro:assets';
 ---
 
-<Layout title="404 Not Found">
+<Layout
+	title="ページが見つかりません"
+	description="お探しのページは見つかりませんでした。広島Unity勉強会のトップページから目的の情報をご確認ください。"
+>
 	<div class="error-container">
 		<div class="error-content">
-			<h1 class="error-code">404</h1>
+			<h2 class="error-code">404</h2>
 			<p class="error-message">お探しのページは見つかりませんでした。</p>
 
 			<Image src={notfound} alt="404 Not Found" class="not-found-image"/>

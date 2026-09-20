@@ -7,6 +7,12 @@ title: "GGJ 2027 Countdown"
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Global Game Jam 2027 Setouchi in Hiroshimaの開催に向けたカウントダウン。広島Unity勉強会のゲームジャム情報です。" />
+    <link rel="canonical" href="https://hiro-uni.github.io/ggj-countdown/" />
+    <meta property="og:title" content="GGJ 2027 Setouchi in Hiroshima カウントダウン" />
+    <meta property="og:description" content="Global Game Jam 2027 Setouchi in Hiroshimaの開催に向けたカウントダウン。" />
+    <meta property="og:url" content="https://hiro-uni.github.io/ggj-countdown/" />
+    <meta property="og:type" content="website" />
     <title>GGJ 2027 Countdown - 広島Unity勉強会</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -48,6 +54,19 @@ title: "GGJ 2027 Countdown"
             z-index: 10;
             user-select: none;
             pointer-events: none;
+            margin: 0;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         .bbc-style-logo {
@@ -144,6 +163,7 @@ title: "GGJ 2027 Countdown"
     <div id="canvas-container"></div>
 
     <div class="overlay">
+        <h1 class="visually-hidden">GGJ 2027 Setouchi in Hiroshima カウントダウン</h1>
         <div class="bbc-style-logo">
             <div class="logo-box">G</div>
             <div class="logo-box">G</div>

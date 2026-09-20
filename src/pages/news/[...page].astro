@@ -15,7 +15,10 @@ const { page } = Astro.props;
 const title = `ニュース ${page.currentPage > 1 ? `(Page ${page.currentPage})` : ''}`;
 ---
 
-<Layout title={title}>
+<Layout
+	title={title}
+	description="広島Unity勉強会のイベント情報、活動報告、Unityやゲーム制作に関するニュースを掲載しています。"
+>
 	<p>広島Unity勉強会および広島界隈のニュース、イベントレポートなど。</p>
 
 	<div class="news-list">

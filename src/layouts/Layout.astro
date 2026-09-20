@@ -108,6 +108,7 @@ if (articleJsonLd) {
 		<meta property="og:image" content={new URL(ogImage, Astro.url)} />
 		<meta property="og:site_name" content="広島Unity勉強会" />
 		<meta property="og:locale" content="ja_JP" />
+		<meta name="description" content={description} />
 		<meta property="og:description" content={description} />
 		<meta name="twitter:card" content="summary_large_image" />
 
@@ -192,7 +193,7 @@ if (articleJsonLd) {
 		</header>
 
 		<main class="container">
-			<h4 class="page-title">{title}</h4>
+			<h1 class="page-title">{title}</h1>
 			<slot />
 		</main>
 

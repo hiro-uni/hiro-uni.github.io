@@ -13,6 +13,7 @@ import iconNumata from '../../../assets/ggj25_interview/icon_numata.jpg';
 
 import raptorHeader from '../../../assets/ggj25_interview/raptor2.png';
 import bitsummitHeader from '../../../assets/ggj25_interview/bitsummit1.png';
+import { Image } from 'astro:assets';
 
 const interview_kamera25 = {
   name: "広ユニ ナカオク",
@@ -30,12 +31,19 @@ const interview_numata = {
 };
 ---
 
-<Layout title="【特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」">
+<Layout
+  title="【特別企画・中編】東京ゲームショウとBitSummitで得た刺激"
+  description="東京ゲームショウのスカラシップ出展とBitSummit Game Jamを通じて得た、若手ゲームクリエイターの学びと気づきを紹介します。"
+  ogImage={raptorHeader.src}
+  pubDate={new Date('2026-01-12')}
+  articleJsonLd={true}
+>
   <InterviewHeader 
-    title="【特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」"
+    title="【特別企画・中編】東京ゲームショウとBitSummitで得た刺激"
     category="INTERVIEW"
-    heroImage={raptorHeader.src}
-    heroAlt="恐竜の様子"
+    date="2026.01.12"
+    heroImage={raptorHeader}
+    heroAlt="東京ゲームショウに出展したゲームの展示風景"
   />
 
   <InterviewBody>
@@ -52,7 +60,7 @@ const interview_numata = {
       きっかけは <a href="https://www.creators-guild.com/bitsummit-game-jam-2025">BitSummit Game Jam 2025</a> でした。
     </Dialogue>
 
-    <img src={bitsummitHeader.src} alt="Bitsummit 2025の展示風景" />
+    <Image src={bitsummitHeader} alt="BitSummit 2025の展示風景" widths={[640, 960, 1280]} sizes="(max-width: 768px) 100vw, 960px" loading="lazy" />
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
       そこで同じチームになったプランナーの方から「こういう企画があるよ」と教えてもらったんです。 日本最大級のTGSという場で自分のゲームを出展できるのは、自分のためになると思いましたし、何より多くの人からアドバイスや意見をもらえるチャンスだと思って申し込みました。

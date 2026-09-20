@@ -7,10 +7,13 @@ import gjtBanner from '../assets/gjt/banner_2026.png';
 import { Image } from 'astro:assets';
 ---
 
-<Layout title="広島Unity勉強会へようこそ！">
+<Layout
+	title="広島Unity勉強会へようこそ！"
+	description="広島で活動するUnityコミュニティ。初心者からプロまで、ゲーム開発・XR・もくもく会・ゲームジャムを楽しみながら学べます。"
+>
 	<section class="hero">
 		<div class="hero-content">
-			<h1>広島でUnityを!<br />楽しく学んでいくコミュニティ</h1>
+			<h2>広島でUnityを!<br />楽しく学んでいくコミュニティ</h2>
 			<p class="hero-description">
 				初心者からプロまで、ゲーム開発やXR技術に興味がある仲間が集まり、<br>交流しながらスキルを高め合う地域密着型の <strong><i class="fa-brands fa-unity"></i>&nbsp;Unityコミュニティ</strong> です。
 			</p>
@@ -89,7 +92,7 @@ import { Image } from 'astro:assets';
 	.hero {
 		background-image: linear-gradient(135deg, rgba(179, 11, 84, 0.9) 0%, rgba(255, 77, 148, 0.8) 100%), url('../assets/hiroshima.png');
 	}
-	.hero-content h1 {
+	.hero-content h2 {
 		font-size: 2.5rem;
 		font-weight: 800;
 		margin-bottom: 1.5rem;
@@ -265,7 +268,7 @@ import { Image } from 'astro:assets';
 		.hero {
 			padding: 3rem 1rem;
 		}
-		.hero-content h1 {
+		.hero-content h2 {
 			font-size: 1.8rem;
 		}
 		.activity-grid {
@@ -278,5 +281,3 @@ import { Image } from 'astro:assets';
 		}
 	}
 </style>
-
-

@@ -42,5 +42,11 @@ export default defineConfig({
     rehypePlugins: [],
   },
 
-  integrations: [mdx(), sitemap(), copySitemapPlugin()]
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => new URL(page).pathname !== '/interview/ggj26_organizer/',
+    }),
+    copySitemapPlugin(),
+  ]
 });
