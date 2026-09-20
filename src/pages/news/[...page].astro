@@ -13,11 +13,14 @@ export async function getStaticPaths({ paginate }) {
 
 const { page } = Astro.props;
 const title = `ニュース ${page.currentPage > 1 ? `(Page ${page.currentPage})` : ''}`;
+const description = `広島Unity勉強会のニュース一覧${page.currentPage > 1 ? `（${page.currentPage}ページ目）` : ''}。イベント情報、活動報告、Unityやゲーム制作に関する記事を掲載しています。`;
+const ogImage = page.data[0]?.data.image?.src ?? '/hirouni.png';
 ---
 
 <Layout
 	title={title}
-	description="広島Unity勉強会のイベント情報、活動報告、Unityやゲーム制作に関するニュースを掲載しています。"
+	description={description}
+	ogImage={ogImage}
 >
 	<p>広島Unity勉強会および広島界隈のニュース、イベントレポートなど。</p>
 

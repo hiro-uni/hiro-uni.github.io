@@ -110,7 +110,11 @@ if (articleJsonLd) {
 		<meta property="og:locale" content="ja_JP" />
 		<meta name="description" content={description} />
 		<meta property="og:description" content={description} />
+		<meta property="og:image:alt" content={title} />
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={`${title} - 広島Unity勉強会`} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(ogImage, Astro.url)} />
 
 		<title>{title} - 広島Unity勉強会</title>
 		
