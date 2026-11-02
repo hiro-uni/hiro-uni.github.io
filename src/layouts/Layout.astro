@@ -1,18 +1,18 @@
 ---
 interface Props {
-	title?: string;
-	description?: string;
-	ogImage?: string;
-	pubDate?: Date;
-	articleJsonLd?: boolean;
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  pubDate?: Date;
+  articleJsonLd?: boolean;
 }
 
 const {
-	title = "広島Unity勉強会",
-	description = "広島で活動するUnityユーザーのためのコミュニティ、広島Unity勉強会の公式サイトです。",
-	ogImage = "/hirouni.png",
-	pubDate,
-	articleJsonLd = false,
+  title = "広島Unity勉強会",
+  description = "広島で活動するUnityユーザーのためのコミュニティ、広島Unity勉強会の公式サイトです。",
+  ogImage = "/hirouni.png",
+  pubDate,
+  articleJsonLd = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, "https://hiro-uni.github.io");
@@ -22,398 +22,435 @@ const schemas = [];
 
 // Base Organization Schema
 const organizationSchema = {
-	"@context": "https://schema.org",
-	"@type": "Organization",
-	"name": "広島Unity勉強会",
-	"alternateName": "Hiroshima Unity Study Group",
-	"url": "https://hiro-uni.github.io",
-	"logo": "https://hiro-uni.github.io/hirouni.png",
-	"sameAs": [
-		"https://hirouni.connpass.com/"
-	]
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "広島Unity勉強会",
+  alternateName: "Hiroshima Unity Study Group",
+  url: "https://hiro-uni.github.io",
+  logo: "https://hiro-uni.github.io/hirouni.png",
+  sameAs: ["https://hirouni.connpass.com/"],
 };
 
 // Base WebSite Schema
 const websiteSchema = {
-	"@context": "https://schema.org",
-	"@type": "WebSite",
-	"name": "広島Unity勉強会",
-	"url": "https://hiro-uni.github.io"
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "広島Unity勉強会",
+  url: "https://hiro-uni.github.io",
 };
 
 if (Astro.url.pathname === "/" || Astro.url.pathname === "") {
-	schemas.push(organizationSchema);
-	schemas.push(websiteSchema);
+  schemas.push(organizationSchema);
+  schemas.push(websiteSchema);
 } else {
-	// For other pages, we can also link back to organization
-	schemas.push({
-		"@context": "https://schema.org",
-		"@type": "WebPage",
-		"name": title,
-		"description": description,
-		"url": canonicalURL.toString(),
-		"isPartOf": {
-			"@type": "WebSite",
-			"name": "広島Unity勉強会",
-			"url": "https://hiro-uni.github.io"
-		}
-	});
+  // For other pages, we can also link back to organization
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description: description,
+    url: canonicalURL.toString(),
+    isPartOf: {
+      "@type": "WebSite",
+      name: "広島Unity勉強会",
+      url: "https://hiro-uni.github.io",
+    },
+  });
 }
 
 if (articleJsonLd) {
-	const articleSchema = {
-		"@context": "https://schema.org",
-		"@type": "NewsArticle",
-		"headline": title,
-		"image": [
-			new URL(ogImage, "https://hiro-uni.github.io").toString()
-		],
-		"datePublished": pubDate ? pubDate.toISOString() : new Date().toISOString(),
-		"author": {
-			"@type": "Organization",
-			"name": "広島Unity勉強会",
-			"url": "https://hiro-uni.github.io"
-		},
-		"publisher": {
-			"@type": "Organization",
-			"name": "広島Unity勉強会",
-			"logo": {
-				"@type": "ImageObject",
-				"url": "https://hiro-uni.github.io/hirouni.png"
-			}
-		},
-		"description": description
-	};
-	schemas.push(articleSchema);
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: title,
+    image: [new URL(ogImage, "https://hiro-uni.github.io").toString()],
+    datePublished: pubDate ? pubDate.toISOString() : new Date().toISOString(),
+    author: {
+      "@type": "Organization",
+      name: "広島Unity勉強会",
+      url: "https://hiro-uni.github.io",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "広島Unity勉強会",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://hiro-uni.github.io/hirouni.png",
+      },
+    },
+    description: description,
+  };
+  schemas.push(articleSchema);
 }
 ---
 
 <!doctype html>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="google-site-verification" content="H29i6_QX8KTq9pqelrSH4lJ15fO52n0W3sfD5qaj8R8" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<link rel="canonical" href={canonicalURL} />
-		<link rel="sitemap" href="/sitemap-index.xml" />
-		<link rel="sitemap" href="/sitemap.xml" />
-		
-		<!-- OGP -->
-		<meta property="og:title" content={`${title} - 広島Unity勉強会`} />
-		<meta property="og:type" content={articleJsonLd ? "article" : "website"} />
-		<meta property="og:url" content={Astro.url} />
-		<meta property="og:image" content={new URL(ogImage, Astro.url)} />
-		<meta property="og:site_name" content="広島Unity勉強会" />
-		<meta property="og:locale" content="ja_JP" />
-		<meta name="description" content={description} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image:alt" content={title} />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={`${title} - 広島Unity勉強会`} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={new URL(ogImage, Astro.url)} />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="google-site-verification"
+      content="H29i6_QX8KTq9pqelrSH4lJ15fO52n0W3sfD5qaj8R8"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href="/sitemap.xml" />
 
-		<title>{title} - 広島Unity勉強会</title>
-		
-		{schemas.map((schema) => (
-			<script type="application/ld+json" set:html={JSON.stringify(schema)} />
-		))}
-	</head>
-	<body>
-		<div id="redirect-banner" class="redirect-banner" style="display: none;">
-			<div class="container banner-inner">
-				<span class="banner-text">
-					<i class="fa-solid fa-circle-info"></i>広島Unity勉強会 Webサイト のURLが変更となりました。ブックマークやリンクの変更をお願いします。
-					<button id="copy-url-btn" class="copy-url-btn" title="URLをコピー">
-						<i class="fa-regular fa-copy"></i> URLをコピー
-					</button>
-				</span>
-				<button id="close-redirect-banner" class="banner-close" aria-label="閉じる">
-					<i class="fa-solid fa-xmark"></i>
-				</button>
-			</div>
-		</div>
+    <!-- OGP -->
+    <meta property="og:title" content={`${title} - 広島Unity勉強会`} />
+    <meta property="og:type" content={articleJsonLd ? "article" : "website"} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content={new URL(ogImage, Astro.url)} />
+    <meta property="og:site_name" content="広島Unity勉強会" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image:alt" content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} - 広島Unity勉強会`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.url)} />
 
-		<script is:inline>
-			(function() {
-				const banner = document.getElementById('redirect-banner');
-				const closeBtn = document.getElementById('close-redirect-banner');
-				const copyBtn = document.getElementById('copy-url-btn');
-				if (!banner || !closeBtn) return;
+    <title>{title} - 広島Unity勉強会</title>
 
-				const isDismissed = sessionStorage.getItem('redirect-banner-dismissed');
-				if (isDismissed) return;
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body>
+    <div id="redirect-banner" class="redirect-banner" style="display: none;">
+      <div class="container banner-inner">
+        <span class="banner-text">
+          <i class="fa-solid fa-circle-info"></i>広島Unity勉強会 Webサイト
+          のURLが変更となりました。ブックマークやリンクの変更をお願いします。
+          <button id="copy-url-btn" class="copy-url-btn" title="URLをコピー">
+            <i class="fa-regular fa-copy"></i> URLをコピー
+          </button>
+        </span>
+        <button
+          id="close-redirect-banner"
+          class="banner-close"
+          aria-label="閉じる"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
 
-				const referrer = document.referrer || '';
-				const urlParams = new URLSearchParams(window.location.search);
-				const isFromJimdo = referrer.includes('hiroshima-unity.jimdofree.com') || urlParams.has('redirected');
+    <script is:inline>
+      (function () {
+        const banner = document.getElementById("redirect-banner");
+        const closeBtn = document.getElementById("close-redirect-banner");
+        const copyBtn = document.getElementById("copy-url-btn");
+        if (!banner || !closeBtn) return;
 
-				if (isFromJimdo) {
-					banner.style.display = 'block';
-					closeBtn.addEventListener('click', function() {
-						banner.style.display = 'none';
-						sessionStorage.setItem('redirect-banner-dismissed', 'true');
-					});
-				}
+        const isDismissed = sessionStorage.getItem("redirect-banner-dismissed");
+        if (isDismissed) return;
 
-				if (copyBtn) {
-					copyBtn.addEventListener('click', function() {
-						navigator.clipboard.writeText('https://hiro-uni.github.io').then(() => {
-							const origHTML = copyBtn.innerHTML;
-							copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> コピーしました';
-							copyBtn.classList.add('copied');
-							setTimeout(() => {
-								copyBtn.innerHTML = origHTML;
-								copyBtn.classList.remove('copied');
-							}, 2000);
-						}).catch(err => {
-							console.error('Failed to copy: ', err);
-						});
-					});
-				}
-			})();
-		</script>
+        const referrer = document.referrer || "";
+        const urlParams = new URLSearchParams(window.location.search);
+        const isFromJimdo =
+          referrer.includes("hiroshima-unity.jimdofree.com") ||
+          urlParams.has("redirected");
 
-		<header>
-			<div class="container">
-				<a href="/" class="logo-link">
-					<img src="/hirouni.png" alt="広島Unity勉強会" class="header-logo" />
-				</a>
-				<nav>
-					<ul>
-						<li><a href="/">ホーム</a></li>
-						<li><a href="/news">ニュース</a></li>
-						<li><a href="/about">活動について</a></li>
-						<li><a href="/mokumoku">もくもく会</a></li>
-						<li><a href="/contact">お問い合わせ</a></li>
-						<li><a href="/ggj27">GGJ 2027</a></li>
-						<li><a href="/interview">インタビュー</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+        if (isFromJimdo) {
+          banner.style.display = "block";
+          closeBtn.addEventListener("click", function () {
+            banner.style.display = "none";
+            sessionStorage.setItem("redirect-banner-dismissed", "true");
+          });
+        }
 
-		<main class="container">
-			<h1 class="page-title">{title}</h1>
-			<slot />
-		</main>
+        if (copyBtn) {
+          copyBtn.addEventListener("click", function () {
+            navigator.clipboard
+              .writeText("https://hiro-uni.github.io")
+              .then(() => {
+                const origHTML = copyBtn.innerHTML;
+                copyBtn.innerHTML =
+                  '<i class="fa-solid fa-check"></i> コピーしました';
+                copyBtn.classList.add("copied");
+                setTimeout(() => {
+                  copyBtn.innerHTML = origHTML;
+                  copyBtn.classList.remove("copied");
+                }, 2000);
+              })
+              .catch((err) => {
+                console.error("Failed to copy: ", err);
+              });
+          });
+        }
+      })();
+    </script>
 
-		<footer>
-			<div class="container">
-				<p>&copy; 2014-2026 広島Unity勉強会</p>
-				<p><small>広島Unity勉強会 は Unity Technologies社、Unity Japan およびその関連団体とは何ら関係はありません。</small></p>
-			</div>
-		</footer>
-	</body>
+    <header>
+      <div class="container">
+        <a href="/" class="logo-link">
+          <img src="/hirouni.png" alt="広島Unity勉強会" class="header-logo" />
+        </a>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">ホーム</a>
+            </li>
+            <li>
+              <a href="/news">ニュース</a>
+            </li>
+            <li>
+              <a href="/about">活動について</a>
+            </li>
+            <li>
+              <a href="/mokumoku">もくもく会</a>
+            </li>
+            <li>
+              <a href="/contact">お問い合わせ</a>
+            </li>
+            <li>
+              <a href="/ggj27">GGJ 2027</a>
+            </li>
+            <li>
+              <a href="/interview">インタビュー</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1 class="page-title">{title}</h1>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2014-2026 広島Unity勉強会</p>
+        <p>
+          <small>
+            広島Unity勉強会 は Unity Technologies社、Unity Japan
+            およびその関連団体とは何ら関係はありません。
+          </small>
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
 
 <style is:global>
-	:root {
-		--primary: #ffffffff;
-		--secondary: #b30b54ff;
-		--accent: #3498db;
-		--text: #333;
-		--bg: #f8f9fa;
-		--white: #ffffff;
-		--container-width: 960px;
-	}
+  :root {
+    --primary: #ffffffff;
+    --secondary: #b30b54ff;
+    --accent: #3498db;
+    --text: #333;
+    --bg: #f8f9fa;
+    --white: #ffffff;
+    --container-width: 960px;
+  }
 
-	* {
-		box-sizing: border-box;
-	}
+  * {
+    box-sizing: border-box;
+  }
 
-	body {
-		font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-		line-height: 1.6;
-		color: var(--text);
-		background-color: var(--bg);
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
+  body {
+    font-family:
+      "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+      Meiryo, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--bg);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-	.redirect-banner {
-		background-color: #fff3cd;
-		color: #856404;
-		border-bottom: 1px solid #ffeeba;
-		padding: 0.75rem 0;
-		font-size: 0.9rem;
-		font-weight: 500;
-	}
+  .redirect-banner {
+    background-color: #fff3cd;
+    color: #856404;
+    border-bottom: 1px solid #ffeeba;
+    padding: 0.75rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
 
-	.banner-inner {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 1rem;
-	}
+  .banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
 
-	.banner-text {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		text-align: left;
-		flex-wrap: wrap;
-	}
+  .banner-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
+    flex-wrap: wrap;
+  }
 
-	.copy-url-btn {
-		background-color: #ffffff;
-		border: 1px solid #c8a332;
-		color: #856404;
-		border-radius: 4px;
-		padding: 0.25rem 0.6rem;
-		font-size: 0.75rem;
-		font-weight: bold;
-		cursor: pointer;
-		display: inline-flex;
-		align-items: center;
-		gap: 0.25rem;
-		transition: all 0.2s ease;
-		margin-left: 0.5rem;
-	}
+  .copy-url-btn {
+    background-color: #ffffff;
+    border: 1px solid #c8a332;
+    color: #856404;
+    border-radius: 4px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: all 0.2s ease;
+    margin-left: 0.5rem;
+  }
 
-	.copy-url-btn:hover {
-		background-color: #ffeeba;
-		border-color: #856404;
-	}
+  .copy-url-btn:hover {
+    background-color: #ffeeba;
+    border-color: #856404;
+  }
 
-	.copy-url-btn.copied {
-		background-color: #d4edda;
-		border-color: #c3e6cb;
-		color: #155724;
-	}
+  .copy-url-btn.copied {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+  }
 
-	.banner-close {
-		background: none;
-		border: none;
-		color: #856404;
-		cursor: pointer;
-		font-size: 1.2rem;
-		padding: 0 0.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0.7;
-		transition: opacity 0.2s;
-	}
+  .banner-close {
+    background: none;
+    border: none;
+    color: #856404;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
 
-	.banner-close:hover {
-		opacity: 1;
-	}
+  .banner-close:hover {
+    opacity: 1;
+  }
 
-	.container {
-		width: 100%;
-		max-width: var(--container-width);
-		margin: 0 auto;
-		padding: 0 20px;
-	}
+  .container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
 
-	header {
-		background-color: var(--white);
-		color: var(--text);
-		padding: 1.5rem 0;
-		border-bottom: 1px solid #eee;
-	}
+  header {
+    background-color: var(--white);
+    color: var(--text);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
 
-	header .container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+  header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-	.logo-link {
-		display: block;
-		margin-bottom: 0.5rem;
-	}
+  .logo-link {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
 
-	.header-logo {
-		height: 90px;
-		width: auto;
-		display: block;
-	}
+  .header-logo {
+    height: 90px;
+    width: auto;
+    display: block;
+  }
 
-	nav {
-		width: 100%;
-	}
+  nav {
+    width: 100%;
+  }
 
-	nav ul {
-		list-style: none;
-		padding: 0;
-		margin: 0.5rem 0 0;
-		display: flex;
-		justify-content: center;
-		gap: 1.5rem;
-		flex-wrap: wrap;
-	}
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
 
-	nav a {
-		color: var(--text);
-		text-decoration: none;
-		font-weight: bold;
-		font-size: 0.9rem;
-		transition: color 0.2s;
-	}
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
 
-	nav a:hover {
-		color: var(--secondary);
-		text-decoration: none;
-	}
+  nav a:hover {
+    color: var(--secondary);
+    text-decoration: none;
+  }
 
-	main {
-		flex: 1;
-		padding: 2rem 20px 4rem;
-		background-color: var(--white);
-		margin-top: 2rem;
-		margin-bottom: 2rem;
-		box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-		border-radius: 8px;
-	}
+  main {
+    flex: 1;
+    padding: 2rem 20px 4rem;
+    background-color: var(--white);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+  }
 
-	.page-title {
-		font-size: 2.2rem;
-		color: var(--text);
-		margin-bottom: 2rem;
-		padding-bottom: 1rem;
-		border-bottom: 4px solid var(--secondary);
-		line-height: 1.2;
-		font-weight: 800;
-	}
+  .page-title {
+    font-size: 2.2rem;
+    color: var(--text);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 4px solid var(--secondary);
+    line-height: 1.2;
+    font-weight: 800;
+  }
 
-	footer {
-		background-color: var(--secondary);
-		color: var(--white);
-		text-align: center;
-		padding: 2rem 0;
-		margin-top: auto;
-	}
+  footer {
+    background-color: var(--secondary);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+  }
 
-	h2 {
-		border-bottom: 2px solid var(--accent);
-		padding-bottom: 0.5rem;
-		margin-top: 2rem;
-	}
+  h2 {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+  }
 
-	h3 {
-		margin-top: 1.5rem;
-	}
+  h3 {
+    margin-top: 1.5rem;
+  }
 
-	a {
-		color: var(--accent);
-	}
+  a {
+    color: var(--accent);
+  }
 
-	@media (max-width: 600px) {
-		nav ul {
-			gap: 1rem;
-		}
-		header h1 {
-			text-align: center;
-		}
-		nav ul {
-			justify-content: center;
-		}
-	}
+  @media (max-width: 600px) {
+    nav ul {
+      gap: 1rem;
+    }
+    header h1 {
+      text-align: center;
+    }
+    nav ul {
+      justify-content: center;
+    }
+  }
 </style>

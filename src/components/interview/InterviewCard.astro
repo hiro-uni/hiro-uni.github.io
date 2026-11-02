@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 interface Props {
   href: string;
@@ -14,7 +14,7 @@ const { href, title, image, date, category } = Astro.props;
 
 <a href={href} class="interview-card">
   <div class="card-image">
-    {typeof image === 'string' ? (
+    {typeof image === "string" ? (
       <img src={image} alt={title} loading="lazy" />
     ) : (
       <Image src={image} alt={title} />

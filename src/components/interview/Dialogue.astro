@@ -8,7 +8,7 @@ interface Props {
 const { speaker, avatar, isInterviewer = false } = Astro.props;
 ---
 
-<div class={`dialogue-block ${isInterviewer ? 'interviewer' : 'interviewee'}`}>
+<div class={`dialogue-block ${isInterviewer ? "interviewer" : "interviewee"}`}>
   <div class="speaker-info">
     <img src={avatar} alt={speaker} class="avatar" />
     <span class="name">{speaker}</span>
@@ -69,7 +69,7 @@ const { speaker, avatar, isInterviewer = false } = Astro.props;
 
   /* Triangle for the bubble */
   .message-bubble::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 20px;
     border-width: 10px;
@@ -81,7 +81,7 @@ const { speaker, avatar, isInterviewer = false } = Astro.props;
     border-color: transparent #eee transparent transparent;
   }
   .interviewer .message-bubble::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 20px;
     left: -19px;
@@ -95,7 +95,7 @@ const { speaker, avatar, isInterviewer = false } = Astro.props;
     border-color: transparent transparent transparent #eee;
   }
   .interviewee .message-bubble::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 20px;
     right: -19px;
@@ -121,11 +121,12 @@ const { speaker, avatar, isInterviewer = false } = Astro.props;
       height: 40px;
       margin-bottom: 0;
     }
-    .message-bubble::before, .message-bubble::after {
+    .message-bubble::before,
+    .message-bubble::after {
       display: none;
     }
     .message-bubble {
-        padding: 1rem;
+      padding: 1rem;
     }
   }
 </style>

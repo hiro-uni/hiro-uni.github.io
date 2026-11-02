@@ -14,10 +14,10 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   <ul class="page-list">
     {pages.map((page) => (
       <li class="page-item">
-        <a 
-          href={`${baseUrl}${page === 1 ? '' : page}`} 
-          class={`page-link ${page === currentPage ? 'active' : ''}`}
-          aria-current={page === currentPage ? 'page' : undefined}
+        <a
+          href={`${baseUrl}${page === 1 ? "" : page}`}
+          class={`page-link ${page === currentPage ? "active" : ""}`}
+          aria-current={page === currentPage ? "page" : undefined}
         >
           {page}
         </a>

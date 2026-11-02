@@ -1,34 +1,34 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import InterviewHeader from '../../../components/interview/InterviewHeader.astro';
-import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
-import InterviewBody from '../../../components/interview/InterviewBody.astro';
-import Dialogue from '../../../components/interview/Dialogue.astro';
-import Pagination from '../../../components/interview/Pagination.astro';
-import OGP from '../../../layouts/OGP.astro';
+import Layout from "../../../layouts/Layout.astro";
+import InterviewHeader from "../../../components/interview/InterviewHeader.astro";
+import InterviewIntro from "../../../components/interview/InterviewIntro.astro";
+import InterviewBody from "../../../components/interview/InterviewBody.astro";
+import Dialogue from "../../../components/interview/Dialogue.astro";
+import Pagination from "../../../components/interview/Pagination.astro";
+import OGP from "../../../layouts/OGP.astro";
 
-import iconKamera25 from '../../../assets/ggj25_interview/icon_kamera25.jpg';
-import iconYamane from '../../../assets/ggj25_interview/icon_yamane.jpg';
-import iconNumata from '../../../assets/ggj25_interview/icon_numata.jpg';
+import iconKamera25 from "../../../assets/ggj25_interview/icon_kamera25.jpg";
+import iconYamane from "../../../assets/ggj25_interview/icon_yamane.jpg";
+import iconNumata from "../../../assets/ggj25_interview/icon_numata.jpg";
 
-import raptorHeader from '../../../assets/ggj25_interview/raptor3.png';
-import ggjBanner from '../../../assets/ggj26_banner.png';
+import raptorHeader from "../../../assets/ggj25_interview/raptor3.png";
+import ggjBanner from "../../../assets/ggj26_banner.png";
 
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 const interview_kamera25 = {
   name: "広ユニ ナカオク",
-  avatar: iconKamera25.src
+  avatar: iconKamera25.src,
 };
 
 const interview_yamane = {
   name: "広ユニ 山根信二",
-  avatar: iconYamane.src
+  avatar: iconYamane.src,
 };
 
 const interview_numata = {
   name: "沼田さん",
-  avatar: iconNumata.src
+  avatar: iconNumata.src,
 };
 ---
 
@@ -36,10 +36,10 @@ const interview_numata = {
   title="【特別企画・後編】ゲームジャムで「遊ぶ人」から「創る人」へ"
   description="ゲームジャムでの苦戦を乗り越え、多能なプランナーとして成長していく若手クリエイターの挑戦とこれからを聞きました。"
   ogImage={raptorHeader.src}
-  pubDate={new Date('2026-01-12')}
+  pubDate={new Date("2026-01-12")}
   articleJsonLd={true}
 >
-  <InterviewHeader 
+  <InterviewHeader
     title="【特別企画・後編】ゲームジャムで「遊ぶ人」から「創る人」へ"
     category="INTERVIEW"
     date="2026.01.12"
@@ -48,56 +48,91 @@ const interview_numata = {
   />
 
   <InterviewBody>
-
     <h2>ゲームジャムでの苦戦と「多能プランナー」への目覚め</h2>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      ここからは「ゲームジャム」での経験についてお聞きします。 沼田さんがゲームジャムとして初参加された<a href="https://hirouni.connpass.com/event/325586/">グローバルゲームジャム2025 瀬戸内会場 in 広島</a>では、少し大変なチーム構成だったとか？
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
+      ここからは「ゲームジャム」での経験についてお聞きします。
+      沼田さんがゲームジャムとして初参加された
+      <a href="https://hirouni.connpass.com/event/325586/">
+        グローバルゲームジャム2025 瀬戸内会場 in 広島
+      </a>
+      では、少し大変なチーム構成だったとか？
     </Dialogue>
 
     <OGP url="https://hirouni.connpass.com/event/325586/" />
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      そうなんです（苦笑）。 プランナーとして参加したのですが、チーム構成が「プランナー3人、プログラマー1人」という、かなり偏ったチームになってしまって。
+      そうなんです（苦笑）。
+      プランナーとして参加したのですが、チーム構成が「プランナー3人、プログラマー1人」という、かなり偏ったチームになってしまって。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       それは……プログラマーさんの負担がものすごいことになりそうですね。
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      はい、本当におっしゃる通りで、プログラマーへの負担が大きすぎてしまいました。 その時に痛感したんです。「プランナーだからといって、仕様や企画を考えるだけじゃダメなんだ」と。自分自身も手を動かしてゲームを作れるようにならないと、チーム制作は回らないんだと気づかされました。
+      はい、本当におっしゃる通りで、プログラマーへの負担が大きすぎてしまいました。
+      その時に痛感したんです。「プランナーだからといって、仕様や企画を考えるだけじゃダメなんだ」と。自分自身も手を動かしてゲームを作れるようにならないと、チーム制作は回らないんだと気づかされました。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       「企画職だから企画だけやればいい」という意識では、現場では通用しないということですね。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      そこは教育現場でも大きな課題ですね。日本の専門学校だと、入学時点で「プログラマー」「プランナー」とコースが分かれているため、どうしても専門分野に特化しがちです。 一方で、海外の大学で学んだ人たちは、基礎的なスキルを積んだ上で専門性を深めるため、いざとなれば「一人二役」ができるんです。
+      そこは教育現場でも大きな課題ですね。日本の専門学校だと、入学時点で「プログラマー」「プランナー」とコースが分かれているため、どうしても専門分野に特化しがちです。
+      一方で、海外の大学で学んだ人たちは、基礎的なスキルを積んだ上で専門性を深めるため、いざとなれば「一人二役」ができるんです。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       ああ、なるほど。「僕はプランナーだけど、少しならプログラムなら書けるよ」というような動きができるわけですね。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      そうです。この「基礎的な体力」があるかないかで、ゲームジャムのような突発的なチーム編成での柔軟性が変わってきます。 沼田くんがそこで「職種の不自由さ」を痛感したのは、とても良い学びだったと思いますよ。
+      そうです。この「基礎的な体力」があるかないかで、ゲームジャムのような突発的なチーム編成での柔軟性が変わってきます。
+      沼田くんがそこで「職種の不自由さ」を痛感したのは、とても良い学びだったと思いますよ。
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      本当にそう思います。 それからは、「自分でもゲームを作れるようになろう」という強い意思を持って、Unityなどの開発ツールを触るようになりました。 もちろん、自分の得意分野は進行管理やチームをまとめ上げることなんですが、そこに加えてプログラマーとしての知識もあれば、例えば後輩がリーダーをやりたいと言った時に、僕はプログラマーとしてサポートに回ることもできますから。
+      本当にそう思います。
+      それからは、「自分でもゲームを作れるようになろう」という強い意思を持って、Unityなどの開発ツールを触るようになりました。
+      もちろん、自分の得意分野は進行管理やチームをまとめ上げることなんですが、そこに加えてプログラマーとしての知識もあれば、例えば後輩がリーダーをやりたいと言った時に、僕はプログラマーとしてサポートに回ることもできますから。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       「自分の役割はこれだ」と決めつけず、どんなボール(役割)でも取ることがチーム制作では大切ですよね。
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      そう思います。あと今は、学校内のゲームジャムで作った作品を、長期プロジェクトとして継続して開発しています。 ゲームジャムの作品って、どうしても「作って終わり」になりがちじゃないですか。「一回遊んだら十分」というクオリティで止まってしまう。
+      そう思います。あと今は、学校内のゲームジャムで作った作品を、長期プロジェクトとして継続して開発しています。
+      ゲームジャムの作品って、どうしても「作って終わり」になりがちじゃないですか。「一回遊んだら十分」というクオリティで止まってしまう。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       「動いた！よかった！終了！」ってなりがちですよね（笑）。
     </Dialogue>
 
@@ -106,129 +141,192 @@ const interview_numata = {
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      それは素晴らしい視点です。 実は最近、投資ファンドがゲームジャムに注目し始めているんですよ。「企画書はいらないから、動くプロトタイプを見せてくれ」と。 ゲームジャムで作ったプロトタイプが面白ければ、そこに投資をして、製品版として完成させるための資金を提供する。そういった「アメリカンドリーム」的な流れも出てきています。
+      それは素晴らしい視点です。
+      実は最近、投資ファンドがゲームジャムに注目し始めているんですよ。「企画書はいらないから、動くプロトタイプを見せてくれ」と。
+      ゲームジャムで作ったプロトタイプが面白ければ、そこに投資をして、製品版として完成させるための資金を提供する。そういった「アメリカンドリーム」的な流れも出てきています。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       「試作」で終わらせず、それを「製品」にまで育て上げる力。それを学生のうちから意識されているのは時代の流れなのかもしれませんねぇ。
     </Dialogue>
 
     <h2>「遊ぶ人」から「創る人」へ</h2>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       最後に、これからゲーム業界を目指す学生さんたちに向けて、伝えたいことを教えてください。現役の学生として、周囲を見ていて感じることはありますか？
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      そうですね……少し厳しい言い方になるかもしれませんが、「ゲームをプレイする意識」から「ゲームを作る意識」へ、ちゃんと切り替えてほしいなと思います。 <br /><br />
+      そうですね……少し厳しい言い方になるかもしれませんが、「ゲームをプレイする意識」から「ゲームを作る意識」へ、ちゃんと切り替えてほしいなと思います。{" "}
+      <br />
+      <br />
       すごく厳しい言い方をすると周りの人を見ても、ゲーム制作をしている時間よりも、ゲームを遊んでいる時間の方が圧倒的に長い人が多いんです。もちろん、ゲームが好きで遊ぶこと自体はいいことなんですが、寝る時間を削ってまで遊んでいるのは…ゲームに遊ばれてしまっているのではないかと。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       「消費者」の視点のまま学校に来てしまっている、ということでしょうか。
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      はい。「本当にゲームを作るためにここに来ているのかな？」と感じてしまうことがあります。 だからこそ、これから目指す人には「ひたすらチャレンジしてほしい」「たくさんゲームを作ってほしい」と伝えたいです。
+      はい。「本当にゲームを作るためにここに来ているのかな？」と感じてしまうことがあります。
+      だからこそ、これから目指す人には「ひたすらチャレンジしてほしい」「たくさんゲームを作ってほしい」と伝えたいです。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      山根先生はいかがですか？ 昔は「浴びるほどゲームを遊んだ人間が、やがて作り手になる」というような道筋もありましたが。
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
+      山根先生はいかがですか？
+      昔は「浴びるほどゲームを遊んだ人間が、やがて作り手になる」というような道筋もありましたが。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      ええ、昔はそういう「ゲーマーから作り手へ」という神話のようなものがありました。でも今は、ゲームを極めた先には「プロゲーマー」という道もあるので、必ずしも作り手に回るわけではありません。 最近の世代を見ていて思うのは、「人に何かを伝えたい」「人の心を動かしたい」というパッション（情熱）を持っているかどうかが、決定的な差になるということです。
+      ええ、昔はそういう「ゲーマーから作り手へ」という神話のようなものがありました。でも今は、ゲームを極めた先には「プロゲーマー」という道もあるので、必ずしも作り手に回るわけではありません。
+      最近の世代を見ていて思うのは、「人に何かを伝えたい」「人の心を動かしたい」というパッション（情熱）を持っているかどうかが、決定的な差になるということです。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       単に「ゲームが好き」というだけではなく、「表現したい」という欲求が必要だと。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      そうです。IGDA日本の TGS スカラーシップ でも、実はゲームのスキルそのものより「作文（エッセイ）」を重視しています。「あなたは何をやりたいのか」「何を伝えたいのか」。この想いは学校では教えられませんから。 過去には、経済学部の学生で「ゲーム業界を知りたい」という熱意だけで採用された例もあります。技術は後からついてきますが、この「核」となる想いは、持っているかどうかが全てなんです。
+      そうです。IGDA日本の TGS スカラーシップ
+      でも、実はゲームのスキルそのものより「作文（エッセイ）」を重視しています。「あなたは何をやりたいのか」「何を伝えたいのか」。この想いは学校では教えられませんから。
+      過去には、経済学部の学生で「ゲーム業界を知りたい」という熱意だけで採用された例もあります。技術は後からついてきますが、この「核」となる想いは、持っているかどうかが全てなんです。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       沼田さんにとっての「恐竜」のように、自分の中に揺るぎない「伝えたいこと」があるか。それが、一つの作品を完成させるエネルギーになるわけですね。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      まさにそうです。 安田女子大学でも教えていますが、私は学生に「ゲームをいっぱい遊べ」とは言いません。「あなたはどういう想いを人に伝えたいか」を大事にしなさいと伝えています。
+      まさにそうです。
+      安田女子大学でも教えていますが、私は学生に「ゲームをいっぱい遊べ」とは言いません。「あなたはどういう想いを人に伝えたいか」を大事にしなさいと伝えています。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      今日はとても濃いお話を聞くことができました。 「好きなもの」を原点に持ち、足りない技術は学び、世界を見て視野を広げ、そして「創る人」としての覚悟を持つ。 沼田さんのような若いクリエイターが、これからのゲーム業界に新しい風を巻き起こしてくれることを楽しみにしています。本日はありがとうございました。
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
+      今日はとても濃いお話を聞くことができました。
+      「好きなもの」を原点に持ち、足りない技術は学び、世界を見て視野を広げ、そして「創る人」としての覚悟を持つ。
+      沼田さんのような若いクリエイターが、これからのゲーム業界に新しい風を巻き起こしてくれることを楽しみにしています。本日はありがとうございました。
     </Dialogue>
 
     <InterviewIntro>
-      沼田さんが作成したゲーム Raptor は <a href="https://store.steampowered.com/app/3846520/Raptor/">現在Streamで配信中です！</a><br />
-      ぜひご購入して、遊んでみてください。<br /><br />
-      またRaptorですが、この度ゲームクリエイターズギルドが主催するゲームクリエイター甲子園 2025 にて、<a href="https://prtimes.jp/main/html/rd/p/000000072.000126454.html">「U-18＆総合大賞のノミネート作品」</a>となりました。おめでとうございます！<br /><br />
+      沼田さんが作成したゲーム Raptor は{" "}
+      <a href="https://store.steampowered.com/app/3846520/Raptor/">
+        現在Streamで配信中です！
+      </a>
+      <br />
+      ぜひご購入して、遊んでみてください。
+      <br />
+      <br />
+      またRaptorですが、この度ゲームクリエイターズギルドが主催するゲームクリエイター甲子園
+      2025 にて、
+      <a href="https://prtimes.jp/main/html/rd/p/000000072.000126454.html">
+        「U-18＆総合大賞のノミネート作品」
+      </a>
+      となりました。おめでとうございます！
+      <br />
+      <br />
       また本インタビューにあたってご協力いただきました、沼田さん、山根先生、ヒューマンアカデミー広島校の竹口先生（非常勤）に感謝いたします。
     </InterviewIntro>
-    
+
     <div class="special-event">
-				<a href="https://hirouni.connpass.com/event/373294/" target="_blank" rel="noopener noreferrer" class="ggj-banner-link">
-					<Image src={ggjBanner} alt="Global Game Jam 2026 Hiroshima" class="ggj-banner-img" />
-				</a>
-				<p>&nbsp;沼田さんも参加したGGJが2026年も広島で開催。1月末はみんなでゲーム制作をしよう！ </p>
-		</div>
+      <a
+        href="https://hirouni.connpass.com/event/373294/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ggj-banner-link"
+      >
+        <Image
+          src={ggjBanner}
+          alt="Global Game Jam 2026 Hiroshima"
+          class="ggj-banner-img"
+        />
+      </a>
+      <p>
+        &nbsp;沼田さんも参加したGGJが2026年も広島で開催。1月末はみんなでゲーム制作をしよう！
+      </p>
+    </div>
 
-    <Pagination 
-      currentPage={3} 
-      totalPages={3} 
-      baseUrl="/interview/ggj25/page" 
+    <Pagination
+      currentPage={3}
+      totalPages={3}
+      baseUrl="/interview/ggj25/page"
     />
-
   </InterviewBody>
 </Layout>
 
 <style>
-	/* Special Event Banner */
-	.special-event {
-		margin: 0 auto 2.5rem;
-		border-radius: 12px;
-		overflow: hidden;
-		box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	}
-	.special-event:hover {
-		transform: scale(1.02);
-		box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-	}
-	.ggj-banner-link {
-		display: block;
-		position: relative;
-		text-decoration: none;
-	}
-	.ggj-banner-img {
-		width: 100%;
-		height: auto;
-		display: block;
-	}
-	.banner-overlay {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background: linear-gradient(transparent, rgba(0,0,0,0.7));
-		color: white;
-		padding: 2rem 1rem 1rem;
-		opacity: 0;
-		transition: opacity 0.3s;
-		display: flex;
-		justify-content: center;
-		align-items: flex-end;
-	}
-	.ggj-banner-link:hover .banner-overlay {
-		opacity: 1;
-	}
-	.banner-overlay span {
-		background: #b30b54;
-		padding: 0.5rem 1.5rem;
-		border-radius: 50px;
-		font-weight: bold;
-		font-size: 0.9rem;
-		box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-	}
+  /* Special Event Banner */
+  .special-event {
+    margin: 0 auto 2.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .special-event:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  .ggj-banner-link {
+    display: block;
+    position: relative;
+    text-decoration: none;
+  }
+  .ggj-banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    padding: 2rem 1rem 1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .ggj-banner-link:hover .banner-overlay {
+    opacity: 1;
+  }
+  .banner-overlay span {
+    background: #b30b54;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
 </style>

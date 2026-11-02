@@ -1,10 +1,10 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import InterviewCard from '../../components/interview/InterviewCard.astro';
+import Layout from "../../layouts/Layout.astro";
+import InterviewCard from "../../components/interview/InterviewCard.astro";
 
 // Import hero images
-import heroGGJ26 from '../../assets/ggj26_organizer/hero_ggj26_setouchi.png';
-import heroGGJ25 from '../../assets/ggj25_interview/raptor4.png';
+import heroGGJ26 from "../../assets/ggj26_organizer/hero_ggj26_setouchi.png";
+import heroGGJ25 from "../../assets/ggj25_interview/raptor4.png";
 
 const interviews = [
   {
@@ -12,27 +12,28 @@ const interviews = [
     title: "【GGJ26瀬戸内】瀬戸内ゲーム開発コミュニティ オーガナイザートーク",
     image: heroGGJ26,
     date: "2026.02.15",
-    category: "トーク"
+    category: "トーク",
   },
   {
     href: "/interview/ggj25/page",
-    title: "【特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」",
+    title:
+      "【特別企画】 恐竜好きが紡いだGGJ＆TGSスカラシップと「好きを伝える力」",
     image: heroGGJ25,
     date: "2026.01.12",
-    category: "インタビュー"
-  }
+    category: "インタビュー",
+  },
 ];
-
 ---
 
 <Layout
-	title="インタビュー"
-	description="広島・瀬戸内のゲームクリエイターやゲーム制作コミュニティのメンバーに、活動のきっかけや開発の工夫を聞きました。"
-	ogImage={heroGGJ26.src}
+  title="インタビュー"
+  description="広島・瀬戸内のゲームクリエイターやゲーム制作コミュニティのメンバーに、活動のきっかけや開発の工夫を聞きました。"
+  ogImage={heroGGJ26.src}
 >
-	<p>広島のゲームクリエイター、瀬戸内ゲーム制作コミュニティメンバーへのインタビューを掲載しています。</p>
+  <p>
+    広島のゲームクリエイター、瀬戸内ゲーム制作コミュニティメンバーへのインタビューを掲載しています。
+  </p>
   <div class="interview-index">
-
     <div class="interview-grid">
       {interviews.map((interview) => (
         <InterviewCard {...interview} />
@@ -64,7 +65,7 @@ const interviews = [
   }
 
   .page-title::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -10px;
     left: 50%;

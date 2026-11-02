@@ -15,6 +15,7 @@
 ## 🚀 ローカルでの開発・確認方法
 
 ### 1. 動作要件
+
 Node.js（v22 推奨 / LTS）がインストールされていることを確認してください。
 
 - **macOS**: Homebrew を使用してインストール
@@ -27,25 +28,34 @@ Node.js（v22 推奨 / LTS）がインストールされていることを確認
   ```
 
 ### 2. インストール
+
 リポジトリのルートディレクトリで依存関係をインストールします。
+
 ```sh
 npm install
 ```
 
 ### 3. コマンド一覧
 
-| コマンド | 説明 |
-| :--- | :--- |
-| `npm run dev` | 開発サーバーを起動（起動前に `fetch-ogp` が自動実行されます） |
-| `npm run build` | プロダクションビルド（`dist/` ディレクトリに静的出力） |
-| `npm run preview` | ビルド成果物のローカルプレビュー |
-| `npm run fetch-ogp` | 記事内の OGP メタデータを取得してキャッシュを更新 |
+| コマンド               | 説明                                                          |
+| :--------------------- | :------------------------------------------------------------ |
+| `npm run dev`          | 開発サーバーを起動（起動前に `fetch-ogp` が自動実行されます） |
+| `npm run build`        | プロダクションビルド（`dist/` ディレクトリに静的出力）        |
+| `npm run preview`      | ビルド成果物のローカルプレビュー                              |
+| `npm run fetch-ogp`    | 記事内の OGP メタデータを取得してキャッシュを更新             |
+| `npm run lint`         | ESLintでコードを検査                                          |
+| `npm run lint:fix`     | ESLintで修正可能な問題を自動修正                              |
+| `npm run format`       | Prettierでファイルを整形                                      |
+| `npm run format:check` | Prettierの整形状態を確認                                      |
 
 ### 4. ローカルサーバーの起動
+
 以下のコマンドを実行して開発サーバーを起動します。
+
 ```sh
 npm run dev
 ```
+
 起動後、ターミナルに表示される URL（通常は `http://localhost:4321/`）をブラウザで開きます。ファイルを編集するとホットリロードにより自動反映されます。
 
 ---
@@ -55,12 +65,14 @@ npm run dev
 新しいニュースやお知らせは `src/content/news/` ディレクトリに **MDX（.mdx）** または Markdown（.md）ファイルを追加します。
 
 ### 1. ファイルの作成
+
 `src/content/news/` 内に新しいファイルを作成します。  
 ファイル名は `YYYY-MM-DD-slug.mdx` の形式を推奨します。
 
 例: `2026-10-03-autumn-event.mdx`
 
 ### 2. フロントマターの記述 (Frontmatter)
+
 ファイルの先頭に、記事のメタデータをハイフン3つ（`---`）で囲んで記述します。
 
 ```markdown
@@ -68,15 +80,16 @@ npm run dev
 title: "記事のタイトル"
 pubDate: 2026-10-03
 description: "記事の概要（一覧ページやSNS共有時に表示されます）"
-image: "../../assets/gjt/banner_2026.png"  # 任意: サムネイル画像
-author: "執筆者名"                         # 任意
-tags: ["Unity", "イベント"]                # 任意
+image: "../../assets/gjt/banner_2026.png" # 任意: サムネイル画像
+author: "執筆者名" # 任意
+tags: ["Unity", "イベント"] # 任意
 ---
 ```
 
 > **Note**: メタデータのスキーマは `src/content.config.ts` で定義されています。
 
 ### 3. 本文の記述
+
 フロントマターの下に、Markdown 形式で本文を記述します。MDX では JSX や Astro コンポーネントも利用できます。
 
 ---
@@ -84,6 +97,7 @@ tags: ["Unity", "イベント"]                # 任意
 ## 🎨 記事内でのコンポーネント・アセット利用
 
 ### 1. 外部サイトのブログカード（OGP）表示
+
 記事内で外部サイトのリンクをリッチなブログカード形式で表示できます。
 
 ```mdx
@@ -93,15 +107,17 @@ import OGP from "../../layouts/OGP.astro";
 ```
 
 > **OGPキャッシュの仕組み**:
+>
 > - `npm run dev` 実行時、または CI/CD ビルド時に `scripts/fetch-ogp.mjs` が走り、URL からタイトル・概要・画像を自動取得して `src/data/ogp-cache.json` にキャッシュ保存します。
 > - 手動でキャッシュを更新したい場合は `npm run fetch-ogp` を実行してください。
 
 ### 2. 画像の最適化表示 (`astro:assets`)
+
 ローカル画像（`src/assets/` 配下）をインポートして最適化表示できます。
 
 ```mdx
-import { Image } from 'astro:assets';
-import bannerImg from '../../assets/gjt/banner_2026.png';
+import { Image } from "astro:assets";
+import bannerImg from "../../assets/gjt/banner_2026.png";
 
 <Image src={bannerImg} alt="バナー画像" />
 ```

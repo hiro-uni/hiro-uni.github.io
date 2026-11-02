@@ -1,32 +1,32 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import InterviewHeader from '../../../components/interview/InterviewHeader.astro';
-import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
-import InterviewBody from '../../../components/interview/InterviewBody.astro';
-import Dialogue from '../../../components/interview/Dialogue.astro';
-import Pagination from '../../../components/interview/Pagination.astro';
-import OGP from '../../../layouts/OGP.astro';
+import Layout from "../../../layouts/Layout.astro";
+import InterviewHeader from "../../../components/interview/InterviewHeader.astro";
+import InterviewIntro from "../../../components/interview/InterviewIntro.astro";
+import InterviewBody from "../../../components/interview/InterviewBody.astro";
+import Dialogue from "../../../components/interview/Dialogue.astro";
+import Pagination from "../../../components/interview/Pagination.astro";
+import OGP from "../../../layouts/OGP.astro";
 
-import iconKamera25 from '../../../assets/ggj25_interview/icon_kamera25.jpg';
-import iconYamane from '../../../assets/ggj25_interview/icon_yamane.jpg';
-import iconNumata from '../../../assets/ggj25_interview/icon_numata.jpg';
-import raptorImage from '../../../assets/ggj25_interview/raptor_header.jpg';
+import iconKamera25 from "../../../assets/ggj25_interview/icon_kamera25.jpg";
+import iconYamane from "../../../assets/ggj25_interview/icon_yamane.jpg";
+import iconNumata from "../../../assets/ggj25_interview/icon_numata.jpg";
+import raptorImage from "../../../assets/ggj25_interview/raptor_header.jpg";
 
-import raptorHeader from '../../../assets/ggj25_interview/raptor4.png';
+import raptorHeader from "../../../assets/ggj25_interview/raptor4.png";
 
 const interview_kamera25 = {
   name: "広ユニ ナカオク",
-  avatar: iconKamera25.src
+  avatar: iconKamera25.src,
 };
 
 const interview_yamane = {
   name: "広ユニ 山根信二",
-  avatar: iconYamane.src
+  avatar: iconYamane.src,
 };
 
 const interview_numata = {
   name: "沼田さん",
-  avatar: iconNumata.src
+  avatar: iconNumata.src,
 };
 ---
 
@@ -34,10 +34,10 @@ const interview_numata = {
   title="【特別企画・前編】恐竜好きが紡いだGGJ＆TGSスカラシップ"
   description="恐竜好きの若手クリエイターがゲーム開発を始めたきっかけと、好きという情熱を制作へつなげる力を聞きました。"
   ogImage={raptorHeader.src}
-  pubDate={new Date('2026-01-12')}
+  pubDate={new Date("2026-01-12")}
   articleJsonLd={true}
 >
-  <InterviewHeader 
+  <InterviewHeader
     title="【特別企画・前編】恐竜好きが紡いだGGJ＆TGSスカラシップ"
     category="INTERVIEW"
     date="2026.01.12"
@@ -47,40 +47,72 @@ const interview_numata = {
 
   <InterviewBody>
     <InterviewIntro>
-      あけましておめでとうございます！広島Unity勉強会のナカオクです。<br /><br>
-      今回は特別企画として、若手クリエイターで<a href="https://haa.athuman.com/school/hiroshima/">ヒューマンアカデミー広島校</a>に在籍されている(2026年1月時点)、沼田さんにインタビューを実施しました。<br /><br >
-      彼が、どのようにしてゲーム開発の世界に飛び込み、挑戦を続けているのか、その熱い想いに迫ります。ひとつの「好き」という情熱が、いかにしてゲーム制作の原動力となり、またゲームジャムや学校、および学外交流を通じてどのように形を変えていくのか。<br /><br >
+      あけましておめでとうございます！広島Unity勉強会のナカオクです。
+      <br />
+      <br />
+      今回は特別企画として、若手クリエイターで
+      <a href="https://haa.athuman.com/school/hiroshima/">
+        ヒューマンアカデミー広島校
+      </a>
+      に在籍されている(2026年1月時点)、沼田さんにインタビューを実施しました。
+      <br />
+      <br />
+      彼が、どのようにしてゲーム開発の世界に飛び込み、挑戦を続けているのか、その熱い想いに迫ります。ひとつの「好き」という情熱が、いかにしてゲーム制作の原動力となり、またゲームジャムや学校、および学外交流を通じてどのように形を変えていくのか。
+      <br />
+      <br />
       クリエイターを目指す若者のリアルな視点と、それを支える教育の現場から見えてくる「今のゲーム作り」について、じっくりと紐解いていきたいと思います。
     </InterviewIntro>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       広島Unity勉強会のナカオクです。私は2014年に広島Unity勉強会を立ち上げ、グローバルゲームジャムの広島会場、Unityに関する勉強会を定期的に開催しています。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      山根 信二と申します。国際ゲーム開発者協会日本（IGDA日本）理事で、2025年春より広島市にある 安田女子大学 情報科学科 にてゲーム開発も含めた学生教育に携わっています。
+      山根
+      信二と申します。国際ゲーム開発者協会日本（IGDA日本）理事で、2025年春より広島市にある
+      安田女子大学 情報科学科 にてゲーム開発も含めた学生教育に携わっています。
     </Dialogue>
 
     <OGP url="https://www.yasuda-u.ac.jp/course/informatics/staff/" />
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      沼田です。昨年 グローバルゲームジャム瀬戸内会場 in 広島 に参加をキッカケに自身の実力不足を痛感し、それ以降に色々なことに挑戦しました。その過程で東京ゲームショウ2025の「TGS 2025 スカラシップ」に出展、2025年末には自身のゲーム「Raptor」をSteamにリリースすることができました。
+      沼田です。昨年 グローバルゲームジャム瀬戸内会場 in 広島
+      に参加をキッカケに自身の実力不足を痛感し、それ以降に色々なことに挑戦しました。その過程で東京ゲームショウ2025の「TGS
+      2025
+      スカラシップ」に出展、2025年末には自身のゲーム「Raptor」をSteamにリリースすることができました。
     </Dialogue>
 
     <h2>「恐竜が好き」その一心から始まった</h2>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       まずは、沼田さんがゲームクリエイターを目指そうと思ったきっかけからお話しいただけますか？
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      はい。一番の理由は、中学時代に遊んでいたスマートフォンの恐竜のカードゲーム「Jurassic Dinosaur: Ark of Carnivores」ですね。 <br />
+      はい。一番の理由は、中学時代に遊んでいたスマートフォンの恐竜のカードゲーム「Jurassic
+      Dinosaur: Ark of Carnivores」ですね。 <br />
     </Dialogue>
 
     <div class="video-wrapper">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/jg5ILkX90bU?si=21SwYzmRIDnnygQA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/jg5ILkX90bU?si=21SwYzmRIDnnygQA"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
     </div>
-
 
     <br />
     <br />
@@ -89,25 +121,40 @@ const interview_numata = {
       もともと小さい頃から恐竜が大好きで、小学生の頃にはカードゲーム全般にハマっていました。中学生になってスマートフォンを持たせてもらった時、自分に合いそうなカードゲームを探しているときにこれを見つけて、それにすごく熱中したんです。それが初めて本格的に触ったデジタルゲームでした。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       なるほど。ゲームそのものというよりは、まず「恐竜」という入り口があったわけですね。
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
-      そうなんです。でも、しばらく遊んでいるうちに、スマホの機種のスペックが追いつかなくなってしまって、そのゲームが遊べなくなってしまったんです(笑)。<br />
+      そうなんです。でも、しばらく遊んでいるうちに、スマホの機種のスペックが追いつかなくなってしまって、そのゲームが遊べなくなってしまったんです(笑)。
+      <br />
       それでも「どうしても恐竜のカードゲームがやりたい」という気持ちが強くて。「それなら、自分で作ってしまえばいいんじゃないか」と思ったのが、クリエイターを目指した一番最初のきっかけです。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       「遊べなくなったから、自分で作る」。とても純粋で、力強い動機ですね。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      なるほど、沼田くんの事例はかなりユニークだと思います。 普通、ゲームクリエイターを目指す学生というのは、「みんなが遊んでいる人気のゲーム」や「たくさんの人に遊んでもらえるゲーム」を作りたいという入り口から入ることが多いんです。でも彼は、自分の「恐竜への関心」をずっと貫いていて、最終的にそれが作り手になる理由にまでなっている。その一貫性が素晴らしいですね。
+      なるほど、沼田くんの事例はかなりユニークだと思います。
+      普通、ゲームクリエイターを目指す学生というのは、「みんなが遊んでいる人気のゲーム」や「たくさんの人に遊んでもらえるゲーム」を作りたいという入り口から入ることが多いんです。でも彼は、自分の「恐竜への関心」をずっと貫いていて、最終的にそれが作り手になる理由にまでなっている。その一貫性が素晴らしいですね。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
-      ご自身の「好き」がブレていないんですね。 今、作られているゲームもやはり恐竜がテーマなんですか？
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
+      ご自身の「好き」がブレていないんですね。
+      今、作られているゲームもやはり恐竜がテーマなんですか？
     </Dialogue>
 
     <Dialogue speaker={interview_numata.name} avatar={interview_numata.avatar}>
@@ -120,7 +167,11 @@ const interview_numata = {
       僕には「恐竜の魅力を他の人にも知ってもらいたい」という想いが強くあるんです。小さい頃は恐竜が好きだった人も、大人になるにつれて興味が薄れていってしまうことが多いじゃないですか。それが少し寂しくて。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       確かに、子どもの頃は恐竜博士だったのに、いつの間にか卒業してしまう方もいますね。
     </Dialogue>
 
@@ -128,20 +179,24 @@ const interview_numata = {
       電車移動などの隙間時間にパッと遊べるようなゲームがあれば、大人になった人たちにも、もう一度恐竜について知ってもらえるんじゃないか、魅力を再確認してもらえるんじゃないかと思って開発を続けています。
     </Dialogue>
 
-    <Dialogue speaker={interview_kamera25.name} avatar={interview_kamera25.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={interview_kamera25.name}
+      avatar={interview_kamera25.avatar}
+      isInterviewer={true}
+    >
       なるほど。「恐竜を知ってもらうための手段」としてゲームを選んだ、と。
     </Dialogue>
 
     <Dialogue speaker={interview_yamane.name} avatar={interview_yamane.avatar}>
-      近年はゲーム開発ツールが普及したこともあって、自分の伝えたいことを表現する手段としてゲームを選ぶ学生が増えていますね。 ただ、実際のところ「これを絶対に作りたい！」という強い核を持っている学生は、そう多くはありません。私はこれまでにも様々な大学で教えていますが、自分の中に「表現したいもの」が明確にある人は意外と少ないのが実情です。その点、彼の「恐竜愛」は際立っていますね。
+      近年はゲーム開発ツールが普及したこともあって、自分の伝えたいことを表現する手段としてゲームを選ぶ学生が増えていますね。
+      ただ、実際のところ「これを絶対に作りたい！」という強い核を持っている学生は、そう多くはありません。私はこれまでにも様々な大学で教えていますが、自分の中に「表現したいもの」が明確にある人は意外と少ないのが実情です。その点、彼の「恐竜愛」は際立っていますね。
     </Dialogue>
 
-    <Pagination 
-      currentPage={1} 
-      totalPages={3} 
-      baseUrl="/interview/ggj25/page" 
+    <Pagination
+      currentPage={1}
+      totalPages={3}
+      baseUrl="/interview/ggj25/page"
     />
-
   </InterviewBody>
 </Layout>
 

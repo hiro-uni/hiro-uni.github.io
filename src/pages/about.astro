@@ -1,152 +1,214 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import gamejam from '../assets/about/gamejam.jpg';
-import gjtakahashi from '../assets/about/gjtakahashi.jpg';	
-import mokumoku from '../assets/about/mokumoku.jpg';
-import oshiete from '../assets/about/oshiete.jpg';
-import ggjlogo from '../assets/ggj_badge.png';
-
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import gamejam from "../assets/about/gamejam.jpg";
+import gjtakahashi from "../assets/about/gjtakahashi.jpg";
+import mokumoku from "../assets/about/mokumoku.jpg";
+import oshiete from "../assets/about/oshiete.jpg";
+import ggjlogo from "../assets/ggj_badge.png";
 ---
 
 <Layout
-	title="活動について"
-	description="広島Unity勉強会の活動内容。Unityもくもく会、ゲームジャム、瀬戸内の合同勉強会、Unity講師派遣について紹介します。"
-	ogImage={mokumoku.src}
+  title="活動について"
+  description="広島Unity勉強会の活動内容。Unityもくもく会、ゲームジャム、瀬戸内の合同勉強会、Unity講師派遣について紹介します。"
+  ogImage={mokumoku.src}
 >
-	<section class="about-intro">
-		<p>広島Unity勉強会は2014年春に設立された、<strong>広島県広島市を中心としたUnity & ゲーム制作コミュニティ</strong>です。</p>
-		<p><strong>Unityを使える人を増やす</strong>ために、以下のような活動を行ってきました。</p>
-	</section>
+  <section class="about-intro">
+    <p>
+      広島Unity勉強会は2014年春に設立された、
+      <strong>広島県広島市を中心としたUnity & ゲーム制作コミュニティ</strong>
+      です。
+    </p>
+    <p>
+      <strong>Unityを使える人を増やす</strong>
+      ために、以下のような活動を行ってきました。
+    </p>
+  </section>
 
-	<section class="activity">
-		<h3>Unityもくもく会</h3>
-		<div class="activity-content">
-			<Image width="400" src={mokumoku} alt="もくもく会の様子" class="activity-image" />
-			<div class="activity-text">
-				<p>もくもく会はUnityユーザ同士で集まるイベントです。</p>
-				<p>Unityを使いたい初心者や仕事でUnityを使う方が集まり、話し合ったり相談します。最近は3ヵ月1回ペースで広島市内のコワーキングスペースに集まり、もくもくしています。</p>
-				<p>初心者からプロの方まで、ゲーム制作から3Dモデリング作成など幅広い方々に参加いただいております。</p>
-				<div class="activity-cta">
-					<a href="/mokumoku" class="btn-more">もくもく会の詳細を見る <i class="fas fa-arrow-right"></i></a>
-				</div>
-			</div>
-		</div>
-	</section>
+  <section class="activity">
+    <h3>Unityもくもく会</h3>
+    <div class="activity-content">
+      <Image
+        width="400"
+        src={mokumoku}
+        alt="もくもく会の様子"
+        class="activity-image"
+      />
+      <div class="activity-text">
+        <p>もくもく会はUnityユーザ同士で集まるイベントです。</p>
+        <p>
+          Unityを使いたい初心者や仕事でUnityを使う方が集まり、話し合ったり相談します。最近は3ヵ月1回ペースで広島市内のコワーキングスペースに集まり、もくもくしています。
+        </p>
+        <p>
+          初心者からプロの方まで、ゲーム制作から3Dモデリング作成など幅広い方々に参加いただいております。
+        </p>
+        <div class="activity-cta">
+          <a href="/mokumoku" class="btn-more">
+            もくもく会の詳細を見る <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<section class="activity">
-		<h3>広島県でのゲームジャム開催</h3>	
-		<div class="activity-content">
-			<Image width="400"src={gamejam} alt="ゲームジャム高梁の模様" class="activity-image" />
-			<div class="activity-text">
-				<p>短期間（30時間〜48時間程度）で集まってゲームを一本作り上げるイベント「ゲームジャム」を開催しています。</p>
-				<p>2018年より<a href="https://ggj.igda.jp/">グローバルゲームジャム</a>の広島会場の開設を行っています。</p>
-				<Image width="100"src={ggjlogo} alt="グローバルゲームジャムのロゴ" class="activity-image" />
-			</div>
-		</div>
-	</section>
+  <section class="activity">
+    <h3>広島県でのゲームジャム開催</h3>
+    <div class="activity-content">
+      <Image
+        width="400"
+        src={gamejam}
+        alt="ゲームジャム高梁の模様"
+        class="activity-image"
+      />
+      <div class="activity-text">
+        <p>
+          短期間（30時間〜48時間程度）で集まってゲームを一本作り上げるイベント「ゲームジャム」を開催しています。
+        </p>
+        <p>
+          2018年より<a href="https://ggj.igda.jp/">グローバルゲームジャム</a>
+          の広島会場の開設を行っています。
+        </p>
+        <Image
+          width="100"
+          src={ggjlogo}
+          alt="グローバルゲームジャムのロゴ"
+          class="activity-image"
+        />
+      </div>
+    </div>
+  </section>
 
+  <section class="activity">
+    <h3>瀬戸内ゲームコミュニティとの合同勉強会・ゲームジャム</h3>
+    <div class="activity-content">
+      <Image
+        width="400"
+        src={gjtakahashi}
+        alt="ゲームジャム高梁の模様"
+        class="activity-image"
+      />
+      <div class="activity-text">
+        <p>
+          <a href="https://okauni.jimdofree.com/">岡山Unity勉強会</a>
+          &nbsp;や&nbsp;<a href="https://www.sanukigamen.com">讃岐GameN</a>
+          &nbsp;など、瀬戸内地域のゲーム制作コミュニティとの合同展示や勉強会、ゲームジャムを定期的に行っています。
+        </p>
+        <p>
+          毎年10月には、岡山県高梁市で中国地方最大規模のゲームジャム -{" "}
+          <a href="https://gjtakahashi.okayamaunity.com">ゲームジャム高梁</a>{" "}
+          を共催で開催しています。
+        </p>
+        <div class="activity-cta">
+          <a href="https://gjtakahashi.okayamaunity.com" class="btn-more">
+            ゲームジャム高梁の詳細を見る <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<section class="activity">
-		<h3>瀬戸内ゲームコミュニティとの合同勉強会・ゲームジャム</h3>
-		<div class="activity-content">
-			<Image width="400" src={gjtakahashi} alt="ゲームジャム高梁の模様" class="activity-image" />
-			<div class="activity-text">
-				<p><a href="https://okauni.jimdofree.com/">岡山Unity勉強会</a>&nbsp;や&nbsp;<a href="https://www.sanukigamen.com">讃岐GameN</a>&nbsp;など、瀬戸内地域のゲーム制作コミュニティとの合同展示や勉強会、ゲームジャムを定期的に行っています。</p>
-				<p>毎年10月には、岡山県高梁市で中国地方最大規模のゲームジャム - <a href="https://gjtakahashi.okayamaunity.com">ゲームジャム高梁</a> を共催で開催しています。</p>
-				<div class="activity-cta">
-					<a href="https://gjtakahashi.okayamaunity.com" class="btn-more">ゲームジャム高梁の詳細を見る <i class="fas fa-arrow-right"></i></a>
-				</div>	
-			</div>
-		</div>
-	</section>
-
-	<section class="activity">
-		<h3>教えて！Unity先生！（講師派遣）</h3>
-		<div class="activity-content">
-			<Image width="400" src={oshiete} alt="講習会の様子" class="activity-image" />
-			<div class="activity-text">
-				<p>Unityの講習会の講師等の派遣も行っています。</p>
-				<p>2016年1月〜3月には「広島ものづくりジム」にて、3ヶ月間のゲーム制作体験プログラム（全6回）を担当しました。</p>
-				<p><small>※現在は短期のみの講師派遣のみ行っております。お気軽にご相談ください。</small></p>
-				<div class="activity-cta">
-					<a href="/news/2016-03-27-コラム-広島ものづくりジムでunityを教えました" class="btn-more">講習会の詳細を見る(atものづくりジム) <i class="fas fa-arrow-right"></i></a>
-				</div>	
-			</div>
-		</div>
-	</section>
-
+  <section class="activity">
+    <h3>教えて！Unity先生！（講師派遣）</h3>
+    <div class="activity-content">
+      <Image
+        width="400"
+        src={oshiete}
+        alt="講習会の様子"
+        class="activity-image"
+      />
+      <div class="activity-text">
+        <p>Unityの講習会の講師等の派遣も行っています。</p>
+        <p>
+          2016年1月〜3月には「広島ものづくりジム」にて、3ヶ月間のゲーム制作体験プログラム（全6回）を担当しました。
+        </p>
+        <p>
+          <small>
+            ※現在は短期のみの講師派遣のみ行っております。お気軽にご相談ください。
+          </small>
+        </p>
+        <div class="activity-cta">
+          <a
+            href="/news/2016-03-27-コラム-広島ものづくりジムでunityを教えました"
+            class="btn-more"
+          >
+            講習会の詳細を見る(atものづくりジム){" "}
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
-	.about-intro {
-		margin-bottom: 3rem;
-		font-size: 1.1rem;
-	}
-	.activity {
-		margin-bottom: 4rem;
-	}
-	.activity h3 {
-		border-bottom: 2px solid var(--accent);
-		padding-bottom: 0.5rem;
-		margin-bottom: 1.5rem;
-	}
-	.activity-content {
-		display: flex;
-		gap: 2rem;
-		align-items: flex-start;
-		flex-wrap: wrap;
-	}
-	.activity-image {
-		max-width: 100%;
-		height: auto;
-		border-radius: 4px;
-		box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-	}
-	.activity-text {
-		flex: 1;
-		min-width: 300px;
-	}
-	.activity-text p {
-		margin-bottom: 1rem;
-	}
-	.activity-cta {
-		margin-top: 1.5rem;
-		display: block;
-	}
-	.btn-more {
-		display: inline-flex !important;
-		align-items: center;
-		gap: 0.8rem;
-		background-color: var(--secondary) !important;
-		color: white !important;
-		padding: 0.8rem 1.8rem;
-		border-radius: 50px;
-		text-decoration: none !important;
-		font-weight: 700;
-		transition: all 0.3s ease;
-		box-shadow: 0 4px 15px rgba(179, 11, 84, 0.2);
-	}
-	.btn-more:hover {
-		background-color: #d4146a !important;
-		transform: translateY(-3px);
-		box-shadow: 0 8px 20px rgba(179, 11, 84, 0.3);
-		color: white !important;
-	}
-	.btn-more i {
-		font-size: 0.9rem;
-		transition: transform 0.3s ease;
-		color: white;
-	}
-	.btn-more:hover i {
-		transform: translateX(4px);
-	}
-	@media (max-width: 600px) {
-		.activity-content {
-			flex-direction: column;
-		}
-		.activity-image {
-			width: 100%;
-		}
-	}
+  .about-intro {
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+  .activity {
+    margin-bottom: 4rem;
+  }
+  .activity h3 {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .activity-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .activity-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  .activity-text {
+    flex: 1;
+    min-width: 300px;
+  }
+  .activity-text p {
+    margin-bottom: 1rem;
+  }
+  .activity-cta {
+    margin-top: 1.5rem;
+    display: block;
+  }
+  .btn-more {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: var(--secondary) !important;
+    color: white !important;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none !important;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(179, 11, 84, 0.2);
+  }
+  .btn-more:hover {
+    background-color: #d4146a !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(179, 11, 84, 0.3);
+    color: white !important;
+  }
+  .btn-more i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    color: white;
+  }
+  .btn-more:hover i {
+    transform: translateX(4px);
+  }
+  @media (max-width: 600px) {
+    .activity-content {
+      flex-direction: column;
+    }
+    .activity-image {
+      width: 100%;
+    }
+  }
 </style>

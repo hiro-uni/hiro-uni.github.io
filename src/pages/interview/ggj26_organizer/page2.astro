@@ -1,39 +1,39 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import InterviewHeader from '../../../components/interview/InterviewHeader.astro';
-import InterviewIntro from '../../../components/interview/InterviewIntro.astro';
-import InterviewBody from '../../../components/interview/InterviewBody.astro';
-import Dialogue from '../../../components/interview/Dialogue.astro';
-import Pagination from '../../../components/interview/Pagination.astro';
-import OGP from '../../../layouts/OGP.astro';
+import Layout from "../../../layouts/Layout.astro";
+import InterviewHeader from "../../../components/interview/InterviewHeader.astro";
+import InterviewIntro from "../../../components/interview/InterviewIntro.astro";
+import InterviewBody from "../../../components/interview/InterviewBody.astro";
+import Dialogue from "../../../components/interview/Dialogue.astro";
+import Pagination from "../../../components/interview/Pagination.astro";
+import OGP from "../../../layouts/OGP.astro";
 
-import iconNakaoku from '../../../assets/ggj26_organizer/icon_nakaoku.jpg';
-import iconYamane from '../../../assets/ggj26_organizer/icon_yamane.jpg';
-import iconKafu from '../../../assets/ggj26_organizer/icon_kafu.png';
-import iconDai from '../../../assets/ggj26_organizer/icon_dai.png';
-import claudeImage from '../../../assets/ggj26_organizer/claude.png';
+import iconNakaoku from "../../../assets/ggj26_organizer/icon_nakaoku.jpg";
+import iconYamane from "../../../assets/ggj26_organizer/icon_yamane.jpg";
+import iconKafu from "../../../assets/ggj26_organizer/icon_kafu.png";
+import iconDai from "../../../assets/ggj26_organizer/icon_dai.png";
+import claudeImage from "../../../assets/ggj26_organizer/claude.png";
 
-import agentImage from '../../../assets/ggj26_organizer/ai_jammer.png';
+import agentImage from "../../../assets/ggj26_organizer/ai_jammer.png";
 
-import Image from 'astro/components/Image.astro';
+import Image from "astro/components/Image.astro";
 
 const participants = {
   nakaoku: {
     name: "広ユニ　ナカオク",
-    avatar: iconNakaoku.src
+    avatar: iconNakaoku.src,
   },
   yamane: {
     name: "広ユニ 山根",
-    avatar: iconYamane.src
+    avatar: iconYamane.src,
   },
   kafu: {
     name: "岡ユニ かふう",
-    avatar: iconKafu.src
+    avatar: iconKafu.src,
   },
   dai: {
     name: "讃岐GameN 渡辺",
-    avatar: iconDai.src
-  }
+    avatar: iconDai.src,
+  },
 };
 ---
 
@@ -41,10 +41,10 @@ const participants = {
   title="【GGJ26瀬戸内・中編】ゲームジャムの実験場とAI開発"
   description="瀬戸内のゲームジャムで広がるAI活用。ゲーム制作を実験する場としてのコミュニティと、開発手法の変化を聞きました。"
   ogImage={claudeImage.src}
-  pubDate={new Date('2026-02-15')}
+  pubDate={new Date("2026-02-15")}
   articleJsonLd={true}
 >
-  <InterviewHeader 
+  <InterviewHeader
     title="【GGJ26瀬戸内・中編】ゲームジャムの実験場とAI開発"
     category="INTERVIEW"
     date="2026.02.15"
@@ -55,54 +55,98 @@ const participants = {
   <InterviewBody>
     <h2>3. 「実験場」としてのゲームジャムと、AIという新たな相棒</h2>
 
-    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={participants.nakaoku.name}
+      avatar={participants.nakaoku.avatar}
+      isInterviewer={true}
+    >
       かふうさんから今年の開発風景を見ていて、技術的なトレンドや変化は感じましたか？
     </Dialogue>
 
-    <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
-      <strong>AIの進化と普及</strong>がすごいですね。<br>
+    <Dialogue
+      speaker={participants.kafu.name}
+      avatar={participants.kafu.avatar}
+    >
+      <strong>AIの進化と普及</strong>がすごいですね。
+      <br />
       去年はまだ「日本語は苦手だな」という感じだったのが、この1年でガラッと変わりました。岡山会場では、みんな当たり前のようにAIツールを使っています。
     </Dialogue>
 
-    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
-      確かに！ 瀬戸内界隈の人たちは、Claude Code や Antigravity などのAIツールを使ってゲームを作るのがもはや「当たり前」になっていますよね。<br>
-      大都市とかに比べて<strong>地方の場合、むしろゲームジャムやゲーム制作コミュニティの方が積極的にAIを導入しているんじゃないか</strong>と思うくらいです。
+    <Dialogue
+      speaker={participants.nakaoku.name}
+      avatar={participants.nakaoku.avatar}
+      isInterviewer={true}
+    >
+      確かに！ 瀬戸内界隈の人たちは、Claude Code や Antigravity
+      などのAIツールを使ってゲームを作るのがもはや「当たり前」になっていますよね。
+      <br />
+      大都市とかに比べて
+      <strong>
+        地方の場合、むしろゲームジャムやゲーム制作コミュニティの方が積極的にAIを導入しているんじゃないか
+      </strong>
+      と思うくらいです。
     </Dialogue>
 
-    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
-      それはやっぱり、ゲームジャムが<strong>「普段やらない実験をする場」</strong>だからでしょうね。
+    <Dialogue
+      speaker={participants.yamane.name}
+      avatar={participants.yamane.avatar}
+    >
+      それはやっぱり、ゲームジャムが
+      <strong>「普段やらない実験をする場」</strong>だからでしょうね。
       職場ではセキュリティやルールの関係でAI利用にリミッターをかけている人たちも、ここではリミッターを外して、「AIを全開で使ったらどうなるんだろう？」という実験をしているんです。
     </Dialogue>
 
-    <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
-      うちのチームでも、実験的に<strong>AIエージェントを進捗管理役としてDiscordに追加</strong>してみました。
+    <Dialogue
+      speaker={participants.kafu.name}
+      avatar={participants.kafu.avatar}
+    >
+      うちのチームでも、実験的に
+      <strong>AIエージェントを進捗管理役としてDiscordに追加</strong>
+      してみました。
     </Dialogue>
 
-    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
+    <Dialogue
+      speaker={participants.nakaoku.name}
+      avatar={participants.nakaoku.avatar}
+      isInterviewer={true}
+    >
       えっ、AIがチームメンバーとしてDiscordに常駐しているんですか？（笑）
     </Dialogue>
 
     <Image src={agentImage} alt="agent" />
 
-    <Dialogue speaker={participants.kafu.name} avatar={participants.kafu.avatar}>
-      はい。コロネちゃんと言うのですが、「クレジットに名前を載せようか」なんて話も出ています（笑）。<a href="https://openclaw.ai/">OpenClaw</a> のおかげでAIとの共同作業がすごくやりやすくなりましたね。来年には人間がいらなくなってるかも。（笑）
+    <Dialogue
+      speaker={participants.kafu.name}
+      avatar={participants.kafu.avatar}
+    >
+      はい。コロネちゃんと言うのですが、「クレジットに名前を載せようか」なんて話も出ています（笑）。
+      <a href="https://openclaw.ai/">OpenClaw</a>{" "}
+      のおかげでAIとの共同作業がすごくやりやすくなりましたね。来年には人間がいらなくなってるかも。（笑）
     </Dialogue>
 
-    <Dialogue speaker={participants.nakaoku.name} avatar={participants.nakaoku.avatar} isInterviewer={true}>
-      「AI初の Jammer（参加者）」が岡山から生まれたんですね（笑）。<br>
+    <Dialogue
+      speaker={participants.nakaoku.name}
+      avatar={participants.nakaoku.avatar}
+      isInterviewer={true}
+    >
+      「AI初の Jammer（参加者）」が岡山から生まれたんですね（笑）。
+      <br />
     </Dialogue>
 
-    <Dialogue speaker={participants.yamane.name} avatar={participants.yamane.avatar}>
-      かつてUnityというゲームエンジンが登場した時、プロのベテランが学生に遅れを取るような現象が起きましたけど、今まさにAIで同じことが起きている気がします。<br>
+    <Dialogue
+      speaker={participants.yamane.name}
+      avatar={participants.yamane.avatar}
+    >
+      かつてUnityというゲームエンジンが登場した時、プロのベテランが学生に遅れを取るような現象が起きましたけど、今まさにAIで同じことが起きている気がします。
+      <br />
       15年経ってまた新しい波が来ている。「先生が一番やばい（ついていけない）」みたいな状況も含めて、新たな実験の時代が来ているなと思います。
     </Dialogue>
 
-    <Pagination 
-      currentPage={2} 
-      totalPages={3} 
-      baseUrl="/interview/ggj26_organizer/page" 
+    <Pagination
+      currentPage={2}
+      totalPages={3}
+      baseUrl="/interview/ggj26_organizer/page"
     />
-
   </InterviewBody>
 </Layout>
 

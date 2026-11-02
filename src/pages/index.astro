@@ -1,283 +1,349 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import hiroshimaImg from '../assets/hiroshima.png';
-import mokumokuBanner from '../assets/mokumoku_banner.png';
-import godotAiGameJamBanner from '../assets/godot_ai_gamejam_banner.png';
-import gjtBanner from '../assets/gjt/banner_2026.png';
-import { Image } from 'astro:assets';
+import Layout from "../layouts/Layout.astro";
+import hiroshimaImg from "../assets/hiroshima.png";
+import mokumokuBanner from "../assets/mokumoku_banner.png";
+import godotAiGameJamBanner from "../assets/godot_ai_gamejam_banner.png";
+import gjtBanner from "../assets/gjt/banner_2026.png";
+import { Image } from "astro:assets";
 ---
 
 <Layout
-	title="広島Unity勉強会へようこそ！"
-	description="広島で活動するUnityコミュニティ。初心者からプロまで、ゲーム開発・XR・もくもく会・ゲームジャムを楽しみながら学べます。"
+  title="広島Unity勉強会へようこそ！"
+  description="広島で活動するUnityコミュニティ。初心者からプロまで、ゲーム開発・XR・もくもく会・ゲームジャムを楽しみながら学べます。"
 >
-	<section class="hero">
-		<div class="hero-content">
-			<h2>広島でUnityを!<br />楽しく学んでいくコミュニティ</h2>
-			<p class="hero-description">
-				初心者からプロまで、ゲーム開発やXR技術に興味がある仲間が集まり、<br>交流しながらスキルを高め合う地域密着型の <strong><i class="fa-brands fa-unity"></i>&nbsp;Unityコミュニティ</strong> です。
-			</p>
-			<div class="hero-buttons">
-				<a href="https://hirouni.connpass.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-					<i class="fa-solid fa-calendar-check"></i> イベントに参加する
-				</a>
-				<a href="/about" class="btn btn-secondary-outline">
-					活動について詳しく <i class="fa-solid fa-arrow-right"></i>
-				</a>
-			</div>
-		</div>
-	</section>
+  <section class="hero">
+    <div class="hero-content">
+      <h2>
+        広島でUnityを!
+        <br />
+        楽しく学んでいくコミュニティ
+      </h2>
+      <p class="hero-description">
+        初心者からプロまで、ゲーム開発やXR技術に興味がある仲間が集まり、
+        <br />
+        交流しながらスキルを高め合う地域密着型の{" "}
+        <strong>
+          <i class="fa-brands fa-unity"></i>&nbsp;Unityコミュニティ
+        </strong>{" "}
+        です。
+      </p>
+      <div class="hero-buttons">
+        <a
+          href="https://hirouni.connpass.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          <i class="fa-solid fa-calendar-check"></i> イベントに参加する
+        </a>
+        <a href="/about" class="btn btn-secondary-outline">
+          活動について詳しく <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
 
-	<section class="activities">
-		<h2 class="section-title">主な活動内容</h2>
-		<div class="activity-grid">
-			<div class="activity-card">
-				<div class="icon-wrapper"><i class="fa-solid fa-laptop-code"></i></div>
-				<h3>もくもく会</h3>
-				<p>各自の作業を進めるためのサードプレイス。雑談、分からないところを教え合ったりします。</p>
-			</div>
-			<div class="activity-card">
-				<div class="icon-wrapper"><i class="fa-solid fa-chalkboard-user"></i></div>
-				<h3>セミナー・講座</h3>
-				<p>Unityに関する様々なテーマで学習します。初学者および開発者向けのハンズオンも開催しています。</p>
-			</div>
-			<div class="activity-card">
-				<div class="icon-wrapper"><i class="fa-solid fa-gamepad"></i></div>
-				<h3>ゲームジャム</h3>
-				<p>短期間で集中してゲームを制作するイベントです。チーム開発の楽しさ、一本のゲームを完成させる体験を。</p>
-			</div>
-			<div class="activity-card">
-				<div class="icon-wrapper"><i class="fa-solid fa-comments"></i></div>
-				<h3>技術・交流会</h3>
-				<p>Unityや素材作成、XR技術など、幅広いテーマで情報交換や相談を行っています。</p>
-			</div>
-		</div>
-	</section>
+  <section class="activities">
+    <h2 class="section-title">主な活動内容</h2>
+    <div class="activity-grid">
+      <div class="activity-card">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <h3>もくもく会</h3>
+        <p>
+          各自の作業を進めるためのサードプレイス。雑談、分からないところを教え合ったりします。
+        </p>
+      </div>
+      <div class="activity-card">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-chalkboard-user"></i>
+        </div>
+        <h3>セミナー・講座</h3>
+        <p>
+          Unityに関する様々なテーマで学習します。初学者および開発者向けのハンズオンも開催しています。
+        </p>
+      </div>
+      <div class="activity-card">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-gamepad"></i>
+        </div>
+        <h3>ゲームジャム</h3>
+        <p>
+          短期間で集中してゲームを制作するイベントです。チーム開発の楽しさ、一本のゲームを完成させる体験を。
+        </p>
+      </div>
+      <div class="activity-card">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-comments"></i>
+        </div>
+        <h3>技術・交流会</h3>
+        <p>
+          Unityや素材作成、XR技術など、幅広いテーマで情報交換や相談を行っています。
+        </p>
+      </div>
+    </div>
+  </section>
 
-	<section class="latest-info">
-		<div class="info-card">
-			<h2 class="section-title">最新情報</h2>
-			
-			<div class="special-event">
-				<a href="https://gjtakahashi.okayamaunity.com" target="_blank" rel="noopener noreferrer" class="top-banner-link">
-					<Image src={gjtBanner} alt="ゲームジャム高梁 2026 バナー" class="top-banner-img" />
-				</a>
-				<p>10月17日(土)・18日(日)開催！「ゲームジャム高梁 2026」で、30時間でゲームを創り出そう！ <i class="fa-solid fa-arrow-right"></i></p>
-			</div>
+  <section class="latest-info">
+    <div class="info-card">
+      <h2 class="section-title">最新情報</h2>
 
-			<p>最新のイベント情報の掲載や参加申し込みは、connpassで行っています。<br>ぜひグループをフォローしてください！</p>
-			<a href="https://hirouni.connpass.com/" target="_blank" rel="noopener noreferrer" class="connpass-banner">
-				<i class="fa-solid fa-external-link-alt"></i> 広島Unity勉強会 connpassページ
-			</a>
-		</div>
-	</section>
+      <div class="special-event">
+        <a
+          href="https://gjtakahashi.okayamaunity.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="top-banner-link"
+        >
+          <Image
+            src={gjtBanner}
+            alt="ゲームジャム高梁 2026 バナー"
+            class="top-banner-img"
+          />
+        </a>
+        <p>
+          10月17日(土)・18日(日)開催！「ゲームジャム高梁
+          2026」で、30時間でゲームを創り出そう！{" "}
+          <i class="fa-solid fa-arrow-right"></i>
+        </p>
+      </div>
+
+      <p>
+        最新のイベント情報の掲載や参加申し込みは、connpassで行っています。
+        <br />
+        ぜひグループをフォローしてください！
+      </p>
+      <a
+        href="https://hirouni.connpass.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="connpass-banner"
+      >
+        <i class="fa-solid fa-external-link-alt"></i> 広島Unity勉強会
+        connpassページ
+      </a>
+    </div>
+  </section>
 </Layout>
 
 <style>
-	/* Hero Section */
-	.hero {
-		padding: 4rem 2rem;
-		background: linear-gradient(135deg, rgba(179, 11, 84, 0.9) 0%, rgba(255, 77, 148, 0.8) 100%), url(/src/assets/hiroshima.png);
-		background-size: cover;
-		background-position: center;
-		background-blend-mode: multiply;
-		border-radius: 12px;
-		color: white;
-		margin-bottom: 3rem;
-		text-align: center;
-		position: relative;
-		overflow: hidden;
-	}
-	/* Fallback for environments where the image path might differ */
-	.hero {
-		background-image: linear-gradient(135deg, rgba(179, 11, 84, 0.9) 0%, rgba(255, 77, 148, 0.8) 100%), url('../assets/hiroshima.png');
-	}
-	.hero-content h2 {
-		font-size: 2.5rem;
-		font-weight: 800;
-		margin-bottom: 1.5rem;
-		line-height: 1.2;
-	}
-	.hero-description {
-		font-size: 1.1rem;
-		max-width: 600px;
-		margin: 0 auto 2rem;
-		opacity: 0.9;
-	}
-	.hero-buttons {
-		display: flex;
-		gap: 1rem;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
+  /* Hero Section */
+  .hero {
+    padding: 4rem 2rem;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(179, 11, 84, 0.9) 0%,
+        rgba(255, 77, 148, 0.8) 100%
+      ),
+      url(/src/assets/hiroshima.png);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    border-radius: 12px;
+    color: white;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Fallback for environments where the image path might differ */
+  .hero {
+    background-image:
+      linear-gradient(
+        135deg,
+        rgba(179, 11, 84, 0.9) 0%,
+        rgba(255, 77, 148, 0.8) 100%
+      ),
+      url("../assets/hiroshima.png");
+  }
+  .hero-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  .hero-description {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
-	/* Buttons */
-	.btn {
-		display: inline-block;
-		padding: 0.8rem 1.5rem;
-		border-radius: 50px;
-		font-weight: bold;
-		text-decoration: none;
-		transition: all 0.2s;
-	}
-	.btn-primary {
-		background-color: white;
-		color: #b30b54;
-	}
-	.btn-primary:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-	}
-	.btn-secondary-outline {
-		background-color: transparent;
-		color: white;
-		border: 2px solid white;
-	}
-	.btn-secondary-outline:hover {
-		background-color: rgba(255,255,255,0.1);
-	}
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background-color: white;
+    color: #b30b54;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  .btn-secondary-outline {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+  .btn-secondary-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 
-	/* Sections */
-	.section-title {
-		text-align: center;
-		margin-bottom: 2.5rem;
-		border-bottom: none;
-		position: relative;
-		padding-bottom: 1rem;
-	}
-	.section-title::after {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 50px;
-		height: 3px;
-		background-color: #b30b54;
-	}
+  /* Sections */
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    border-bottom: none;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+  .section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: #b30b54;
+  }
 
-	/* Activity Grid */
-	.activity-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 2rem;
-		margin-bottom: 4rem;
-	}
-	.activity-card {
-		background: #f8f9fa;
-		padding: 2rem;
-		border-radius: 12px;
-		transition: transform 0.2s;
-		text-align: center;
-	}
-	.activity-card:hover {
-		transform: translateY(-5px);
-		background: white;
-		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-	}
-	.icon-wrapper {
-		font-size: 2.5rem;
-		color: #b30b54;
-		margin-bottom: 1rem;
-	}
-	.activity-card h3 {
-		margin-bottom: 1rem;
-	}
-	.activity-card p {
-		font-size: 0.9rem;
-		color: #666;
-		margin: 0;
-	}
+  /* Activity Grid */
+  .activity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .activity-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    transition: transform 0.2s;
+    text-align: center;
+  }
+  .activity-card:hover {
+    transform: translateY(-5px);
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+  .icon-wrapper {
+    font-size: 2.5rem;
+    color: #b30b54;
+    margin-bottom: 1rem;
+  }
+  .activity-card h3 {
+    margin-bottom: 1rem;
+  }
+  .activity-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+  }
 
-	/* Latest Info */
-	.latest-info {
-		margin-bottom: 2rem;
-	}
-	.info-card {
-		padding: 3rem 2rem;
-		background: white;
-		border: 1px solid #eee;
-		border-radius: 12px;
-		text-align: center;
-	}
+  /* Latest Info */
+  .latest-info {
+    margin-bottom: 2rem;
+  }
+  .info-card {
+    padding: 3rem 2rem;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    text-align: center;
+  }
 
-	/* Special Event Banner */
-	.special-event {
-		margin: 0 auto 2.5rem;
-		border-radius: 12px;
-		overflow: hidden;
-		box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	}
-	.special-event:hover {
-		transform: scale(1.02);
-		box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-	}
-	.top-banner-link {
-		display: block;
-		position: relative;
-		text-decoration: none;
-	}
-	.top-banner-img {
-		width: 100%;
-		height: auto;
-		display: block;
-	}
-	.banner-overlay {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background: linear-gradient(transparent, rgba(0,0,0,0.7));
-		color: white;
-		padding: 2rem 1rem 1rem;
-		opacity: 0;
-		transition: opacity 0.3s;
-		display: flex;
-		justify-content: center;
-		align-items: flex-end;
-	}
-	.top-banner-link:hover .banner-overlay {
-		opacity: 1;
-	}
-	.banner-overlay span {
-		background: #b30b54;
-		padding: 0.5rem 1.5rem;
-		border-radius: 50px;
-		font-weight: bold;
-		font-size: 0.9rem;
-		box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-	}
+  /* Special Event Banner */
+  .special-event {
+    margin: 0 auto 2.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .special-event:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  .top-banner-link {
+    display: block;
+    position: relative;
+    text-decoration: none;
+  }
+  .top-banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    padding: 2rem 1rem 1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .top-banner-link:hover .banner-overlay {
+    opacity: 1;
+  }
+  .banner-overlay span {
+    background: #b30b54;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
 
-	.connpass-banner {
-		display: inline-block;
-		margin-top: 1.5rem;
-		padding: 1rem 2rem;
-		background-color: #d31d00;
-		color: white;
-		border-radius: 8px;
-		text-decoration: none;
-		font-weight: bold;
-		transition: background-color 0.2s;
-	}
-	.connpass-banner:hover {
-		background-color: #2980b9;
-	}
+  .connpass-banner {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background-color: #d31d00;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s;
+  }
+  .connpass-banner:hover {
+    background-color: #2980b9;
+  }
 
-	@media (max-width: 600px) {
-		.hero {
-			padding: 3rem 1rem;
-		}
-		.hero-content h2 {
-			font-size: 1.8rem;
-		}
-		.activity-grid {
-			grid-template-columns: 1fr;
-		}
-		.banner-overlay {
-			opacity: 1;
-			padding: 1rem;
-			background: rgba(0,0,0,0.3);
-		}
-	}
+  @media (max-width: 600px) {
+    .hero {
+      padding: 3rem 1rem;
+    }
+    .hero-content h2 {
+      font-size: 1.8rem;
+    }
+    .activity-grid {
+      grid-template-columns: 1fr;
+    }
+    .banner-overlay {
+      opacity: 1;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
 </style>
