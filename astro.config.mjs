@@ -39,6 +39,7 @@ export default defineConfig({
   base: "/",
 
   redirects: {
+    "/ggj27": "/ggj",
     "/ggj25_interview/interview": "/interview/ggj25/page",
   },
 

@@ -4,6 +4,7 @@ import hiroshimaImg from "../assets/hiroshima.png";
 import mokumokuBanner from "../assets/mokumoku_banner.png";
 import godotAiGameJamBanner from "../assets/godot_ai_gamejam_banner.png";
 import gjtBanner from "../assets/gjt/banner_2026.png";
+import ggj27Banner from "../assets/ggj27/banner.jpg";
 import { Image } from "astro:assets";
 ---
 
@@ -88,6 +89,23 @@ import { Image } from "astro:assets";
   <section class="latest-info">
     <div class="info-card">
       <h2 class="section-title">最新情報</h2>
+
+      <div class="special-event">
+        <a href="/ggj" class="top-banner-link">
+          <Image
+            src={ggj27Banner}
+            alt="Global Game Jam 2027 瀬戸内会場 in 広島 バナー"
+            class="top-banner-img"
+          />
+        </a>
+        <p>
+          <a href="/ggj" class="special-event-link">
+            2027年1月29日(金)〜31日(日)開催！「Global Game Jam 2027 瀬戸内会場
+            in 広島」仲間とゲームをつくる48時間！{" "}
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </p>
+      </div>
 
       <div class="special-event">
         <a
@@ -278,6 +296,14 @@ import { Image } from "astro:assets";
   .special-event:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  .special-event-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .special-event-link:hover {
+    color: #b30b54;
   }
   .top-banner-link {
     display: block;

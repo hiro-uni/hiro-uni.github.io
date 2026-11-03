@@ -143,7 +143,7 @@
     color: var(--blue);
   }
   .wordmark-logo {
-    height: 44px;
+    height: 56px;
     width: auto;
     object-fit: contain;
     display: block;
@@ -890,7 +890,7 @@
       font-size: 1.5rem;
     }
     .site-header .wordmark-logo {
-      height: 38px;
+      height: 46px;
     }
     nav {
       gap: 0.875rem;
