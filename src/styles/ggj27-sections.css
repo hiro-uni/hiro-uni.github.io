@@ -20,7 +20,7 @@
   gap: 1.5rem;
 }
 .jam-photo-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin: 2.5rem 0 2rem;
 }
 .jam-photo-grid figure {
@@ -235,4 +235,20 @@
 .jam-day-grid .jam-timeline-note {
   margin-top: 1rem;
   font-size: 0.8125rem;
+}
+
+.jam-first-visit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: #e9eee5;
+  border-radius: 0.75rem;
+}
+.jam-first-visit h3 { margin-bottom: 0.5rem; }
+.jam-first-visit p { color: #52615e; font-size: 0.9375rem; }
+.jam-first-links { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+@media (max-width: 799px) {
+  .jam-first-visit { grid-template-columns: minmax(0, 1fr); }
 }
