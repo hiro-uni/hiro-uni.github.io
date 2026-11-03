@@ -1436,6 +1436,16 @@
   .entry-panel > .button {
     width: fit-content;
     margin-inline: auto;
+    color: var(--ink);
+    background: #fff;
+    box-shadow: 0 4px 16px #102d2a55;
+  }
+  .entry-panel > .button:hover {
+    color: var(--ink);
+    background: var(--lime);
+  }
+  .entry-panel > .button:focus-visible {
+    outline-color: #fff;
   }
   .entry-panel > .note,
   .entry-panel > .entry-facts {
@@ -1713,7 +1723,7 @@
       padding-inline: 0.25rem;
     }
     .site-header .nav-entry {
-      padding-inline: 0.75rem;
+      display: none;
     }
     .countdown-banner-copy > strong {
       white-space: normal;
