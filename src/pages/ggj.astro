@@ -495,80 +495,6 @@ const eventData = {
         </div>
       </section>
       <section
-        class="section px-6 py-16 md:py-24 process"
-        id="experience"
-        tabindex="-1"
-        aria-labelledby="process-title"
-      >
-        <h2 id="process-title">
-          出会って、つくって、
-          <br class="mobile-only" />
-          遊んでみる。
-        </h2>
-        <p class="section-intro">
-          <strong>48時間で体験する、ゲームづくりの流れ。</strong>
-        </p>
-        <ol role="list" class="process-list">
-          <li>
-            <span class="step-number" aria-hidden="true">
-              01
-            </span>
-            <h3>出会う・考える</h3>
-            <p>
-              テーマを聞いたら、自己紹介とアイデア交換。得意なことも、やってみたいことも、まずは話してみよう。
-            </p>
-          </li>
-          <li>
-            <span class="step-number" aria-hidden="true">
-              02
-            </span>
-            <h3>つくる・試す</h3>
-            <p>
-              描く、組む、鳴らす。役割を分けて、さっそく手を動かそう。小さくても、遊べるゲームを目指してみよう。
-            </p>
-          </li>
-          <li>
-            <span class="step-number" aria-hidden="true">
-              03
-            </span>
-            <h3>遊ぶ・共有する</h3>
-            <p>
-              できたゲームを見せ合って、遊んで、感想を交換。「次はこんなのをつくりたい！」が見つかるかも。
-            </p>
-          </li>
-        </ol>
-        <a class="button button-outline" href="#entry">
-          <span class="button-label">
-            <i class="fa-solid fa-shoe-prints" aria-hidden="true"></i>
-            参加の流れについて見る
-          </span>
-          <span class="button-arrow" aria-hidden="true">
-            <i class="fa-solid fa-arrow-down"></i>
-          </span>
-        </a>
-        <figure
-          class="character-showcase showcase-right"
-          data-engine="unreal"
-          aria-label="UNREAL ENGINE キャラクター"
-        >
-          <figcaption>
-            <b class="character-engine">
-              UNREAL<span>ENGINE</span>
-            </b>
-            <span class="character-name">Nina Kuratsuki / Gray-chan</span>
-          </figcaption>
-          <Image
-            class="showcase-image"
-            src={gray}
-            alt="Gray-chan"
-            width="520"
-            height="735"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-      </section>
-      <section
         class="section px-6 py-16 md:py-24 info"
         id="info"
         tabindex="-1"
@@ -752,7 +678,7 @@ const eventData = {
         tabindex="-1"
         aria-labelledby="faq-title"
       >
-        <div class="split-layout">
+        <div class="split-layout faq-layout">
           <div>
             <h2 id="faq-title">
               初めての、不安を
@@ -971,6 +897,27 @@ const eventData = {
               </p>
             </details>
           </div>
+        <figure
+          class="character-showcase showcase-right"
+          data-engine="unreal"
+          aria-label="UNREAL ENGINE キャラクター"
+        >
+          <figcaption>
+            <b class="character-engine">
+              UNREAL<span>ENGINE</span>
+            </b>
+            <span class="character-name">Nina Kuratsuki / Gray-chan</span>
+          </figcaption>
+          <Image
+            class="showcase-image"
+            src={gray}
+            alt="Gray-chan"
+            width="520"
+            height="735"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
         </div>
       </section>
       <section
@@ -1041,175 +988,6 @@ const eventData = {
                 広島では、全編を通して解説者・司会進行を務める。
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-      <section
-        class="section px-6 py-16 md:py-24 sponsors"
-        id="sponsors"
-        tabindex="-1"
-        aria-labelledby="sponsors-title"
-      >
-        <div class="split-layout">
-          <div>
-            <h2 id="sponsors-title">
-              つくるきっかけを、
-              <br />
-              ともに。
-            </h2>
-            <p>
-              GGJ瀬戸内の活動趣旨に賛同し、温かく支えてくださっているスポンサーの皆様です。
-            </p>
-          </div>
-          <a
-            class="sponsor-link"
-            href="https://www.lemonte.net/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/ggj27/assets/lemon-petit-game.png"
-              alt="スポンサー れもんプチゲーム屋"
-              width="800"
-              height="200"
-              loading="lazy"
-              decoding="async"
-            />
-            <span>
-              れもんプチゲーム屋 公式サイト{" "}
-              <i
-                class="fa-solid fa-arrow-up-right-from-square"
-                aria-hidden="true"
-              ></i>
-            </span>
-            <span class="sr-only">（新しいタブで開きます）</span>
-          </a>
-        </div>
-        <div class="community-supporters">
-          <h3 class="community-supporters-title">コミュニティサポーター</h3>
-          <ul class="community-supporters-list" role="list">
-            <li>
-              <a
-                class="community-supporter-link"
-                href="https://okauni.jimdofree.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>岡山Unity勉強会</span>
-                <i
-                  class="fa-solid fa-arrow-up-right-from-square"
-                  aria-hidden="true"
-                ></i>
-                <span class="sr-only">（新しいタブで開きます）</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="community-supporter-link"
-                href="https://www.sanukigamen.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>一般社団法人 讃岐GameN</span>
-                <i
-                  class="fa-solid fa-arrow-up-right-from-square"
-                  aria-hidden="true"
-                ></i>
-                <span class="sr-only">（新しいタブで開きます）</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="community-supporter-link"
-                href="http://hsc2dx.sblo.jp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>広島ゲームエンジンユーザーグループ</span>
-                <i
-                  class="fa-solid fa-arrow-up-right-from-square"
-                  aria-hidden="true"
-                ></i>
-                <span class="sr-only">（新しいタブで開きます）</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="sponsor-cooperation-footer">
-          <div class="sponsor-cooperation-content">
-            <h3>ゲームづくりの挑戦を、一緒に支えてください！</h3>
-            <p class="sponsor-cooperation-intro">
-              <strong>本イベントは手弁当で開催しています。</strong>
-              広島で参加者が技術交流＆創作に打ち込める場を作るため、みなさまの経験や差し入れなど、さまざまな形でのご支援をお願いいたします。
-            </p>
-            <ul class="sponsor-cooperation-options" role="list">
-              <li>
-                <i class="fa-solid fa-user-group" aria-hidden="true"></i>
-                <div>
-                  <strong>クリエイター・技術者さまのご参加</strong>
-                  <span>
-                    参加者へのアドバイスや交流を通じて、ゲームづくりを支えてくださる方。
-                  </span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-gift" aria-hidden="true"></i>
-                <div>
-                  <strong>フード、ドリンク、ノベルティ提供</strong>
-                  <span>
-                    制作に取り組む参加者を応援する、コーヒーブレイクやグッズのご提供。
-                  </span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-champagne-glasses" aria-hidden="true"></i>
-                <div>
-                  <strong>アフターパーティ スポンサー</strong>
-                  <span>
-                    開発終了後の開発者交流会へのご支援、およびご参加。
-                  </span>
-                </div>
-              </li>
-            </ul>
-            <div class="sponsor-cooperation-benefits">
-              <h4>
-                ご協力頂いた方には、イベント内で以下などのお礼をいたします。
-              </h4>
-              <ul role="list">
-                <li>
-                  <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
-                  <span>お預かりしたチラシ・頒布物の配布</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-bullhorn" aria-hidden="true"></i>
-                  <span>SNSでの告知</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-microphone" aria-hidden="true"></i>
-                  <span>イベント内でのご紹介</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="sponsor-cooperation-action">
-            <a
-              class="button button-outline sponsor-cooperation"
-              href="https://hirouni.connpass.com/event/408904/inquiry/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="button-label">
-                <i class="fa-solid fa-handshake" aria-hidden="true"></i>
-                スポンサー協力のお問合せ
-              </span>
-              <span class="button-arrow" aria-hidden="true">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-              <span class="sr-only">（新しいタブで開きます）</span>
-            </a>
-            <p class="note" id="sponsor-form-status">
-              3営業日以内にご連絡いたします。お気軽にお問い合わせください。
-            </p>
           </div>
         </div>
       </section>
@@ -1430,6 +1208,175 @@ const eventData = {
             decoding="async"
           />
         </figure>
+      </section>
+      <section
+        class="section px-6 py-16 md:py-24 sponsors"
+        id="sponsors"
+        tabindex="-1"
+        aria-labelledby="sponsors-title"
+      >
+        <div class="split-layout">
+          <div>
+            <h2 id="sponsors-title">
+              つくるきっかけを、
+              <br />
+              ともに。
+            </h2>
+            <p>
+              GGJ瀬戸内の活動趣旨に賛同し、温かく支えてくださっているスポンサーの皆様です。
+            </p>
+          </div>
+          <a
+            class="sponsor-link"
+            href="https://www.lemonte.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/ggj27/assets/lemon-petit-game.png"
+              alt="スポンサー れもんプチゲーム屋"
+              width="800"
+              height="200"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>
+              れもんプチゲーム屋 公式サイト{" "}
+              <i
+                class="fa-solid fa-arrow-up-right-from-square"
+                aria-hidden="true"
+              ></i>
+            </span>
+            <span class="sr-only">（新しいタブで開きます）</span>
+          </a>
+        </div>
+        <div class="community-supporters">
+          <h3 class="community-supporters-title">コミュニティサポーター</h3>
+          <ul class="community-supporters-list" role="list">
+            <li>
+              <a
+                class="community-supporter-link"
+                href="https://okauni.jimdofree.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>岡山Unity勉強会</span>
+                <i
+                  class="fa-solid fa-arrow-up-right-from-square"
+                  aria-hidden="true"
+                ></i>
+                <span class="sr-only">（新しいタブで開きます）</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="community-supporter-link"
+                href="https://www.sanukigamen.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>一般社団法人 讃岐GameN</span>
+                <i
+                  class="fa-solid fa-arrow-up-right-from-square"
+                  aria-hidden="true"
+                ></i>
+                <span class="sr-only">（新しいタブで開きます）</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="community-supporter-link"
+                href="http://hsc2dx.sblo.jp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>広島ゲームエンジンユーザーグループ</span>
+                <i
+                  class="fa-solid fa-arrow-up-right-from-square"
+                  aria-hidden="true"
+                ></i>
+                <span class="sr-only">（新しいタブで開きます）</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sponsor-cooperation-footer">
+          <div class="sponsor-cooperation-content">
+            <h3>ゲームづくりの挑戦を、一緒に支えてください！</h3>
+            <p class="sponsor-cooperation-intro">
+              <strong>本イベントは手弁当で開催しています。</strong>
+              広島で参加者が技術交流＆創作に打ち込める場を作るため、みなさまの経験や差し入れなど、さまざまな形でのご支援をお願いいたします。
+            </p>
+            <ul class="sponsor-cooperation-options" role="list">
+              <li>
+                <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+                <div>
+                  <strong>クリエイター・技術者さまのご参加</strong>
+                  <span>
+                    参加者へのアドバイスや交流を通じて、ゲームづくりを支えてくださる方。
+                  </span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-gift" aria-hidden="true"></i>
+                <div>
+                  <strong>フード、ドリンク、ノベルティ提供</strong>
+                  <span>
+                    制作に取り組む参加者を応援する、コーヒーブレイクやグッズのご提供。
+                  </span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-champagne-glasses" aria-hidden="true"></i>
+                <div>
+                  <strong>アフターパーティ スポンサー</strong>
+                  <span>
+                    開発終了後の開発者交流会へのご支援、およびご参加。
+                  </span>
+                </div>
+              </li>
+            </ul>
+            <div class="sponsor-cooperation-benefits">
+              <h4>
+                ご協力頂いた方には、イベント内で以下などのお礼をいたします。
+              </h4>
+              <ul role="list">
+                <li>
+                  <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                  <span>お預かりしたチラシ・頒布物の配布</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-bullhorn" aria-hidden="true"></i>
+                  <span>SNSでの告知</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+                  <span>イベント内でのご紹介</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="sponsor-cooperation-action">
+            <a
+              class="button button-outline sponsor-cooperation"
+              href="https://hirouni.connpass.com/event/408904/inquiry/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="button-label">
+                <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                スポンサー協力のお問合せ
+              </span>
+              <span class="button-arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </span>
+              <span class="sr-only">（新しいタブで開きます）</span>
+            </a>
+            <p class="note" id="sponsor-form-status">
+              3営業日以内にご連絡いたします。お気軽にお問い合わせください。
+            </p>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="site-footer">

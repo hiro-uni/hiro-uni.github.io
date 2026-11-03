@@ -258,3 +258,13 @@
 @media (max-width: 799px) {
   .jam-first-visit { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Place Gray below the FAQ introduction on desktop and after the questions on mobile. */
+.faq-layout > .character-showcase {
+  margin: 1rem 0 0;
+}
+@media (min-width: 801px) {
+  .faq-layout { row-gap: 1.5rem; }
+  .faq-layout > .faq-list { grid-column: 2; grid-row: 1 / span 2; }
+  .faq-layout > .character-showcase { grid-column: 1; grid-row: 2; align-self: start; }
+}

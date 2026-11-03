@@ -621,7 +621,9 @@
     font-size: 0.9375rem;
   }
   .mc {
-    padding-top: 2rem;
+    background: #e9eee5;
+    max-width: none;
+    padding-inline: max(1.5rem, 50vw - 596px);
   }
   .mc-layout {
     grid-template-columns: 0.7fr 1.3fr;
