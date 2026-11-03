@@ -176,6 +176,12 @@
 .jam-stay-grid h3 {
   margin-bottom: 0.5rem;
 }
+.jam-stay-note {
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
 .jam-entry-reminder {
   margin-bottom: 1rem;
   color: var(--blue);
