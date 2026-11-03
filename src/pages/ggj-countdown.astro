@@ -160,6 +160,7 @@ title: "GGJ 2027 Countdown";
       }
 
       .target-date {
+        font-variant-numeric: tabular-nums;
         font-size: 1.5rem;
         color: var(--ggj-purple);
         font-weight: 700;
@@ -205,10 +206,17 @@ title: "GGJ 2027 Countdown";
         user-select: none;
         white-space: nowrap;
         opacity: 0;
-        transition: opacity 1s ease-in-out;
+        text-shadow:
+          0 1px 8px #fff,
+          0 1px 3px #fff;
+        transition:
+          opacity 1s ease-in-out,
+          transform 1s ease-in-out;
+        transform: translateY(5px);
       }
       .city-label.visible {
         opacity: 1;
+        transform: translateY(0);
       }
       .city-label.hiroshima-label {
         color: var(--ggj-logo);
@@ -229,14 +237,13 @@ title: "GGJ 2027 Countdown";
         <div class="logo-box">J</div>
       </div>
       <div class="sub-logo">2027</div>
-      <div class="location-tag">
-        SETOUCHI in HIROSHIMA <br />
-        (TBD)
-      </div>
+      <div class="location-tag">SETOUCHI in HIROSHIMA</div>
     </div>
 
     <div class="countdown-info">
-      <div class="event-details">GGJ 2027 Setouchi in Hiroshima Start in</div>
+      <div id="countdown-label" class="event-details">
+        GGJ 2027 Setouchi in Hiroshima starts in
+      </div>
       <div id="countdown-text" class="target-date">
         00Days 00:00:00
       </div>
@@ -251,30 +258,34 @@ title: "GGJ 2027 Countdown";
       } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
       // --- Logic ---
-      const targetDate = new Date("2027-01-29T17:00:00").getTime();
+      // The Hiroshima event times are fixed to Japan Standard Time for every viewer.
+      const startDate = Date.parse("2027-01-29T17:00:00+09:00");
+      const endDate = Date.parse("2027-01-31T17:00:00+09:00");
       const countdownElem = document.getElementById("countdown-text");
+      const countdownLabel = document.getElementById("countdown-label");
 
       function updateCountdownText() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
+        const now = Date.now();
+        const finished = now >= endDate;
+        const started = now >= startDate;
+        const distance = Math.max(0, (started ? endDate : startDate) - now);
+        const totalSeconds = Math.ceil(distance / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
 
-        if (distance < 0) {
-          if (countdownElem) countdownElem.innerHTML = "Jam Has Finished!";
-          return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        if (countdownLabel) {
+          countdownLabel.textContent = finished
+            ? "GGJ 2027 Setouchi in Hiroshima"
+            : `GGJ 2027 Setouchi in Hiroshima ${started ? "ends" : "starts"} in`;
         }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
         if (countdownElem) {
-          countdownElem.innerHTML = `${days.toString().padStart(2, "0")}Days ${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+          countdownElem.textContent = finished
+            ? "Jam has finished!"
+            : `${String(days).padStart(2, "0")} Days ${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
         }
-
-        return { days, hours, minutes, seconds };
+        return totalSeconds;
       }
 
       // --- City Data & Helpers ---
@@ -287,6 +298,9 @@ title: "GGJ 2027 Countdown";
         { name: "Kanagawa", lat: 35.44417, lon: 139.63806 },
         { name: "Aichi", lat: 35.18028, lon: 136.90667 },
         { name: "Okayama", lat: 34.66167, lon: 133.935 },
+        { name: "Takamatsu", lat: 34.3428, lon: 134.0466 },
+        { name: "Kyoto", lat: 35.0116, lon: 135.7681 },
+        { name: "Osaka", lat: 34.6937, lon: 135.5023 },
         { name: "Fukuoka", lat: 33.60639, lon: 130.41806 },
         { name: "Kumamoto", lat: 32.78972, lon: 130.74167 },
         { name: "Kagoshima", lat: 31.56028, lon: 130.55806 },
@@ -509,6 +523,12 @@ title: "GGJ 2027 Countdown";
 
       // --- Floating Numbers ---
       let currentSecond = -1;
+      let nextCityAt = 0;
+      let cityIndex = 1;
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      const clock = new THREE.Clock();
 
       // --- City Animation Management ---
       const activeCities = new Map();
@@ -522,23 +542,25 @@ title: "GGJ 2027 Countdown";
           if (hiroshima) activateCity(hiroshima, true);
         }
 
-        // Randomly add a city
-        if (activeCities.size < 8 && Math.random() < 0.05) {
-          const availableCities = cities.filter(
-            (c) => !activeCities.has(c.name),
-          );
-          if (availableCities.length > 0) {
-            const city =
-              availableCities[
-                Math.floor(Math.random() * availableCities.length)
-              ];
-            activateCity(city);
+        // Introduce cities at a measured pace, with enough time to read each name.
+        const now = Date.now();
+        if (now >= nextCityAt && activeCities.size < 5) {
+          for (let attempts = 0; attempts < cities.length; attempts++) {
+            const city = cities[cityIndex++ % cities.length];
+            if (!activeCities.has(city.name)) {
+              activateCity(city);
+              break;
+            }
           }
+          nextCityAt = now + 1800;
         }
 
-        // Cleanup old cities
-        activeCities.forEach((data) => {
-          if (name !== "Hiroshima" && Date.now() - data.startTime > 5000) {
+        activeCities.forEach((data, name) => {
+          if (
+            !data.persistent &&
+            !data.leaving &&
+            now - data.startTime > 7000
+          ) {
             deactivateCity(name);
           }
         });
@@ -579,6 +601,7 @@ title: "GGJ 2027 Countdown";
       function deactivateCity(name) {
         const data = activeCities.get(name);
         if (data) {
+          data.leaving = true;
           data.div.classList.remove("visible");
           setTimeout(() => {
             globeGroup.remove(data.label);
@@ -639,25 +662,28 @@ title: "GGJ 2027 Countdown";
       function animate() {
         requestAnimationFrame(animate);
 
-        globeGroup.rotation.y += 0.003;
+        const delta = Math.min(clock.getDelta(), 0.1);
+        if (!reducedMotion.matches) globeGroup.rotation.y += delta * 0.18;
 
         ribbonsArr.forEach((r) => {
-          r.mesh.rotation.z += r.speed;
-          r.mesh.rotation.x += r.speed * 0.2;
+          if (!reducedMotion.matches) {
+            r.mesh.rotation.z += r.speed * delta * 60;
+            r.mesh.rotation.x += r.speed * delta * 12;
+          }
         });
 
         // Handle Timing
         const timeData = updateCountdownText();
-        if (timeData && timeData.seconds !== currentSecond) {
-          currentSecond = timeData.seconds;
-          createWave();
+        if (timeData !== currentSecond) {
+          currentSecond = timeData;
+          if (!reducedMotion.matches && timeData > 0) createWave();
         }
 
         // Animate Waves
         for (let i = wavesArr.length - 1; i >= 0; i--) {
           const w = wavesArr[i];
-          w.scale += 0.03;
-          w.opacity -= 0.015;
+          w.scale += delta * 1.8;
+          w.opacity -= delta * 0.9;
           w.mesh.scale.set(w.scale, w.scale, w.scale);
           w.mesh.material.opacity = w.opacity;
 
