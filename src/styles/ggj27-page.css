@@ -193,6 +193,45 @@
   .nav-entry:hover i {
     transform: rotate(-12deg) scale(1.15);
   }
+  .nav-entry.is-bursting > * {
+    visibility: hidden;
+  }
+  .entry-burst {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .entry-burst > * {
+    position: absolute;
+    margin: 0;
+    will-change: transform, opacity;
+  }
+  .entry-burst-piece {
+    font-size: 1em;
+    line-height: 1;
+    text-shadow: 0 1px 3px #fff;
+  }
+  .entry-burst-piece.fa-gamepad {
+    font-size: 1.1em;
+  }
+  .entry-burst-smoke {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      #e5e9e4cc,
+      #aab8b477 45%,
+      transparent 72%
+    );
+  }
+  .entry-burst-spark {
+    width: 6px;
+    height: 10px;
+    border-radius: 2px;
+  }
   .hero {
     background: var(--paper);
   }
@@ -697,6 +736,8 @@
   }
   @media (min-width: 801px) {
     .community-supporters {
+      width: calc((100% - clamp(2rem, 6vw, 6rem)) / 2);
+      margin-left: auto;
       border-top: none;
       padding-top: 0;
       margin-top: 1.5rem;
