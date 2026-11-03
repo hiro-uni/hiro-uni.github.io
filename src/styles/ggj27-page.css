@@ -679,6 +679,59 @@
   .sponsor-link:hover span i {
     transform: translate(2px, -2px);
   }
+  .community-supporters {
+    text-align: right;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5eae7;
+  }
+  @media (min-width: 801px) {
+    .community-supporters {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 1.5rem;
+    }
+  }
+  .community-supporters-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 0.5rem;
+    text-align: right;
+  }
+  .community-supporters-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .community-supporter-link {
+    color: var(--ink);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.2s ease;
+  }
+  .community-supporter-link:hover {
+    color: var(--cta);
+  }
+  .community-supporter-link i {
+    font-size: 0.8em;
+    color: #7b8e88;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .community-supporter-link:hover i {
+    color: var(--cta);
+    transform: translate(2px, -2px);
+  }
   .english h2 {
     letter-spacing: -0.04em;
     line-height: 1.15;
