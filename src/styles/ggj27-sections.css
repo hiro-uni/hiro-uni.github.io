@@ -1,0 +1,238 @@
+/* Additional GGJ sections; keep the existing page's paper, green and lime palette. */
+.jam-eyebrow {
+  margin-bottom: 1.1rem;
+  color: var(--blue);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+.jam-memories .section-heading {
+  align-items: end;
+}
+.jam-memories .section-heading > p {
+  flex-shrink: 0;
+}
+.jam-photo-grid,
+.jam-game-grid,
+.jam-day-grid,
+.jam-stay-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.jam-photo-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 2.5rem 0 2rem;
+}
+.jam-photo-grid figure {
+  min-width: 0;
+}
+.jam-photo-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+.jam-photo-grid figcaption {
+  padding: 1.25rem 0 0;
+}
+.jam-photo-grid figcaption > span {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--blue);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.jam-photo-grid h3 {
+  margin-bottom: 0.4rem;
+}
+.jam-photo-grid p,
+.jam-game-body > p,
+.jam-day-grid li > p:last-child,
+.jam-stay-grid p {
+  font-size: 0.9375rem;
+  color: #52615e;
+}
+.jam-works {
+  max-width: none;
+  padding-inline: max(1.5rem, calc(50vw - 596px));
+  background: #e9eee5;
+}
+.jam-sample-note {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--blue);
+  background: #ffffffa6;
+  font-size: 0.8125rem;
+}
+.jam-game-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+.jam-game-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid #18343220;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--paper);
+}
+.jam-game-image {
+  position: relative;
+}
+.jam-game-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.jam-game-image > span {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0.6rem;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: #183432;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+.jam-game-body {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex: 1;
+  padding: 1.5rem;
+}
+.jam-game-body .jam-game-genre {
+  color: var(--blue);
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.jam-game-body h3 {
+  overflow-wrap: anywhere;
+  margin-bottom: 0.75rem;
+}
+.jam-game-body > a {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+.jam-works-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.jam-works-footer p {
+  font-size: 0.75rem;
+  color: #52615e;
+}
+.jam-schedule-note {
+  margin-top: 1rem;
+  color: #52615e;
+  font-size: 0.8125rem;
+}
+.jam-day-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+.jam-day-grid > li {
+  border-top: 3px solid var(--blue);
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+.jam-day-date {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.jam-day-date time {
+  color: var(--blue);
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.jam-day-date span {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.jam-day-grid h3 {
+  margin-bottom: 0.75rem;
+}
+.jam-stay-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background: #e9eee5;
+  border-radius: 0.75rem;
+}
+.jam-stay-grid h3 {
+  margin-bottom: 0.5rem;
+}
+.jam-entry-reminder {
+  margin-bottom: 1rem;
+  color: var(--blue);
+  font-weight: 700;
+}
+@media (max-width: 1000px) {
+  .jam-memories .section-heading {
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+  }
+  .jam-game-body {
+    padding: 1.1rem;
+  }
+}
+@media (max-width: 799px) {
+  .jam-photo-grid,
+  .jam-game-grid,
+  .jam-day-grid,
+  .jam-stay-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .jam-game-body {
+    padding: 1.5rem;
+  }
+  .jam-game-body > a {
+    margin-top: 0;
+  }
+  .jam-photo-grid {
+    gap: 2rem;
+  }
+  .jam-memories .section-heading > p {
+    flex-shrink: 1;
+  }
+}
+
+.jam-day-grid .jam-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  border-top: 1px solid #d7e0da;
+}
+.jam-timeline li {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 0.5rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #d7e0da;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.jam-timeline time {
+  color: var(--blue);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.jam-day-grid .jam-timeline-note {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+}
