@@ -151,6 +151,24 @@ title: "GGJ 2027 Countdown";
         color: #333;
       }
 
+      .back-link {
+        position: absolute;
+        right: 5%;
+        bottom: 5%;
+        z-index: 11;
+        color: var(--ggj-purple);
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-bottom: 1px solid currentColor;
+        padding: 8px 0;
+      }
+
+      .back-link:hover,
+      .back-link:focus-visible {
+        color: var(--ggj-logo);
+      }
+
       .event-details {
         font-size: 1rem;
         font-weight: 700;
@@ -167,6 +185,11 @@ title: "GGJ 2027 Countdown";
       }
 
       @media (max-width: 768px) {
+        .countdown-info {
+          bottom: calc(5% + 48px);
+          right: 5%;
+        }
+
         .logo-box {
           width: 40px;
           height: 40px;
@@ -209,14 +232,11 @@ title: "GGJ 2027 Countdown";
         text-shadow:
           0 1px 8px #fff,
           0 1px 3px #fff;
-        transition:
-          opacity 1s ease-in-out,
-          transform 1s ease-in-out;
-        transform: translateY(5px);
+        /* CSS2DRenderer owns transform: never interpolate projected coordinates. */
+        transition: opacity 1s ease-in-out;
       }
       .city-label.visible {
         opacity: 1;
-        transform: translateY(0);
       }
       .city-label.hiroshima-label {
         color: var(--ggj-logo);
@@ -248,6 +268,10 @@ title: "GGJ 2027 Countdown";
         00Days 00:00:00
       </div>
     </div>
+
+    <a class="back-link" href="/ggj/">
+      Back to GGJ27
+    </a>
 
     <script>
       import * as THREE from "three";
@@ -524,7 +548,7 @@ title: "GGJ 2027 Countdown";
       // --- Floating Numbers ---
       let currentSecond = -1;
       let nextCityAt = 0;
-      let cityIndex = 1;
+      let citiesInitialized = false;
       const reducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       );
@@ -535,38 +559,47 @@ title: "GGJ 2027 Countdown";
       const connectionLines = [];
       const EARTH_RADIUS = 2.4; // Matching the shader logic's assumed radius
 
-      function updateCities() {
-        // Ensure Hiroshima is always there
-        if (!activeCities.has("Hiroshima")) {
-          const hiroshima = cities.find((c) => c.name === "Hiroshima");
-          if (hiroshima) activateCity(hiroshima, true);
-        }
+      function spawnRandomCity(frontOnly = false) {
+        // Exclude fading labels too: a name stays reserved until it is removed.
+        const available = cities.filter((city) => {
+          if (activeCities.has(city.name)) return false;
+          if (!frontOnly) return true;
+          const position = latLongToVector3(city.lat, city.lon, EARTH_RADIUS);
+          const toCamera = camera.position.clone().sub(position).normalize();
+          return position.clone().normalize().dot(toCamera) > 0.05;
+        });
+        if (available.length === 0) return;
+        activateCity(available[Math.floor(Math.random() * available.length)]);
+      }
 
-        // Introduce cities at a measured pace, with enough time to read each name.
+      function updateCities() {
         const now = Date.now();
-        if (now >= nextCityAt && activeCities.size < 5) {
-          for (let attempts = 0; attempts < cities.length; attempts++) {
-            const city = cities[cityIndex++ % cities.length];
-            if (!activeCities.has(city.name)) {
-              activateCity(city);
-              break;
-            }
-          }
-          nextCityAt = now + 1800;
+        if (!citiesInitialized) {
+          const hiroshima = cities.find((city) => city.name === "Hiroshima");
+          if (hiroshima) activateCity(hiroshima, true);
+          // Start with several readable labels on the camera-facing hemisphere.
+          for (let i = 0; i < 4; i++) spawnRandomCity(true);
+          citiesInitialized = true;
+          nextCityAt = now + 800 + Math.random() * 2000;
         }
 
         activeCities.forEach((data, name) => {
-          if (
-            !data.persistent &&
-            !data.leaving &&
-            now - data.startTime > 7000
-          ) {
+          if (!data.persistent && !data.leaving && now >= data.expiresAt) {
             deactivateCity(name);
           }
         });
+
+        if (now >= nextCityAt) {
+          if (activeCities.size < 8) spawnRandomCity();
+          nextCityAt = now + 800 + Math.random() * 2000;
+        }
       }
 
       function activateCity(city, persistent = false) {
+        if (activeCities.has(city.name)) {
+          spawnRandomCity();
+          return;
+        }
         const pos = latLongToVector3(city.lat, city.lon, EARTH_RADIUS);
 
         // Label
@@ -589,7 +622,7 @@ title: "GGJ 2027 Countdown";
         activeCities.set(city.name, {
           label,
           position: pos,
-          startTime: Date.now(),
+          expiresAt: Date.now() + 5000 + Math.random() * 4000,
           div,
           persistent,
         });
@@ -698,20 +731,18 @@ title: "GGJ 2027 Countdown";
         updateCities();
         updateLines();
 
-        // Visibility Check for Labels
-        const tempVector = new THREE.Vector3();
-        const toCamera = camera.position.clone().normalize();
+        // Use the current world transform for both visibility and projection.
+        globeGroup.updateMatrixWorld(true);
+        const worldPosition = new THREE.Vector3();
+        const globeCenter = globeGroup.getWorldPosition(new THREE.Vector3());
+        const normal = new THREE.Vector3();
+        const toCamera = new THREE.Vector3();
         activeCities.forEach((data) => {
-          data.label.getWorldPosition(tempVector);
-          tempVector.normalize();
-          const dot = tempVector.dot(toCamera);
-
-          // If dot < 0.2, the label is on the far side or too close to the edge
-          if (dot < 0.15) {
-            data.div.style.display = "none";
-          } else {
-            data.div.style.display = "block";
-          }
+          data.label.getWorldPosition(worldPosition);
+          normal.copy(worldPosition).sub(globeCenter).normalize();
+          toCamera.copy(camera.position).sub(worldPosition).normalize();
+          // CSS2DRenderer overwrites element.style.display; use Object3D visibility.
+          data.label.visible = normal.dot(toCamera) > 0.05;
         });
 
         renderer.render(scene, camera);
