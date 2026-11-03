@@ -1,8 +1,5 @@
 (() => {
   const header = document.querySelector(".site-header");
-  const sticky = document.querySelector(".mobile-entry");
-  const hero = document.querySelector(".hero");
-  const entry = document.querySelector("#entry");
   if (!header) return;
   let scheduled = false;
   function update() {
@@ -17,15 +14,6 @@
       "--header-offset",
       `${headerHeight + 16}px`,
     );
-    if (sticky && hero && entry) {
-      const show =
-        (hero.getBoundingClientRect().bottom < 0 &&
-          entry.getBoundingClientRect().top > window.innerHeight) ||
-        sticky.contains(document.activeElement);
-      sticky.classList.toggle("is-visible", show);
-      sticky.inert = !show;
-      sticky.setAttribute("aria-hidden", String(!show));
-    }
     scheduled = false;
   }
   const schedule = () => {
