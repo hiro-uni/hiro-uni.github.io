@@ -171,11 +171,14 @@ const eventData = {
                 <b class="hero-digits">48</b>時間！！
               </span>
             </h1>
-            <p class="hero-message">
-              <strong>初めてでも、ひとりでも。</strong>
-              <br />
-              仲間とゲームをつくる週末へ。
-            </p>
+            <div class="hero-message-group">
+              <p class="hero-message">
+                <strong>初めてでも、ひとりでも。</strong>
+                <br />
+                仲間とゲームをつくる週末へ。
+              </p>
+              <p class="hero-countdown" id="hero-countdown" hidden></p>
+            </div>
           </div>
         </div>
         <div class="hero-details">
@@ -1067,6 +1070,27 @@ const eventData = {
       <span>参加無料 · 参加案内を確認する</span>
       <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
     </a>
+    <script>
+      const countdown = document.querySelector("#hero-countdown");
+      const start = Date.parse("2027-01-29T17:00:00+09:00");
+      if (countdown) {
+        const updateCountdown = () => {
+          const remaining = Math.max(0, Math.ceil((start - Date.now()) / 1000));
+          if (remaining === 0) {
+            countdown.textContent = "開催日時を迎えました！";
+            return;
+          }
+          const days = Math.floor(remaining / 86400);
+          const hours = Math.floor((remaining % 86400) / 3600);
+          const minutes = Math.floor((remaining % 3600) / 60);
+          const seconds = remaining % 60;
+          countdown.textContent = `開催まで ${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
+        };
+        updateCountdown();
+        countdown.hidden = false;
+        setInterval(updateCountdown, 1000);
+      }
+    </script>
     <script src="../scripts/ggj27-navigation.js"></script>
   </body>
 </html>
