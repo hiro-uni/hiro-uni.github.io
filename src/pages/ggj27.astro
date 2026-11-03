@@ -2,6 +2,7 @@
 import "../styles/ggj27-page.css";
 import { Image } from "astro:assets";
 import logo from "../assets/ggj27/ggj27_logo.png";
+import setouchiLogo from "../assets/ggj27/ggj_setouchi_logo.png";
 import unity from "../assets/ggj27/unity.png";
 import gray from "../assets/ggj27/gray.png";
 import godot from "../assets/ggj27/godotten.png";
@@ -96,8 +97,16 @@ const eventData = {
       本文へスキップ
     </a>
     <header class="site-header" inert aria-hidden="true">
-      <a class="wordmark" href="#top" aria-label="GGJ 2027 トップ">
-        GGJ<span>27</span>
+      <a class="wordmark" href="#top" aria-label="GGJ 2027 瀬戸内 トップ">
+        <Image
+          class="wordmark-logo"
+          src={setouchiLogo}
+          alt="GGJ Setouchi"
+          width="160"
+          height="88"
+          loading="eager"
+          decoding="async"
+        />
       </a>
       <nav aria-label="メインナビゲーション">
         <a href="#about">GGJとは</a>
@@ -162,9 +171,6 @@ const eventData = {
               ゲームジャムってなに？ ↓
             </a>
           </div>
-          <p class="photo-notice">
-            過去のGlobal Game Jam 広島会場（広島工業大学）の様子です。
-          </p>
         </div>
         <div class="hero-details">
           <div>
@@ -173,13 +179,12 @@ const eventData = {
               <span>—</span>
               <time datetime="2027-01-31">1.31</time>
             </p>
-            <p class="hero-venue">広島工業大学</p>
+            <p class="hero-venue">広島工業大学 五日市キャンパス</p>
           </div>
           <div class="hero-action">
             <a class="button button-primary" href="#entry">
               参加案内を確認する <span aria-hidden="true">↗</span>
             </a>
-            <p>16歳以上 · プロ・アマ問わず · connpassで受付中</p>
           </div>
         </div>
         <div class="hero-band">
@@ -198,13 +203,6 @@ const eventData = {
             <br />
             参加する理由になる。
           </h2>
-          <p>
-            <strong>
-              ゲームを完成させた経験も、
-              <br />
-              一緒に参加する友だちも、なくて大丈夫。
-            </strong>
-          </p>
         </div>
         <div class="welcome-grid">
           <article>
@@ -260,15 +258,6 @@ const eventData = {
       >
         <div class="split-layout">
           <div>
-            <Image
-              class="event-logo"
-              src={logo}
-              alt="グローバルゲームジャム2027 瀬戸内会場 in 広島"
-              width="800"
-              height="248"
-              loading="lazy"
-              decoding="async"
-            />
             <h2 id="about-title">
               ゲームジャムは、
               <br />
@@ -313,7 +302,7 @@ const eventData = {
             <b class="character-engine">
               UNREAL<span>ENGINE</span>
             </b>
-            <span class="character-name">Gray-chan</span>
+            <span class="character-name">Nina Kuratsuki / Gray-chan</span>
           </figcaption>
           <Image
             class="showcase-image"
@@ -384,7 +373,7 @@ const eventData = {
             <b class="character-engine">
               GODOT<span>engine</span>
             </b>
-            <span class="character-name">Godot character</span>
+            <span class="character-name">Godette / Godot-chan</span>
           </figcaption>
           <Image
             class="showcase-image"
@@ -433,23 +422,37 @@ const eventData = {
             <div>
               <dt>開催日</dt>
               <dd>
-                <strong>2027年1月29日（金）〜31日（日）</strong>
+                <strong>2027年1月29日（金）17:00 〜31日（日）19:00 </strong>
                 <span>
-                  会場は48時間オープン。開始・終了の時刻は、募集案内でチェックしてください。
+                  開発時間は48時間。
                 </span>
               </dd>
             </div>
             <div>
               <dt>会場</dt>
               <dd>
-                <strong>広島工業大学</strong>
-                <span>https://hirouni.connpass.com/event/408904/</span>
+                <strong>広島工業大学 五日市キャンパス 新4号館 4階418号室 (HIT Innovation Lab)</strong>
+                <span>
+                  広島県広島市佐伯区三宅２丁目１
+                </span>
+                <a
+                    class="text-link"
+                    href="https://maps.app.goo.gl/nL7KeJcypyKS8SRK9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Google Mapで確認 ↗
+                    <span class="sr-only">（新しいタブで開きます）</span>
+                  </a>
               </dd>
             </div>
             <div>
               <dt>参加費</dt>
               <dd>
                 <strong>無料</strong>
+                <span class="eligibility-note">
+                  アフターパーティはみんなで割り勘します。
+                </span>                
               </dd>
             </div>
             <div>
@@ -457,7 +460,7 @@ const eventData = {
               <dd>
                 <strong>16歳以上（高校生を含む）、プロ・アマ問わず</strong>
                 <span class="eligibility-note">
-                  ※16歳、17歳の方は保護者同伴でのご参加が必須となります。
+                  16歳、17歳の方は保護者同伴、もしくは委任状の提出にて参加いただけます。
                 </span>
               </dd>
             </div>
@@ -607,7 +610,7 @@ const eventData = {
         <div class="mc-heading">
           <h2 id="mc-title">解説者・司会進行</h2>
           <p class="section-intro">
-            ゲームジャムの背景や楽しみ方を伝えながら、イベントの進行を務めます。
+            ゲーム開発、教育の第一人者が、ゲームジャムの背景や楽しみ方を伝えながら、盛り上がりをお伝えします！
           </p>
         </div>
         <div class="mc-layout">
@@ -639,9 +642,19 @@ const eventData = {
                 これまでに情報処理学会全国大会優秀賞、情報教育シンポジウム最優秀論文賞、大都会アワードなど受賞。
               </p>
               <p>
-                監訳書にセリア・ホデント著『はじめて学ぶ ビデオゲームの心理学:
-                脳のはたらきとユーザー体験（UX）』(2022)、共著書に『ゲーム障害再考:
-                嗜癖か、発達障害か、それとも大人のいらだちか』(2023)など。2020年1月に日本語で初めてのゲームジャム紹介記事を書き、それ以来ゲームジャムについての報告や論文を執筆している。
+                監訳書にセリア・ホデント著<a
+                  href="https://www.amazon.co.jp/dp/4571210450"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >『はじめて学ぶ ビデオゲームの心理学: 脳のはたらきとユーザー体験（UX）』<span
+                    class="sr-only">（新しいタブで開きます）</span></a
+                >(2022)、共著書に<a
+                  href="https://www.amazon.co.jp/dp/4535904693"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >『ゲーム障害再考: 嗜癖か、発達障害か、それとも大人のいらだちか』<span
+                    class="sr-only">（新しいタブで開きます）</span></a
+                >(2023)など。2020年1月に日本語で初めてのゲームジャム紹介記事を書き、それ以来ゲームジャムについての報告や論文を執筆している。
               </p>
               <p>
                 グローバルゲームジャム2026 瀬戸内会場 in
@@ -859,8 +872,16 @@ const eventData = {
       </section>
     </main>
     <footer class="site-footer">
-      <a class="wordmark" href="#top">
-        GGJ<span>27</span>
+      <a class="wordmark" href="#top" aria-label="GGJ 2027 瀬戸内 トップ">
+        <Image
+          class="wordmark-logo footer-wordmark-logo"
+          src={setouchiLogo}
+          alt="GGJ Setouchi"
+          width="160"
+          height="88"
+          loading="lazy"
+          decoding="async"
+        />
       </a>
       <p>
         Global Game Jam 2027
@@ -933,7 +954,8 @@ const eventData = {
       </a>
     </div>
     <p class="community-footer-note">
-      GGJ瀬戸内は広島、岡山、香川のゲーム制作コミュニティが共同開催する、ゲームジャムイベントです。
+      GGJ瀬戸内は、広島、岡山、香川のゲーム制作コミュニティが共同開催＆運営する、グローバルゲームジャムです。
+      <br>GGJ および、Global Game Jam は、Global Game Jam, Inc の登録商標です。
     </p>
     <div class="countdown-link-area">
       <a

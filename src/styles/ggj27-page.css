@@ -130,6 +130,10 @@
     transform: translateY(0);
   }
   .wordmark {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    text-decoration: none;
     letter-spacing: -0.08em;
     white-space: nowrap;
     font-size: 1.8rem;
@@ -137,6 +141,15 @@
   }
   .wordmark span {
     color: var(--blue);
+  }
+  .wordmark-logo {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+  .footer-wordmark-logo {
+    height: 52px;
   }
   nav {
     align-items: center;
@@ -552,6 +565,15 @@
   .mc-profile p + p {
     margin-top: 1.25rem;
   }
+  .mc-profile a {
+    color: var(--blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 700;
+  }
+  .mc-profile a:hover {
+    color: var(--ink);
+  }
   .sponsors {
     background: #fff;
     max-width: none;
@@ -764,6 +786,9 @@
     }
     .site-header .wordmark {
       font-size: 1.5rem;
+    }
+    .site-header .wordmark-logo {
+      height: 38px;
     }
     nav {
       gap: 0.875rem;
@@ -983,6 +1008,29 @@
   .showcase-image {
     filter: drop-shadow(0 8px 8px #18343224)
       drop-shadow(3px 4px 12px var(--character-shadow));
+    animation: float-character 4s ease-in-out infinite;
+    will-change: transform;
+  }
+  .character-showcase[data-engine="unity"] .showcase-image {
+    animation-duration: 3.8s;
+    animation-delay: 0s;
+  }
+  .character-showcase[data-engine="unreal"] .showcase-image {
+    animation-duration: 4.5s;
+    animation-delay: -1.5s;
+  }
+  .character-showcase[data-engine="godot"] .showcase-image {
+    animation-duration: 4.1s;
+    animation-delay: -2.8s;
+  }
+  @keyframes float-character {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
   }
   @media (max-width: 800px) {
     .section h2 {
