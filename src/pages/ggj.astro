@@ -63,7 +63,7 @@ const eventData = {
     <title>Global Game Jam 2027 瀬戸内会場 in 広島｜48時間のゲーム制作イベント</title>
     <meta
       name="description"
-      content="ゲーム制作が初めてでも、ひとりでも。2027年1月29日〜31日、広島工業大学で仲間とゲームをつくる48時間。参加無料。16歳以上（高校生を含む）、プロ・アマ問わず。Global Game Jam 2027 瀬戸内会場 in 広島の参加案内。"
+      content="ゲーム制作が初めてでも、ひとりでも。2027年1月29日〜31日、広島工業大学で仲間とゲームをつくる48時間。参加無料。15歳以上（高校生を含む）、プロ・アマ問わず。Global Game Jam 2027 瀬戸内会場 in 広島の参加案内。"
     />
     <link rel="canonical" href="https://hiro-uni.github.io/ggj/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -81,11 +81,11 @@ const eventData = {
     <meta property="og:locale" content="ja_JP" />
     <meta
       property="og:image"
-      content="https://hiro-uni.github.io/ggj27/assets/jam/hero-hiroshima-1024.webp"
+      content={new URL(setouchiLogo.src, "https://hiro-uni.github.io").href}
     />
     <meta
       property="og:image:alt"
-      content="過去のGlobal Game Jam 広島会場の様子"
+      content="Global Game Jam Setouchiのロゴ"
     />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -200,7 +200,7 @@ const eventData = {
             <a class="button button-primary" href="#entry">
               <span class="button-label">
                 <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
-                参加案内を確認する
+                今すぐ参加申し込み！
               </span>
               <span class="button-arrow" aria-hidden="true">
                 <i class="fa-solid fa-arrow-down"></i>
@@ -458,9 +458,9 @@ const eventData = {
             <div>
               <dt>参加対象者</dt>
               <dd>
-                <strong>16歳以上（高校生を含む）、プロ・アマ問わず</strong>
+                <strong>15歳以上（高校生を含む）、プロ・アマ問わず</strong>
                 <span class="eligibility-note">
-                  16歳、17歳の方は保護者同伴、もしくは委任状の提出にて参加いただけます。
+                  未成年(15歳〜17歳)の方は参加時に注意点がございます。
                 </span>
               </dd>
             </div>
@@ -746,7 +746,7 @@ const eventData = {
                 (2023)など。2020年1月に日本語で初めてのゲームジャム紹介記事を書き、それ以来ゲームジャムについての報告や論文を執筆している。
               </p>
               <p>
-                グローバルゲームジャム2026 瀬戸内会場 in
+                グローバルゲームジャム2027 瀬戸内会場 in
                 広島では、全編を通して解説者・司会進行を務める。
               </p>
             </div>
@@ -962,11 +962,21 @@ const eventData = {
               <div>
                 <dt>Who</dt>
                 <dd>
-                  Ages 16 and over, including high school students;
+                  Ages 15 and over (including high school students);
                   professionals and amateurs welcome.
                   <span>
-                    Participants aged 16 or 17 may attend with a parent or
-                    guardian, or submit a parental authorization form.
+                    Important notes for minors (ages 15–17):
+                    <br />
+                    • Ages 16 and 17: Must be accompanied by a parent or
+                    guardian, or submit a signed parental consent form.
+                    <br />
+                    • Age 15: Must be accompanied by a parent or guardian
+                    (submitting a consent form alone is not permitted).
+                    <br />
+                    • In accordance with the Hiroshima Prefecture Youth
+                    Protection and Development Ordinance, minors must leave
+                    early enough to return home by 11:00 p.m. Minors may not
+                    stay at the venue overnight (except in unavoidable emergencies).
                   </span>
                 </dd>
               </div>
@@ -982,13 +992,16 @@ const eventData = {
             </dl>
             <p>
               Whether you’re a student, an international resident or an
-              experienced developer, bring your curiosity. Check the event
-              listing for team formation, overnight access rules and language
-              support.
+              experienced developer, bring your curiosity. English language
+              support by Shinji Yamane is available on-site. Check the event
+              listing for details on team formation and overnight stay policies.
             </p>
             <p>
               The venue is planned to stay open for 48 hours, but you don’t need
-              to keep working without a break. Make time to rest, too.
+              to keep working without a break. Take care of yourself and rest at
+              your own pace. Dedicated rest areas for men and women are planned,
+              and hotels, lodging, and public baths are located within walking
+              distance.
             </p>
             <a
               class="button button-outline"
@@ -1243,7 +1256,7 @@ const eventData = {
         </span>
       </a>
     </div>
-    <a class="mobile-entry" href="#entry" aria-label="参加案内を確認する">
+    <a class="mobile-entry" href="#entry" aria-label="今すぐ参加申込！">
       <span class="mobile-entry-art" aria-hidden="true">
         <span>参</span>
         <span>加</span>
