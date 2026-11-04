@@ -1,0 +1,22 @@
+<div
+  class="table-scroll"
+  role="region"
+  aria-label="記事内の表（横にスクロールできます）"
+  tabindex="0"
+>
+  <table {...Astro.props}>
+    <slot />
+  </table>
+</div>
+
+<style>
+  .table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .table-scroll:focus-visible {
+    outline: 3px solid #183432;
+    outline-offset: 4px;
+  }
+</style>

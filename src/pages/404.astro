@@ -8,13 +8,14 @@ import { Image } from "astro:assets";
   title="ページが見つかりません"
   description="お探しのページは見つかりませんでした。広島Unity勉強会のトップページから目的の情報をご確認ください。"
   ogImage={notfound.src}
+  noindex={true}
 >
   <div class="error-container">
     <div class="error-content">
       <h2 class="error-code">404</h2>
       <p class="error-message">お探しのページは見つかりませんでした。</p>
 
-      <Image src={notfound} alt="404 Not Found" class="not-found-image" />
+      <Image src={notfound} alt="" class="not-found-image" />
       <p class="error-description">
         アクセスしようとしたページは削除。
         <br />
@@ -23,7 +24,7 @@ import { Image } from "astro:assets";
 
       <div class="actions">
         <a href="/" class="home-button">
-          <i class="fas fa-home"></i> ホームに戻る
+          <i class="fas fa-home" aria-hidden="true"></i> ホームに戻る
         </a>
       </div>
     </div>

@@ -10,7 +10,7 @@ const { speaker, avatar, isInterviewer = false } = Astro.props;
 
 <div class={`dialogue-block ${isInterviewer ? "interviewer" : "interviewee"}`}>
   <div class="speaker-info">
-    <img src={avatar} alt={speaker} class="avatar" />
+    <img src={avatar} alt="" class="avatar" />
     <span class="name">{speaker}</span>
   </div>
   <div class="message-bubble">
@@ -57,6 +57,8 @@ const { speaker, avatar, isInterviewer = false } = Astro.props;
   }
 
   .message-bubble {
+    min-width: 0;
+    max-width: 100%;
     flex-grow: 1;
     background: #fff;
     padding: 1.5rem;

@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import ScrollableTable from "../../components/ScrollableTable.astro";
 
 export async function getStaticPaths() {
   const newsEntries = await getCollection("news");
@@ -27,6 +28,7 @@ const { Content } = await render(entry);
   title={entry.data.title}
   description={entry.data.description}
   pubDate={entry.data.pubDate}
+  author={entry.data.author}
   ogImage={entry.data.image?.src}
   articleJsonLd={true}
 >
@@ -38,13 +40,13 @@ const { Content } = await render(entry);
     </header>
 
     <div class="markdown-body">
-      <Content />
+      <Content components={{ table: ScrollableTable }} />
     </div>
 
-    <nav class="news-navigation">
+    <nav class="news-navigation" aria-label="前後のニュース記事">
       <div class="nav-next">
         {next && (
-          <a href={`/news/${next.id}`}>
+          <a href={`/news/${next.id}/`}>
             <span class="nav-label">&larr; 次の記事</span>
             <span class="nav-title">{next.data.title}</span>
           </a>
@@ -52,7 +54,7 @@ const { Content } = await render(entry);
       </div>
       <div class="nav-prev">
         {prev && (
-          <a href={`/news/${prev.id}`}>
+          <a href={`/news/${prev.id}/`}>
             <span class="nav-label">前の記事 &rarr;</span>
             <span class="nav-title">{prev.data.title}</span>
           </a>
@@ -69,9 +71,6 @@ const { Content } = await render(entry);
   }
   .markdown-body {
     line-height: 1.8;
-  }
-  .markdown-body :global(h1) {
-    display: none; /* Layoutのtitleと重複するため */
   }
   .markdown-body :global(h2) {
     margin-top: 2rem;
@@ -149,7 +148,7 @@ const { Content } = await render(entry);
   }
   .nav-label {
     font-size: 0.85rem;
-    color: #888;
+    color: #666;
     font-weight: bold;
   }
   .nav-title {
@@ -203,7 +202,7 @@ const { Content } = await render(entry);
 
   .markdown-body :global(.ogp-site-name) {
     font-size: 0.75rem;
-    color: #888;
+    color: #666;
     margin: 0 0 0.5rem 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;

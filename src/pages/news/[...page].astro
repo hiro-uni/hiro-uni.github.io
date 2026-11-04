@@ -14,7 +14,8 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props;
-const title = `ニュース ${page.currentPage > 1 ? `(Page ${page.currentPage})` : ""}`;
+const title =
+  page.currentPage > 1 ? `ニュース（${page.currentPage}ページ目）` : "ニュース";
 const description = `広島Unity勉強会のニュース一覧${page.currentPage > 1 ? `（${page.currentPage}ページ目）` : ""}。イベント情報、活動報告、Unityやゲーム制作に関する記事を掲載しています。`;
 const ogImage = page.data[0]?.data.image?.src ?? "/hirouni.png";
 ---
@@ -29,9 +30,9 @@ const ogImage = page.data[0]?.data.image?.src ?? "/hirouni.png";
           <time datetime={entry.data.pubDate.toISOString()}>
             {entry.data.pubDate.toLocaleDateString("ja-JP")}
           </time>
-          <h3>
-            <a href={`/news/${entry.id}`}>{entry.data.title}</a>
-          </h3>
+          <h2>
+            <a href={`/news/${entry.id}/`}>{entry.data.title}</a>
+          </h2>
           <p>{entry.data.description}</p>
         </div>
         {entry.data.image && (
@@ -49,7 +50,7 @@ const ogImage = page.data[0]?.data.image?.src ?? "/hirouni.png";
     ))}
   </div>
 
-  <nav class="pagination">
+  <nav class="pagination" aria-label="ニュースのページ送り">
     {page.url.prev ? (
       <a href={page.url.prev}>&larr; 前のページ</a>
     ) : (
@@ -67,8 +68,13 @@ const ogImage = page.data[0]?.data.image?.src ?? "/hirouni.png";
 
   <p class="connpass-note">
     イベント情報については{" "}
-    <a href="https://hirouni.connpass.com/" target="_blank">
+    <a
+      href="https://hirouni.connpass.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       connpass
+      <span class="sr-only">（新しいタブで開きます）</span>
     </a>{" "}
     も合わせてご確認ください。
   </p>
@@ -103,16 +109,17 @@ const ogImage = page.data[0]?.data.image?.src ?? "/hirouni.png";
     color: #666;
     font-size: 0.9rem;
   }
-  .news-item h3 {
+  .news-item h2 {
+    font-size: 1.17em;
     margin: 0.5rem 0;
     border-bottom: none;
     padding-bottom: 0;
   }
-  .news-item h3 a {
+  .news-item h2 a {
     text-decoration: none;
     color: var(--text);
   }
-  .news-item h3 a:hover {
+  .news-item h2 a:hover {
     color: var(--secondary);
   }
   .news-item p {
@@ -137,6 +144,7 @@ const ogImage = page.data[0]?.data.image?.src ?? "/hirouni.png";
 
   .pagination {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 2rem;
@@ -154,7 +162,7 @@ const ogImage = page.data[0]?.data.image?.src ?? "/hirouni.png";
     color: white;
   }
   .pagination .disabled {
-    color: #ccc;
+    color: #666;
     padding: 0.5rem 1rem;
     border: 1px solid #eee;
     border-radius: 4px;

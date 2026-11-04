@@ -4,9 +4,20 @@
   const entryButton = header.querySelector(".nav-entry");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let activeBurst;
+  reducedMotion.addEventListener("change", () => {
+    if (reducedMotion.matches) activeBurst?.();
+  });
+  document.getElementById("toggle-motion")?.addEventListener("click", () => {
+    activeBurst?.();
+  });
 
   function burstEntry() {
-    if (reducedMotion.matches || !entryButton) return;
+    if (
+      reducedMotion.matches ||
+      document.documentElement.dataset.motionPaused !== "false" ||
+      !entryButton
+    )
+      return;
     activeBurst?.();
     const bounds = entryButton.getBoundingClientRect();
     const centerX = bounds.left + bounds.width / 2;
@@ -132,8 +143,6 @@
     const visible =
       window.scrollY > 80 || header.contains(document.activeElement);
     header.classList.toggle("is-visible", visible);
-    header.inert = !visible;
-    header.setAttribute("aria-hidden", String(!visible));
     const headerHeight = header.getBoundingClientRect().height;
     document.documentElement.style.setProperty(
       "--header-offset",
@@ -147,6 +156,38 @@
       requestAnimationFrame(update);
     }
   };
+  document.addEventListener("focusin", (event) => {
+    const control = event.target;
+    if (
+      !(control instanceof HTMLElement) ||
+      !control.matches("a[href], button, summary, input, select, textarea") ||
+      header.contains(control)
+    )
+      return;
+    requestAnimationFrame(() => {
+      if (document.activeElement !== control) return;
+      update();
+      const bounds = control.getBoundingClientRect();
+      const top = header.classList.contains("is-visible")
+        ? header.getBoundingClientRect().bottom + 16
+        : 16;
+      const floatingEntry = document.querySelector(".mobile-entry");
+      const bottom =
+        floatingEntry &&
+        floatingEntry !== control &&
+        floatingEntry.getClientRects().length
+          ? window.innerHeight -
+            floatingEntry.getBoundingClientRect().height -
+            32
+          : window.innerHeight - 16;
+      if (bounds.top < top || bounds.bottom > bottom) {
+        const available = Math.max(0, bottom - top);
+        const destination = top + Math.max(0, (available - bounds.height) / 2);
+        window.scrollBy({ top: bounds.top - destination, behavior: "instant" });
+        update();
+      }
+    });
+  });
   document.addEventListener("click", (event) => {
     const link = event.target.closest?.('a[href^="#"]');
     if (
@@ -177,4 +218,7 @@
   if (typeof ResizeObserver !== "undefined")
     new ResizeObserver(schedule).observe(header);
   update();
+  // Off-screen navigation remains reachable by Tab and assistive technology.
+  // Without JavaScript the header stays visible.
+  header.classList.add("is-collapsible");
 })();

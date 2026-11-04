@@ -179,12 +179,12 @@
 .jam-stay-note {
   display: inline-block;
   font-size: 0.8125rem;
-  color: #6b7280;
+  color: #52615e;
   line-height: 1.6;
 }
 .jam-entry-reminder {
   margin-bottom: 1rem;
-  color: var(--blue);
+  color: var(--lime);
   font-weight: 700;
 }
 @media (max-width: 1000px) {
@@ -237,6 +237,12 @@
   color: var(--blue);
   font-weight: 800;
   font-variant-numeric: tabular-nums;
+}
+@media (max-width: 600px) {
+  .jam-timeline li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+  }
 }
 .jam-day-grid .jam-timeline-note {
   margin-top: 1rem;

@@ -37,10 +37,12 @@ function copySitemapPlugin() {
 export default defineConfig({
   site: "https://hiro-uni.github.io",
   base: "/",
+  trailingSlash: "always",
 
   redirects: {
-    "/ggj27": "/ggj",
-    "/ggj25_interview/interview": "/interview/ggj25/page",
+    "/ggj27": "/ggj/",
+    "/ggj25_interview/interview": "/interview/ggj25/page/",
+    "/interview/ggj26_organizer": "/interview/ggj26_organizer/page/",
   },
 
   markdown: {

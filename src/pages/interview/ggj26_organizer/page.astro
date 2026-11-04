@@ -242,7 +242,10 @@ const participants = {
       やっぱり<strong>「世界同時多発」</strong>であることですね。
     </Dialogue>
 
-    <Image src={ggjearth} alt="GGJ Earth" />
+    <Image
+      src={ggjearth}
+      alt="地球上の広島と世界各地の都市を表示するGGJ 2027カウントダウン画面"
+    />
 
     <Dialogue
       speaker={participants.yamane.name}
@@ -289,8 +292,13 @@ const participants = {
       isInterviewer={true}
     >
       国境を越えて大国だけでなく、例えばアルゼンチン発の{" "}
-      <a href="https://godotengine.org" target="_blank">
+      <a
+        href="https://godotengine.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Godot Engine
+        <span class="sr-only">（新しいタブで開きます）</span>
       </a>{" "}
       のようなツールを使って開発することで、世界と繋がっている感覚、連帯感が生まれますよね。
     </Dialogue>

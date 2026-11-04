@@ -12,7 +12,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
   ogImage={mokumoku1.src}
 >
   <div class="mokumoku-hero">
-    <div class="hero-c ontent">
+    <div class="hero-content">
       <h2>
         一人で悩むより、
         <br />
@@ -39,28 +39,28 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
         </div>
         <div class="tag-container">
           <span class="tag">
-            <i class="fa-brands fa-unity"></i> Unity
+            <i class="fa-brands fa-unity" aria-hidden="true"></i> Unity
           </span>
           <span class="tag">
-            <i class="fas fa-code"></i> C#
+            <i class="fas fa-code" aria-hidden="true"></i> C#
           </span>
           <span class="tag">
-            <i class="fas fa-vr-cardboard"></i> XR
+            <i class="fas fa-vr-cardboard" aria-hidden="true"></i> XR
           </span>
           <span class="tag">
-            <i class="fas fa-video"></i> VTuber
+            <i class="fas fa-video" aria-hidden="true"></i> VTuber
           </span>
           <span class="tag">
-            <i class="fas fa-cube"></i> Blender
+            <i class="fas fa-cube" aria-hidden="true"></i> Blender
           </span>
           <span class="tag">
-            <i class="fas fa-cubes"></i> Voxel
+            <i class="fas fa-cubes" aria-hidden="true"></i> Voxel
           </span>
           <span class="tag">
-            <i class="fas fa-robot"></i> Godot
+            <i class="fas fa-robot" aria-hidden="true"></i> Godot
           </span>
           <span class="tag">
-            <i class="fas fa-chess"></i> GameDesign
+            <i class="fas fa-chess" aria-hidden="true"></i> GameDesign
           </span>
         </div>
       </div>
@@ -70,23 +70,32 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
     </div>
   </section>
 
-  <section class="appeals">
+  <section class="appeals" aria-labelledby="appeals-title">
+    <h2 id="appeals-title" class="sr-only">
+      もくもく会でできること
+    </h2>
     <div class="appeal-card">
-      <div class="icon">🚀</div>
+      <div class="icon" aria-hidden="true">
+        🚀
+      </div>
       <h3>圧倒的な作業効率</h3>
       <p>
         周囲が集中している環境は、あなたの開発スピードを劇的に引き上げます。「今日はこれを完成させる！」という目標を持って参加しましょう。
       </p>
     </div>
     <div class="appeal-card">
-      <div class="icon">🤝</div>
+      <div class="icon" aria-hidden="true">
+        🤝
+      </div>
       <h3>ゆるい繋がりと相談</h3>
       <p>
         詰まった時に誰かに聞ける。そんな環境がここにはあります。開発者や、同じ志を持つ学生同士で情報交換が可能です。
       </p>
     </div>
     <div class="appeal-card">
-      <div class="icon">🎮</div>
+      <div class="icon" aria-hidden="true">
+        🎮
+      </div>
       <h3>技術の幅を広げる</h3>
       <p>
         Unityだけでなく、モデラーやゲーム研究者など、多様な経験者が参加しています。
@@ -134,25 +143,25 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
     <h2>よくある質問</h2>
     <div class="faq-grid">
       <div class="faq-item">
-        <h4>初心者でも大丈夫ですか？</h4>
+        <h3>初心者でも大丈夫ですか？</h3>
         <p>
           もちろんです！「Unityを触り始めたばかり」という方も多く参加されています。むしろ、最初の一歩で詰まっている方にこそ、もくもく会の環境はおすすめです。
         </p>
       </div>
       <div class="faq-item">
-        <h4>何を持っていけばいいですか？</h4>
+        <h3>何を持っていけばいいですか？</h3>
         <p>
           基本は自分のノートPC（Unity等インストール済み）と電源アダプタです。必要であればマウスやイヤホン、参考書なども自由にお持ちください。
         </p>
       </div>
       <div class="faq-item">
-        <h4>ずっと作業していないとダメですか？</h4>
+        <h3>ずっと作業していないとダメですか？</h3>
         <p>
           そんなことはありません。休憩中に他の人の作品を見せてもらったり、技術的な雑談をしたりするのも醍醐味の一つです。自分のペースを大切にして参加してください。
         </p>
       </div>
       <div class="faq-item">
-        <h4>参加費はかかりますか？</h4>
+        <h3>参加費はかかりますか？</h3>
         <p>
           会場（コワーキングスペース等）の利用料実費（数百円〜千円程度）が必要になる場合があります。
           <br />
@@ -174,6 +183,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
       class="cta-button"
     >
       次回の開催をチェック！（connpass）
+      <span class="sr-only">（新しいタブで開きます）</span>
     </a>
   </section>
 </Layout>
@@ -181,7 +191,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
 <style>
   /* Hero Section */
   .mokumoku-hero {
-    background: linear-gradient(135deg, #b30b54 0%, #3498db 100%);
+    background: linear-gradient(135deg, #b30b54 0%, #12567f 100%);
     padding: 5rem 2rem;
     border-radius: 12px;
     color: white;
@@ -200,21 +210,22 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
     bottom: 0;
     background: radial-gradient(
       circle at 70% 30%,
-      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 0%,
       transparent 60%
     );
     pointer-events: none;
   }
 
   .hero-content h2 {
-    font-size: 3rem;
+    color: white;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     margin: 0;
     line-height: 1.2;
     font-weight: 800;
   }
 
   .highlight {
-    font-size: 4.3rem;
+    font-size: clamp(2rem, 7vw, 4.3rem);
     color: #ffd700;
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
   }
@@ -255,7 +266,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
   /* Intro */
   .content-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 4rem;
     align-items: center;
   }
@@ -270,6 +281,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
 
   .info-badges {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin: 1.5rem 0;
   }
@@ -324,7 +336,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
   /* Appeals */
   .appeals {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2.5rem;
   }
 
@@ -359,7 +371,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
   /* Gallery */
   .gallery-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2.5rem;
   }
 
@@ -409,12 +421,13 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
 
   .target-roles {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.2rem;
     margin: 2rem 0;
   }
 
   .target-roles span {
-    background: #3498db;
+    background: #176b9e;
     color: white;
     padding: 0.5rem 1.2rem;
     border-radius: 8px;
@@ -435,7 +448,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
   /* FAQ */
   .faq-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
   }
 
@@ -446,7 +459,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
     border-bottom: 4px solid #eee;
   }
 
-  .faq-item h4 {
+  .faq-item h3 {
     color: #2c3e50;
     font-size: 1.15rem;
     margin-bottom: 1rem;
@@ -455,7 +468,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
     gap: 0.5rem;
   }
 
-  .faq-item h4::before {
+  .faq-item h3::before {
     content: "Q.";
     color: #b30b54;
     font-weight: 900;
@@ -484,7 +497,8 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
     display: inline-block;
     background: #b30b54;
     color: white;
-    padding: 1.4rem 3.5rem;
+    padding: 1.4rem clamp(1rem, 5vw, 3.5rem);
+    max-width: 100%;
     border-radius: 100px;
     text-decoration: none;
     font-weight: 800;
@@ -514,7 +528,7 @@ import mokumoku3 from "../assets/mokumoku/mokumoku3.jpg";
     }
 
     .hero-content h2 {
-      font-size: 2.2rem;
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
     }
 
     .message-box {

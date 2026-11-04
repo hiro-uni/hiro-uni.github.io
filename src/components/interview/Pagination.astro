@@ -15,9 +15,10 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     {pages.map((page) => (
       <li class="page-item">
         <a
-          href={`${baseUrl}${page === 1 ? "" : page}`}
+          href={`${baseUrl}${page === 1 ? "" : page}/`}
           class={`page-link ${page === currentPage ? "active" : ""}`}
           aria-current={page === currentPage ? "page" : undefined}
+          aria-label={`${page}ページ目`}
         >
           {page}
         </a>
@@ -25,8 +26,11 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     ))}
     {currentPage < totalPages && (
       <li class="page-item next">
-        <a href={`${baseUrl}${currentPage + 1}`} class="page-link next-link">
-          次へ <span class="arrow">&gt;</span>
+        <a href={`${baseUrl}${currentPage + 1}/`} class="page-link next-link">
+          次へ{" "}
+          <span class="arrow" aria-hidden="true">
+            &gt;
+          </span>
         </a>
       </li>
     )}
@@ -42,6 +46,8 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   .page-list {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     list-style: none;
     padding: 0;
     gap: 0.5rem;

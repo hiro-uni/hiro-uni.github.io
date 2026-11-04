@@ -24,7 +24,8 @@ import { Image } from "astro:assets";
         <br />
         交流しながらスキルを高め合う地域密着型の{" "}
         <strong>
-          <i class="fa-brands fa-unity"></i>&nbsp;Unityコミュニティ
+          <i class="fa-brands fa-unity" aria-hidden="true"></i>
+          &nbsp;Unityコミュニティ
         </strong>{" "}
         です。
       </p>
@@ -35,10 +36,13 @@ import { Image } from "astro:assets";
           rel="noopener noreferrer"
           class="btn btn-primary"
         >
-          <i class="fa-solid fa-calendar-check"></i> イベントに参加する
+          <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>{" "}
+          イベントに参加する
+          <span class="sr-only">（新しいタブで開きます）</span>
         </a>
-        <a href="/about" class="btn btn-secondary-outline">
-          活動について詳しく <i class="fa-solid fa-arrow-right"></i>
+        <a href="/about/" class="btn btn-secondary-outline">
+          活動について詳しく{" "}
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -49,7 +53,7 @@ import { Image } from "astro:assets";
     <div class="activity-grid">
       <div class="activity-card">
         <div class="icon-wrapper">
-          <i class="fa-solid fa-laptop-code"></i>
+          <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
         </div>
         <h3>もくもく会</h3>
         <p>
@@ -58,7 +62,7 @@ import { Image } from "astro:assets";
       </div>
       <div class="activity-card">
         <div class="icon-wrapper">
-          <i class="fa-solid fa-chalkboard-user"></i>
+          <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i>
         </div>
         <h3>セミナー・講座</h3>
         <p>
@@ -67,7 +71,7 @@ import { Image } from "astro:assets";
       </div>
       <div class="activity-card">
         <div class="icon-wrapper">
-          <i class="fa-solid fa-gamepad"></i>
+          <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
         </div>
         <h3>ゲームジャム</h3>
         <p>
@@ -76,7 +80,7 @@ import { Image } from "astro:assets";
       </div>
       <div class="activity-card">
         <div class="icon-wrapper">
-          <i class="fa-solid fa-comments"></i>
+          <i class="fa-solid fa-comments" aria-hidden="true"></i>
         </div>
         <h3>技術・交流会</h3>
         <p>
@@ -91,7 +95,7 @@ import { Image } from "astro:assets";
       <h2 class="section-title">最新情報</h2>
 
       <div class="special-event">
-        <a href="/ggj" class="top-banner-link">
+        <a href="/ggj/" class="top-banner-link">
           <Image
             src={ggj27Banner}
             alt="Global Game Jam 2027 瀬戸内会場 in 広島 バナー"
@@ -99,10 +103,10 @@ import { Image } from "astro:assets";
           />
         </a>
         <p>
-          <a href="/ggj" class="special-event-link">
+          <a href="/ggj/" class="special-event-link">
             2027年1月29日(金)〜31日(日)開催！「Global Game Jam 2027 瀬戸内会場
             in 広島」仲間とゲームをつくる48時間！{" "}
-            <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
         </p>
       </div>
@@ -118,8 +122,9 @@ import { Image } from "astro:assets";
         rel="noopener noreferrer"
         class="connpass-banner"
       >
-        <i class="fa-solid fa-external-link-alt"></i> 広島Unity勉強会
-        connpassページ
+        <i class="fa-solid fa-external-link-alt" aria-hidden="true"></i>{" "}
+        広島Unity勉強会 connpassページ
+        <span class="sr-only">（新しいタブで開きます）</span>
       </a>
     </div>
   </section>

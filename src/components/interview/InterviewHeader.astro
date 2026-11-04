@@ -15,7 +15,7 @@ const { title, category, date, heroImage, heroAlt } = Astro.props;
 <header class="interview-header">
   <div class="category">{category}</div>
   <div class="meta">
-    <time datetime={date}>{date}</time>
+    <time datetime={date.replaceAll(".", "-")}>{date}</time>
   </div>
   <div class="hero">
     <Image
@@ -36,7 +36,7 @@ const { title, category, date, heroImage, heroAlt } = Astro.props;
 
   .category {
     display: inline-block;
-    background: var(--primary, #000);
+    background: var(--secondary, #b30b54);
     color: #fff;
     padding: 2px 12px;
     font-size: 0.8rem;

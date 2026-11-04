@@ -26,7 +26,7 @@ import ggjlogo from "../assets/ggj_badge.png";
   </section>
 
   <section class="activity">
-    <h3>Unityもくもく会</h3>
+    <h2>Unityもくもく会</h2>
     <div class="activity-content">
       <Image
         width="400"
@@ -43,8 +43,9 @@ import ggjlogo from "../assets/ggj_badge.png";
           初心者からプロの方まで、ゲーム制作から3Dモデリング作成など幅広い方々に参加いただいております。
         </p>
         <div class="activity-cta">
-          <a href="/mokumoku" class="btn-more">
-            もくもく会の詳細を見る <i class="fas fa-arrow-right"></i>
+          <a href="/mokumoku/" class="btn-more">
+            もくもく会の詳細を見る{" "}
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -52,7 +53,7 @@ import ggjlogo from "../assets/ggj_badge.png";
   </section>
 
   <section class="activity">
-    <h3>広島県でのゲームジャム開催</h3>
+    <h2>広島県でのゲームジャム開催</h2>
     <div class="activity-content">
       <Image
         width="400"
@@ -79,7 +80,7 @@ import ggjlogo from "../assets/ggj_badge.png";
   </section>
 
   <section class="activity">
-    <h3>瀬戸内ゲームコミュニティとの合同勉強会・ゲームジャム</h3>
+    <h2>瀬戸内ゲームコミュニティとの合同勉強会・ゲームジャム</h2>
     <div class="activity-content">
       <Image
         width="400"
@@ -100,7 +101,8 @@ import ggjlogo from "../assets/ggj_badge.png";
         </p>
         <div class="activity-cta">
           <a href="https://gjtakahashi.okayamaunity.com" class="btn-more">
-            ゲームジャム高梁の詳細を見る <i class="fas fa-arrow-right"></i>
+            ゲームジャム高梁の詳細を見る{" "}
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -108,7 +110,7 @@ import ggjlogo from "../assets/ggj_badge.png";
   </section>
 
   <section class="activity">
-    <h3>教えて！Unity先生！（講師派遣）</h3>
+    <h2>教えて！Unity先生！（講師派遣）</h2>
     <div class="activity-content">
       <Image
         width="400"
@@ -128,11 +130,11 @@ import ggjlogo from "../assets/ggj_badge.png";
         </p>
         <div class="activity-cta">
           <a
-            href="/news/2016-03-27-コラム-広島ものづくりジムでunityを教えました"
+            href="/news/2016-03-27-コラム-広島ものづくりジムでunityを教えました/"
             class="btn-more"
           >
             講習会の詳細を見る(atものづくりジム){" "}
-            <i class="fas fa-arrow-right"></i>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -148,7 +150,8 @@ import ggjlogo from "../assets/ggj_badge.png";
   .activity {
     margin-bottom: 4rem;
   }
-  .activity h3 {
+  .activity h2 {
+    font-size: 1.17rem;
     border-bottom: 2px solid var(--accent);
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
@@ -167,7 +170,8 @@ import ggjlogo from "../assets/ggj_badge.png";
   }
   .activity-text {
     flex: 1;
-    min-width: 300px;
+    flex-basis: 300px;
+    min-width: 0;
   }
   .activity-text p {
     margin-bottom: 1rem;
@@ -208,6 +212,10 @@ import ggjlogo from "../assets/ggj_badge.png";
       flex-direction: column;
     }
     .activity-image {
+      width: 100%;
+    }
+    .activity-text {
+      flex-basis: auto;
       width: 100%;
     }
   }

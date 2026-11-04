@@ -27,7 +27,7 @@ title: "GGJ 2027 Countdown";
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
-      content="https://hiro-uni.github.io/ggj26_banner.png"
+      content="https://hiro-uni.github.io/ggj27/assets/countdown-banner.jpg"
     />
     <meta
       property="og:image:alt"
@@ -44,9 +44,9 @@ title: "GGJ 2027 Countdown";
     />
     <meta
       name="twitter:image"
-      content="https://hiro-uni.github.io/ggj26_banner.png"
+      content="https://hiro-uni.github.io/ggj27/assets/countdown-banner.jpg"
     />
-    <title>GGJ 2027 Countdown - 広島Unity勉強会</title>
+    <title>GGJ 2027 瀬戸内会場 in 広島 カウントダウン - 広島Unity勉強会</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -68,10 +68,53 @@ title: "GGJ 2027 Countdown";
         margin: 0;
         padding: 0;
         width: 100%;
-        height: 100%;
-        overflow: hidden;
+        min-height: 100%;
         background: radial-gradient(circle at center, #ffffff 0%, #d5d5e5 100%);
         font-family: "Inter", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .countdown-page {
+        position: relative;
+        z-index: 10;
+        min-height: 100svh;
+        display: grid;
+        grid-template-rows: 1fr auto auto;
+        gap: 1.5rem;
+        padding: 5vh 5vw;
+        overflow-wrap: anywhere;
+      }
+
+      .countdown-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem 1.5rem;
+      }
+
+      .countdown-controls button {
+        min-height: 44px;
+        padding: 0.5rem 1rem;
+        border: 2px solid var(--ggj-purple);
+        border-radius: 0.5rem;
+        font: inherit;
+        font-weight: 700;
+        color: var(--ggj-purple);
+        background: #fff;
+        cursor: pointer;
+      }
+
+      :is(a, button):focus-visible {
+        outline: 3px solid #183432;
+        outline-offset: 4px;
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      [hidden] {
+        display: none !important;
       }
 
       #canvas-container {
@@ -84,13 +127,8 @@ title: "GGJ 2027 Countdown";
       }
 
       .overlay {
-        position: absolute;
-        top: 50%;
-        left: 5%;
-        transform: translateY(-50%);
+        align-self: center;
         z-index: 10;
-        user-select: none;
-        pointer-events: none;
         margin: 0;
       }
 
@@ -144,17 +182,16 @@ title: "GGJ 2027 Countdown";
       }
 
       .countdown-info {
-        position: absolute;
-        bottom: 5%;
-        left: 5%;
         z-index: 10;
         color: #333;
+        width: fit-content;
+        max-width: 100%;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background: #f4f4f4f5;
       }
 
       .back-link {
-        position: absolute;
-        right: 5%;
-        bottom: 5%;
         z-index: 11;
         color: var(--ggj-purple);
         font-size: 0.875rem;
@@ -162,6 +199,10 @@ title: "GGJ 2027 Countdown";
         text-decoration: none;
         border-bottom: 1px solid currentColor;
         padding: 8px 0;
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        background: #f4f4f4f5;
       }
 
       .back-link:hover,
@@ -172,7 +213,7 @@ title: "GGJ 2027 Countdown";
       .event-details {
         font-size: 1rem;
         font-weight: 700;
-        color: #999;
+        color: #555;
         text-transform: uppercase;
         letter-spacing: 2px;
       }
@@ -185,11 +226,6 @@ title: "GGJ 2027 Countdown";
       }
 
       @media (max-width: 768px) {
-        .countdown-info {
-          bottom: calc(5% + 48px);
-          right: 5%;
-        }
-
         .logo-box {
           width: 40px;
           height: 40px;
@@ -203,8 +239,6 @@ title: "GGJ 2027 Countdown";
           letter-spacing: 2px;
         }
         .overlay {
-          left: 50%;
-          transform: translate(-50%, -150%);
           text-align: center;
           width: 100%;
           justify-content: center;
@@ -242,36 +276,80 @@ title: "GGJ 2027 Countdown";
         color: var(--ggj-logo);
         font-weight: 900;
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        .city-label {
+          transition: none;
+        }
+      }
     </style>
   </head>
   <body>
-    <div id="canvas-container"></div>
+    <div id="canvas-container" aria-hidden="true"></div>
 
-    <div class="overlay">
-      <h1 class="visually-hidden">
-        GGJ 2027 Setouchi in Hiroshima カウントダウン
-      </h1>
-      <div class="bbc-style-logo">
-        <div class="logo-box">G</div>
-        <div class="logo-box">G</div>
-        <div class="logo-box">J</div>
+    <main class="countdown-page">
+      <div class="overlay">
+        <h1 class="visually-hidden">
+          GGJ 2027 Setouchi in Hiroshima カウントダウン
+        </h1>
+        <div class="bbc-style-logo" aria-hidden="true">
+          <div class="logo-box">G</div>
+          <div class="logo-box">G</div>
+          <div class="logo-box">J</div>
+        </div>
+        <div class="sub-logo" aria-hidden="true">
+          2027
+        </div>
+        <div class="location-tag" lang="en">
+          SETOUCHI in HIROSHIMA
+        </div>
       </div>
-      <div class="sub-logo">2027</div>
-      <div class="location-tag">SETOUCHI in HIROSHIMA</div>
-    </div>
 
-    <div class="countdown-info">
-      <div id="countdown-label" class="event-details">
-        GGJ 2027 Setouchi in Hiroshima starts in
+      <div class="countdown-info">
+        <div id="countdown-label" class="event-details">
+          GGJ 2027 瀬戸内会場 in 広島 開始まで
+        </div>
+        <div
+          id="countdown-text"
+          class="target-date"
+          role="timer"
+          aria-labelledby="countdown-label"
+          aria-live="off"
+        >
+          <time datetime="2027-01-29T17:00:00+09:00">
+            2027年1月29日 17:00（日本時間）開始
+          </time>
+        </div>
+        <p>
+          開始：
+          <time datetime="2027-01-29T17:00:00+09:00">
+            2027年1月29日 17:00（日本時間）
+          </time>
+        </p>
       </div>
-      <div id="countdown-text" class="target-date">
-        00Days 00:00:00
-      </div>
-    </div>
 
-    <a class="back-link" href="/ggj/">
-      Back to GGJ27
-    </a>
+      <div class="countdown-controls">
+        <button
+          id="toggle-countdown"
+          type="button"
+          aria-controls="countdown-text"
+          hidden
+        >
+          カウントダウンを一時停止
+        </button>
+        <button
+          id="toggle-animation"
+          type="button"
+          aria-controls="canvas-container"
+          hidden
+        >
+          アニメーションを一時停止
+        </button>
+        <a class="back-link" href="/ggj/">
+          GGJ 2027の参加案内に戻る
+        </a>
+      </div>
+    </main>
 
     <script>
       import * as THREE from "three";
@@ -287,6 +365,13 @@ title: "GGJ 2027 Countdown";
       const endDate = Date.parse("2027-01-31T17:00:00+09:00");
       const countdownElem = document.getElementById("countdown-text");
       const countdownLabel = document.getElementById("countdown-label");
+      const countdownToggle = document.getElementById("toggle-countdown");
+      const motionToggle = document.getElementById("toggle-animation");
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      let countdownPaused = false;
+      let motionPaused = reducedMotion.matches;
 
       function updateCountdownText() {
         const now = Date.now();
@@ -301,16 +386,53 @@ title: "GGJ 2027 Countdown";
 
         if (countdownLabel) {
           countdownLabel.textContent = finished
-            ? "GGJ 2027 Setouchi in Hiroshima"
-            : `GGJ 2027 Setouchi in Hiroshima ${started ? "ends" : "starts"} in`;
+            ? "GGJ 2027 瀬戸内会場 in 広島"
+            : `GGJ 2027 瀬戸内会場 in 広島 ${started ? "開発終了" : "開始"}まで`;
+          if (countdownPaused)
+            countdownLabel.textContent += "（表示を一時停止中）";
         }
         if (countdownElem) {
           countdownElem.textContent = finished
-            ? "Jam has finished!"
-            : `${String(days).padStart(2, "0")} Days ${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+            ? "開発時間は終了しました！"
+            : `${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
         }
         return totalSeconds;
       }
+
+      // Keep the text and its controls working even without WebGL.
+      updateCountdownText();
+      window.setInterval(() => {
+        if (!countdownPaused) updateCountdownText();
+      }, 1000);
+      if (countdownToggle) {
+        countdownToggle.hidden = false;
+        countdownToggle.addEventListener("click", () => {
+          countdownPaused = !countdownPaused;
+          countdownToggle.textContent = countdownPaused
+            ? "カウントダウンを再開"
+            : "カウントダウンを一時停止";
+          if (countdownPaused) {
+            if (countdownLabel)
+              countdownLabel.textContent += "（表示を一時停止中）";
+          } else updateCountdownText();
+        });
+      }
+
+      function updateMotionButton() {
+        if (motionToggle)
+          motionToggle.textContent = motionPaused
+            ? "アニメーションを再生"
+            : "アニメーションを一時停止";
+      }
+      motionToggle?.addEventListener("click", () => {
+        motionPaused = !motionPaused;
+        updateMotionButton();
+      });
+      reducedMotion.addEventListener("change", () => {
+        motionPaused = reducedMotion.matches;
+        updateMotionButton();
+      });
+      updateMotionButton();
 
       // --- City Data & Helpers ---
       const cities = [
@@ -411,355 +533,366 @@ title: "GGJ 2027 Countdown";
       }
 
       // --- Three.js Setup ---
-      const container = document.getElementById("canvas-container");
-      const scene = new THREE.Scene();
+      function initializeScene() {
+        const container = document.getElementById("canvas-container");
+        const scene = new THREE.Scene();
 
-      // Better background gradient using CSS and transparent renderer
-      scene.background = null;
+        // Better background gradient using CSS and transparent renderer
+        scene.background = null;
 
-      const camera = new THREE.PerspectiveCamera(
-        60,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000,
-      );
-      camera.position.z = 6;
+        const camera = new THREE.PerspectiveCamera(
+          60,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000,
+        );
+        camera.position.z = 6;
 
-      const renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true,
-      });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      container.appendChild(renderer.domElement);
+        const renderer = new THREE.WebGLRenderer({
+          antialias: true,
+          alpha: true,
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
 
-      const labelRenderer = new CSS2DRenderer();
-      labelRenderer.setSize(window.innerWidth, window.innerHeight);
-      labelRenderer.domElement.style.position = "absolute";
-      labelRenderer.domElement.style.top = "0px";
-      labelRenderer.domElement.style.pointerEvents = "none";
-      container.appendChild(labelRenderer.domElement);
+        const labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = "absolute";
+        labelRenderer.domElement.style.top = "0px";
+        labelRenderer.domElement.style.pointerEvents = "none";
+        container.appendChild(labelRenderer.domElement);
 
-      // --- Lighting ---
-      const ambientLight = new THREE.AmbientLight(0xffffff, 1.0); // Doubled intensity
-      scene.add(ambientLight);
+        // --- Lighting ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1.0); // Doubled intensity
+        scene.add(ambientLight);
 
-      const pointLight = new THREE.PointLight(0x3498db, 1.2);
-      pointLight.position.set(10, 10, 10);
-      scene.add(pointLight);
+        const pointLight = new THREE.PointLight(0x3498db, 1.2);
+        pointLight.position.set(10, 10, 10);
+        scene.add(pointLight);
 
-      const spotLight = new THREE.SpotLight(0xffffff, 1.2);
-      spotLight.position.set(-10, 5, 10);
-      scene.add(spotLight);
+        const spotLight = new THREE.SpotLight(0xffffff, 1.2);
+        spotLight.position.set(-10, 5, 10);
+        scene.add(spotLight);
 
-      // --- The Globe (External Model) ---
-      const globeGroup = new THREE.Group();
-      scene.add(globeGroup);
+        // --- The Globe (External Model) ---
+        const globeGroup = new THREE.Group();
+        scene.add(globeGroup);
 
-      const gltfLoader = new GLTFLoader();
-      let earthModel;
+        const gltfLoader = new GLTFLoader();
+        let earthModel;
 
-      gltfLoader.load("/assets/ggj/earth.glb", (gltf) => {
-        earthModel = gltf.scene;
+        gltfLoader.load("/assets/ggj/earth.glb", (gltf) => {
+          earthModel = gltf.scene;
 
-        // Apply blue vertical gradient transparency
-        earthModel.traverse((child) => {
-          if (child.isMesh) {
-            child.material.transparent = true;
-            // Inject custom shader logic for vertical transparency
-            child.material.onBeforeCompile = (shader) => {
-              shader.vertexShader = shader.vertexShader.replace(
-                "#include <common>",
-                `#include <common>
+          // Apply blue vertical gradient transparency
+          earthModel.traverse((child) => {
+            if (child.isMesh) {
+              child.material.transparent = true;
+              // Inject custom shader logic for vertical transparency
+              child.material.onBeforeCompile = (shader) => {
+                shader.vertexShader = shader.vertexShader.replace(
+                  "#include <common>",
+                  `#include <common>
                              varying vec3 vWorldPos;`,
-              );
-              shader.vertexShader = shader.vertexShader.replace(
-                "#include <begin_vertex>",
-                `#include <begin_vertex>
+                );
+                shader.vertexShader = shader.vertexShader.replace(
+                  "#include <begin_vertex>",
+                  `#include <begin_vertex>
                              vWorldPos = (modelMatrix * vec4(position, 1.0)).xyz;`,
-              );
-              shader.fragmentShader = shader.fragmentShader.replace(
-                "#include <common>",
-                `#include <common>
+                );
+                shader.fragmentShader = shader.fragmentShader.replace(
+                  "#include <common>",
+                  `#include <common>
                              varying vec3 vWorldPos;`,
-              );
-              // Modify alpha based on Y coordinate
-              // Assuming globe is around y=0 with radius ~2-3
-              shader.fragmentShader = shader.fragmentShader.replace(
-                "#include <opaque_fragment>",
-                `#include <opaque_fragment>
+                );
+                // Modify alpha based on Y coordinate
+                // Assuming globe is around y=0 with radius ~2-3
+                shader.fragmentShader = shader.fragmentShader.replace(
+                  "#include <opaque_fragment>",
+                  `#include <opaque_fragment>
                              float grad = clamp((vWorldPos.y + 1.8)  / 2.8, 0.1, 1.0);
                              gl_FragColor.a *= grad;`,
-              );
-            };
+                );
+              };
 
-            // Lighten the tint to let the texture show through more
-            if (child.material.color) {
-              child.material.color.setHex(0xeeeeff); // Much brighter tint
+              // Lighten the tint to let the texture show through more
+              if (child.material.color) {
+                child.material.color.setHex(0xeeeeff); // Much brighter tint
+              }
+              child.material.needsUpdate = true;
             }
-            child.material.needsUpdate = true;
-          }
+          });
+
+          // Adjust scale if needed (depends on the model)
+          earthModel.scale.set(0.8, 0.8, 0.8);
+          globeGroup.add(earthModel);
         });
 
-        // Adjust scale if needed (depends on the model)
-        earthModel.scale.set(0.8, 0.8, 0.8);
-        globeGroup.add(earthModel);
-      });
+        // --- Ribbons ---
+        const ribbonsArr = [];
+        const createRibbon = (radius, width, speed, color, opacity = 0.6) => {
+          const ribbonGeom = new THREE.TorusGeometry(radius, width, 8, 128);
+          const ribbonMat = new THREE.MeshPhongMaterial({
+            color: color,
+            transparent: true,
+            opacity: opacity,
+            shininess: 100,
+          });
+          const ribbon = new THREE.Mesh(ribbonGeom, ribbonMat);
+          ribbon.rotation.x = Math.random() * Math.PI;
+          ribbon.rotation.y = Math.random() * Math.PI;
+          scene.add(ribbon);
+          ribbonsArr.push({ mesh: ribbon, speed: speed });
+        };
 
-      // --- Ribbons ---
-      const ribbonsArr = [];
-      const createRibbon = (radius, width, speed, color, opacity = 0.6) => {
-        const ribbonGeom = new THREE.TorusGeometry(radius, width, 8, 128);
-        const ribbonMat = new THREE.MeshPhongMaterial({
-          color: color,
-          transparent: true,
-          opacity: opacity,
-          shininess: 100,
-        });
-        const ribbon = new THREE.Mesh(ribbonGeom, ribbonMat);
-        ribbon.rotation.x = Math.random() * Math.PI;
-        ribbon.rotation.y = Math.random() * Math.PI;
-        scene.add(ribbon);
-        ribbonsArr.push({ mesh: ribbon, speed: speed });
-      };
+        createRibbon(2.8, 0.04, 0.008, 0xf1f22e, 0.9); // GGJ Yellow (Brighter)
+        createRibbon(3.1, 0.015, -0.012, 0x553a65, 0.8); // GGJ Purple (More opaque)
+        createRibbon(2.6, 0.08, 0.004, 0xf1f22e, 0.5); // (More opaque)
+        createRibbon(3.5, 0.005, 0.02, 0x2cb4e8, 0.6); // GGJ Cyan (More opaque)
 
-      createRibbon(2.8, 0.04, 0.008, 0xf1f22e, 0.9); // GGJ Yellow (Brighter)
-      createRibbon(3.1, 0.015, -0.012, 0x553a65, 0.8); // GGJ Purple (More opaque)
-      createRibbon(2.6, 0.08, 0.004, 0xf1f22e, 0.5); // (More opaque)
-      createRibbon(3.5, 0.005, 0.02, 0x2cb4e8, 0.6); // GGJ Cyan (More opaque)
+        // --- Rings (Waves) ---
+        const wavesArr = [];
+        const createWave = () => {
+          const waveGeom = new THREE.RingGeometry(2, 2.02, 128);
+          const waveMat = new THREE.MeshBasicMaterial({
+            color: 0xf1f22e,
+            transparent: true,
+            opacity: 0.8,
+            side: THREE.DoubleSide,
+          });
+          const wave = new THREE.Mesh(waveGeom, waveMat);
+          // Orient wave randomly or to camera
+          wave.lookAt(camera.position);
+          scene.add(wave);
+          wavesArr.push({ mesh: wave, scale: 1, opacity: 0.8 });
+        };
 
-      // --- Rings (Waves) ---
-      const wavesArr = [];
-      const createWave = () => {
-        const waveGeom = new THREE.RingGeometry(2, 2.02, 128);
-        const waveMat = new THREE.MeshBasicMaterial({
-          color: 0xf1f22e,
-          transparent: true,
-          opacity: 0.8,
-          side: THREE.DoubleSide,
-        });
-        const wave = new THREE.Mesh(waveGeom, waveMat);
-        // Orient wave randomly or to camera
-        wave.lookAt(camera.position);
-        scene.add(wave);
-        wavesArr.push({ mesh: wave, scale: 1, opacity: 0.8 });
-      };
+        // --- Floating Numbers ---
+        let currentSecond = -1;
+        let nextCityAt = 0;
+        let citiesInitialized = false;
+        const clock = new THREE.Clock();
 
-      // --- Floating Numbers ---
-      let currentSecond = -1;
-      let nextCityAt = 0;
-      let citiesInitialized = false;
-      const reducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      );
-      const clock = new THREE.Clock();
+        // --- City Animation Management ---
+        const activeCities = new Map();
+        const connectionLines = [];
+        const EARTH_RADIUS = 2.4; // Matching the shader logic's assumed radius
 
-      // --- City Animation Management ---
-      const activeCities = new Map();
-      const connectionLines = [];
-      const EARTH_RADIUS = 2.4; // Matching the shader logic's assumed radius
-
-      function spawnRandomCity(frontOnly = false) {
-        // Exclude fading labels too: a name stays reserved until it is removed.
-        const available = cities.filter((city) => {
-          if (activeCities.has(city.name)) return false;
-          if (!frontOnly) return true;
-          const position = latLongToVector3(city.lat, city.lon, EARTH_RADIUS);
-          const toCamera = camera.position.clone().sub(position).normalize();
-          return position.clone().normalize().dot(toCamera) > 0.05;
-        });
-        if (available.length === 0) return;
-        activateCity(available[Math.floor(Math.random() * available.length)]);
-      }
-
-      function updateCities() {
-        const now = Date.now();
-        if (!citiesInitialized) {
-          const hiroshima = cities.find((city) => city.name === "Hiroshima");
-          if (hiroshima) activateCity(hiroshima, true);
-          // Start with several readable labels on the camera-facing hemisphere.
-          for (let i = 0; i < 4; i++) spawnRandomCity(true);
-          citiesInitialized = true;
-          nextCityAt = now + 800 + Math.random() * 2000;
+        function spawnRandomCity(frontOnly = false) {
+          // Exclude fading labels too: a name stays reserved until it is removed.
+          const available = cities.filter((city) => {
+            if (activeCities.has(city.name)) return false;
+            if (!frontOnly) return true;
+            const position = latLongToVector3(city.lat, city.lon, EARTH_RADIUS);
+            const toCamera = camera.position.clone().sub(position).normalize();
+            return position.clone().normalize().dot(toCamera) > 0.05;
+          });
+          if (available.length === 0) return;
+          activateCity(available[Math.floor(Math.random() * available.length)]);
         }
 
-        activeCities.forEach((data, name) => {
-          if (!data.persistent && !data.leaving && now >= data.expiresAt) {
-            deactivateCity(name);
-          }
-        });
-
-        if (now >= nextCityAt) {
-          if (activeCities.size < 8) spawnRandomCity();
-          nextCityAt = now + 800 + Math.random() * 2000;
-        }
-      }
-
-      function activateCity(city, persistent = false) {
-        if (activeCities.has(city.name)) {
-          spawnRandomCity();
-          return;
-        }
-        const pos = latLongToVector3(city.lat, city.lon, EARTH_RADIUS);
-
-        // Label
-        const div = document.createElement("div");
-        div.className = "city-label";
-        if (city.name === "Hiroshima") div.classList.add("hiroshima-label");
-        div.textContent = city.name;
-        const label = new CSS2DObject(div);
-        label.position.copy(pos);
-        globeGroup.add(label);
-
-        // Connect to another active city
-        if (activeCities.size > 0) {
-          const otherCities = Array.from(activeCities.values());
-          const target =
-            otherCities[Math.floor(Math.random() * otherCities.length)];
-          createLine(pos, target.position);
-        }
-
-        activeCities.set(city.name, {
-          label,
-          position: pos,
-          expiresAt: Date.now() + 5000 + Math.random() * 4000,
-          div,
-          persistent,
-        });
-
-        // Trigger fade in
-        setTimeout(() => div.classList.add("visible"), 50);
-      }
-
-      function deactivateCity(name) {
-        const data = activeCities.get(name);
-        if (data) {
-          data.leaving = true;
-          data.div.classList.remove("visible");
-          setTimeout(() => {
-            globeGroup.remove(data.label);
-            activeCities.delete(name);
-          }, 1000);
-        }
-      }
-
-      function createLine(start, end) {
-        // Create a slightly arched path
-        const mid = start
-          .clone()
-          .lerp(end, 0.5)
-          .normalize()
-          .multiplyScalar(EARTH_RADIUS * 1.1);
-        const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
-        const linePoints = curve.getPoints(20);
-
-        const lineGeom = new THREE.BufferGeometry().setFromPoints(linePoints);
-        const lineMat = new THREE.LineBasicMaterial({
-          color: 0x999999,
-          transparent: true,
-          opacity: 0,
-          linewidth: 1,
-        });
-        const line = new THREE.Line(lineGeom, lineMat);
-        globeGroup.add(line);
-
-        const lineData = { line, startTime: Date.now(), opacity: 0 };
-        connectionLines.push(lineData);
-      }
-
-      function updateLines() {
-        for (let i = connectionLines.length - 1; i >= 0; i--) {
-          const l = connectionLines[i];
-          const age = Date.now() - l.startTime;
-
-          if (age < 1000) {
-            l.opacity = age / 1000;
-          } else if (age > 4000) {
-            l.opacity = 1 - (age - 4000) / 1000;
-          } else {
-            l.opacity = 1;
+        function updateCities() {
+          const now = Date.now();
+          if (!citiesInitialized) {
+            const hiroshima = cities.find((city) => city.name === "Hiroshima");
+            if (hiroshima) activateCity(hiroshima, true);
+            // Start with several readable labels on the camera-facing hemisphere.
+            for (let i = 0; i < 4; i++) spawnRandomCity(true);
+            citiesInitialized = true;
+            nextCityAt = now + 800 + Math.random() * 2000;
           }
 
-          l.line.material.opacity = l.opacity * 0.4;
+          activeCities.forEach((data, name) => {
+            if (!data.persistent && !data.leaving && now >= data.expiresAt) {
+              deactivateCity(name);
+            }
+          });
 
-          if (age > 5000) {
-            globeGroup.remove(l.line);
-            l.line.geometry.dispose();
-            l.line.material.dispose();
-            connectionLines.splice(i, 1);
+          if (now >= nextCityAt) {
+            if (activeCities.size < 8) spawnRandomCity();
+            nextCityAt = now + 800 + Math.random() * 2000;
           }
         }
-      }
 
-      // --- Animation Loop ---
-      function animate() {
-        requestAnimationFrame(animate);
+        function activateCity(city, persistent = false) {
+          if (activeCities.has(city.name)) {
+            spawnRandomCity();
+            return;
+          }
+          const pos = latLongToVector3(city.lat, city.lon, EARTH_RADIUS);
 
-        const delta = Math.min(clock.getDelta(), 0.1);
-        if (!reducedMotion.matches) globeGroup.rotation.y += delta * 0.18;
+          // Label
+          const div = document.createElement("div");
+          div.className = "city-label";
+          if (city.name === "Hiroshima") div.classList.add("hiroshima-label");
+          div.textContent = city.name;
+          const label = new CSS2DObject(div);
+          label.position.copy(pos);
+          globeGroup.add(label);
 
-        ribbonsArr.forEach((r) => {
-          if (!reducedMotion.matches) {
+          // Connect to another active city
+          if (activeCities.size > 0) {
+            const otherCities = Array.from(activeCities.values());
+            const target =
+              otherCities[Math.floor(Math.random() * otherCities.length)];
+            createLine(pos, target.position);
+          }
+
+          activeCities.set(city.name, {
+            label,
+            position: pos,
+            expiresAt: Date.now() + 5000 + Math.random() * 4000,
+            div,
+            persistent,
+          });
+
+          // Trigger fade in
+          setTimeout(() => div.classList.add("visible"), 50);
+        }
+
+        function deactivateCity(name) {
+          const data = activeCities.get(name);
+          if (data) {
+            data.leaving = true;
+            data.div.classList.remove("visible");
+            setTimeout(() => {
+              globeGroup.remove(data.label);
+              activeCities.delete(name);
+            }, 1000);
+          }
+        }
+
+        function createLine(start, end) {
+          // Create a slightly arched path
+          const mid = start
+            .clone()
+            .lerp(end, 0.5)
+            .normalize()
+            .multiplyScalar(EARTH_RADIUS * 1.1);
+          const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
+          const linePoints = curve.getPoints(20);
+
+          const lineGeom = new THREE.BufferGeometry().setFromPoints(linePoints);
+          const lineMat = new THREE.LineBasicMaterial({
+            color: 0x999999,
+            transparent: true,
+            opacity: 0,
+            linewidth: 1,
+          });
+          const line = new THREE.Line(lineGeom, lineMat);
+          globeGroup.add(line);
+
+          const lineData = { line, startTime: Date.now(), opacity: 0 };
+          connectionLines.push(lineData);
+        }
+
+        function updateLines() {
+          for (let i = connectionLines.length - 1; i >= 0; i--) {
+            const l = connectionLines[i];
+            const age = Date.now() - l.startTime;
+
+            if (age < 1000) {
+              l.opacity = age / 1000;
+            } else if (age > 4000) {
+              l.opacity = 1 - (age - 4000) / 1000;
+            } else {
+              l.opacity = 1;
+            }
+
+            l.line.material.opacity = l.opacity * 0.4;
+
+            if (age > 5000) {
+              globeGroup.remove(l.line);
+              l.line.geometry.dispose();
+              l.line.material.dispose();
+              connectionLines.splice(i, 1);
+            }
+          }
+        }
+
+        // --- Animation Loop ---
+        function animate() {
+          requestAnimationFrame(animate);
+
+          const delta = Math.min(clock.getDelta(), 0.1);
+          if (motionPaused) {
+            renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
+            return;
+          }
+          globeGroup.rotation.y += delta * 0.18;
+
+          ribbonsArr.forEach((r) => {
             r.mesh.rotation.z += r.speed * delta * 60;
             r.mesh.rotation.x += r.speed * delta * 12;
-          }
-        });
+          });
 
-        // Handle Timing
-        const timeData = updateCountdownText();
-        if (timeData !== currentSecond) {
-          currentSecond = timeData;
-          if (!reducedMotion.matches && timeData > 0) createWave();
+          // Handle Timing
+          const timeData = Math.floor(Date.now() / 1000);
+          if (timeData !== currentSecond) {
+            currentSecond = timeData;
+            if (Date.now() < endDate) createWave();
+          }
+
+          // Animate Waves
+          for (let i = wavesArr.length - 1; i >= 0; i--) {
+            const w = wavesArr[i];
+            w.scale += delta * 1.8;
+            w.opacity -= delta * 0.9;
+            w.mesh.scale.set(w.scale, w.scale, w.scale);
+            w.mesh.material.opacity = w.opacity;
+
+            if (w.opacity <= 0) {
+              scene.remove(w.mesh);
+              w.mesh.geometry.dispose();
+              w.mesh.material.dispose();
+              wavesArr.splice(i, 1);
+            }
+          }
+
+          updateCities();
+          updateLines();
+
+          // Use the current world transform for both visibility and projection.
+          globeGroup.updateMatrixWorld(true);
+          const worldPosition = new THREE.Vector3();
+          const globeCenter = globeGroup.getWorldPosition(new THREE.Vector3());
+          const normal = new THREE.Vector3();
+          const toCamera = new THREE.Vector3();
+          activeCities.forEach((data) => {
+            data.label.getWorldPosition(worldPosition);
+            normal.copy(worldPosition).sub(globeCenter).normalize();
+            toCamera.copy(camera.position).sub(worldPosition).normalize();
+            // CSS2DRenderer overwrites element.style.display; use Object3D visibility.
+            data.label.visible = normal.dot(toCamera) > 0.05;
+          });
+
+          renderer.render(scene, camera);
+          labelRenderer.render(scene, camera);
         }
 
-        // Animate Waves
-        for (let i = wavesArr.length - 1; i >= 0; i--) {
-          const w = wavesArr[i];
-          w.scale += delta * 1.8;
-          w.opacity -= delta * 0.9;
-          w.mesh.scale.set(w.scale, w.scale, w.scale);
-          w.mesh.material.opacity = w.opacity;
+        animate();
+        if (motionToggle) motionToggle.hidden = false;
 
-          if (w.opacity <= 0) {
-            scene.remove(w.mesh);
-            w.mesh.geometry.dispose();
-            w.mesh.material.dispose();
-            wavesArr.splice(i, 1);
-          }
-        }
-
-        updateCities();
-        updateLines();
-
-        // Use the current world transform for both visibility and projection.
-        globeGroup.updateMatrixWorld(true);
-        const worldPosition = new THREE.Vector3();
-        const globeCenter = globeGroup.getWorldPosition(new THREE.Vector3());
-        const normal = new THREE.Vector3();
-        const toCamera = new THREE.Vector3();
-        activeCities.forEach((data) => {
-          data.label.getWorldPosition(worldPosition);
-          normal.copy(worldPosition).sub(globeCenter).normalize();
-          toCamera.copy(camera.position).sub(worldPosition).normalize();
-          // CSS2DRenderer overwrites element.style.display; use Object3D visibility.
-          data.label.visible = normal.dot(toCamera) > 0.05;
+        // Handle Resize
+        window.addEventListener("resize", () => {
+          const width = window.innerWidth;
+          const height = window.innerHeight;
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, height);
+          labelRenderer.setSize(width, height);
         });
-
-        renderer.render(scene, camera);
-        labelRenderer.render(scene, camera);
       }
 
-      animate();
-
-      // Handle Resize
-      window.addEventListener("resize", () => {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-        renderer.setSize(width, height);
-        labelRenderer.setSize(width, height);
-      });
+      try {
+        initializeScene();
+      } catch (error) {
+        console.warn("3D background is unavailable:", error);
+        const container = document.getElementById("canvas-container");
+        if (container) container.hidden = true;
+      }
     </script>
   </body>
 </html>

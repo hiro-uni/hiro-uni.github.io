@@ -15,19 +15,20 @@ const { href, title, image, date, category } = Astro.props;
 <a href={href} class="interview-card">
   <div class="card-image">
     {typeof image === "string" ? (
-      <img src={image} alt={title} loading="lazy" />
+      <img src={image} alt="" loading="lazy" />
     ) : (
-      <Image src={image} alt={title} />
+      <Image src={image} alt="" />
     )}
   </div>
   <div class="card-content">
     <div class="card-header">
       <span class="category">{category}</span>
     </div>
-    <h3 class="card-title">{title}</h3>
+    <h2 class="card-title">{title}</h2>
     <div class="card-footer">
       <span class="date">
-        <i class="fa-regular fa-clock"></i> {date}
+        <i class="fa-regular fa-clock" aria-hidden="true"></i>
+        <time datetime={date.replaceAll(".", "-")}>{date}</time>
       </span>
     </div>
   </div>
@@ -98,10 +99,8 @@ const { href, title, image, date, category } = Astro.props;
     font-weight: 800;
     margin: 0 0 1rem 0;
     color: #222;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    border-bottom: 0;
+    padding-bottom: 0;
     flex: 1;
   }
 
@@ -113,7 +112,7 @@ const { href, title, image, date, category } = Astro.props;
 
   .date {
     font-size: 0.8rem;
-    color: #888;
+    color: #666;
     display: flex;
     align-items: center;
     gap: 0.4rem;
