@@ -7,17 +7,9 @@
   reducedMotion.addEventListener("change", () => {
     if (reducedMotion.matches) activeBurst?.();
   });
-  document.getElementById("toggle-motion")?.addEventListener("click", () => {
-    activeBurst?.();
-  });
 
   function burstEntry() {
-    if (
-      reducedMotion.matches ||
-      document.documentElement.dataset.motionPaused !== "false" ||
-      !entryButton
-    )
-      return;
+    if (reducedMotion.matches || !entryButton) return;
     activeBurst?.();
     const bounds = entryButton.getBoundingClientRect();
     const centerX = bounds.left + bounds.width / 2;

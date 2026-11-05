@@ -391,16 +391,14 @@
     font-size: 0.8125rem;
   }
   .hero-band {
-    background: #fff;
+    background: var(--blue);
+    color: #fff;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem 2rem;
     padding: 1rem 1.5rem;
     font-size: 1rem;
     display: flex;
-  }
-  .hero-band span {
-    color: #52615e;
   }
   .button {
     text-align: left;
@@ -502,6 +500,11 @@
   .section-heading > p {
     color: #52615e;
   }
+  .welcome {
+    background: #e9eee5;
+    max-width: none;
+    padding-inline: max(1.5rem, 50vw - 596px);
+  }
   .welcome-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 3rem;
@@ -538,7 +541,6 @@
     display: grid;
   }
   .about {
-    background: #e9eee5;
     max-width: none;
     padding-inline: max(1.5rem, 50vw - 596px);
   }
@@ -1165,7 +1167,7 @@
   .character-engine {
     color: #1834324d;
     letter-spacing: -0.06em;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.5rem, 6vw, var(--character-engine-max-size, 4.5rem));
     font-weight: 900;
     line-height: 1.05;
     display: block;
@@ -1280,6 +1282,10 @@
   .character-showcase[data-engine="godot"] {
     --character-color: #fff;
     --character-shadow: #246e9b33;
+    --character-engine-max-size: 4rem;
+  }
+  .character-showcase[data-engine="godot"] .character-engine {
+    white-space: nowrap;
   }
   .character-engine {
     color: var(--character-color);
@@ -1294,11 +1300,8 @@
   .showcase-image {
     filter: drop-shadow(0 8px 8px #18343224)
       drop-shadow(3px 4px 12px var(--character-shadow));
-    animation: none;
-    will-change: transform;
-  }
-  :root[data-motion-paused="false"] .showcase-image {
     animation: float-character 4s ease-in-out infinite;
+    will-change: transform;
   }
   .character-showcase[data-engine="unity"] .showcase-image {
     animation-duration: 3.8s;
@@ -2028,35 +2031,10 @@
 .hero-countdown[hidden] {
   display: none;
 }
-.motion-toggle {
-  display: block;
-  min-height: 44px;
-  max-width: 100%;
-  margin: 0.5rem 0 0 auto;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #fff;
-  border-radius: 0.25rem;
-  background: #061f1d;
-  color: #fff;
-  font: inherit;
-  font-size: 0.8125rem;
-  cursor: pointer;
-}
-.motion-toggle[hidden] {
-  display: none;
-}
 @media (max-height: 450px) {
   .mobile-entry {
     display: none;
   }
-}
-:root[data-motion-paused="true"],
-:root[data-motion-paused="true"] *,
-:root[data-motion-paused="true"] *::before,
-:root[data-motion-paused="true"] *::after {
-  animation: none !important;
-  transition: none !important;
-  scroll-behavior: auto !important;
 }
 @media (max-width: 600px) {
   .hero-message-group {

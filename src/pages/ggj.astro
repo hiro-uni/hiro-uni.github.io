@@ -236,13 +236,6 @@ const eventData = {
                 aria-live="off"
                 hidden
               ></p>
-              <button
-                class="motion-toggle"
-                id="toggle-motion"
-                type="button"
-                aria-controls="hero-countdown"
-                hidden
-              >動きと自動更新を停止</button>
             </div>
           </div>
         </div>
@@ -423,6 +416,47 @@ const eventData = {
         </div>
       </section>
       <section
+        class="section px-6 py-16 md:py-24 about"
+        id="about"
+        tabindex="-1"
+        aria-labelledby="about-title"
+      >
+        <div class="split-layout">
+          <div>
+            <h2 id="about-title">
+              ゲームジャムは、
+              <br />
+              一緒につくる48時間。
+            </h2>
+            <p class="lead">
+              同じテーマから、
+              <br />
+              まだない「体験」を生み出そう。
+            </p>
+            <p>
+              <strong>
+                Global GameJam（GGJ）は、世界各地の参加者が共通のテーマからゲームをつくるイベント。
+              </strong>
+                2026年1月には、94か国の3.9万人が参加。9874個のゲームがリリースされました。
+            </p>
+            <p>
+              「ジャム」は、音楽のジャムセッションみたいに、アイデアや得意なことを持ち寄ること。完成度を競うより、一緒に考えて、つくって、遊ぶ時間を楽しもう。
+            </p>
+          </div>
+          <figure class="editorial-photo">
+            <img
+              src="/ggj27/assets/game_scene.jpg"
+              sizes="(min-width: 800px) 45vw, 100vw"
+              alt="開発中のゲームの画面"
+              width="1024"
+              height="768"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+      </section>
+      <section
         class="section px-6 py-16 md:py-24 welcome"
         aria-labelledby="welcome-title"
       >
@@ -478,47 +512,6 @@ const eventData = {
             decoding="async"
           />
         </figure>
-      </section>
-      <section
-        class="section px-6 py-16 md:py-24 about"
-        id="about"
-        tabindex="-1"
-        aria-labelledby="about-title"
-      >
-        <div class="split-layout">
-          <div>
-            <h2 id="about-title">
-              ゲームジャムは、
-              <br />
-              一緒につくる48時間。
-            </h2>
-            <p class="lead">
-              同じテーマから、
-              <br />
-              まだない「体験」を生み出そう。
-            </p>
-            <p>
-              <strong>
-                Global GameJam（GGJ）は、世界各地の参加者が共通のテーマからゲームをつくるイベント。
-              </strong>
-                2026年1月には、94か国の3.9万人が参加。9874個のゲームがリリースされました。
-            </p>
-            <p>
-              「ジャム」は、音楽のジャムセッションみたいに、アイデアや得意なことを持ち寄ること。完成度を競うより、一緒に考えて、つくって、遊ぶ時間を楽しもう。
-            </p>
-          </div>
-          <figure class="editorial-photo">
-            <img
-              src="/ggj27/assets/game_scene.jpg"
-              sizes="(min-width: 800px) 45vw, 100vw"
-              alt="開発中のゲームの画面"
-              width="1024"
-              height="768"
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-        </div>
       </section>
       <section
         class="section px-6 py-16 md:py-24 info"
@@ -870,6 +863,32 @@ const eventData = {
             </details>
             <details>
               <summary>
+                バリアフリー対応はありますか？<span aria-hidden="true">＋</span>
+              </summary>
+              <p>
+                <strong>はい、対応ございます！</strong>
+                <br />                
+                会場の新4号館には多目的トイレ、およびエレベーターがございます。移動経路については、大学のバリアフリーマップをご確認ください。キャンパスは斜面にあり、車椅子での移動が難しい場所もあります。
+                <br />
+                <a
+                  href="https://www.it-hiroshima.ac.jp/campuslife/disability/#target04"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  五日市キャンパス構内バリアフリーマップを見る ↗
+                  <span class="sr-only">（新しいタブで開きます）</span>
+                </a>
+                <br />
+                <br />
+                会場までの経路や参加にあたって必要な配慮については、事前に<a
+                  href="https://hirouni.connpass.com/event/408904/inquiry/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >運営へお問い合わせください<span class="sr-only">（新しいタブで開きます）</span></a>。
+              </p>
+            </details>
+            <details>
+              <summary>
                 何を持っていけばいい？<span aria-hidden="true">＋</span>
               </summary>
               <p>
@@ -910,7 +929,7 @@ const eventData = {
                 会場は48時間オープンの予定ですが、ずっと頑張り続けなくて大丈夫。無理せず自分のペースで、休憩も大切に。
                 <br />
                 <br />
-                会場から歩ける距離にはホテルや宿泊施設、銭湯、漫画喫茶もあります。男女別の休憩スポットも設置する予定です。
+                会場から歩ける距離にはホテルや宿泊施設、スーパー銭湯、漫画喫茶もあります。また会場内に、男女別の休憩室も設置します。
               </p>
             </details>
             <details>
@@ -1115,7 +1134,7 @@ const eventData = {
             <p>
               Whether you’re a student, an international resident or an
               experienced developer, bring your curiosity. English language
-              support by Shinji Yamane is available on-site. Check the event
+              support by <a href="#mc">Shinji Yamane</a> is available on-site. Check the event
               listing for details on team formation and overnight stay policies.
             </p>
             <p>
@@ -1165,9 +1184,6 @@ const eventData = {
             </h2>
           </div>
           <div class="entry-panel">
-            <p class="jam-entry-reminder">
-              参加無料・未経験歓迎・ひとり参加歓迎
-            </p>
             <h3>参加までの流れ</h3>
             <ol role="list" class="entry-steps">
               <li>
@@ -1244,12 +1260,12 @@ const eventData = {
         <div class="split-layout">
           <div>
             <h2 id="sponsors-title">
-              つくるきっかけを、
+              つくる。
               <br />
-              ともに。
+              を応援する。
             </h2>
             <p>
-              GGJ瀬戸内の活動趣旨に賛同し、温かく支えてくださっているスポンサーの皆様です。
+              GGJ瀬戸内の活動趣旨に賛同し、温かく支えてくださっているサポーターの皆様です。
             </p>
           </div>
           <div class="sponsor-list" aria-label="通常協賛">
@@ -1395,7 +1411,7 @@ const eventData = {
               <li>
                 <i class="fa-solid fa-champagne-glasses" aria-hidden="true"></i>
                 <div>
-                  <strong>アフターパーティ スポンサー</strong>
+                  <strong>アフターパーティ サポーター</strong>
                   <span>
                     開発終了後の開発者交流会へのご支援、およびご参加。
                   </span>
