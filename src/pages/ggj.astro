@@ -187,7 +187,7 @@ const eventData = {
         <aside class="landing-sidebar" aria-label="イベント情報">
           <section class="quick-card"><div class="quick-heading"><h2><i class="fa-regular fa-calendar" aria-hidden="true"></i> スケジュール</h2><a href="#schedule">詳細を見る →</a></div><div class="quick-day"><b>1.29 (Fri)</b><p>16:30　受付・入場開始<br />17:00　ルール説明・基調講演<br />17:30　アイデアソン・チーム編成</p></div><div class="quick-day"><b>1.30 (Sat)</b><p>ゲーム開発・中間発表</p></div><div class="quick-day"><b>1.31 (Sun)</b><p>16:00　開発終了<br />17:00　最終発表会<br />19:00　完全撤収</p></div></section>
           <section class="quick-card"><div class="quick-heading"><h2><i class="fa-regular fa-images" aria-hidden="true"></i> 過去の様子</h2><a href="#memories">詳しく見る →</a></div><div class="quick-photos"><img src="/ggj27/assets/opening.jpg" alt="参加者が集まる様子" loading="lazy" /><img src="/ggj27/assets/jam/hero-hiroshima-640.webp" alt="会場で制作する様子" loading="lazy" /><img src="/ggj27/assets/jam/about-hiroshima-640.webp" alt="作品を発表する様子" loading="lazy" /></div></section>
-          <section class="quick-card quick-faq"><div class="quick-heading"><h2><i class="fa-regular fa-circle-question" aria-hidden="true"></i> よくある質問</h2></div><a href="#faq">ゲーム制作が初めてでも参加できますか？ <span>⌄</span></a><a href="#faq">ひとりでの参加はできますか？ <span>⌄</span></a><a href="#faq">2日目から参加できますか？ <span>⌄</span></a></section>
+          <section class="quick-card quick-faq"><div class="quick-heading"><h2><i class="fa-regular fa-circle-question" aria-hidden="true"></i> よくある質問</h2></div><a href="#faq-beginner">ゲーム制作が初めてでも参加できますか？ <span>⌄</span></a><a href="#faq-solo">ひとりでの参加はできますか？ <span>⌄</span></a><a href="#faq-second-day">2日目から参加できますか？ <span>⌄</span></a></section>
         </aside>
       </div>
       <section
@@ -659,7 +659,7 @@ const eventData = {
                 </a>
               </p>
             </details>
-            <details>
+            <details id="faq-beginner">
               <summary>
                 ゲームをつくったことがなくても大丈夫？
                 <span aria-hidden="true">＋</span>
@@ -698,7 +698,7 @@ const eventData = {
                 </a>
               </p>
             </details>
-            <details>
+            <details id="faq-solo">
               <summary>
                 ひとりで行っても大丈夫？<span aria-hidden="true">＋</span>
               </summary>
@@ -707,7 +707,7 @@ const eventData = {
                 その場で出会う人とアイデアを話すのも、ゲームジャムの楽しみのひとつ。まずは試作品を作ってから、みんなでゲームを作っていきます。
               </p>
             </details>
-            <details>
+            <details id="faq-second-day">
               <summary>
                 2日目から参加できますか？<span aria-hidden="true">＋</span>
               </summary>

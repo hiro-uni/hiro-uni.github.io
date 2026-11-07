@@ -228,3 +228,39 @@ main{min-width:0}
     50% { transform: translateY(-12px); }
   }
 }
+
+@media (max-width: 800px) {
+  .entry .character-showcase[data-engine="godot"] {
+    grid-template-columns: minmax(0, 1fr) minmax(130px, 43%);
+    gap: .5rem;
+    width: 100%;
+    max-width: none;
+    margin: 2rem 0 0 auto;
+    text-align: left;
+  }
+  .entry .character-showcase[data-engine="godot"] .showcase-image {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: clamp(200px, 58vw, 280px);
+    object-fit: contain;
+    object-position: center bottom;
+  }
+  .entry .character-showcase[data-engine="godot"] figcaption {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+  }
+}
+
+@media (max-width: 800px) {
+  .entry .character-showcase[data-engine="godot"] .character-engine {
+    font-size: clamp(2.3rem, 10.5vw, 4rem);
+  }
+  .entry .character-showcase[data-engine="godot"] .character-name {
+    font-size: .8125rem;
+  }
+}
+
+.entry .character-showcase[data-engine="godot"] .character-engine,
+.entry .character-showcase[data-engine="godot"] .character-name { color: #167c91; }

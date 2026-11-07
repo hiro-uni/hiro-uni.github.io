@@ -1,6 +1,18 @@
 (() => {
   const header = document.querySelector(".site-header");
   if (!header) return;
+  const openLinkedFaq = (hash) => {
+    const target = document.getElementById(hash.replace(/^#/, ""));
+    if (target instanceof HTMLDetailsElement && target.closest(".faq-list")) {
+      target.open = true;
+    }
+  };
+  document.querySelector(".quick-faq")?.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href^='#']");
+    if (link) openLinkedFaq(link.hash);
+  });
+  window.addEventListener("hashchange", () => openLinkedFaq(location.hash));
+  openLinkedFaq(location.hash);
   const entryHeading = document.getElementById("entry-title");
   const entryIcon = entryHeading?.querySelector("i");
   if (entryHeading && entryIcon) {
