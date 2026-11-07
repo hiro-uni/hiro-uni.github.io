@@ -1,7 +1,43 @@
 (() => {
   const header = document.querySelector(".site-header");
   if (!header) return;
+  const entryHeading = document.getElementById("entry-title");
+  const entryIcon = entryHeading?.querySelector("i");
+  if (entryHeading && entryIcon) {
+    const shakeIcon = () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      entryIcon.classList.remove("is-shaking");
+      void entryIcon.offsetWidth;
+      entryIcon.classList.add("is-shaking");
+    };
+    entryHeading.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "touch") shakeIcon();
+    });
+    entryHeading.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "touch") shakeIcon();
+    });
+    entryIcon.addEventListener("animationend", () => entryIcon.classList.remove("is-shaking"));
+  }
   const entryButton = header.querySelector(".nav-entry");
+  const menuToggle = header.querySelector(".menu-toggle");
+  const nav = header.querySelector("#main-nav");
+  if (menuToggle && nav) {
+    header.classList.add("has-menu-toggle");
+    const setMenu = (open) => {
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+      header.classList.toggle("menu-open", open);
+    };
+    menuToggle.addEventListener("click", () => setMenu(menuToggle.getAttribute("aria-expanded") !== "true"));
+    nav.addEventListener("click", (event) => { if (event.target.closest("a")) setMenu(false); });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+        setMenu(false);
+        menuToggle.focus();
+      }
+    });
+    window.addEventListener("resize", () => { if (window.innerWidth > 800) setMenu(false); });
+  }
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let activeBurst;
   reducedMotion.addEventListener("change", () => {

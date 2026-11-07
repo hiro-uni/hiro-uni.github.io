@@ -1,12 +1,13 @@
 ---
 import "../styles/ggj27-page.css";
 import { Image } from "astro:assets";
-import logo from "../assets/ggj27/ggj27_logo.png";
 import setouchiLogo from "../assets/ggj27/ggj_setouchi_logo.png";
+import hiroshimaLogo from "../assets/ggj27/ggj27_logo.png";
 import unity from "../assets/ggj27/unity.png";
 import gray from "../assets/ggj27/gray.png";
-import "../styles/ggj27-sections.css";
 import godot from "../assets/ggj27/godotten.png";
+import "../styles/ggj27-sections.css";
+import "../styles/ggj27-refresh.css";
 // Descriptions and destinations: https://globalgamejam.org/group/31042/games
 const pastGames = [
   {
@@ -155,117 +156,40 @@ const eventData = {
       本文へスキップ
     </a>
     <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="GGJ 2027 瀬戸内 トップ">
-        <Image
-          class="wordmark-logo"
-          src={setouchiLogo}
-          alt="GGJ Setouchi"
-          width="160"
-          height="88"
-          loading="eager"
-          decoding="async"
-        />
+      <a class="refresh-brand" href="#top" aria-label="GGJ 2027 瀬戸内 トップ">
+        <Image src={hiroshimaLogo} alt="Global Game Jam 2027 瀬戸内会場 in 広島" width="240" height="74" loading="eager" />
       </a>
-      <nav aria-label="メインナビゲーション">
-        <a href="#about">GGJとは</a>
-        <a href="#info">開催概要</a>
-        <a href="#faq">FAQ</a>
-        <a href="#english" lang="en">
-          English
-        </a>
-        <a class="nav-entry" href="#entry">
-          <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
-          <span>参加する！</span>
-        </a>
+      <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+      <nav id="main-nav" aria-label="メインナビゲーション">
+        <a href="#top">トップ</a><a href="#about">GGJとは</a><a href="#entry">参加方法</a><a href="#schedule">スケジュール</a><a href="#memories">過去の様子</a><a href="#faq">FAQ</a><a href="#english" lang="en">English</a>
+        <a class="nav-entry" href="#entry">参加登録する ↗</a>
       </nav>
     </header>
     <main id="main" tabindex="-1">
-      <section class="hero" id="top" tabindex="-1" aria-labelledby="hero-title">
-        <div class="hero-visual">
-          <img
-            class="hero-photo"
-            src="/ggj27/assets/jam/hero-hiroshima-1024.webp"
-            srcset="/ggj27/assets/jam/hero-hiroshima-640.webp 640w, /ggj27/assets/jam/hero-hiroshima-1024.webp 1024w"
-            sizes="100vw"
-            alt="過去のGlobal Game Jam 広島会場（広島工業大学）の様子"
-            width="1024"
-            height="768"
-            fetchpriority="high"
-            decoding="async"
-          />
-          <div class="hero-shade" aria-hidden="true"></div>
-          <div class="hero-content">
-            <a
-              class="hero-brand"
-              href="#top"
-              aria-label="Global Game Jam 2027 瀬戸内会場 in 広島"
-            >
-              <Image
-                src={logo}
-                alt="グローバルゲームジャム2027 瀬戸内会場 in 広島"
-                width="800"
-                height="248"
-                loading="eager"
-                decoding="async"
-              />
-            </a>
-            <a class="hero-language" href="#english" lang="en">
-              <i class="fa-solid fa-globe" aria-hidden="true"></i> English guide{" "}
-              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </a>
-            <h1 class="hero-title" id="hero-title">
-              <span class="sr-only">
-                Global Game Jam 2027 瀬戸内会場 in 広島。{" "}
-              </span>
-              <span>はじまるよ！！</span>
-              <span>
-                <b class="hero-digits">48</b>時間！！
-              </span>
-            </h1>
-            <div class="hero-message-group">
-              <p class="hero-message">
-                <strong>初めてでも、ひとりでも。</strong>
-                <br />
-                仲間とゲームをつくる週末へ。
-              </p>
-              <p
-                class="hero-countdown"
-                id="hero-countdown"
-                role="timer"
-                aria-label="開催までのカウントダウン"
-                aria-live="off"
-                hidden
-              ></p>
+      <div class="landing-grid" id="top">
+        <div class="landing-primary">
+          <section class="landing-hero" aria-labelledby="hero-title">
+            <div class="hero-shapes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="landing-copy">
+              <h1 id="hero-title" class="landing-logo"><Image src={hiroshimaLogo} alt="Global Game Jam 2027 瀬戸内会場 in 広島" width="667" height="207" loading="eager" /></h1>
+              <p class="landing-description">世界中で同じテーマに挑戦する、48時間のゲーム制作イベント。<br />初めての方も、ひとりでの参加も歓迎です。</p>
+              <p class="landing-fact"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 2027.1.29 (Fri) – 1.31 (Sun)</p>
+              <p class="landing-fact"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> 広島工業大学 五日市キャンパス</p>
+              <div class="landing-actions"><a class="refresh-button" href="#entry">参加登録する（無料） ↗</a><a class="refresh-button outline" href="#about">GGJとは？ <span aria-hidden="true">ⓘ</span></a></div>
             </div>
+            <div class="landing-art"><img src="/ggj27/assets/jam/hero-hiroshima-1024.webp" alt="過去の広島会場でゲームを制作する参加者" width="1024" height="768" fetchpriority="high" /><span class="art-badge"><i class="fa-solid fa-gamepad" aria-hidden="true"></i> LET’S MAKE<br />GAMES!</span></div>
+          </section>
+          <div class="feature-strip" aria-label="イベントの特徴">
+            <div><i class="fa-solid fa-users" aria-hidden="true"></i><strong>チームでつくる<br />初参加も歓迎</strong></div><div><i class="fa-solid fa-code" aria-hidden="true"></i><strong>48時間で<br />ゲームを開発</strong></div><div><i class="fa-solid fa-globe" aria-hidden="true"></i><strong>世界共通の<br />テーマに挑戦</strong></div><div><i class="fa-regular fa-heart" aria-hidden="true"></i><strong>つくることを<br />楽しむイベント</strong></div>
           </div>
+          <div class="beginner-banner"><i class="fa-solid fa-seedling" aria-hidden="true"></i><div><strong>初めての方へ</strong><p>事前のチームや企画は不要です。ゲーム制作未経験の方も参加できます。</p></div><a class="refresh-link" href="#faq">よくある質問 →</a></div>
         </div>
-        <div class="hero-details">
-          <div>
-            <p class="hero-date">
-              <time datetime="2027-01-29">2027.1.29</time>
-              <span>—</span>
-              <time datetime="2027-01-31">1.31</time>
-            </p>
-            <p class="hero-venue">広島工業大学 五日市キャンパス</p>
-          </div>
-          <div class="hero-action">
-            <a class="button button-primary" href="#entry">
-              <span class="button-label">
-                <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
-                今すぐ参加申し込み！
-              </span>
-              <span class="button-arrow" aria-hidden="true">
-                <i class="fa-solid fa-arrow-down"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="hero-band">
-          <strong>参加無料</strong>
-          <strong>ゲーム制作の48時間</strong>
-          <span>ゲーム制作未経験・ひとり参加歓迎</span>
-        </div>
-      </section>
+        <aside class="landing-sidebar" aria-label="イベント情報">
+          <section class="quick-card"><div class="quick-heading"><h2><i class="fa-regular fa-calendar" aria-hidden="true"></i> スケジュール</h2><a href="#schedule">詳細を見る →</a></div><div class="quick-day"><b>1.29 (Fri)</b><p>16:30　受付・入場開始<br />17:00　ルール説明・基調講演<br />17:30　アイデアソン・チーム編成</p></div><div class="quick-day"><b>1.30 (Sat)</b><p>ゲーム開発・中間発表</p></div><div class="quick-day"><b>1.31 (Sun)</b><p>16:00　開発終了<br />17:00　最終発表会<br />19:00　完全撤収</p></div></section>
+          <section class="quick-card"><div class="quick-heading"><h2><i class="fa-regular fa-images" aria-hidden="true"></i> 過去の様子</h2><a href="#memories">詳しく見る →</a></div><div class="quick-photos"><img src="/ggj27/assets/opening.jpg" alt="参加者が集まる様子" loading="lazy" /><img src="/ggj27/assets/jam/hero-hiroshima-640.webp" alt="会場で制作する様子" loading="lazy" /><img src="/ggj27/assets/jam/about-hiroshima-640.webp" alt="作品を発表する様子" loading="lazy" /></div></section>
+          <section class="quick-card quick-faq"><div class="quick-heading"><h2><i class="fa-regular fa-circle-question" aria-hidden="true"></i> よくある質問</h2></div><a href="#faq">ゲーム制作が初めてでも参加できますか？ <span>⌄</span></a><a href="#faq">ひとりでの参加はできますか？ <span>⌄</span></a><a href="#faq">2日目から参加できますか？ <span>⌄</span></a></section>
+        </aside>
+      </div>
       <section
         class="section jam-memories"
         id="memories"
@@ -274,14 +198,10 @@ const eventData = {
       >
         <div class="section-heading">
           <h2 id="memories-title">
-            ひとりの「やってみたい」が、
-            <br />
-            みんなのゲームになる。
+            過去の広島会場の様子
           </h2>
           <p>
-            ゲーム制作が初めてでも、ひとりでも大丈夫。
-            <br />
-            仲間と一緒に、小さなアイデアを 体験 に。
+            チームづくりから作品発表まで、会場での活動を紹介します。
           </p>
         </div>
         <div class="jam-photo-grid">
@@ -296,7 +216,7 @@ const eventData = {
               decoding="async"
             />
             <figcaption>
-              <h3>はじめまして、から始めよう。</h3>
+              <h3>アイデア出しとチーム編成</h3>
               <p>
                 初日はアイデアソンからスタート。基調講演を見て、つくってみたいことを話し合い、その場でチームを組みます。ひとりでの参加も歓迎です。
               </p>
@@ -312,7 +232,7 @@ const eventData = {
               decoding="async"
             />
             <figcaption>
-              <h3>好きなことが、チームの力に。</h3>
+              <h3>それぞれの得意分野で制作</h3>
               <p>
                 プログラムだけでなく、絵を描く、音をつくる、ルールを考える、遊んで感想を伝えることもゲームづくりの一部。できることや挑戦したいことを持ち寄ろう。
               </p>
@@ -330,7 +250,7 @@ const eventData = {
               decoding="async"
             />
             <figcaption>
-              <h3>つくった時間も、作品になる。</h3>
+              <h3>完成したゲームを発表・試遊</h3>
               <p>
                 最後はつくったゲームを発表し、みんなで試遊。思いつきから生まれた作品を見せ合い、感想や新しい発見を持ち帰ろう。
               </p>
@@ -351,14 +271,12 @@ const eventData = {
         aria-labelledby="games-title"
       >
         <h2 id="games-title">
-          48時間で、
-          <br class="mobile-only" />
-          こんなゲームが生まれました。
+          過去の参加作品
         </h2>
         <p class="section-intro">
           2026年のテーマは <strong><a href="https://www.youtube.com/watch?v=tStqPX_LQzg">『Mask(マスク/仮面)』</a></strong>
           <br>
-          同じテーマから、まったく違う「アイデア」から「体験」へ。前回の <strong>体験</strong> を見てみよう。
+          広島会場で制作された作品をご紹介します。
         </p>
         <div class="jam-game-grid">
           {pastGames.map((game) => (
@@ -424,14 +342,10 @@ const eventData = {
         <div class="split-layout">
           <div>
             <h2 id="about-title">
-              ゲームジャムは、
-              <br />
-              一緒につくる48時間。
+              Global Game Jamとは？
             </h2>
             <p class="lead">
-              同じテーマから、
-              <br />
-              まだない「体験」を生み出そう。
+              世界共通のテーマでゲームを制作する48時間。
             </p>
             <p>
               <strong>
@@ -462,9 +376,7 @@ const eventData = {
       >
         <div class="section-heading">
           <h2 id="welcome-title">
-            「やってみたい」が、
-            <br />
-            参加する理由になる。
+            こんな方におすすめ
           </h2>
         </div>
         <div class="welcome-grid">
@@ -522,9 +434,7 @@ const eventData = {
         <div class="split-layout">
           <div>
             <h2 id="info-title">
-              週末の予定に、
-              <br />
-              ゲームづくりを。
+              開催概要
             </h2>
             <p class="section-intro">
               広島で会って、一緒につくる。
@@ -605,9 +515,7 @@ const eventData = {
         aria-labelledby="schedule-title"
       >
         <h2 id="schedule-title">
-          出会う金曜日。つくる土曜日。
-          <br />
-          見せ合う日曜日。
+          スケジュール
         </h2>
         <p class="section-intro">
           ゲーム制作は48時間。あっという間に過ぎてしまいます。
@@ -700,9 +608,7 @@ const eventData = {
         <div class="split-layout faq-layout">
           <div>
             <h2 id="faq-title">
-              初めての、不安を
-              <br />
-              少しずつ。
+              よくある質問（FAQ）
             </h2>
             <p class="section-intro">
               参加する前に、気になることを一つずつ解消しよう。
@@ -1178,19 +1084,18 @@ const eventData = {
         <div class="entry-layout">
           <div>
             <h2 id="entry-title">
-              最初の一歩は、
-              <br />
-              「やってみたい」で大丈夫。
+              <i class="fa-solid fa-gamepad" aria-hidden="true"></i> 参加までの流れ
             </h2>
+            <p class="entry-intro">初めての方でも大丈夫！3つのステップで参加できます。</p>
           </div>
           <div class="entry-panel">
-            <h3>参加までの流れ</h3>
             <ol role="list" class="entry-steps">
               <li>
                 <span class="entry-step-number" aria-hidden="true">
                   1
                 </span>
                 <h4>募集案内をチェック</h4>
+                <img class="entry-illustration" src="/ggj27/assets/entry-check.png" alt="" width="353" height="214" loading="lazy" />
                 <p>
                   connpassのイベントページで詳細や参加要件をチェックしよう。
                 </p>
@@ -1200,6 +1105,7 @@ const eventData = {
                   2
                 </span>
                 <h4>参加の準備をしよう</h4>
+                <img class="entry-illustration" src="/ggj27/assets/entry-prepare.png" alt="" width="360" height="214" loading="lazy" />
                 <p>
                   参加条件・持ち物・会場をチェック。未成年の方は、事前に保護者の方にご相談いただき、承諾を得てください。
                 </p>
@@ -1209,6 +1115,7 @@ const eventData = {
                   3
                 </span>
                 <h4>イベントに申し込もう</h4>
+                <img class="entry-illustration" src="/ggj27/assets/entry-register.png" alt="" width="345" height="214" loading="lazy" />
                 <p>connpassのイベントページから参加登録を行おう。</p>
               </li>
             </ol>
@@ -1243,7 +1150,7 @@ const eventData = {
           <Image
             class="showcase-image"
             src={godot}
-            alt="Godot character"
+            alt="Godot-chan"
             width="520"
             height="735"
             loading="lazy"
@@ -1257,16 +1164,11 @@ const eventData = {
         tabindex="-1"
         aria-labelledby="sponsors-title"
       >
-        <div class="split-layout">
-          <div>
+        <div class="sponsor-overview">
+          <div class="sponsor-heading">
             <h2 id="sponsors-title">
-              つくる。
-              <br />
-              を応援する。
+              瀬戸内会場 in 広島 のサポーターの皆様
             </h2>
-            <p>
-              GGJ瀬戸内の活動趣旨に賛同し、温かく支えてくださっているサポーターの皆様です。
-            </p>
           </div>
           <div class="sponsor-list" aria-label="通常協賛">
             <a
@@ -1284,11 +1186,11 @@ const eventData = {
                 decoding="async"
               />
               <span class="sponsor-caption">
-                れもんプチゲーム屋 公式サイト{" "}
+                <strong>れもんプチゲーム屋</strong><span>公式サイト {" "}
                 <i
                   class="fa-solid fa-arrow-up-right-from-square"
                   aria-hidden="true"
-                ></i>
+                ></i></span>
               </span>
               <span class="sr-only">（新しいタブで開きます）</span>
             </a>
@@ -1307,18 +1209,18 @@ const eventData = {
                 decoding="async"
               />
               <span class="sponsor-caption">
-                じむちょ＠Robloxエンジニア{" "}
+                <strong>じむちょ<br />＠Robloxエンジニア</strong><span>公式アカウント {" "}
                 <i
                   class="fa-solid fa-arrow-up-right-from-square"
                   aria-hidden="true"
-                ></i>
+                ></i></span>
               </span>
               <span class="sr-only">（新しいタブで開きます）</span>
             </a>
           </div>
         </div>
         <div class="community-supporters">
-          <h3 class="community-supporters-title">コミュニティサポーター</h3>
+          <h3 class="community-supporters-title"><i class="fa-solid fa-user-group" aria-hidden="true"></i> コミュニティサポーター</h3>
           <ul class="community-supporters-list" role="list">
             <li>
               <a
@@ -1327,7 +1229,7 @@ const eventData = {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>岡山Unity勉強会</span>
+                <i class="fa-solid fa-cube supporter-icon" aria-hidden="true"></i><span>岡山Unity勉強会</span>
                 <i
                   class="fa-solid fa-arrow-up-right-from-square"
                   aria-hidden="true"
@@ -1342,7 +1244,7 @@ const eventData = {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>一般社団法人 讃岐GameN</span>
+                <i class="fa-solid fa-gamepad supporter-icon" aria-hidden="true"></i><span>一般社団法人 讃岐GameN</span>
                 <i
                   class="fa-solid fa-arrow-up-right-from-square"
                   aria-hidden="true"
@@ -1357,7 +1259,7 @@ const eventData = {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>広島ゲームエンジンユーザーグループ</span>
+                <i class="fa-solid fa-gear supporter-icon" aria-hidden="true"></i><span>広島ゲームエンジンユーザーグループ</span>
                 <i
                   class="fa-solid fa-arrow-up-right-from-square"
                   aria-hidden="true"
@@ -1372,7 +1274,7 @@ const eventData = {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>中四国ゲームジャム実行委員会</span>
+                <i class="fa-solid fa-users supporter-icon" aria-hidden="true"></i><span>中四国ゲームジャム実行委員会</span>
                 <i
                   class="fa-solid fa-arrow-up-right-from-square"
                   aria-hidden="true"
@@ -1439,6 +1341,7 @@ const eventData = {
             </div>
           </div>
           <div class="sponsor-cooperation-action">
+            <img class="sponsor-cooperation-photo" src="/ggj27/assets/jam/hero-hiroshima-1024.webp" alt="広島会場で参加者が一緒にゲーム制作をする様子" width="1024" height="768" loading="lazy" />
             <a
               class="button button-outline sponsor-cooperation"
               href="https://hirouni.connpass.com/event/408904/inquiry/"
@@ -1461,14 +1364,42 @@ const eventData = {
         </div>
       </section>
     </main>
+    <div class="countdown-link-area">
+      <a
+        class="countdown-banner"
+        aria-label="GGJ 2027 カウントダウンを開く（新しいタブ）"
+        href="/ggj-countdown/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="countdown-banner-copy">
+          <strong>
+            GGJ 2027
+            <br />
+            カウントダウン
+          </strong>
+        </span>
+        <span class="countdown-banner-visual">
+          <img
+            src="/ggj27/assets/countdown-banner.jpg"
+            alt=""
+            width="1280"
+            height="556"
+            loading="lazy"
+            decoding="async"
+          />
+        </span>
+      </a>
+    </div>
+    <div class="footer-shell">
     <footer class="site-footer">
       <a class="wordmark" href="#top" aria-label="GGJ 2027 瀬戸内 トップ">
         <Image
           class="wordmark-logo footer-wordmark-logo"
-          src={setouchiLogo}
-          alt="GGJ Setouchi"
-          width="160"
-          height="88"
+          src={hiroshimaLogo}
+          alt="Global Game Jam 2027 瀬戸内会場 in 広島"
+          width="240"
+          height="74"
           loading="lazy"
           decoding="async"
         />
@@ -1584,32 +1515,6 @@ const eventData = {
       </a>{" "}
       の登録商標です。
     </p>
-    <div class="countdown-link-area">
-      <a
-        class="countdown-banner"
-        aria-label="GGJ 2027 カウントダウンを開く（新しいタブ）"
-        href="/ggj-countdown/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="countdown-banner-copy">
-          <strong>
-            GGJ 2027
-            <br />
-            カウントダウン
-          </strong>
-        </span>
-        <span class="countdown-banner-visual">
-          <img
-            src="/ggj27/assets/countdown-banner.jpg"
-            alt=""
-            width="1280"
-            height="556"
-            loading="lazy"
-            decoding="async"
-          />
-        </span>
-      </a>
     </div>
     <a class="mobile-entry" href="#entry" aria-label="今すぐ参加申込！">
       <span class="mobile-entry-art" aria-hidden="true">
