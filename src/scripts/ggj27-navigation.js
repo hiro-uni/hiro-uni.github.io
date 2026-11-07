@@ -1,3 +1,5 @@
+import { worldPlaces } from "./ggj27-world-places.js";
+
 (() => {
   const header = document.querySelector(".site-header");
   if (!header) return;
@@ -40,6 +42,36 @@
     window.addEventListener("resize", updateControls);
     scheduleCarousel.classList.add("has-controls");
     updateControls();
+  }
+  const worldCard = document.querySelector(".world-card");
+  if (worldCard) {
+    const places = worldPlaces;
+    const bubble = worldCard.querySelector(".world-bubble");
+    const locationLabel = worldCard.querySelector(".world-location");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let index = 0;
+    let timer;
+    const show = (next) => {
+      index = (next + places.length) % places.length;
+      const place = places[index];
+      bubble.textContent = place.phrase;
+      bubble.lang = place.lang;
+      locationLabel.textContent = place.location;
+      worldCard.dataset.worldIndex = String(index);
+      worldCard.dispatchEvent(new CustomEvent("world-place-change", { detail: index }));
+    };
+    let manuallySelected = false;
+    const select = (next) => { manuallySelected = true; window.clearInterval(timer); show(next); };
+    worldCard.querySelector(".world-prev").addEventListener("click", () => select(index - 1));
+    worldCard.querySelector(".world-next").addEventListener("click", () => select(index + 1));
+    const start = () => {
+      if (!timer && !reduced.matches && !manuallySelected) timer = window.setInterval(() => show(index + 1), 3500);
+    };
+    const stop = () => { window.clearInterval(timer); timer = undefined; };
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entry]) => { if (entry.isIntersecting) start(); else stop(); }, { threshold: 0.3 }).observe(worldCard);
+    } else { start(); }
+    reduced.addEventListener("change", (event) => { if (event.matches) stop(); });
   }
   const entryHeading = document.getElementById("entry-title");
   const entryIcon = entryHeading?.querySelector("i");

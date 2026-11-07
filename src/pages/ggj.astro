@@ -342,7 +342,7 @@ const eventData = {
             <h2 id="about-title">Global Game Jamとは？
             </h2>
             <p class="lead">
-              世界共通のテーマでゲームを制作する48時間。
+              世界共通のテーマでゲームを制作する48時間
             </p>
             <p>
               <strong>
@@ -354,17 +354,16 @@ const eventData = {
               「ジャム」は、音楽のジャムセッションみたいに、アイデアや得意なことを持ち寄ること。完成度を競うより、一緒に考えて、つくって、遊ぶ時間を楽しもう。
             </p>
           </div>
-          <figure class="editorial-photo">
-            <img
-              src="/ggj27/assets/game_scene.jpg"
-              sizes="(min-width: 800px) 45vw, 100vw"
-              alt="開発中のゲームの画面"
-              width="1024"
-              height="768"
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
+          <div class="world-card" aria-label="世界のゲームジャム">
+            <h3>世界中で <span>「ゲームを作ろう！」</span></h3>
+            <div class="world-stage">
+              <button type="button" class="world-prev" aria-label="前の場所">‹</button>
+              <div class="world-scene"><div class="world-canvas" aria-hidden="true"></div><div class="world-pin-label"><p class="world-bubble" lang="ja">ゲームを作ろう！</p><span class="world-location">日本・広島</span><span class="world-pin" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span></div><i class="fa-solid fa-earth-asia world-globe world-fallback" aria-hidden="true"></i></div>
+              <button type="button" class="world-next" aria-label="次の場所">›</button>
+            </div>
+            <div class="world-stats"><div><i class="fa-solid fa-users" aria-hidden="true"></i><div><span>参加国</span><strong>94 <small>か国</small></strong></div></div><div><i class="fa-solid fa-gamepad" aria-hidden="true"></i><div><span>制作されたゲーム</span><strong>9874 <small>個</small></strong></div></div><div><i class="fa-regular fa-clock" aria-hidden="true"></i><div><span>開催時間</span><strong>48 <small>時間</small></strong></div></div></div>
+            <p class="world-stats-note">引用 : 2026年 GGJ公式レポート より</p>
+          </div>
         </div>
       </section>
       <section
@@ -1528,5 +1527,6 @@ const eventData = {
     </a>
     <script src="../scripts/ggj27-display.js"></script>
     <script src="../scripts/ggj27-navigation.js"></script>
+    <script src="../scripts/ggj27-world-globe.js"></script>
   </body>
 </html>
