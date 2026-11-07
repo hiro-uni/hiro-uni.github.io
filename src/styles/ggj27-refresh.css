@@ -395,3 +395,45 @@ main{min-width:0}
 .english { background: #fff7e4; }
 
 .world-stage + .world-stats { margin-top: .9rem; }
+
+/* Setouchi mark behind the community footer note. */
+.footer-shell .community-footer-note { position: relative; isolation: isolate; min-height: 5rem; }
+.footer-shell .community-footer-note::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: 1.5rem;
+  width: min(230px, 35%);
+  aspect-ratio: 1024 / 560;
+  transform: translateY(-60%);
+  background: url("/ggj27/assets/ggj_setouchi_logo.png") center / contain no-repeat;
+  opacity: .12;
+  pointer-events: none;
+}
+@media (max-width: 800px) {
+  .footer-shell .community-footer-note::before { right: 1.25rem; width: min(180px, 42%); opacity: .1; }
+}
+
+.footer-shell .community-footer-note {
+  min-height: 8rem;
+  padding-right: min(270px, 30%);
+}
+.footer-shell .community-footer-note::before {
+  width: min(220px, 24%);
+  opacity: 1;
+  transform: translateY(-50%);
+}
+@media (max-width: 800px) {
+  .footer-shell .community-footer-note { min-height: 7rem; padding-right: 38%; }
+  .footer-shell .community-footer-note::before { width: 30%; opacity: 1; }
+}
+
+.footer-shell .community-footer-note { min-height: 6rem; padding-right: min(180px, 30%); }
+.footer-shell .community-footer-note::before { width: min(140px, 24%); }
+@media (max-width: 800px) {
+  .footer-shell .community-footer-note { min-height: 6rem; padding-right: 32%; }
+  .footer-shell .community-footer-note::before { width: min(110px, 25%); }
+}
+
+.footer-shell .community-footer-note::before { transform: translateY(calc(-50% - 12px)); }
