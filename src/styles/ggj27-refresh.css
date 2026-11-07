@@ -437,3 +437,20 @@ main{min-width:0}
 }
 
 .footer-shell .community-footer-note::before { transform: translateY(calc(-50% - 12px)); }
+
+/* Align the start of each day's timetable across the desktop cards. */
+@media (min-width: 801px) {
+  .jam-schedule .jam-day-grid {
+    grid-template-rows: auto auto auto auto 1fr;
+    row-gap: 0;
+  }
+  .jam-schedule .jam-day-grid > li {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 5;
+    align-items: start;
+  }
+  .jam-schedule .jam-timeline { margin: 0; }
+}
+
+.world-card h3 { margin-bottom: 10px; }
