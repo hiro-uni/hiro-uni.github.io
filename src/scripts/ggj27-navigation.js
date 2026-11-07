@@ -13,6 +13,34 @@
   });
   window.addEventListener("hashchange", () => openLinkedFaq(location.hash));
   openLinkedFaq(location.hash);
+  const scheduleCarousel = document.querySelector(".schedule-carousel");
+  const days = scheduleCarousel?.querySelector(".jam-day-grid");
+  if (scheduleCarousel && days) {
+    const cards = [...days.children];
+    const previous = scheduleCarousel.querySelector(".schedule-prev");
+    const next = scheduleCarousel.querySelector(".schedule-next");
+    const position = scheduleCarousel.querySelector(".schedule-position");
+    const cardOffset = (card) => card.getBoundingClientRect().left - days.getBoundingClientRect().left + days.scrollLeft;
+    const activeIndex = () => cards.reduce((best, card, index) =>
+      Math.abs(cardOffset(card) - days.scrollLeft) < Math.abs(cardOffset(cards[best]) - days.scrollLeft) ? index : best, 0);
+    const updateControls = () => {
+      const index = activeIndex();
+      previous.disabled = index === 0;
+      next.disabled = index === cards.length - 1;
+      position.setAttribute("aria-label", `${index + 1}日目／全${cards.length}日`);
+      position.querySelectorAll(".schedule-dot").forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+    };
+    const go = (step) => {
+      const card = cards[Math.max(0, Math.min(cards.length - 1, activeIndex() + step))];
+      days.scrollTo({ left: cardOffset(card), behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+    };
+    previous.addEventListener("click", () => go(-1));
+    next.addEventListener("click", () => go(1));
+    days.addEventListener("scroll", updateControls, { passive: true });
+    window.addEventListener("resize", updateControls);
+    scheduleCarousel.classList.add("has-controls");
+    updateControls();
+  }
   const entryHeading = document.getElementById("entry-title");
   const entryIcon = entryHeading?.querySelector("i");
   if (entryHeading && entryIcon) {
