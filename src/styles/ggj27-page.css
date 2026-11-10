@@ -196,7 +196,8 @@
   .nav-entry:hover i {
     transform: rotate(-12deg) scale(1.15);
   }
-  .nav-entry.is-bursting > * {
+  .nav-entry.is-bursting > *,
+  .mobile-entry.is-bursting > .mobile-entry-art {
     visibility: hidden;
   }
   .entry-burst {

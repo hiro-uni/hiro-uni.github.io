@@ -91,6 +91,7 @@ import { worldPlaces } from "./ggj27-world-places.js";
     entryIcon.addEventListener("animationend", () => entryIcon.classList.remove("is-shaking"));
   }
   const entryButton = header.querySelector(".nav-entry");
+  const floatingEntry = document.querySelector(".mobile-entry");
   const menuToggle = header.querySelector(".menu-toggle");
   const nav = header.querySelector("#main-nav");
   if (menuToggle && nav) {
@@ -116,10 +117,11 @@ import { worldPlaces } from "./ggj27-world-places.js";
     if (reducedMotion.matches) activeBurst?.();
   });
 
-  function burstEntry() {
-    if (reducedMotion.matches || !entryButton) return;
+  function burstEntry(button) {
+    if (reducedMotion.matches) return;
     activeBurst?.();
-    const bounds = entryButton.getBoundingClientRect();
+    const fromCorner = button === floatingEntry;
+    const bounds = button.getBoundingClientRect();
     const centerX = bounds.left + bounds.width / 2;
     const centerY = bounds.top + bounds.height / 2;
     const layer = document.createElement("div");
@@ -154,8 +156,8 @@ import { worldPlaces } from "./ggj27-world-places.js";
     }
 
     // Measure each glyph before hiding the label so the burst starts in place.
-    const icon = entryButton.querySelector("i");
-    const label = entryButton.querySelector("span");
+    const icon = button.querySelector("i");
+    const label = button.querySelector("span");
     const pieces = [];
     if (icon)
       pieces.push({
@@ -175,16 +177,18 @@ import { worldPlaces } from "./ggj27-world-places.js";
           if (!character.trim()) continue;
           const node = document.createElement("span");
           node.textContent = character;
+          node.style.font = getComputedStyle(text.parentElement).font;
           pieces.push({ node, bounds: range.getBoundingClientRect() });
         }
       }
     }
-    const style = getComputedStyle(entryButton);
+    const style = getComputedStyle(button);
     layer.style.font = style.font;
     layer.style.color = style.color;
     pieces.forEach(({ node, bounds: pieceBounds }, index) => {
       node.classList.add("entry-burst-piece");
-      const angle = ((index + 0.5) * Math.PI) / pieces.length;
+      const spread = (index + 0.5) / pieces.length;
+      const angle = (fromCorner ? 1 + spread / 2 : spread) * Math.PI;
       const distance = 120 + Math.random() * 100;
       scatter(
         node,
@@ -219,17 +223,18 @@ import { worldPlaces } from "./ggj27-world-places.js";
         smoke,
       );
     }
-    entryButton.classList.add("is-bursting");
+    button.classList.add("is-bursting");
     const restoreTimer = window.setTimeout(
-      () => entryButton.classList.remove("is-bursting"),
+      () => button.classList.remove("is-bursting"),
       650,
     );
     const cleanup = () => {
+      if (activeBurst !== cleanup) return;
+      activeBurst = undefined;
       window.clearTimeout(restoreTimer);
-      entryButton.classList.remove("is-bursting");
+      button.classList.remove("is-bursting");
       animations.forEach((animation) => animation.cancel());
       layer.remove();
-      if (activeBurst === cleanup) activeBurst = undefined;
     };
     activeBurst = cleanup;
     Promise.allSettled(animations.map((animation) => animation.finished)).then(
@@ -271,7 +276,6 @@ import { worldPlaces } from "./ggj27-world-places.js";
       const top = header.classList.contains("is-visible")
         ? header.getBoundingClientRect().bottom + 16
         : 16;
-      const floatingEntry = document.querySelector(".mobile-entry");
       const bottom =
         floatingEntry &&
         floatingEntry !== control &&
@@ -300,7 +304,7 @@ import { worldPlaces } from "./ggj27-world-places.js";
       event.altKey
     )
       return;
-    if (link === entryButton) burstEntry();
+    if (link === entryButton || link === floatingEntry) burstEntry(link);
     const id = link.getAttribute("href").slice(1);
     const target = document.getElementById(id);
     if (target && target.hasAttribute("tabindex")) {

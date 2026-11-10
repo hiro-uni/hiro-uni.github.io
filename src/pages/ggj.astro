@@ -6,6 +6,7 @@ import hiroshimaLogo from "../assets/ggj27/ggj27_logo.png";
 import unity from "../assets/ggj27/unity.png";
 import gray from "../assets/ggj27/gray.png";
 import godot from "../assets/ggj27/godotten.png";
+import { worldPlaces } from "../scripts/ggj27-world-places.js";
 import "../styles/ggj27-sections.css";
 import "../styles/ggj27-refresh.css";
 // Descriptions and destinations: https://globalgamejam.org/group/31042/games
@@ -355,7 +356,7 @@ const eventData = {
             <h3>世界中で <span>「ゲームを作ろう！」</span></h3>
             <div class="world-stage">
               <button type="button" class="world-prev" aria-label="前の場所">‹</button>
-              <div class="world-scene"><div class="world-canvas" aria-hidden="true"></div><div class="world-pin-label"><p class="world-bubble" lang="ja">ゲームを作ろう！</p><span class="world-location">日本・広島</span><span class="world-pin" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span></div><i class="fa-solid fa-earth-asia world-globe world-fallback" aria-hidden="true"></i></div>
+              <div class="world-scene"><div class="world-canvas" aria-hidden="true"></div><div class="world-pin-label"><p class="world-bubble" lang={worldPlaces[0].lang}>{worldPlaces[0].phrase}</p><span class="world-location">{worldPlaces[0].location}</span><span class="world-pin" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span></div><i class="fa-solid fa-earth-asia world-globe world-fallback" aria-hidden="true"></i></div>
               <button type="button" class="world-next" aria-label="次の場所">›</button>
             </div>
             <div class="world-stats"><div><i class="fa-solid fa-users" aria-hidden="true"></i><div><span>参加国</span><strong>94 <small>か国</small></strong></div></div><div><i class="fa-solid fa-gamepad" aria-hidden="true"></i><div><span>制作されたゲーム</span><strong>9874 <small>個</small></strong></div></div><div><i class="fa-regular fa-clock" aria-hidden="true"></i><div><span>開催時間</span><strong>48 <small>時間</small></strong></div></div></div>

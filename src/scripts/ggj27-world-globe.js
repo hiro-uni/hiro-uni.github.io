@@ -60,6 +60,8 @@ if (card && container && marker) {
       if (!width || !height) return;
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
+      // At the default zoom the globe spans about 76% of the canvas height.
+      camera.zoom = Math.min(1, camera.aspect / 0.8);
       camera.updateProjectionMatrix();
       renderOnce();
     }
