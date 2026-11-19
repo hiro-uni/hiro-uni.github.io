@@ -43,6 +43,99 @@ import { worldPlaces } from "./ggj27-world-places.js";
     scheduleCarousel.classList.add("has-controls");
     updateControls();
   }
+  const pastThemes = document.querySelector(".past-themes");
+  const pastThemesViewport = pastThemes?.querySelector(".past-themes-viewport");
+  const pastThemesTrack = pastThemes?.querySelector(".past-themes-track");
+  if (pastThemes && pastThemesViewport && pastThemesTrack) {
+    const dots = [...pastThemes.querySelectorAll(".past-themes-dot")];
+    const getMaxScroll = () =>
+      Math.max(0, pastThemesTrack.scrollWidth - pastThemesTrack.clientWidth);
+    const getStepSize = () => {
+      const firstCard = pastThemesTrack.firstElementChild;
+      if (!firstCard) return pastThemesTrack.clientWidth * 0.8;
+      const styles = getComputedStyle(pastThemesTrack);
+      const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+      return firstCard.getBoundingClientRect().width + gap;
+    };
+    const scrollToLeft = (left) => {
+      const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
+        .matches
+        ? "instant"
+        : "smooth";
+      pastThemesTrack.scrollTo({
+        left: Math.max(0, Math.min(getMaxScroll(), left)),
+        behavior,
+      });
+    };
+    const updatePastThemes = () => {
+      const maxScroll = getMaxScroll();
+      const current = pastThemesTrack.scrollLeft;
+      pastThemesViewport.classList.toggle("can-scroll-left", current > 4);
+      pastThemesViewport.classList.toggle(
+        "can-scroll-right",
+        current < maxScroll - 4,
+      );
+      if (dots.length > 0) {
+        const progress =
+          maxScroll > 0 ? Math.min(1, Math.max(0, current / maxScroll)) : 0;
+        const activeDot = Math.round(progress * (dots.length - 1));
+        dots.forEach((dot, i) => {
+          const isActive = i === activeDot;
+          dot.classList.toggle("is-active", isActive);
+          dot.setAttribute("aria-pressed", String(isActive));
+        });
+      }
+    };
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        const maxScroll = getMaxScroll();
+        const ratio = dots.length > 1 ? i / (dots.length - 1) : 0;
+        scrollToLeft(maxScroll * ratio);
+      });
+    });
+    pastThemesTrack.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        scrollToLeft(pastThemesTrack.scrollLeft + getStepSize());
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        scrollToLeft(pastThemesTrack.scrollLeft - getStepSize());
+      }
+    });
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+    pastThemesTrack.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
+      isDragging = true;
+      dragStartX = event.clientX;
+      dragStartScroll = pastThemesTrack.scrollLeft;
+      pastThemesTrack.classList.add("is-dragging");
+      pastThemesTrack.setPointerCapture(event.pointerId);
+    });
+    pastThemesTrack.addEventListener("pointermove", (event) => {
+      if (!isDragging) return;
+      pastThemesTrack.scrollLeft =
+        dragStartScroll - (event.clientX - dragStartX);
+    });
+    const endDrag = (event) => {
+      if (!isDragging) return;
+      isDragging = false;
+      pastThemesTrack.classList.remove("is-dragging");
+      if (pastThemesTrack.hasPointerCapture(event.pointerId)) {
+        pastThemesTrack.releasePointerCapture(event.pointerId);
+      }
+      updatePastThemes();
+    };
+    pastThemesTrack.addEventListener("pointerup", endDrag);
+    pastThemesTrack.addEventListener("pointercancel", endDrag);
+    pastThemesTrack.addEventListener("scroll", updatePastThemes, {
+      passive: true,
+    });
+    window.addEventListener("resize", updatePastThemes);
+    updatePastThemes();
+    requestAnimationFrame(updatePastThemes);
+  }
   const worldCard = document.querySelector(".world-card");
   if (worldCard) {
     const places = worldPlaces;
