@@ -35,8 +35,6 @@ const pastThemes: PastTheme[] = [
     title: "Mask",
     ja: "マスク / 仮面",
     tone: "yellow",
-    badge: "最新",
-    badgeTone: "coral",
     icon: "mask",
   },
   {
@@ -84,7 +82,7 @@ const pastThemes: PastTheme[] = [
   {
     year: 2019,
     title: "What home means to you",
-    ja: "あなたにとって「ホーム」とは",
+    ja: "あなたにとって「家」とは",
     tone: "mint",
     isLong: true,
     icon: "home",
@@ -129,7 +127,7 @@ const pastThemes: PastTheme[] = [
   {
     year: 2013,
     title: "Heartbeat",
-    ja: "心臓の鼓動の音",
+    ja: "心臓の鼓動",
     tone: "blue",
     badge: "音テーマ",
     badgeIcon: "fa-solid fa-volume-high",
@@ -139,7 +137,7 @@ const pastThemes: PastTheme[] = [
   {
     year: 2012,
     title: "Ouroboros",
-    ja: "ウロボロスの画像",
+    ja: "ウロボロス",
     tone: "pink",
     badge: "画像テーマ",
     badgeIcon: "fa-solid fa-image",
@@ -165,8 +163,6 @@ const pastThemes: PastTheme[] = [
     title: "As long as we have each other, we will never run out of problems",
     ja: "お互いがいれば問題には事欠かない",
     tone: "blue",
-    badge: "第1回",
-    badgeTone: "coral",
     isLong: true,
     icon: "problems",
   },
@@ -423,161 +419,150 @@ const totalDots = 9;
             )}
             {theme.icon === "duality" && (
               <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
+                <circle cx="40" cy="40" r="25" fill="#FFD447" />
+                <path d="M40 15 A25 25 0 0 1 40 65 Z" fill="#10265B" />
                 <circle
                   cx="40"
                   cy="40"
-                  r="24"
-                  fill="#8ECBFF"
+                  r="25"
                   stroke="#10265B"
                   stroke-width="2.75"
                 />
-                <path
-                  d="M40 16 A24 24 0 0 0 40 64 C49 64 49 48 40 40 C31 32 31 16 40 16 Z"
-                  fill="#FFD447"
-                  stroke="#10265B"
-                  stroke-width="2.75"
-                  stroke-linejoin="round"
-                />
-                <circle cx="30" cy="30" r="3.5" fill="#FFFFFF" stroke="#10265B" stroke-width="2.2" />
-                <path
-                  d="M52 46 C49 46 47 48.5 47 51.5 C47 54.5 49.5 57 52.5 57 C54.5 57 56 56 56.8 54.5 C54 54.8 51.8 52.8 51.8 50 C51.8 48.2 52.6 46.8 54 46 C53.4 46 52.7 46 52 46 Z"
+                <circle
+                  cx="28"
+                  cy="40"
+                  r="4"
                   fill="#FFFFFF"
                   stroke="#10265B"
                   stroke-width="2"
-                  stroke-linejoin="round"
                 />
+                <path
+                  d="M28 31 V32 M28 48 V49 M19 40 H20 M36 40 H37 M22 34 L23 35 M33 45 L34 46 M22 46 L23 45 M33 35 L34 34"
+                  stroke="#10265B"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M56 33 A8 8 0 1 0 59 45 A8 8 0 0 1 56 33 Z"
+                  fill="#8ECBFF"
+                />
+                <circle cx="48" cy="27" r="1.5" fill="#FFFFFF" />
+                <circle cx="51" cy="54" r="1.5" fill="#FFFFFF" />
               </svg>
             )}
             {theme.icon === "lost-found" && (
               <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
+                <path
+                  d="M48 47 L62 61 A4 4 0 0 1 56 67 L42 53 Z"
+                  fill="#FF8F85"
+                  stroke="#10265B"
+                  stroke-width="2.75"
+                  stroke-linejoin="round"
+                />
                 <circle
-                  cx="36"
+                  cx="34"
                   cy="36"
-                  r="17"
-                  fill="#FFFFFF"
+                  r="20"
+                  fill="#8ECBFF"
                   stroke="#10265B"
                   stroke-width="2.75"
                 />
                 <circle
-                  cx="36"
+                  cx="34"
                   cy="36"
-                  r="12"
-                  fill="#E8F4FF"
+                  r="15"
+                  fill="#FFFFFF"
                   stroke="#10265B"
                   stroke-width="2"
                 />
                 <path
-                  d="M48 48 L62 62"
-                  stroke="#FF8F85"
-                  stroke-width="7"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M48 48 L62 62"
-                  stroke="#10265B"
-                  stroke-width="2.75"
-                  stroke-linecap="round"
-                />
-                <circle
-                  cx="32"
-                  cy="36"
-                  r="4.5"
+                  d="M31 32 A5 5 0 1 0 31 38 H36 V41 H40 V38 H44 V32 Z"
                   fill="#FFD447"
                   stroke="#10265B"
-                  stroke-width="2.2"
-                />
-                <path
-                  d="M36.5 36 H44 V39.5 M41 36 V39"
-                  stroke="#10265B"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
+                  stroke-width="2"
                   stroke-linejoin="round"
                 />
+                <circle cx="27" cy="35" r="1.25" fill="#10265B" />
                 <path
-                  d="M58 18 L59.4 20.6 L62 22 L59.4 23.4 L58 26 L56.6 23.4 L54 22 L56.6 20.6 Z"
-                  fill="#FFD447"
+                  d="M59 17 V27 M54 22 H64 M65 31 L68 34 M68 31 L65 34"
+                  stroke="#1768E8"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
                 />
               </svg>
             )}
             {theme.icon === "repair" && (
               <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
-                <path
-                  d="M23 57 L45 35 C44 30 46 24 51 21 C54 19 58 20 60 22 L53 26 L54 31 L59 28 C61 31 60 35 57 38 C53 42 47 43 42 41 L27 59 C25 61 22 61 21 59 C20 58 21 58 23 57 Z"
-                  fill="#8ECBFF"
+                <g
+                  transform="rotate(41 37 40)"
                   stroke="#10265B"
-                  stroke-width="2.6"
+                  stroke-width="2.75"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M30 14 V25 L37 29 L44 25 V14 C51 18 53 26 49 32 C47 35 44 37 42 38 V62 A5 5 0 0 1 32 62 V38 C30 37 27 35 25 32 C21 26 23 18 30 14 Z"
+                    fill="#8ECBFF"
+                  />
+                  <circle
+                    cx="37"
+                    cy="60"
+                    r="2"
+                    fill="#FFFFFF"
+                    stroke-width="2"
+                  />
+                </g>
+                <path
+                  d="M51 46 H61 L67 55 L61 64 H51 L45 55 Z"
+                  fill="#FFD447"
+                  stroke="#10265B"
+                  stroke-width="2.75"
                   stroke-linejoin="round"
                 />
-                <path
-                  d="M25 23 L52 50"
+                <circle
+                  cx="56"
+                  cy="55"
+                  r="4"
+                  fill="#FFF8E4"
                   stroke="#10265B"
-                  stroke-width="3.2"
+                  stroke-width="2"
+                />
+                <path
+                  d="M21 22 V30 M17 26 H25"
+                  stroke="#1768E8"
+                  stroke-width="2.5"
                   stroke-linecap="round"
-                />
-                <path
-                  d="M20 18 L27 25 L24 28 L17 21 Z"
-                  fill="#FFD447"
-                  stroke="#10265B"
-                  stroke-width="2.4"
-                  stroke-linejoin="round"
-                />
-                <rect
-                  x="48"
-                  y="45"
-                  width="14"
-                  height="9"
-                  rx="4.5"
-                  transform="rotate(45 55 49.5)"
-                  fill="#FFD447"
-                  stroke="#10265B"
-                  stroke-width="2.6"
-                />
-                <path
-                  d="M62 20 C62 18 64.5 17 66 19 C67.5 17 70 18 70 20 C70 23 66 25.5 66 25.5 C66 25.5 62 23 62 20 Z"
-                  fill="#FF8F85"
-                  stroke="#10265B"
-                  stroke-width="1.8"
-                  stroke-linejoin="round"
                 />
               </svg>
             )}
             {theme.icon === "home" && (
               <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
                 <path
-                  d="M52 24 H58 V34"
-                  fill="#FFD447"
-                  stroke="#10265B"
-                  stroke-width="2.5"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M55 15 C55 13.5 57 12.8 58 14.3 C59 12.8 61 13.5 61 15 C61 17.5 58 19.5 58 19.5 C58 19.5 55 17.5 55 15 Z"
-                  fill="#FF8F85"
-                />
-                <rect
-                  x="22"
-                  y="38"
-                  width="36"
-                  height="25"
-                  rx="3"
+                  d="M21 35 L40 19 L59 35 V59 A4 4 0 0 1 55 63 H25 A4 4 0 0 1 21 59 Z"
                   fill="#FFFFFF"
                   stroke="#10265B"
                   stroke-width="2.75"
+                  stroke-linejoin="round"
                 />
                 <path
-                  d="M15 41 L40 20 L65 41 Z"
-                  fill="#FF8F85"
+                  d="M13 35 L38 14 A3 3 0 0 1 42 14 L67 35 L62 41 L40 22 L18 41 Z"
+                  fill="#8ECBFF"
                   stroke="#10265B"
                   stroke-width="2.75"
                   stroke-linejoin="round"
                 />
                 <path
-                  d="M34 63 V50 C34 47 36.5 45 40 45 C43.5 45 46 47 46 50 V63"
-                  fill="#FFD447"
+                  d="M40 55 C38 53 30 48 30 42 A5.5 5.5 0 0 1 40 39 A5.5 5.5 0 0 1 50 42 C50 48 42 53 40 55 Z"
+                  fill="#FF8F85"
                   stroke="#10265B"
-                  stroke-width="2.5"
+                  stroke-width="2.25"
+                  stroke-linejoin="round"
                 />
-                <circle cx="40" cy="34" r="3.5" fill="#8ECBFF" stroke="#10265B" stroke-width="2" />
+                <path
+                  d="M64 16 V24 M60 20 H68"
+                  stroke="#1768E8"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
               </svg>
             )}
             {theme.icon === "transmission" && (
@@ -675,25 +660,26 @@ const totalDots = 9;
             {theme.icon === "what-now" && (
               <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
                 <path
-                  d="M58 17 L61 11 M64 23 L70 21"
-                  stroke="#FFCC38"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M17 24 C17 19 21 15 26 15 H53 C58 15 62 19 62 24 V44 C62 49 58 53 53 53 H35 L23 62 V53 C19.5 52.5 17 49 17 44 Z"
+                  d="M37 25 H43 V66 H37 Z"
                   fill="#FFFFFF"
                   stroke="#10265B"
                   stroke-width="2.75"
                   stroke-linejoin="round"
                 />
                 <path
-                  d="M34 29 C34 25 37 22.5 40.5 22.5 C44 22.5 46.5 24.5 46.5 27.8 C46.5 31.5 40.5 32.5 40.5 37"
-                  stroke="#1768E8"
-                  stroke-width="4"
-                  stroke-linecap="round"
+                  d="M45 34 H23 L13 26 L23 18 H45 Z"
+                  fill="#FFD447"
+                  stroke="#10265B"
+                  stroke-width="2.75"
+                  stroke-linejoin="round"
                 />
-                <circle cx="40.5" cy="43.5" r="2.4" fill="#FF8F85" />
+                <path
+                  d="M34 57 H57 L67 49 L57 41 H34 Z"
+                  fill="#8ECBFF"
+                  stroke="#10265B"
+                  stroke-width="2.75"
+                  stroke-linejoin="round"
+                />
               </svg>
             )}
             {theme.icon === "perception" && (
@@ -769,33 +755,28 @@ const totalDots = 9;
             {theme.icon === "ouroboros" && (
               <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
                 <path
-                  d="M40 20 A20 20 0 1 1 23 30"
+                  d="M46 59 C56 56 63 47 63 37 A23 23 0 0 0 17 37 C17 46 22 54 30 57 C34 59 38 55 44 55 C49 55 53 57 53 60 C53 62 50 63 46 64 C49 65 52 66 51 68 C50 71 44 70 40 69 C37 70 33 69 29 67 C17 62 10 50 10 37 A30 30 0 0 1 70 37 C70 51 60 63 48 66"
+                  fill="#7FDCC3"
                   stroke="#10265B"
-                  stroke-width="11"
+                  stroke-width="2.75"
                   stroke-linecap="round"
-                />
-                <path
-                  d="M40 20 A20 20 0 1 1 23 30"
-                  stroke="#7FDCC3"
-                  stroke-width="6"
-                  stroke-linecap="round"
-                />
-                <circle
-                  cx="35"
-                  cy="21"
-                  r="6.5"
-                  fill="#FF8F85"
-                  stroke="#10265B"
-                  stroke-width="2.6"
-                />
-                <circle cx="34" cy="19.5" r="1.5" fill="#10265B" />
-                <path
-                  d="M23 30 L19 24 L27 25"
-                  fill="#FFD447"
-                  stroke="#10265B"
-                  stroke-width="2.2"
                   stroke-linejoin="round"
                 />
+                <path
+                  d="M46 64 Q51 63 54 61"
+                  stroke="#10265B"
+                  stroke-width="2.25"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M15 30 A26 26 0 0 1 48 12"
+                  stroke="#FFFFFF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <circle cx="41" cy="60.5" r="2.25" fill="#10265B" />
+                <circle cx="40.4" cy="59.9" r="0.7" fill="#FFFFFF" />
+                <ellipse cx="37.5" cy="64" rx="2.5" ry="1.35" fill="#FF8F85" />
               </svg>
             )}
             {theme.icon === "extinction" && (
@@ -856,26 +837,39 @@ const totalDots = 9;
             )}
             {theme.icon === "problems" && (
               <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
-                <path
-                  d="M17 31 H34 C34 27 39 27 39 31 V40 C43 40 43 46 39 46 V57 H17 Z"
-                  fill="#FFD447"
+                <g
                   stroke="#10265B"
-                  stroke-width="2.6"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M41 31 H61 V57 H41 V46 C45 46 45 40 41 40 Z"
-                  fill="#8ECBFF"
-                  stroke="#10265B"
-                  stroke-width="2.6"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M36 18 L39 13 M44 18 L48 14 M32 20 L27 17"
-                  stroke="#FFCC38"
                   stroke-width="2.75"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M40 12 C32 12 27 16 27 22 C27 26 30 29 35 30 L38 35 L42 30 C49 30 53 26 53 21 C53 16 48 12 40 12 Z"
+                    fill="#FFFFFF"
+                  />
+                  <path
+                    d="M11 64 V61 C11 54 16 50 23 50 H24 C31 50 36 54 36 61 V64 Z"
+                    fill="#FFD447"
+                  />
+                  <path
+                    d="M44 64 V61 C44 54 49 50 56 50 H57 C64 50 69 54 69 61 V64 Z"
+                    fill="#8ECBFF"
+                  />
+                  <circle cx="23.5" cy="41" r="9.5" fill="#FFF8E4" />
+                  <circle cx="56.5" cy="41" r="9.5" fill="#FFF8E4" />
+                </g>
+                <circle cx="26.5" cy="40" r="1.4" fill="#10265B" />
+                <circle cx="53.5" cy="40" r="1.4" fill="#10265B" />
+                <path
+                  d="M24 44 Q26.5 46 29 44 M51 44 Q53.5 46 56 44"
+                  stroke="#10265B"
+                  stroke-width="1.75"
                   stroke-linecap="round"
                 />
+                <g fill="#1768E8">
+                  <circle cx="34.5" cy="21" r="1.5" />
+                  <circle cx="40" cy="21" r="1.5" />
+                  <circle cx="45.5" cy="21" r="1.5" />
+                </g>
               </svg>
             )}
           </div>
