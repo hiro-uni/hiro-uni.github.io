@@ -1,7 +1,7 @@
 // Coordinates are approximate positions on the existing globe illustration,
 // whose map is not a standard latitude/longitude projection.
 export const worldPlaces = [
-  { location: "日本・広島", lang: "ja", phrase: "ゲームを作ろうや！", map: [831, 209] },
+  { location: "日本・広島", lang: "ja", phrase: "うちらとゲームを作ろう！", map: [831, 209] },
   { location: "アメリカ・ニューヨーク", lang: "en", phrase: "Let’s make a game!", map: [294, 182] },
   { location: "フランス・パリ", lang: "fr", phrase: "Créons un jeu !", map: [481, 160] },
   { location: "スペイン・マドリード", lang: "es", phrase: "¡Hagamos un juego!", map: [472, 181] },
