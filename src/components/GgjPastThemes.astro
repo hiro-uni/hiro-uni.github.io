@@ -1,10 +1,15 @@
 ---
+interface Props {
+  lang?: "ja" | "en";
+}
+
 interface PastTheme {
   year: number;
   title: string;
   ja: string;
   tone: "yellow" | "blue" | "pink" | "mint";
   badge?: string;
+  badgeEn?: string;
   badgeIcon?: string;
   badgeTone?: "coral" | "blue";
   isLong?: boolean;
@@ -130,6 +135,7 @@ const pastThemes: PastTheme[] = [
     ja: "心臓の鼓動",
     tone: "blue",
     badge: "音テーマ",
+    badgeEn: "Audio theme",
     badgeIcon: "fa-solid fa-volume-high",
     badgeTone: "coral",
     icon: "heartbeat",
@@ -140,6 +146,7 @@ const pastThemes: PastTheme[] = [
     ja: "ウロボロス",
     tone: "pink",
     badge: "画像テーマ",
+    badgeEn: "Image theme",
     badgeIcon: "fa-solid fa-image",
     badgeTone: "blue",
     icon: "ouroboros",
@@ -168,15 +175,29 @@ const pastThemes: PastTheme[] = [
   },
 ];
 
+const { lang = "ja" } = Astro.props;
+const isEn = lang === "en";
 const totalDots = 9;
 ---
 
 <div class="past-themes" aria-labelledby="past-themes-title">
   <div class="past-themes-header">
     <div class="past-themes-heading">
-      <h3 id="past-themes-title">これまでの<span>テーマ</span></h3>
+      <h3 id="past-themes-title">
+        {isEn ? (
+          <>
+            Past <span>Themes</span>
+          </>
+        ) : (
+          <>
+            これまでの<span>テーマ</span>
+          </>
+        )}
+      </h3>
       <p class="past-themes-lead">
-        今年のテーマは当日までヒミツ！言葉だけでなく、画像や音がテーマになったことも。
+        {isEn
+          ? "This year’s theme stays secret until kickoff! Past themes have included not only words, but also images and audio."
+          : "今年のテーマは当日までヒミツ！言葉だけでなく、画像や音がテーマになったことも。"}
       </p>
     </div>
   </div>
@@ -187,25 +208,31 @@ const totalDots = 9;
       id="past-themes-track"
       role="list"
       tabindex="0"
-      aria-label="Global Game Jamの過去のテーマ一覧（2026年から2009年）。横にスワイプまたはスクロールできます"
+      aria-label={isEn
+        ? "Past Global Game Jam themes from 2026 to 2009. Swipe or scroll horizontally."
+        : "Global Game Jamの過去のテーマ一覧（2026年から2009年）。横にスワイプまたはスクロールできます"}
     >
-      {pastThemes.map((theme) => (
+      {pastThemes.map((theme) => {
+        const badgeLabel = isEn
+          ? (theme.badgeEn ?? theme.badge)
+          : theme.badge;
+        return (
         <li
           class={`theme-card theme-card--${theme.tone}${theme.isLong ? " theme-card--long" : ""}`}
         >
           <div class="theme-card-top">
-            {theme.badge && (
+            {badgeLabel && (
               <span
                 class={`theme-badge${theme.badgeTone === "blue" ? " theme-badge--blue" : ""}${theme.badgeIcon ? " theme-badge--icon" : ""}`}
-                title={theme.badgeIcon ? theme.badge : undefined}
+                title={theme.badgeIcon ? badgeLabel : undefined}
               >
                 {theme.badgeIcon ? (
                   <>
                     <i class={theme.badgeIcon} aria-hidden="true"></i>
-                    <span class="sr-only">{theme.badge}</span>
+                    <span class="sr-only">{badgeLabel}</span>
                   </>
                 ) : (
-                  theme.badge
+                  badgeLabel
                 )}
               </span>
             )}
@@ -874,7 +901,7 @@ const totalDots = 9;
             )}
           </div>
           <div class="theme-card-caption">
-            <p class="theme-card-ja">{theme.ja}</p>
+            {!isEn && <p class="theme-card-ja">{theme.ja}</p>}
             <h4
               class={`theme-card-title${theme.isLong ? " is-long" : ""}`}
               lang="en"
@@ -883,18 +910,25 @@ const totalDots = 9;
             </h4>
           </div>
         </li>
-      ))}
+        );
+      })}
     </ol>
   </div>
 
   <div class="past-themes-footer">
-    <div class="past-themes-dots" role="group" aria-label="過去のテーマの表示位置">
+    <div
+      class="past-themes-dots"
+      role="group"
+      aria-label={isEn ? "Past themes slide controls" : "過去のテーマの表示位置"}
+    >
       {Array.from({ length: totalDots }, (_, i) => (
         <button
           type="button"
           class={`past-themes-dot${i === 0 ? " is-active" : ""}`}
           data-stop={i}
-          aria-label={`テーマ一覧の位置 ${i + 1} / ${totalDots} へ移動`}
+          aria-label={isEn
+            ? `Go to theme group ${i + 1} of ${totalDots}`
+            : `テーマ一覧の位置 ${i + 1} / ${totalDots} へ移動`}
           aria-pressed={i === 0 ? "true" : "false"}
         />
       ))}

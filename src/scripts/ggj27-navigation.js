@@ -3,6 +3,7 @@ import { worldPlaces } from "./ggj27-world-places.js";
 (() => {
   const header = document.querySelector(".site-header");
   if (!header) return;
+  const isEnglish = document.documentElement.lang.toLowerCase().startsWith("en");
   const openLinkedFaq = (hash) => {
     const target = document.getElementById(hash.replace(/^#/, ""));
     if (target instanceof HTMLDetailsElement && target.closest(".faq-list")) {
@@ -29,7 +30,12 @@ import { worldPlaces } from "./ggj27-world-places.js";
       const index = activeIndex();
       previous.disabled = index === 0;
       next.disabled = index === cards.length - 1;
-      position.setAttribute("aria-label", `${index + 1}日目／全${cards.length}日`);
+      position.setAttribute(
+        "aria-label",
+        isEnglish
+          ? `Day ${index + 1} of ${cards.length}`
+          : `${index + 1}日目／全${cards.length}日`,
+      );
       position.querySelectorAll(".schedule-dot").forEach((dot, i) => dot.classList.toggle("is-active", i === index));
     };
     const go = (step) => {
@@ -149,7 +155,8 @@ import { worldPlaces } from "./ggj27-world-places.js";
       const place = places[index];
       bubble.textContent = place.phrase;
       bubble.lang = place.lang;
-      locationLabel.textContent = place.location;
+      locationLabel.textContent =
+        isEnglish && place.locationEn ? place.locationEn : place.location;
       worldCard.dataset.worldIndex = String(index);
       worldCard.dispatchEvent(new CustomEvent("world-place-change", { detail: index }));
     };
@@ -191,7 +198,16 @@ import { worldPlaces } from "./ggj27-world-places.js";
     header.classList.add("has-menu-toggle");
     const setMenu = (open) => {
       menuToggle.setAttribute("aria-expanded", String(open));
-      menuToggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+      menuToggle.setAttribute(
+        "aria-label",
+        isEnglish
+          ? open
+            ? "Close menu"
+            : "Open menu"
+          : open
+            ? "メニューを閉じる"
+            : "メニューを開く",
+      );
       header.classList.toggle("menu-open", open);
     };
     menuToggle.addEventListener("click", () => setMenu(menuToggle.getAttribute("aria-expanded") !== "true"));

@@ -788,3 +788,131 @@ main{min-width:0}
     transition: none;
   }
 }
+
+/* English page layout & typography refinements (/ggj/en/) */
+html[lang="en"] {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans JP",
+    sans-serif;
+}
+html[lang="en"] body,
+html[lang="en"] .jam-game-body h3,
+html[lang="en"] .countdown-banner-copy > strong {
+  overflow-wrap: break-word;
+}
+html[lang="en"] p {
+  line-height: 1.72;
+}
+html[lang="en"] .landing-description {
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+html[lang="en"] .landing-fact {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+html[lang="en"] .landing-fact i {
+  width: 1.15em;
+  flex: none;
+  text-align: center;
+}
+html[lang="en"] .refresh-button {
+  gap: 0.35rem;
+}
+html[lang="en"] .section h2 {
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+html[lang="en"] .refresh-brand img.refresh-brand-mark {
+  width: auto;
+  height: 46px;
+}
+html[lang="en"] .footer-wordmark-logo {
+  width: auto;
+  height: 54px;
+}
+html[lang="en"] .quick-day {
+  grid-template-columns: 102px 1fr;
+}
+html[lang="en"] .info-table > div {
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+}
+html[lang="en"] .sponsor-caption strong {
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+html[lang="en"] .site-footer > a:nth-child(2) {
+  margin-left: auto;
+}
+html[lang="en"] .site-footer > a:nth-last-child(2) {
+  margin-left: 0;
+}
+@media (max-width: 1050px) {
+  html[lang="en"] .quick-day {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 800px) {
+  html[lang="en"] .info-table > div {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+  }
+  html[lang="en"] .world-stats strong {
+    font-size: 0.95rem;
+  }
+  html[lang="en"] .site-footer > a:nth-child(2) {
+    margin-left: 0;
+  }
+  html[lang="en"] .mobile-entry-art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-10deg);
+    gap: 0.05rem;
+  }
+  html[lang="en"] .mobile-entry-art span:first-child,
+  html[lang="en"] .mobile-entry-art span:last-child {
+    position: static;
+    line-height: 1;
+  }
+  html[lang="en"] .mobile-entry-art span:first-child {
+    font-size: 1.2rem;
+  }
+  html[lang="en"] .mobile-entry-art span:last-child {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+}
+@media (max-width: 760px) {
+  html[lang="en"] .refresh-brand img.refresh-brand-mark {
+    height: 40px;
+  }
+  html[lang="en"] .quick-day {
+    grid-template-columns: 102px 1fr;
+  }
+}
+@media (max-width: 600px) {
+  html[lang="en"] .info-table > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  html[lang="en"] .feature-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1rem;
+    padding: 1rem 0.75rem;
+  }
+  html[lang="en"] .feature-strip div {
+    font-size: 0.75rem;
+  }
+  html[lang="en"] .feature-strip div:nth-child(2) {
+    border-right: 0;
+  }
+}
