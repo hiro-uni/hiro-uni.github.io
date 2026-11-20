@@ -644,7 +644,7 @@
   summary {
     cursor: pointer;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     gap: 1rem;
     padding: 1.3rem 0;
     font-size: 1rem;
@@ -655,13 +655,6 @@
   }
   summary::-webkit-details-marker {
     display: none;
-  }
-  summary span {
-    color: var(--blue);
-    flex: none;
-  }
-  details[open] summary span {
-    transform: rotate(45deg);
   }
   details > p {
     color: #52615e;

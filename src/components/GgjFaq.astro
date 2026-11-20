@@ -29,9 +29,30 @@ const faqData = {
   {
     entries.map(({ id, question, answer }) => (
       <details id={id}>
-        <summary>{question}<span aria-hidden="true">＋</span></summary>
+        <summary>
+          {question}
+          <span class="faq-toggle" aria-hidden="true">
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+          </span>
+        </summary>
         <Fragment set:html={answer} />
       </details>
     ))
   }
 </div>
+
+<style>
+  .faq-toggle {
+    color: var(--blue);
+    flex: none;
+    width: 1em;
+    line-height: 1;
+    text-align: center;
+  }
+
+  details:not([open]) .fa-minus,
+  details[open] .fa-plus {
+    display: none;
+  }
+</style>
