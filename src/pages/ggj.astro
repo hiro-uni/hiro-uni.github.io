@@ -8,6 +8,7 @@ import gray from "../assets/ggj27/gray.png";
 import godot from "../assets/ggj27/godotten.png";
 import { worldPlaces } from "../scripts/ggj27-world-places.js";
 import GgjPastThemes from "../components/GgjPastThemes.astro";
+import GgjCarouselControls from "../components/GgjCarouselControls.astro";
 import "../styles/ggj27-sections.css";
 import "../styles/ggj27-refresh.css";
 // Descriptions and destinations: https://globalgamejam.org/group/31042/games
@@ -290,37 +291,40 @@ const eventData = {
           <br>
           同じテーマから違う <strong>体験</strong> へ。広島会場で制作された作品をご紹介します。
         </p>
-        <div class="jam-game-grid">
-          {pastGames.map((game) => (
-            <article class="jam-game-card">
-              <div class="jam-game-image">
-                <img
-                  src={`/ggj27/assets/${game.image}`}
-                  alt={`${game.title}のゲーム画面`}
-                  width="800"
-                  height="450"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="jam-game-body">
-                <p class="jam-game-genre">{game.genre}</p>
-                <h3>{game.title}</h3>
-                <p>{game.description}</p>
-                <a
-                  class="text-link"
-                  href={game.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  遊んでみる <span aria-hidden="true">↗</span>
-                  <span class="sr-only">
-                    ：{game.title}（新しいタブで開きます）
-                  </span>
-                </a>
-              </div>
-            </article>
-          ))}
+        <div class="ggj-card-carousel">
+          <div class="jam-game-grid ggj-card-track" id="game-cards" role="group" aria-labelledby="games-title" tabindex="0">
+            {pastGames.map((game) => (
+              <article class="jam-game-card">
+                <div class="jam-game-image">
+                  <img
+                    src={`/ggj27/assets/${game.image}`}
+                    alt={`${game.title}のゲーム画面`}
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="jam-game-body">
+                  <p class="jam-game-genre">{game.genre}</p>
+                  <h3>{game.title}</h3>
+                  <p>{game.description}</p>
+                  <a
+                    class="text-link"
+                    href={game.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    遊んでみる <span aria-hidden="true">↗</span>
+                    <span class="sr-only">
+                      ：{game.title}（新しいタブで開きます）
+                    </span>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+          <GgjCarouselControls trackId="game-cards" count={pastGames.length} />
         </div>
         <div class="jam-works-footer">
           <a
@@ -529,8 +533,8 @@ const eventData = {
         <p class="section-intro">
           ゲーム制作は48時間。あっという間に過ぎていきます。
         </p>
-        <div class="schedule-carousel">
-        <ol class="jam-day-grid" id="schedule-days" role="list" tabindex="0" aria-label="日別スケジュール。横にスクロールできます">
+        <div class="schedule-carousel ggj-card-carousel">
+        <ol class="jam-day-grid ggj-card-track" id="schedule-days" role="list" tabindex="0" aria-label="日別スケジュール。横にスクロールできます">
           <li>
             <p class="jam-day-date">
               <time datetime="2027-01-29">1.29</time>
@@ -583,13 +587,7 @@ const eventData = {
             </ul>
           </li>
         </ol>
-        <div class="schedule-controls" aria-label="スケジュールの切り替え">
-          <button type="button" class="schedule-prev" aria-label="前の日へ" aria-controls="schedule-days">‹</button>
-          <span class="schedule-position" role="status" aria-label="1日目／全3日">
-            <span class="schedule-dot is-active" aria-hidden="true"></span><span class="schedule-dot" aria-hidden="true"></span><span class="schedule-dot" aria-hidden="true"></span>
-          </span>
-          <button type="button" class="schedule-next" aria-label="次の日へ" aria-controls="schedule-days">›</button>
-        </div>
+        <GgjCarouselControls trackId="schedule-days" count={3} schedule />
         </div>
         <div class="jam-stay-grid">
           <div>
@@ -974,8 +972,8 @@ const eventData = {
             </h2>
             <p class="entry-intro">初めての方でも大丈夫！3つのステップで参加できます。</p>
           </div>
-          <div class="entry-panel">
-            <ol role="list" class="entry-steps">
+          <div class="entry-panel ggj-card-carousel">
+            <ol class="entry-steps ggj-card-track" id="entry-cards" role="list" aria-labelledby="entry-title" tabindex="0">
               <li>
                 <span class="entry-step-number" aria-hidden="true">
                   1
@@ -1005,6 +1003,7 @@ const eventData = {
                 <p>connpassのイベントページから参加登録を行おう。</p>
               </li>
             </ol>
+            <GgjCarouselControls trackId="entry-cards" count={3} />
             <a
               class="button button-lime"
               href="https://hirouni.connpass.com/event/408904/"

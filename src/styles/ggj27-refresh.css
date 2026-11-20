@@ -176,7 +176,7 @@ main{min-width:0}
 .entry .entry-panel>.button:hover{background:#db4c46;color:white}
 .entry .character-showcase[data-engine="godot"]{background:#10265b;border-radius:24px;padding:1.25rem}
 @media(max-width:800px){
- .entry .entry-panel .entry-steps{grid-template-columns:1fr;gap:1rem}
+ .entry .entry-panel .entry-steps{grid-template-columns:none;margin-bottom:.5rem}
  .entry .entry-steps>li{grid-template-columns:42px minmax(0,1fr)}
  .entry .entry-illustration{max-width:360px;justify-self:center}
  .entry .entry-panel>.button{width:100%}
@@ -285,27 +285,37 @@ main{min-width:0}
 .jam-schedule .jam-timeline{margin:auto 0 0;border-color:#dce5ef}
 .jam-schedule .jam-timeline li{grid-template-columns:4rem minmax(0,1fr);gap:.65rem;align-items:start;padding:.45rem 0;border-color:#dce5ef;font-size:.8rem}
 .jam-schedule .jam-timeline time{display:inline-block;text-align:center;border-radius:999px;background:#e1efff;color:#1262cd}
-.schedule-controls{display:none}
-@media(max-width:800px){
- .jam-schedule .jam-day-grid{display:grid;grid-auto-flow:column;grid-auto-columns:100%;grid-template-columns:none;gap:1rem;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
- .jam-schedule .jam-day-grid::-webkit-scrollbar{display:none}
- .jam-schedule .jam-day-grid>li{scroll-snap-align:start;scroll-snap-stop:always}
- .schedule-carousel.has-controls .schedule-controls{display:flex;justify-content:center;align-items:center;gap:1rem;margin:.5rem 0 1.5rem}
- .schedule-controls button{display:grid;place-items:center;width:44px;height:44px;border:1px solid #cbdcf2;border-radius:50%;background:white;color:#1651a4;font-size:2rem;line-height:1;cursor:pointer}
- .schedule-controls button:disabled{opacity:.35;cursor:default}
- .schedule-position{min-width:3rem;text-align:center;color:#465b7a;font-size:.85rem;font-weight:700}
-}
-@media(prefers-reduced-motion:reduce){.jam-schedule .jam-day-grid{scroll-behavior:auto}}
+/* Swipeable card rows on narrow screens. */
+.ggj-card-controls { display: none; }
+.ggj-card-track:focus-visible { outline: 3px solid #1768e8; outline-offset: 3px; }
 
 @media (max-width: 800px) {
-  .schedule-carousel.has-controls .schedule-controls { margin: .5rem 0 1.5rem; }
-  .schedule-controls button { position: absolute; z-index: 2; top: calc(50% - 1.5rem); transform: translateY(-50%); box-shadow: 0 3px 12px #10265b24; }
-  .schedule-controls .schedule-prev { left: -.75rem; }
-  .schedule-controls .schedule-next { right: -.75rem; }
-  .schedule-controls button:disabled { visibility: hidden; }
-  .schedule-position { display: flex; align-items: center; justify-content: center; gap: .5rem; min-width: 0; }
-  .schedule-dot { width: .5rem; height: .5rem; border-radius: 50%; background: #c8d4e4; }
-  .schedule-dot.is-active { background: #1768e8; }
+  .ggj-card-carousel > .ggj-card-track {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+  }
+  .ggj-card-track > * { scroll-snap-align: start; scroll-snap-stop: always; }
+  .has-controls > .ggj-card-track { scrollbar-width: none; }
+  .has-controls > .ggj-card-track::-webkit-scrollbar { display: none; }
+  .has-controls > .ggj-card-controls { display: flex; justify-content: center; align-items: center; gap: 1rem; margin: .5rem 0 1.5rem; }
+  .ggj-card-controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #cbdcf2; border-radius: 50%; background: white; color: #1651a4; font-size: 2rem; line-height: 1; cursor: pointer; }
+  .ggj-card-controls button[aria-disabled="true"] { opacity: .35; cursor: default; }
+  .ggj-card-position { display: flex; align-items: center; justify-content: center; gap: .5rem; }
+  .ggj-card-dot { width: .5rem; height: .5rem; border-radius: 50%; background: #c8d4e4; }
+  .ggj-card-dot.is-active { background: #1768e8; }
+  .schedule-carousel .ggj-card-controls button { position: absolute; z-index: 2; top: calc(50% - 1.5rem); transform: translateY(-50%); box-shadow: 0 3px 12px #10265b24; }
+  .schedule-carousel .ggj-card-prev { left: -.75rem; }
+  .schedule-carousel .ggj-card-next { right: -.75rem; }
+  .schedule-carousel .ggj-card-controls button[aria-disabled="true"] { visibility: hidden; }
+}
+
+@media (max-width: 800px) and (prefers-reduced-motion: no-preference) {
+  .ggj-card-track { scroll-behavior: smooth; }
 }
 
 /* Consistent icons for section titles. */

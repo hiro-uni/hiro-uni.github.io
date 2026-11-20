@@ -1,0 +1,61 @@
+---
+interface Props {
+  trackId: string;
+  count: number;
+  schedule?: boolean;
+  en?: boolean;
+}
+
+const { trackId, count, schedule = false, en = false } = Astro.props;
+const previous = en
+  ? schedule
+    ? "Previous day"
+    : "Previous card"
+  : schedule
+    ? "前の日へ"
+    : "前のカードへ";
+const next = en
+  ? schedule
+    ? "Next day"
+    : "Next card"
+  : schedule
+    ? "次の日へ"
+    : "次のカードへ";
+const position = en
+  ? `${schedule ? "Day" : "Card"} {index} of ${count}`
+  : schedule
+    ? `{index}日目／全${count}日`
+    : `全${count}枚中{index}枚目`;
+---
+
+<div class="ggj-card-controls">
+  <button
+    type="button"
+    class="ggj-card-prev"
+    aria-label={previous}
+    aria-controls={trackId}
+  >
+    ‹
+  </button>
+  <span
+    class="ggj-card-position"
+    role="status"
+    data-label={position}
+    aria-label={position.replace("{index}", "1")}
+  >
+    {Array.from({ length: count }, (_, index) => (
+      <span
+        class:list={["ggj-card-dot", { "is-active": index === 0 }]}
+        aria-hidden="true"
+      ></span>
+    ))}
+  </span>
+  <button
+    type="button"
+    class="ggj-card-next"
+    aria-label={next}
+    aria-controls={trackId}
+  >
+    ›
+  </button>
+</div>
