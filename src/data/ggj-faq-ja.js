@@ -36,6 +36,15 @@ export default [
   Jamではデジタルゲームだけでなく、ボードゲームやカードゲームなどのアナログ（ノンデジタル）ゲームの制作も公式に認められています。<br><br>プログラミングの知識がなくても、ルール設計やコンポーネント制作、テストプレイなど、自由な発想でゲームづくりを楽しめます。</p>`,
   },
   {
+    id: "faq-selling-games",
+    question: "作ったゲームを販売したりして良い？",
+    answer: `<p><strong>はい、販売できます！</strong>「このゲーム、もっと作り込みたい」と思ったら、ジャムが終わってから開発を続けて、販売したり、クラウドファンディングで支援を募ったりできます。</p>
+<p><strong>『RooTile』は、東京・奥多摩のGGJ 2023で生まれたボードゲーム。</strong>タイルを並べて花の根を水までつなぎます。チームはジャムのあとも改良を続け、Kickstarterで目標の5万円を超える57万3,309円の支援を集めました。<br><a class="text-link" href="https://www.kickstarter.com/projects/nekoten/rootile" target="_blank" rel="noopener noreferrer">『RooTile』のKickstarterを見る ↗<span class="sr-only">（新しいタブで開きます）</span></a></p>
+<p><strong>『Terranova』は、東京を拠点とするチームの作品。</strong>GGJ 2019で作ったチャット画面の試作品『In Her Eyes』をもとに開発を続け、2022年にSteamで発売しました。<br><a class="text-link" href="https://store.steampowered.com/app/1728700/Terranova/" target="_blank" rel="noopener noreferrer">Steamで『Terranova』を見る ↗<span class="sr-only">（新しいタブで開きます）</span></a></p>
+<p><strong>ゲームや自分たちで作った絵・音楽の著作権は、作った人に残ります。</strong>販売や支援募集の前に、チームで進め方を話し合って合意しておきましょう。外部の素材やライブラリを使っている場合は、販売版に入れて配布できるか、利用条件を確認してください。</p>
+<p>GGJ 2026からは、自分たちが持つ権利の範囲で、提出版をほかの人がどう使えるか（ライセンス）をチームで決められます。提出するときは、その版を公式サイトに掲載する許可を、期限を設けずにGGJに与えます。ソースコードをGGJに提出するかは任意です。使ったライブラリなどの条件でコードの公開が必要な場合は、その条件に従ってください。<br><a class="text-link" href="https://globalgamejam.org/policies" target="_blank" rel="noopener noreferrer">GGJ公式のコンテンツポリシー（英語） ↗<span class="sr-only">（新しいタブで開きます）</span></a></p>`,
+  },
+  {
     question: "AI (ChatGPT・Claude) は使えますか？",
     answer: `<p><strong>AIも使えます！</strong>ただし、著作権・知的財産権など、GGJの既存ルールを守って利用してください。<br><a class="text-link" href="https://globalgamejam.org/news/global-game-jam-artificial-intelligence-policy" target="_blank" rel="noopener noreferrer">詳しくはGGJ公式AIポリシー（英語）へ
   ↗<span class="sr-only">（新しいタブで開きます）</span></a></p>`,

@@ -69,6 +69,15 @@ export default [
   cards/pieces, and live playtesting.</p>`,
   },
   {
+    id: "faq-selling-games",
+    question: "Can we sell the game we make at GGJ?",
+    answer: `<p><strong>Yes, you can!</strong> If you come away from the jam thinking, “I’d love to keep working on this,” you can keep developing your game, sell it, or run a crowdfunding campaign.</p>
+<p><strong>RooTile started at GGJ 2023 in Okutama, Tokyo.</strong> It’s a board game where you lay tiles to guide a flower’s roots to water. The team kept working on it after the jam and raised ¥573,309 on Kickstarter, passing its ¥50,000 goal.<br><a class="text-link" href="https://www.kickstarter.com/projects/nekoten/rootile" target="_blank" rel="noopener noreferrer">See RooTile on Kickstarter ↗<span class="sr-only"> (opens in a new tab)</span></a></p>
+<p><strong>Terranova was made by a Tokyo-based team.</strong> They built a simple chat-window prototype called In Her Eyes at GGJ 2019, kept developing the idea, and released Terranova on Steam in 2022.<br><a class="text-link" href="https://store.steampowered.com/app/1728700/Terranova/" target="_blank" rel="noopener noreferrer">See Terranova on Steam ↗<span class="sr-only"> (opens in a new tab)</span></a></p>
+<p><strong>You keep the copyright to your game and the original art and music you make.</strong> Before selling or crowdfunding, talk with your teammates and agree on how to move forward. If you’ve used someone else’s assets or code libraries, check that their licenses let you include and distribute them in a paid release.</p>
+<p>Since GGJ 2026, your team can choose a license for the version you submit. That license sets out what others can do with it, within the rights your team holds. By submitting, you give GGJ permission to host that version on its site without a time limit. Sharing source code with GGJ is optional. If a library or other component comes with a license that requires you to publish source code, follow those terms.<br><a class="text-link" href="https://globalgamejam.org/policies" target="_blank" rel="noopener noreferrer">Read the official GGJ Content Policy ↗<span class="sr-only"> (opens in a new tab)</span></a></p>`,
+  },
+  {
     question: "Can we use AI tools like ChatGPT or Claude?",
     answer: `<p><strong>Yes, AI tools are permitted</strong> as long as your use respects copyright, intellectual
   property, and GGJ’s official guidelines.<br><a class="text-link" href="https://globalgamejam.org/news/global-game-jam-artificial-intelligence-policy" target="_blank" rel="noopener noreferrer">Read
