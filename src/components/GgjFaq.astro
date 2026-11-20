@@ -1,0 +1,37 @@
+---
+interface Props {
+  entries: { id?: string; question: string; answer: string }[];
+  language: "ja" | "en";
+}
+
+const { entries, language } = Astro.props;
+const faqData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  inLanguage: language,
+  mainEntity: entries.map(({ question, answer }) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: answer,
+    },
+  })),
+};
+---
+
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(faqData).replaceAll("<", "\\u003c")}
+/>
+<div class="faq-list">
+  {
+    entries.map(({ id, question, answer }) => (
+      <details id={id}>
+        <summary>{question}<span aria-hidden="true">＋</span></summary>
+        <Fragment set:html={answer} />
+      </details>
+    ))
+  }
+</div>
