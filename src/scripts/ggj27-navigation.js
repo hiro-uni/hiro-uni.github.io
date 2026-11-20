@@ -152,11 +152,18 @@ import { worldPlaces } from "./ggj27-world-places.js";
   const worldCard = document.querySelector(".world-card");
   if (worldCard) {
     const places = worldPlaces;
+    const stage = worldCard.querySelector(".world-stage");
+    const pinLabel = worldCard.querySelector(".world-pin-label");
     const bubble = worldCard.querySelector(".world-bubble");
     const locationLabel = worldCard.querySelector(".world-location");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const swipeMode = window.matchMedia(
+      "(max-width: 800px), (max-width: 950px) and (pointer: coarse)",
+    );
     let index = 0;
     let timer;
+    let inView = false;
+    let gesture;
     const show = (next) => {
       index = (next + places.length) % places.length;
       const place = places[index];
@@ -168,17 +175,74 @@ import { worldPlaces } from "./ggj27-world-places.js";
       worldCard.dispatchEvent(new CustomEvent("world-place-change", { detail: index }));
     };
     let manuallySelected = false;
-    const select = (next) => { manuallySelected = true; window.clearInterval(timer); show(next); };
+    const select = (next) => {
+      manuallySelected = true;
+      stop();
+      stage.classList.remove("show-swipe-hint");
+      show(next);
+    };
     worldCard.querySelector(".world-prev").addEventListener("click", () => select(index - 1));
     worldCard.querySelector(".world-next").addEventListener("click", () => select(index + 1));
-    const start = () => {
-      if (!timer && !reduced.matches && !manuallySelected) timer = window.setInterval(() => show(index + 1), 3500);
-    };
     const stop = () => { window.clearInterval(timer); timer = undefined; };
+    const updateAutoplay = () => {
+      if (!inView || swipeMode.matches || reduced.matches || manuallySelected) {
+        stop();
+      } else if (!timer) {
+        timer = window.setInterval(() => show(index + 1), 3500);
+      }
+    };
+    const updateSwipeMode = () => {
+      stage.classList.toggle("is-swipe-enabled", swipeMode.matches);
+      pinLabel.setAttribute("aria-live", swipeMode.matches ? "polite" : "off");
+      if (swipeMode.matches) {
+        stage.tabIndex = 0;
+      } else {
+        stage.removeAttribute("tabindex");
+        gesture = undefined;
+      }
+      updateAutoplay();
+    };
+    stage.addEventListener("pointerdown", (event) => {
+      if (!swipeMode.matches || !event.isPrimary || event.button !== 0) return;
+      gesture = { id: event.pointerId, x: event.clientX, y: event.clientY };
+      stage.setPointerCapture(event.pointerId);
+    });
+    stage.addEventListener("pointerup", (event) => {
+      if (gesture?.id !== event.pointerId) return;
+      const dx = event.clientX - gesture.x;
+      const dy = event.clientY - gesture.y;
+      gesture = undefined;
+      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy)) {
+        select(index + (dx < 0 ? 1 : -1));
+      }
+    });
+    stage.addEventListener("lostpointercapture", (event) => {
+      if (gesture?.id === event.pointerId) gesture = undefined;
+    });
+    stage.addEventListener("keydown", (event) => {
+      if (!swipeMode.matches || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+      event.preventDefault();
+      select(index + (event.key === "ArrowRight" ? 1 : -1));
+    });
+    updateSwipeMode();
+    swipeMode.addEventListener("change", updateSwipeMode);
+    reduced.addEventListener("change", updateAutoplay);
     if ("IntersectionObserver" in window) {
-      new IntersectionObserver(([entry]) => { if (entry.isIntersecting) start(); else stop(); }, { threshold: 0.3 }).observe(worldCard);
-    } else { start(); }
-    reduced.addEventListener("change", (event) => { if (event.matches) stop(); });
+      new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        updateAutoplay();
+      }, { threshold: 0.3 }).observe(worldCard);
+      const hintObserver = new IntersectionObserver(([entry]) => {
+        if (entry.intersectionRatio < 0.3) return;
+        if (!manuallySelected) stage.classList.add("show-swipe-hint");
+        hintObserver.disconnect();
+      }, { threshold: 0.3 });
+      hintObserver.observe(stage);
+    } else {
+      inView = true;
+      stage.classList.add("show-swipe-hint");
+      updateAutoplay();
+    }
   }
   const entryHeading = document.getElementById("entry-title");
   const entryIcon = entryHeading?.querySelector("i");
