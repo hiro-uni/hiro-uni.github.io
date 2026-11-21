@@ -122,6 +122,7 @@ const eventData = {
       hreflang="x-default"
       href="https://hiro-uni.github.io/ggj/"
     />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta
       property="og:title"
@@ -135,6 +136,7 @@ const eventData = {
     <meta property="og:url" content="https://hiro-uni.github.io/ggj/" />
     <meta property="og:site_name" content="広島Unity勉強会" />
     <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta
       property="og:image"
       content={new URL(setouchiLogo.src, "https://hiro-uni.github.io").href}
@@ -169,7 +171,11 @@ const eventData = {
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script type="application/ld+json" set:html={JSON.stringify(eventData)} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(eventData).replaceAll("<", "\\u003c")}
+    />
   </head>
   <body>
     <a class="skip" href="#main">
@@ -181,7 +187,7 @@ const eventData = {
       </a>
       <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
       <nav id="main-nav" aria-label="メインナビゲーション">
-        <a href="#about">GGJとは</a><a href="#schedule">スケジュール</a><a href="#faq">FAQ</a><a href="/ggj/en/" lang="en">English</a>
+        <a href="#about">GGJとは</a><a href="#schedule">スケジュール</a><a href="#faq">FAQ</a><a href="/ggj/en/" lang="en" hreflang="en">English</a>
         <a class="nav-entry" href="#entry">参加登録する ↗</a>
       </nav>
     </header>
@@ -385,7 +391,7 @@ const eventData = {
                 左右にスワイプ
               </p>
             </div>
-            <div class="world-stats"><div><i class="fa-solid fa-users" aria-hidden="true"></i><div><span>参加国</span><strong>94 <small>か国</small></strong></div></div><div><i class="fa-solid fa-gamepad" aria-hidden="true"></i><div><span>制作されたゲーム</span><strong>9874 <small>個</small></strong></div></div><div><i class="fa-regular fa-clock" aria-hidden="true"></i><div><span>開催時間</span><strong>48 <small>時間</small></strong></div></div></div>
+            <div class="world-stats"><div><i class="fa-solid fa-users" aria-hidden="true"></i><div><span>参加国</span><strong>94 <small>か国</small></strong></div></div><div><i class="fa-solid fa-gamepad" aria-hidden="true"></i><div><span>制作されたゲーム</span><strong>9874 <small>個</small></strong></div></div><div><i class="fa-regular fa-clock" aria-hidden="true"></i><div><span>開発時間</span><strong>48 <small>時間</small></strong></div></div></div>
             <p class="world-stats-note">引用 : 2026年 GGJ公式レポート より</p>
           </div>
         </div>
@@ -1061,6 +1067,7 @@ const eventData = {
           decoding="async"
         />
       </a>
+      <a href="/ggj/en/" lang="en" hreflang="en">English</a>
       <a href="/">
         広島Unity勉強会{" "}
         <i

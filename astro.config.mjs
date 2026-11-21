@@ -54,6 +54,20 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         new URL(page).pathname !== "/interview/ggj26_organizer/",
+      serialize: (item) => {
+        const pathname = new URL(item.url).pathname;
+        if (pathname === "/ggj/" || pathname === "/ggj/en/") {
+          return {
+            ...item,
+            links: [
+              { lang: "ja", url: new URL("/ggj/", item.url).href },
+              { lang: "en", url: new URL("/ggj/en/", item.url).href },
+              { lang: "x-default", url: new URL("/ggj/", item.url).href },
+            ],
+          };
+        }
+        return item;
+      },
     }),
     copySitemapPlugin(),
   ],

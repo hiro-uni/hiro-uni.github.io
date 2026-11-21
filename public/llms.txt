@@ -36,12 +36,14 @@ https://hiro-uni.github.io
 ## 主要ナビゲーション
 
 - **ホーム:** https://hiro-uni.github.io/
-- **活動について:** https://hiro-uni.github.io/about
-- **もくもく会:** https://hiro-uni.github.io/mokumoku
-- **ニュース:** https://hiro-uni.github.io/news
-- **インタビュー:** https://hiro-uni.github.io/interview
-- **お問い合わせ:** https://hiro-uni.github.io/contact
-- **GGJ カウントダウン (GGJ 2027):** https://hiro-uni.github.io/ggj-countdown
+- **活動について:** https://hiro-uni.github.io/about/
+- **もくもく会:** https://hiro-uni.github.io/mokumoku/
+- **ニュース:** https://hiro-uni.github.io/news/
+- **インタビュー:** https://hiro-uni.github.io/interview/
+- **お問い合わせ:** https://hiro-uni.github.io/contact/
+- **GGJ 2027 瀬戸内会場 in 広島:** https://hiro-uni.github.io/ggj/
+- **GGJ 2027 Hiroshima (English):** https://hiro-uni.github.io/ggj/en/
+- **GGJ カウントダウン (GGJ 2027):** https://hiro-uni.github.io/ggj-countdown/
 
 ## 主な活動内容
 
