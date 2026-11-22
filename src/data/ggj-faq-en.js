@@ -48,6 +48,10 @@ export default [
   real team game is half the magic of a jam.</p>`,
   },
   {
+    question: "Can I visit and observe the event?",
+    answer: `<p><strong>Visitors are very welcome, including minors!</strong> Feel free to come and see how games are made. If you sign up for the “【見学】現地見学” (in-person visitor) ticket on connpass, a guide can show you around.<br><a class="text-link" href="https://hirouni.connpass.com/event/408904/" target="_blank" rel="noopener noreferrer">Sign up on connpass ↗<span class="sr-only"> (opens in a new tab)</span></a></p>`,
+  },
+  {
     id: "faq-second-day",
     question: "Can I join starting on Day 2 (Saturday)?",
     answer: `<p><strong>Yes, joining from Day 2 is allowed!</strong><br>Because initial team formation finishes on

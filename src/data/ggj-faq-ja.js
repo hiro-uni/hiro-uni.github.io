@@ -22,6 +22,10 @@ export default [
     answer: `<p><strong>ひとりでの参加も大歓迎。</strong>その場で出会う人とアイデアを話すのも、ゲームジャムの楽しみのひとつ。まずは試作品を作ってから、みんなでゲームを作っていきます。</p>`,
   },
   {
+    question: "見学に行ってもよいですか？",
+    answer: `<p><strong>見学も大歓迎です！未成年の方もお越しいただけます。</strong><br>ゲーム開発の様子をお気軽に見に来てください。3日目に来ていただくと、テストプレイがお楽しみ頂けます。<br><br>connpassから「【見学】現地見学」チケットにお申し込みいただくと、山根信二さんによる解説も踏まえてご案内いたします。(参加アンケートは名前のみお書きいただき、他の項目はランダムにお書きください。)<br><a class="text-link" href="https://hirouni.connpass.com/event/408904/" target="_blank" rel="noopener noreferrer">connpassで申し込む ↗<span class="sr-only">（新しいタブで開きます）</span></a></p>`,
+  },
+  {
     id: "faq-second-day",
     question: "2日目から参加できますか？",
     answer: `<p><strong>2日目からの参加もできます！</strong><br>ただし初日にはチーム分けが完了しているので、やりたいこと、チーム編成やスキルに応じて、参入するチームを調整することがあります。</p>`,
