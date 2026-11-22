@@ -28,7 +28,7 @@ export default [
   },
   {
     question: "オンラインのみで参加できますか？",
-    answer: `<p><strong>ごめんなさい、 オンラインのみ での参加はできません。</strong>本イベントは現地会場での対面参加のみとなっています。ぜひ会場で仲間と一緒にゲームづくりを楽しみましょう！<br><br>日本を含む他GGJ会場では、オンライン参加を受け付けている会場が沢山あるので、そちらもご検討ください。</p>`,
+    answer: `<p><strong>ごめんなさい、 オンラインのみ での参加はできません。</strong>本イベントは現地会場での対面参加のみとなっています。ぜひ会場で仲間と一緒にゲームづくりを楽しみましょう！<br><br>日本を含む他GGJ会場では、オンライン参加を受け付けている会場が沢山あるので、そちらもご検討ください。<br><a class="text-link" href="https://ggj.igda.jp/site-list/" target="_blank" rel="noopener noreferrer">GGJの会場一覧を見る ↗<span class="sr-only">（新しいタブで開きます）</span></a></p>`,
   },
   {
     question: "ボードゲームやアナログゲームもつくれますか？",

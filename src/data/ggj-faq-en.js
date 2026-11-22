@@ -59,7 +59,7 @@ export default [
     answer: `<p><strong>Sorry, online-only participation isn’t available at the Hiroshima site.</strong> Our venue
   is strictly in-person so creators can collaborate face to face.<br><br>Many other official GGJ
   sites across Japan and around the world do offer remote/online participation, so feel free to check
-  the global GGJ site list if you can’t make it to Itsukaichi in person.</p>`,
+  the global GGJ site list if you can’t make it to Itsukaichi in person.<br><a class="text-link" href="https://globalgamejam.org/jam-sites/2027?label=&amp;country=JP&amp;city=&amp;field_jam_site_type_target_id=All&amp;field_jam_site_audience_target_id=All" target="_blank" rel="noopener noreferrer">Browse GGJ sites in Japan ↗<span class="sr-only"> (opens in a new tab)</span></a></p>`,
   },
   {
     question: "Can we make board games or tabletop/card games?",
