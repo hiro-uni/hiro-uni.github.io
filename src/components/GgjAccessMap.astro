@@ -1,0 +1,345 @@
+<section id="access" class="section access-map" aria-labelledby="access-title">
+  <h2 id="access-title">アクセス</h2>
+  <div class="access-layout">
+    <div class="map-surface" data-view="overview">
+      <canvas
+        class="terrain terrain-overview"
+        width="960"
+        height="640"
+        aria-hidden="true"
+      ></canvas>
+      <canvas
+        class="terrain terrain-local"
+        width="960"
+        height="640"
+        aria-hidden="true"
+      ></canvas>
+      <div class="map-markers"></div>
+      <button class="map-back" type="button" hidden>
+        ‹ 広島市周辺
+      </button>
+      <div class="map-compass" aria-hidden="true">
+        <span>N</span>
+        <span class="compass-needle"></span>
+      </div>
+      <span class="map-credit">
+        <a href="https://www.openstreetmap.org/copyright">
+          © OpenStreetMap contributors
+        </a>
+        / 国土地理院
+      </span>
+    </div>
+    <aside id="access-spot" class="spot-panel" aria-label="スポット解説" hidden>
+      <button
+        class="spot-close"
+        type="button"
+        aria-label="スポット解説を閉じる"
+      >
+        ×
+      </button>
+      <div role="status" aria-atomic="true">
+        <h3 class="spot-name"></h3>
+        <p class="spot-copy"></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<script src="../scripts/ggj27-access-map.js"></script>
+
+<style>
+  .section.access-map {
+    color: #10265b;
+    padding: 0.75rem 1rem 1.25rem;
+  }
+
+  #access-title {
+    max-width: 1192px;
+    margin: 0 auto 0.75rem;
+  }
+
+  .access-layout {
+    max-width: 90rem;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 801px) {
+    :global(#faq:has(+ #access)) {
+      padding-bottom: clamp(1.25rem, 3vw, 2.75rem);
+    }
+
+    :global(#access + #mc) {
+      padding-top: clamp(1.5rem, 3vw, 2.75rem);
+    }
+
+    .access-layout:has(.spot-panel:not([hidden])) {
+      grid-template-columns: minmax(0, 1fr) clamp(220px, 22%, 300px);
+    }
+  }
+
+  .map-surface {
+    position: relative;
+    isolation: isolate;
+    height: clamp(310px, 37vw, 540px);
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: #1d9ab0;
+    --travel: 640ms cubic-bezier(0.25, 0.78, 0.3, 1);
+  }
+
+  @media (max-width: 800px) {
+    .section.access-map {
+      padding-block: 1.5rem 1.75rem;
+    }
+
+    #access-title {
+      margin-left: 0.25rem;
+    }
+
+    .map-surface {
+      height: auto;
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  .terrain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--terrain-height, 100%);
+    transform-origin: top left;
+    image-rendering: pixelated;
+  }
+
+  .map-surface[data-animating] .terrain {
+    transition:
+      transform var(--travel),
+      opacity var(--travel);
+  }
+
+  .terrain-local,
+  .map-surface[data-view="local"] .terrain-overview {
+    opacity: 0;
+  }
+
+  .map-surface[data-view="local"] .terrain-local {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .map-surface {
+      --travel: 0ms;
+    }
+  }
+
+  .map-markers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .map-surface :global(.map-marker) {
+    --pin-size: clamp(17px, 3vw, 32px);
+    --pin-radius: calc(var(--pin-size) / 2);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    transform: translate(-50%, calc(-100% + var(--pin-radius)));
+  }
+
+  .map-surface :global(.map-marker[data-position="below"]) {
+    flex-direction: column-reverse;
+    transform: translate(-50%, calc(-1 * var(--pin-radius)));
+  }
+
+  .map-surface :global(.map-marker[data-position="left"]) {
+    flex-direction: row;
+    transform: translate(calc(-100% + var(--pin-radius)), -50%);
+  }
+
+  .map-surface :global(.map-marker[data-position="right"]) {
+    flex-direction: row-reverse;
+    transform: translate(calc(-1 * var(--pin-radius)), -50%);
+  }
+
+  .map-surface :global(.marker-label) {
+    padding: 1px 4px;
+    border: 1px solid #10265b;
+    border-radius: 4px;
+    background: #fff;
+    font-family: inherit;
+    font-size: clamp(0.6rem, 1.25vw, 0.875rem);
+    font-weight: 800;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  .map-surface :global(.marker-dot) {
+    display: grid;
+    place-items: center;
+    width: var(--pin-size);
+    height: var(--pin-size);
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #10265b;
+  }
+
+  .map-surface :global(.marker-dot img) {
+    width: 70%;
+    image-rendering: pixelated;
+  }
+
+  .map-surface :global(.map-marker[aria-pressed="true"] .marker-label),
+  .map-surface :global(.map-marker:hover .marker-label) {
+    background: #ffd447;
+  }
+
+  .map-compass,
+  .map-credit,
+  .map-back {
+    position: absolute;
+    color: #fff;
+    background: #10265b;
+  }
+
+  .map-compass {
+    top: 8px;
+    right: 8px;
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    padding: 4px 6px;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    font: bold 10px/1 monospace;
+    pointer-events: none;
+  }
+
+  .compass-needle {
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(#ffd447 50%, #fff 50%);
+    clip-path: polygon(
+      44% 0,
+      56% 0,
+      56% 22%,
+      67% 22%,
+      67% 39%,
+      78% 39%,
+      78% 61%,
+      67% 61%,
+      67% 78%,
+      56% 78%,
+      56% 100%,
+      44% 100%,
+      44% 78%,
+      33% 78%,
+      33% 61%,
+      22% 61%,
+      22% 39%,
+      33% 39%,
+      33% 22%,
+      44% 22%
+    );
+  }
+
+  @media (max-width: 480px) {
+    .map-compass {
+      top: 5px;
+      right: 5px;
+      gap: 1px;
+      padding: 2px;
+      border-width: 1px;
+      font-size: 8px;
+    }
+
+    .compass-needle {
+      width: 10px;
+      height: 10px;
+    }
+
+    .map-surface :global(.map-marker[data-spot="hiroshima"]) {
+      gap: 7px;
+    }
+  }
+
+  .map-back {
+    top: 8px;
+    left: 8px;
+    min-height: 36px;
+    padding: 0.25rem 0.625rem;
+    border: 1px solid #fff;
+    border-radius: 0.375rem;
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .map-credit {
+    left: 4px;
+    bottom: 4px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: clamp(0.55rem, 1.1vw, 0.7rem);
+  }
+
+  .map-credit a {
+    color: inherit;
+  }
+
+  .spot-panel {
+    position: relative;
+    align-self: start;
+    padding: 1.125rem;
+    border: 1px solid #d9e5f2;
+    border-top: 4px solid #ffd447;
+    border-radius: 0.75rem;
+    background: #f0f6fe;
+  }
+
+  .spot-name {
+    margin: 0;
+    padding-right: 2rem;
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
+
+  .spot-copy {
+    margin: 0.625rem 0 0;
+    color: #465b7a;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .spot-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 0.375rem;
+    background: #fff;
+    color: inherit;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  .access-map button:focus-visible {
+    outline: 3px solid #1768e8;
+    outline-offset: 2px;
+  }
+</style>
