@@ -35,12 +35,20 @@
     // Architecture walls & roofs
     w: "#fbf4dc", // warm cream stucco
     W: "#ded5bc", // shaded cream wall
+    X: "#f7f8fa", // bright crisp white facade (Nexus21 wings)
+    Z: "#c7d0da", // cool gray-white shaded wing (Nexus21 side)
+    z: "#96a3b0", // deep precast shadow
     G: "#aab4bd", // concrete gray
     H: "#74818e", // shaded concrete
     c: "#51a9cf", // glass cyan
+    Q: "#8ad4ce", // mint-teal curtain-wall glass highlight (Nexus21)
+    q: "#68ced6", // foam/wake
+    J: "#4b9896", // mint-teal curtain-wall mid glass (Nexus21)
+    j: "#2e6168", // mint-teal curtain-wall mullion/shadow (Nexus21)
     B: "#2d6ca8", // bright blue glass/roof
     N: "#1f4772", // deep navy roof/trim
-    T: "#c8573c", // terracotta roof
+    T: "#c8573c", // terracotta roof/annex
+    h: "#9e442c", // dark terracotta shadow (Nexus21 circular wing)
     O: "#e67c4f", // bright orange/terracotta highlight
     M: "#4b8b5b", // moss green roof
     V: "#d94a38", // vermilion (torii/shrine/red wing)
@@ -50,7 +58,6 @@
 
     // Water & boat & steam
     a: "#259ab0", // teal water
-    q: "#68ced6", // foam/wake
     f: "#ffffff", // crisp white
   };
 
@@ -267,60 +274,60 @@
     ],
     officeA: [
       ".kkkkkkkk.",
-      "kGGGGGGGGk",
-      "kBccBBccBk",
-      "kGwwGGwwGk",
-      "kBccBBccBk",
-      "kGwwGGwwGk",
-      "kBccBBccBk",
-      "kHwwHHwwHk",
+      "kXwwXXwwZk",
+      "kXccXXccZk",
+      "kXwwXXwwZk",
+      "kXccXXccZk",
+      "kXwwXXwwZk",
+      "kXccXXccZk",
+      "kHHkttkHHk",
       "kkkkkkkkkk",
     ],
     officeB: [
       ".kkkkkkkk.",
-      "kHHHHHHHHk",
-      "kcccccccck",
-      "kGGGGGGGGk",
-      "kcccccccck",
-      "kGGGGGGGGk",
-      "kcccccccck",
+      "kSSSSSSSSk",
+      "kWccWWccWk",
+      "kGwwGGwwGk",
+      "kWccWWccWk",
+      "kGwwGGwwGk",
+      "kWccWWccWk",
       "kHHkttkHHk",
       "kkkkkkkkkk",
     ],
     officeGlass: [
       "..kkkkkk..",
-      ".kccBBcck.",
-      "kBBccccBBk",
-      "kccBBBBcck",
-      "kBBccccBBk",
-      "kccBBBBcck",
-      "kNNccccNNk",
+      ".kGGGGGGk.",
+      "kXQJJJJQXk",
+      "kXjQQQQjXk",
+      "kXQJJJJQXk",
+      "kXjQQQQjXk",
+      "kZccccccZk",
       "kHHkttkHHk",
       "kkkkkkkkkk",
     ],
     towerA: [
       "..kkkkkk..",
-      ".kGGHHGGk.",
-      ".kccBBcck.",
-      "kGGccccGGk",
-      "kccBBBBcck",
-      "kGGccccGGk",
-      "kccBBBBcck",
-      "kGGccccGGk",
-      "kccBBBBcck",
+      ".kSSSSSSk.",
+      ".kXXccXXk.",
+      "kXXcGGcZZk",
+      "kXXcwwcZZk",
+      "kXXcGGcZZk",
+      "kXXcwwcZZk",
+      "kXXcGGcZZk",
+      "kXXcwwcZZk",
       "kHHkttkHHk",
       "kkkkkkkkkk",
     ],
     towerB: [
       "...kkkk...",
-      "..kBBBBk..",
-      ".kGGGGGGk.",
-      ".kccBBcck.",
-      "kWWccccWWk",
-      "kccBBBBcck",
-      "kWWccccWWk",
-      "kccBBBBcck",
-      "kWWccccWWk",
+      "..kTTTTk..",
+      ".kXXXXXXk.",
+      ".kXccXXZk.",
+      "kXXccXXZZk",
+      "kWWccWWZZk",
+      "kXXccXXZZk",
+      "kWWccWWZZk",
+      "kXXccXXZZk",
       "kHHkttkHHk",
       "kkkkkkkkkk",
     ],
@@ -377,36 +384,50 @@
       "kkkkkkkkkkkkkkkkkkkkkkkkkkkk",
     ],
     hitCampusOverview: [
-      "........kkkkkkkkkk........",
-      "......kkBBBBBBBBBBkk......",
-      "...kkkwwwcwcwcwcwwwwkkk...",
-      "..kBBBwwwcwcwcwcwwwwBBBk..",
-      ".kwwwwwwwcwcwcwcwwwwwwwwk.",
-      "kBBwwcwcwwwwNNNNwwwwcwcwBBk",
-      "kwwwwcwcwwwwccccwwwwcwcwwwk",
-      "kWWWWWWWWWWWkttkWWWWWWWWWWk",
-      ".kkkkkkkkkkkkkkkkkkkkkkkkk.",
+      "...kkkkkkkkkkkkkk.................",
+      "..kXkkQQJJQQkkXXZk................",
+      ".kXjXkQJJJJQkXjXZZk...............",
+      ".kXjXkjjjjjjkXjXZZk...............",
+      ".kXjXkQQJJQQkXjXZZk...kkkkkk......",
+      ".kXjXkQJJJJQkXjXZZk..kXXXXXXk.....",
+      ".kXjXkjjjjjjkXjXZZkkkkXccXccZk....",
+      ".kXjXkQQJJQQkXjXZZZZkkkkkkXXZk....",
+      ".kXjXkQJJJJQkXjXkTTTfXfXfTTkkk....",
+      ".kXjXkjjjjjjkXjXkOTTTTTTTTTThk....",
+      ".kXXkkjkkkkjkXZZkTTkkTTTTTTThk....",
+      ".kSSkkjkkkkjkSSZkOThhTTTTTTThk....",
+      "..kkkkkkkkkkkkkkkkkkkkkkkkkkkk....",
     ],
     hitNexus21: [
-      "....kkkkkkkkkkkkkkkkkkkkkkkkkk....",
-      "..kkBBBBBBBBBBBBBBBBBBBBBBBBBBkk..",
-      ".kBBccccccccccccccccccccccccccBBk.",
-      "kBBwwwwcwcwcwcwcwcwcwcwcwcwcwwwwBBk",
-      "kwwccccwwwwccccwwwwccccwwwwccccwwwk",
-      "kBBwwwwcwcwcwcwcwcwcwcwcwcwcwwwwBBk",
-      "kWWWWWWkcckWWWWkcckWWWWkcckWWWWWWWk",
-      "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+      "....kkkkkkkkkkkkkkkkkkkkk.....................",
+      "..kGGGGGGGGGGGGGGGGGGGGGGZk...................",
+      ".kXXkQQJJQQJJQQkXXjXjXjXZZZk..................",
+      ".kXjXkQJJQQJJQkXXjXjXjXjXZZk..................",
+      ".kXjXkjjjjjjjjkXXjXjXjXjXZZk..................",
+      ".kXjXkQQJJQQJJQkXXjXjXjXZZZk........kkkkkkk...",
+      ".kXjXkQJJQQJJQkXXjXjXjXjXZZk.......kXXXXXXXk..",
+      ".kXjXkjjjjjjjjkXXjXjXjXjXZZk.......kXjXjXjXZk.",
+      ".kXjXkQQJJQQJJQkXXjXjXjXZZZk.......kXXXXXXXZk.",
+      ".kXjXkQJJQQJJQkXXjXjXjXjXZZk.kkkk..kXjXjXjXZk.",
+      ".kXjXkjjjjjjjjkXXjXjXjXjXZZkkTTTTkkXXXXXXXXZk.",
+      ".kXjXkQQJJQQJJQkXXjXjXjXZkkOOffffffTTTkjXjXZk.",
+      ".kXjXkQJJQQJJQkXXjXjXjXkkOOTTTTTTTTTTThkXXXZk.",
+      ".kXjXkjjjjjjjjkXXjXjXkkOOTfXfXfXfXfXTTThkZZZk.",
+      ".kXXkkjjjjjjjjkXXjXkkOOTTTTTTTTTTTTTTTThkkkkk.",
+      ".kSSkjkHkkkHjkXSSkkOOTTTTkkTTTTTTTkkTTThk.....",
+      ".kSSkjkHkkkHjkXSSkOOTTTTkhhkTTTTTkhhkTThk.....",
+      "..kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk.....",
     ],
     hitNew4: [
       "..kkk.............................",
       ".kYYYk............................",
       ".kYYk.............................",
       "..k..kkkkkkkkkkkkkkkkkkkkkkkkkk...",
-      "..k.kBBBBBBBBBBBBBBBBBBBBBBBBBBk..",
-      "..k.kwwwwcwcwcwcwcwcwcwcwcwcwwwk..",
-      "..kkkwwwwcwcwcwcwcwcwcwcwcwcwwwk..",
-      "..kGGwwwwwwwwYYffYYwwwwwwwwwwwwk..",
-      "..kHHkttkHHHkcccccckHHHkttkHHHHk..",
+      "..k.kXQQJJQQXXXXXXXXXXQQJJQQXXZk..",
+      "..k.kXjjjjjjXjjXjjXjjXjjjjjjXXZk..",
+      "..kkkXQQJJQQXXXXXXXXXXQQJJQQXXZk..",
+      "..kXXwwwwwwwwXjjXjjXjjXXXXXXXXZk..",
+      "..kZZkttkZZZkXkkkkkkXZZkttkZZZZk..",
       "..kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk..",
     ],
     hitGate: [
@@ -646,23 +667,39 @@
       "kkkkk......kkkkk",
     ],
     nexus: [
+      "..kkkkkkkkkk....",
+      ".kXQQJQQkXXZk...",
+      ".kXjjjjjkXjZk...",
+      ".kXQQJQQkXjZk...",
+      ".kXjjjjjkXkkk...",
+      ".kXQQJQQkTTTfk..",
+      ".kXjjjjjkTTTThk.",
+      ".kXXkkkkkTkkThk.",
       "..kkkkkkkkkkkk..",
-      ".kBBBBBBBBBBBBk.",
-      "kBccccccccccccBk",
-      "kBwwccwwccwwccBk",
-      "kBccccccccccccBk",
-      "kBwwccwwccwwccBk",
-      "kHHHkcccccckHHHk",
-      "kkkkkkkkkkkkkkkk",
     ],
   };
+
+  const FOLIAGE_SPRITES = new Set([
+    "pineTall",
+    "pineMed",
+    "pineCluster",
+    "oakBright",
+    "oakMid",
+    "oakDark",
+    "sakuraLarge",
+    "sakuraSmall",
+  ]);
+  const FOLIAGE_PAL = { k: "#174027" };
 
   const cache = {};
   function getSprite(name) {
     if (!cache[name]) {
       const def = DEFS[name];
       if (!def) throw new Error(`Unknown sprite: ${name}`);
-      cache[name] = bakeMatrix(def);
+      cache[name] = bakeMatrix(
+        def,
+        FOLIAGE_SPRITES.has(name) ? FOLIAGE_PAL : null,
+      );
     }
     return cache[name];
   }

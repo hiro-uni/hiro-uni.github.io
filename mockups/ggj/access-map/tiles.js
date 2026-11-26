@@ -413,33 +413,37 @@
   }
 
   function paintWaterChannels(ctx, polys, streams, isLocal) {
-    // 1. Stone embankments & water polygons (Hiroshima Delta, Yahata mouth, Castle moat)
-    // Skip any polygon that includes long horizontal/vertical MVT tile-edge cuts
-    const cleanPolys = (polys || []).filter((poly) => {
-      let minX = Infinity,
-        maxX = -Infinity,
-        minY = Infinity,
-        maxY = -Infinity;
-      let hasTileEdge = false;
-      for (let i = 0; i < poly.length; i++) {
-        const [x, y] = poly[i];
-        if (x < minX) minX = x;
-        if (x > maxX) maxX = x;
-        if (y < minY) minY = y;
-        if (y > maxY) maxY = y;
-        if (i > 0) {
-          const [px, py] = poly[i - 1];
-          const dx = Math.abs(x - px);
-          const dy = Math.abs(y - py);
-          if ((dx > 45 && dy < 0.8) || (dy > 45 && dx < 0.8)) {
-            hasTileEdge = true;
+    // 1. Only fill genuine river/moat polygons (never MVT tile-edge sea boxes!)
+    if (isLocal) {
+      const cleanPolys = (polys || []).filter((poly) => {
+        let minX = Infinity,
+          maxX = -Infinity,
+          minY = Infinity,
+          maxY = -Infinity;
+        for (let i = 0; i < poly.length; i++) {
+          const [x, y] = poly[i];
+          if (x < minX) minX = x;
+          if (x > maxX) maxX = x;
+          if (y < minY) minY = y;
+          if (y > maxY) maxY = y;
+          if (i > 0) {
+            const [px, py] = poly[i - 1];
+            const dx = Math.abs(x - px);
+            const dy = Math.abs(y - py);
+            if ((dx > 40 && dy < 0.8) || (dy > 40 && dx < 0.8)) {
+              return false;
+            }
           }
         }
-      }
-      return !hasTileEdge && maxX - minX < 180 && maxY - minY < 180;
-    });
-    fillPolys(ctx, cleanPolys, "#1c97ad", "#e4dcb8", isLocal ? 4 : 2);
-    fillPolys(ctx, cleanPolys, "#29acc0", "#174657", 1);
+        return maxX - minX < 220 && maxY - minY < 220;
+      });
+      fillPolys(ctx, cleanPolys, "#28a9be", "#e6ddb7", 3.5);
+      fillPolys(ctx, cleanPolys, "#28a9be", "#174657", 1);
+    } else if (polys && polys.length) {
+      // On overview, pass pre-constructed moat/river polygons (not raw MVT waterarea tiles)
+      fillPolys(ctx, polys, "#28a9be", "#e6ddb7", 2.5);
+      fillPolys(ctx, polys, "#28a9be", "#174657", 1);
+    }
 
     // 2. River streams (Ota 6 channels, Yahata River, western valley creeks)
     if (streams && streams.length) {
@@ -483,70 +487,6 @@
     }
   }
 
-  function drawBridgePillars(ctx, maskCanvas, roadLines, w) {
-    // Draw crisp stone bridge decks wherever major roads/rails cross water
-    // Done cleanly by redrawing bridges over water along major lines
-    if (!roadLines || !roadLines.length || !maskCanvas) return;
-    // Sample points along major lines and if water mask is active, stamp a clean bridge deck
-    const mctx = maskCanvas.getContext("2d");
-    const mdata = mctx.getImageData(
-      0,
-      0,
-      maskCanvas.width,
-      maskCanvas.height,
-    ).data;
-    const mw = maskCanvas.width;
-    const mh = maskCanvas.height;
-
-    function isWaterAt(x, y) {
-      const ix = Math.max(0, Math.min(mw - 1, Math.round(x)));
-      const iy = Math.max(0, Math.min(mh - 1, Math.round(y)));
-      // Blue channel significantly higher than red channel means water
-      const idx = (iy * mw + ix) * 4;
-      return mdata[idx + 2] > mdata[idx] + 25;
-    }
-
-    ctx.save();
-    for (const line of roadLines) {
-      for (let i = 1; i < line.length; i++) {
-        const [x1, y1] = line[i - 1];
-        const [x2, y2] = line[i];
-        const dist = Math.hypot(x2 - x1, y2 - y1);
-        const steps = Math.max(1, Math.ceil(dist / 4));
-        for (let s = 0; s <= steps; s++) {
-          const px = x1 + ((x2 - x1) * s) / steps;
-          const py = y1 + ((y2 - y1) * s) / steps;
-          if (isWaterAt(px, py)) {
-            ctx.fillStyle = "#3a4552";
-            ctx.fillRect(
-              Math.round(px - w / 2 - 2),
-              Math.round(py - w / 2 - 2),
-              w + 4,
-              w + 4,
-            );
-            ctx.fillStyle = "#e6dec7";
-            ctx.fillRect(Math.round(px - w / 2), Math.round(py - w / 2), w, w);
-          }
-        }
-      }
-    }
-    ctx.restore();
-  }
-
-  function addContextLabel(ctx, text, x, y, align = "center") {
-    ctx.save();
-    ctx.font =
-      '800 11px "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif';
-    ctx.textAlign = align;
-    ctx.textBaseline = "middle";
-    ctx.lineWidth = 3.5;
-    ctx.strokeStyle = "rgba(18, 43, 61, 0.88)";
-    ctx.strokeText(text, Math.round(x), Math.round(y));
-    ctx.fillStyle = "#f9f6df";
-    ctx.fillText(text, Math.round(x), Math.round(y));
-    ctx.restore();
-  }
-
   function renderOverview() {
     const canvas = document.querySelector(".terrain-overview");
     if (!canvas || !ns.geo || !ns.sprites) return;
@@ -556,19 +496,22 @@
     const ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
 
-    // Pass 1: SNES Pixel Terrain & Sea Bathymetry
+    // Pass 1: SNES Pixel Terrain & Sea Bathymetry (zero MVT tile grid rectangles!)
     renderPixelTerrain(canvas, dem, GW, GH, "overview");
 
-    // Pass 2: Rivers & Ota Channels
-    paintWaterChannels(ctx, ov.vectors.waterPolys, ov.vectors.streams, false);
+    // Pass 2: Rivers (Ota 6 channels, Yahata River, western streams) + Hiroshima Castle moat
+    const [cxCastle, cyCastle] = spots.hiroshima_castle.overview;
+    const castleMoat = [
+      [
+        [cxCastle - 20, cyCastle - 16],
+        [cxCastle + 20, cyCastle - 16],
+        [cxCastle + 20, cyCastle + 16],
+        [cxCastle - 20, cyCastle + 16],
+      ],
+    ];
+    paintWaterChannels(ctx, castleMoat, ov.vectors.streams, false);
 
-    // Snapshot terrain+water before roads/buildings so bridge detection knows true water pixels
-    const waterSnap = document.createElement("canvas");
-    waterSnap.width = W;
-    waterSnap.height = H;
-    waterSnap.getContext("2d").drawImage(canvas, 0, 0);
-
-    // Pass 3: Roads, Railways & Bridges
+    // Pass 3: Roads & Railways (drawn cleanly over rivers for natural bridges, zero ■ squares)
     paintRoads(
       ctx,
       ov.vectors.majorRoads,
@@ -576,9 +519,7 @@
       null,
       false,
     );
-    drawBridgePillars(ctx, waterSnap, ov.vectors.majorRoads, 5);
     paintRailTrack(ctx, ov.vectors.jrLines, "#243444", "#ede5cb", "#6b7988");
-    drawBridgePillars(ctx, waterSnap, ov.vectors.jrLines, 5);
 
     // Mt. Misen hiking trail on Miyajima
     const [mx, my] = spots.miyajima.overview;
@@ -599,7 +540,7 @@
 
     // Pass 4: Build clearance mask so foliage/houses respect rivers, rails, highways & landmarks
     const mask = createClearMask(W, H);
-    mask.blockPolys(ov.vectors.waterPolys);
+    mask.blockPolys(castleMoat);
     mask.blockPolylines(ov.vectors.streams, 14);
     mask.blockPolylines(ov.vectors.jrLines, 11);
     mask.blockPolylines(ov.vectors.majorRoads, 10);
@@ -648,11 +589,11 @@
     }
 
     // Dense trees & hills + town houses across land
-    const step = 10;
+    const step = 8;
     for (let gy = 8; gy < H - 4; gy += step) {
       for (let gx = 6; gx < W - 6; gx += step) {
-        const jx = gx + (hash2(gx, gy, 1) - 0.5) * 7;
-        const jy = gy + (hash2(gx, gy, 2) - 0.5) * 6;
+        const jx = gx + (hash2(gx, gy, 1) - 0.5) * 6;
+        const jy = gy + (hash2(gx, gy, 2) - 0.5) * 5;
         if (jx < 4 || jx >= W - 4 || jy < 4 || jy >= H - 4) continue;
 
         const elev = demAtCanvas(jx, jy);
@@ -672,16 +613,15 @@
         const r2 = hash2(gx, gy, 4);
         const { dx, dy, slope } = gradAtCanvas(jx, jy);
 
-        // Mountain & forest canopies
+        // Mountain & forest canopies: lush continuous SNES rolling canopies
         if (elev >= 5.5 || (elev >= 3.5 && slope >= 2)) {
           if (slope > 15 && r < 0.45) {
-            pushSprite("cliffRock", jx, jy, 1.0);
+            pushSprite("cliffRock", jx, jy, 1.05);
             continue;
           }
-          // Sunlit NW slopes get bright oaks & pine clusters; shadowed SE get deep conifers
           const sunlit = -dx - dy > 0;
-          if (r < 0.032) {
-            pushSprite(r2 < 0.5 ? "sakuraLarge" : "sakuraSmall", jx, jy, 1.0);
+          if (r < 0.03) {
+            pushSprite(r2 < 0.5 ? "sakuraLarge" : "sakuraSmall", jx, jy, 1.05);
           } else if (sunlit) {
             const pick =
               r < 0.34
@@ -691,7 +631,7 @@
                   : r < 0.85
                     ? "pineCluster"
                     : "pineMed";
-            pushSprite(pick, jx, jy, 0.95);
+            pushSprite(pick, jx, jy, 1.12);
           } else {
             const pick =
               r < 0.38
@@ -701,10 +641,13 @@
                   : r < 0.9
                     ? "oakDark"
                     : "pineCluster";
-            pushSprite(pick, jx, jy, 0.95);
+            pushSprite(pick, jx, jy, 1.12);
           }
           continue;
         }
+
+        // Keep urban grid spaced cleanly so streets stay visible
+        if ((gx % 16 !== 6 && gy % 16 !== 8) || r > 0.78) continue;
 
         // Flat urban & coastal plains
         const isDelta = jx > 610 && jy < 350; // Downtown Hiroshima 6-river delta
@@ -824,11 +767,6 @@
       pushSprite(name, sx, sy, 1.25);
     }
 
-    // Port cranes on Hiroshima reclaimed waterfront
-    pushSprite("harborCrane", 738, 310, 1.2);
-    pushSprite("harborCrane", 835, 290, 1.2);
-    pushSprite("harborCrane", 650, 290, 1.2);
-
     // Hero Landmarks at exact projected OSM coordinates
     const [cx, cy] = spots.hiroshima_castle.overview;
     pushSprite("hiroshimaCastle", cx, cy + 8, 1.35, 10);
@@ -844,7 +782,7 @@
     pushSprite("jrTrain", hsx - 32, hsy + 4, 1.1, 12);
 
     const [hitX, hitY] = spots.campus.overview;
-    pushSprite("hitCampusOverview", hitX, hitY + 8, 1.35, 10);
+    pushSprite("hitCampusOverview", hitX, hitY + 8, 1.3, 10);
 
     const [fx, fy] = spots.ferry.overview;
     pushSprite("ferryTerminal", fx, fy + 6, 1.25, 10);
@@ -864,19 +802,6 @@
     for (const item of queue) {
       ctx.drawImage(item.spr, item.x, item.y, item.w, item.h);
     }
-
-    // Pass 6: Subtle Geographic Context Labels (positioned clear of pins & crop edges)
-    addContextLabel(ctx, "広島城", cx, cy - 26);
-    addContextLabel(ctx, "原爆ドーム", ax - 8, ay + 24);
-    addContextLabel(ctx, "太田川デルタ", 755, 224);
-    addContextLabel(ctx, "八幡川", 386, 98);
-    addContextLabel(
-      ctx,
-      "似島",
-      spots.ninoshima.overview[0],
-      spots.ninoshima.overview[1] - 4,
-    );
-    addContextLabel(ctx, "瀬戸内海（広島湾）", 455, 488);
   }
 
   function renderLocal() {
@@ -925,13 +850,7 @@
       true,
     );
 
-    // Snapshot water before roads/bridges
-    const waterSnap = document.createElement("canvas");
-    waterSnap.width = W;
-    waterSnap.height = H;
-    waterSnap.getContext("2d").drawImage(canvas, 0, 0);
-
-    // Pass 3: Real OSM Road Network, Bridges, JR Sanyo Line & Hiroden Miyajima Line
+    // Pass 3: Real OSM Road Network, JR Sanyo Line & Hiroden Miyajima Line (zero ■ bridge squares)
     paintRoads(
       ctx,
       loc.vectors.majorRoads,
@@ -939,15 +858,11 @@
       loc.vectors.minorRoads,
       true,
     );
-    drawBridgePillars(ctx, waterSnap, loc.vectors.majorRoads, 10);
-    drawBridgePillars(ctx, waterSnap, loc.vectors.secondaryRoads, 7);
 
     // Hiroden Miyajima Line (tram tracks)
     paintRailTrack(ctx, loc.vectors.tramLines, "#2c4c3e", "#d6e5d2", "#477859");
-    drawBridgePillars(ctx, waterSnap, loc.vectors.tramLines, 6);
     // JR Sanyo Main Line
     paintRailTrack(ctx, loc.vectors.jrLines, "#202e3e", "#ebe4cc", "#5d6a78");
-    drawBridgePillars(ctx, waterSnap, loc.vectors.jrLines, 7);
 
     // Pass 4: Build clearance mask
     const mask = createClearMask(W, H);
@@ -1054,15 +969,16 @@
       }
     }
 
-    // HIT Campus Detailed Ensemble
+    // HIT Campus Detailed Ensemble — 三宅の森 Nexus21 centered prominently from the photo!
     const [nexX, nexY] = spots.nexus21.local;
     pushSprite("hitNew4", camX, camY + 8, 1.35, 14);
-    pushSprite("hitNexus21", nexX + 4, nexY + 12, 1.35, 14);
+    pushSprite("hitNexus21", nexX + 10, nexY + 14, 1.45, 16);
     pushSprite("hitGate", gateX, gateY + 6, 1.3, 14);
-    pushSprite("officeGlass", camX + 26, camY - 20, 1.1, 10); // 図書館 / 1号館側
+    pushSprite("officeGlass", camX + 26, camY - 22, 1.1, 10); // 図書館 / 1号館側
     pushSprite("sakuraLarge", camX - 24, camY + 12, 1.1, 15);
     pushSprite("sakuraLarge", gateX - 18, gateY + 8, 1.05, 15);
-    pushSprite("sakuraSmall", nexX + 28, nexY + 14, 1.05, 15);
+    pushSprite("pineMed", nexX - 14, nexY + 18, 1.05, 17);
+    pushSprite("pineMed", nexX + 26, nexY + 18, 1.05, 17);
 
     // Stations & Local Spots
     const [jrX, jrY] = spots.jr.local;
@@ -1096,17 +1012,6 @@
     for (const item of queue) {
       ctx.drawImage(item.spr, item.x, item.y, item.w, item.h);
     }
-
-    // Pass 6: Clear Geographic Context Labels (positioned away from pins and preview crop edges)
-    addContextLabel(ctx, "三宅の森 Nexus21", nexX + 10, nexY + 18);
-    addContextLabel(ctx, "新4号館 (GGJ会場)", camX + 6, camY - 22);
-    addContextLabel(ctx, "正門", gateX, gateY - 12);
-    addContextLabel(ctx, "八幡川", 625, 175);
-    addContextLabel(ctx, "JR山陽本線", 505, 294);
-    addContextLabel(ctx, "広電宮島線", 505, 368);
-    addContextLabel(ctx, "国道2号", 450, 412);
-    addContextLabel(ctx, "イオンタウン楽々園", aeonX + 54, aeonY + 4);
-    addContextLabel(ctx, "五日市漁港", 650, 575);
   }
 
   ns.renderMaps = function renderMaps() {

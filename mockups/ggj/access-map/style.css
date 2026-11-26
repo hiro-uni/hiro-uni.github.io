@@ -309,6 +309,11 @@ main {
   align-items: flex-end;
   transform: translate(-12px, -10px);
 }
+.map-marker[data-label-pos="bottom-left"] {
+  flex-direction: row;
+  align-items: flex-end;
+  transform: translate(calc(-100% + 14px), -10px);
+}
 .map-marker[data-label-pos="top-left"] {
   flex-direction: row;
   align-items: flex-start;
@@ -327,21 +332,16 @@ main {
 }
 
 .route-legend {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  z-index: 2;
+  margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 5px 9px;
-  border-radius: 6px;
-  background: rgba(11, 35, 78, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  gap: 6px 14px;
+  padding: 7px 12px;
+  border-radius: 9px;
+  background: #0f2957;
   color: #fff;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  pointer-events: none;
 }
 .legend-item {
   display: inline-flex;
@@ -636,22 +636,45 @@ main {
   .map {
     aspect-ratio: 3 / 2;
   }
+  .map-marker {
+    min-width: 34px;
+    min-height: 34px;
+    gap: 2px;
+    transform: translate(-50%, calc(-100% + 11px));
+  }
+  .map-marker[data-label-pos="bottom"] {
+    transform: translate(-50%, -11px);
+  }
+  .map-marker[data-label-pos="left"] {
+    transform: translate(calc(-100% + 11px), -50%);
+  }
+  .map-marker[data-label-pos="right"] {
+    transform: translate(-11px, -50%);
+  }
+  .map-marker[data-label-pos="bottom-left"] {
+    transform: translate(calc(-100% + 11px), -8px);
+  }
+  .map-marker[data-label-pos="top-left"] {
+    transform: translate(calc(-100% + 11px), -14px);
+  }
   .marker-dot {
-    height: 26px;
-    width: 26px;
+    height: 22px;
+    width: 22px;
+    outline-width: 1.5px;
   }
   .marker-dot img {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
   .marker-label {
-    padding: 2px 5px;
-    font-size: 0.68rem;
+    padding: 2px 4px;
+    font-size: 0.61rem;
+    border-width: 1.5px;
   }
   .route-legend {
-    font-size: 0.62rem;
-    padding: 3px 6px;
-    max-width: calc(100% - 62px);
+    font-size: 0.68rem;
+    padding: 6px 10px;
+    gap: 4px 10px;
   }
   .preview-art {
     max-height: 100px;

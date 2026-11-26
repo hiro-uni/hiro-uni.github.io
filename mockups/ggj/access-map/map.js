@@ -387,8 +387,12 @@
     iconHolder.replaceChildren(iconImg);
 
     const activeCanvas = currentView === "local" ? localCanvas : overviewCanvas;
-    const [px, py] =
+    const [rawX, rawY] =
       place.coords[currentView] || place.coords.overview || place.coords.local;
+    const [px, py] =
+      currentView === "local" && id === "campus"
+        ? geo.spots.nexus21.local
+        : [rawX, rawY];
 
     const cropW = preview.width;
     const cropH = preview.height;
