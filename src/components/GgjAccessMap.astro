@@ -2,21 +2,36 @@
   <h2 id="access-title">アクセス</h2>
   <div class="access-layout">
     <div class="map-surface" data-view="overview">
-      <canvas
-        class="terrain terrain-overview"
-        width="960"
-        height="640"
-        aria-hidden="true"
-      ></canvas>
-      <canvas
-        class="terrain terrain-local"
-        width="960"
-        height="640"
-        aria-hidden="true"
-      ></canvas>
+      <div class="map-scene scene-overview" aria-hidden="true">
+        <canvas
+          class="terrain terrain-overview"
+          width="960"
+          height="640"
+        ></canvas>
+        <canvas class="sea-layer" width="960" height="640"></canvas>
+        <svg
+          class="route-layer"
+          viewBox="0 0 960 640"
+          preserveAspectRatio="none"
+        ></svg>
+      </div>
+      <div class="map-scene scene-local" aria-hidden="true">
+        <canvas class="terrain terrain-local" width="960" height="640"></canvas>
+        <canvas class="sea-layer" width="960" height="640"></canvas>
+        <svg
+          class="route-layer"
+          viewBox="0 0 960 640"
+          preserveAspectRatio="none"
+        ></svg>
+      </div>
       <div class="map-markers"></div>
-      <button class="map-back" type="button" hidden>
-        ‹ 広島市周辺
+      <button
+        class="map-back ggj-arrow-button"
+        type="button"
+        aria-label="広島市周辺に戻る"
+        hidden
+      >
+        ‹
       </button>
       <div class="map-compass" aria-hidden="true">
         <span>N</span>
@@ -40,6 +55,9 @@
       <div role="status" aria-atomic="true">
         <h3 class="spot-name"></h3>
         <p class="spot-copy"></p>
+        <div class="spot-routes" hidden>
+          <ul class="route-times"></ul>
+        </div>
       </div>
     </aside>
   </div>
@@ -59,11 +77,9 @@
   }
 
   .access-layout {
+    position: relative;
     max-width: 90rem;
     margin-inline: auto;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.75rem;
   }
 
   @media (min-width: 801px) {
@@ -73,10 +89,6 @@
 
     :global(#access + #mc) {
       padding-top: clamp(1.5rem, 3vw, 2.75rem);
-    }
-
-    .access-layout:has(.spot-panel:not([hidden])) {
-      grid-template-columns: minmax(0, 1fr) clamp(220px, 22%, 300px);
     }
   }
 
@@ -105,34 +117,76 @@
     }
   }
 
-  .terrain {
+  .map-scene {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: var(--terrain-height, 100%);
     transform-origin: top left;
+    pointer-events: none;
+  }
+
+  .map-scene canvas,
+  .route-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     image-rendering: pixelated;
   }
 
-  .map-surface[data-animating] .terrain {
+  .route-layer :global(path) {
+    fill: none;
+    stroke: #1775ce;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 1px #10265b);
+    stroke-dasharray: 1;
+    animation: draw-route 560ms ease-out var(--route-delay) backwards;
+  }
+
+  .route-layer :global(path[data-mode="rail"]) {
+    stroke: #007454;
+  }
+
+  .route-layer :global(path[data-mode="walk"]) {
+    stroke: #ffdc54;
+  }
+
+  @keyframes draw-route {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .map-surface[data-animating] .map-scene {
     transition:
       transform var(--travel),
       opacity var(--travel);
   }
 
-  .terrain-local,
-  .map-surface[data-view="local"] .terrain-overview {
+  .scene-local,
+  .map-surface[data-view="local"] .scene-overview {
     opacity: 0;
   }
 
-  .map-surface[data-view="local"] .terrain-local {
+  .map-surface[data-view="local"] .scene-local {
     opacity: 1;
   }
 
   @media (prefers-reduced-motion: reduce) {
     .map-surface {
       --travel: 0ms;
+    }
+
+    .route-layer :global(path) {
+      animation: none;
     }
   }
 
@@ -144,7 +198,7 @@
 
   .map-surface :global(.map-marker) {
     --pin-size: clamp(17px, 3vw, 32px);
-    --pin-radius: calc(var(--pin-size) / 2);
+    --pin-height: calc(var(--pin-size) * 1.21);
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -156,22 +210,22 @@
     border: 0;
     cursor: pointer;
     pointer-events: auto;
-    transform: translate(-50%, calc(-100% + var(--pin-radius)));
+    transform: translate(-50%, -100%);
   }
 
   .map-surface :global(.map-marker[data-position="below"]) {
     flex-direction: column-reverse;
-    transform: translate(-50%, calc(-1 * var(--pin-radius)));
+    transform: translate(-50%, calc(-1 * var(--pin-height)));
   }
 
   .map-surface :global(.map-marker[data-position="left"]) {
     flex-direction: row;
-    transform: translate(calc(-100% + var(--pin-radius)), -50%);
+    transform: translate(calc(-100% + var(--pin-size) / 2), -100%);
   }
 
   .map-surface :global(.map-marker[data-position="right"]) {
     flex-direction: row-reverse;
-    transform: translate(calc(-1 * var(--pin-radius)), -50%);
+    transform: translate(calc(-1 * var(--pin-size) / 2), -100%);
   }
 
   .map-surface :global(.marker-label) {
@@ -186,18 +240,31 @@
     white-space: nowrap;
   }
 
-  .map-surface :global(.marker-dot) {
-    display: grid;
-    place-items: center;
+  .map-surface :global(.marker-pin) {
+    position: relative;
     width: var(--pin-size);
-    height: var(--pin-size);
-    border: 1px solid #fff;
-    border-radius: 50%;
-    background: #10265b;
+    height: var(--pin-height);
+    flex-shrink: 0;
   }
 
-  .map-surface :global(.marker-dot img) {
-    width: 70%;
+  .map-surface :global(.marker-pin::before) {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    box-sizing: border-box;
+    height: var(--pin-size);
+    border: 1.5px solid #10265b;
+    border-radius: 50% 50% 0 50%;
+    background: #fff;
+    transform: rotate(45deg);
+  }
+
+  .map-surface :global(.marker-pin img) {
+    position: absolute;
+    top: calc(var(--pin-size) / 2);
+    left: 50%;
+    width: 88%;
+    transform: translate(-50%, -50%);
     image-rendering: pixelated;
   }
 
@@ -207,8 +274,7 @@
   }
 
   .map-compass,
-  .map-credit,
-  .map-back {
+  .map-credit {
     position: absolute;
     color: #fff;
     background: #10265b;
@@ -276,16 +342,29 @@
   }
 
   .map-back {
+    position: absolute;
     top: 8px;
     left: 8px;
-    min-height: 36px;
-    padding: 0.25rem 0.625rem;
-    border: 1px solid #fff;
-    border-radius: 0.375rem;
-    font: inherit;
-    font-size: 0.75rem;
-    font-weight: 800;
-    cursor: pointer;
+    padding: 0;
+  }
+
+  @media (max-width: 360px) {
+    .map-back {
+      top: 4px;
+      left: 4px;
+    }
+
+    .map-surface :global(.map-marker[data-spot="hiroshima"]) {
+      gap: 10px;
+    }
+
+    .map-surface :global(.map-marker[data-spot="busCenter"] .marker-label) {
+      translate: 0 -3px;
+    }
+
+    .map-surface :global(.map-marker[data-spot="campus"]) {
+      margin-top: 4px;
+    }
   }
 
   .map-credit {
@@ -301,13 +380,56 @@
   }
 
   .spot-panel {
-    position: relative;
-    align-self: start;
+    position: absolute;
+    right: 1rem;
+    bottom: 1.75rem;
+    z-index: 2;
+    box-sizing: border-box;
+    width: min(20rem, 39%);
     padding: 1.125rem;
     border: 1px solid #d9e5f2;
     border-top: 4px solid #ffd447;
     border-radius: 0.75rem;
-    background: #f0f6fe;
+    background: #f8fbfff5;
+    box-shadow: 0 8px 28px #10265b40;
+  }
+
+  .spot-panel[data-side="left"] {
+    left: 1rem;
+    right: auto;
+  }
+
+  @media (max-width: 800px) {
+    .spot-panel,
+    .spot-panel[data-side="left"] {
+      position: fixed;
+      inset: auto 0 0;
+      z-index: 31;
+      width: 100%;
+      max-height: min(50dvh, 22rem);
+      overflow: auto;
+      padding-bottom: calc(1.125rem + env(safe-area-inset-bottom));
+      border-radius: 1rem 1rem 0 0;
+    }
+
+    .spot-panel:not([hidden]) {
+      animation: spot-rise 280ms cubic-bezier(0.22, 0.75, 0.2, 1) both;
+    }
+  }
+
+  @keyframes spot-rise {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spot-panel:not([hidden]) {
+      animation: none;
+    }
   }
 
   .spot-name {
@@ -322,6 +444,35 @@
     color: #465b7a;
     font-size: 0.9rem;
     line-height: 1.65;
+  }
+
+  .spot-routes {
+    margin-top: 0.75rem;
+    color: #465b7a;
+  }
+
+  .route-times {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0 0 0.375rem;
+    padding: 0;
+    list-style: none;
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  .route-times :global(li) {
+    padding-left: 0.5rem;
+    border-left: 3px solid #007454;
+  }
+
+  .route-times :global(li[data-mode="bus"]) {
+    border-color: #1775ce;
+  }
+
+  .route-times :global(strong) {
+    display: block;
+    color: #10265b;
   }
 
   .spot-close {

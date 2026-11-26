@@ -1,6 +1,8 @@
 import "../../mockups/ggj/access-map/geo-data.js";
 import "../../mockups/ggj/access-map/sprites.js";
 import "../../mockups/ggj/access-map/tiles.js";
+import { animateSea } from "./ggj27-access-map-sea.js";
+import { createRoutePlans } from "./ggj27-access-map-routes.js";
 
 const section = document.querySelector("#access");
 const map = section.querySelector(".map-surface");
@@ -9,14 +11,20 @@ const back = section.querySelector(".map-back");
 const panel = section.querySelector(".spot-panel");
 const spotName = panel.querySelector(".spot-name");
 const spotCopy = panel.querySelector(".spot-copy");
-const overviewCanvas = map.querySelector(".terrain-overview");
-const localCanvas = map.querySelector(".terrain-local");
+const spotRoutes = panel.querySelector(".spot-routes");
+const routeTimes = panel.querySelector(".route-times");
+const overviewScene = map.querySelector(".scene-overview");
+const localScene = map.querySelector(".scene-local");
+const routeLayers = {
+  overview: overviewScene.querySelector(".route-layer"),
+  local: localScene.querySelector(".route-layer"),
+};
 const { geo, sprites, renderMaps } = window.GGJAccessMap;
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const places = {
   hiroshima: {
-    name: "広島駅",
+    name: "JR広島駅",
     icon: "station",
     copy: "新幹線やJR在来線、広島電鉄が発着します。五日市駅へはJR山陽本線で向かえます。",
   },
@@ -34,12 +42,12 @@ const places = {
   bus: {
     name: "広島工大入口",
     icon: "bus",
-    copy: "五日市駅南口を発着する路線バスの停留所です。広島工業大学の正門が近くにあります。",
+    copy: "JR五日市駅南口を発着する路線バスの停留所です。広島工業大学の正門が近くにあります。",
   },
   rakuraku: {
-    name: "楽々園駅",
+    name: "楽々園電停",
     icon: "tram",
-    copy: "広電宮島線の駅。広島工業大学の最寄り電停です。",
+    copy: "広島電鉄 宮島線の電停。広島工業大学の最寄り電停です。",
   },
   honoyu: {
     name: "ほの湯 楽々園",
@@ -47,7 +55,7 @@ const places = {
     copy: "イオンタウン楽々園そばの温浴施設。露天風呂や休憩スペースがあります。",
   },
   jr: {
-    name: "五日市駅",
+    name: "JR五日市駅",
     icon: "station",
     copy: "JR山陽本線の駅。隣接する広電五日市駅や、南口の路線バスに乗り換えられます。",
   },
@@ -64,7 +72,7 @@ const places = {
   miyajima: {
     name: "宮島（厳島神社）",
     icon: "torii",
-    copy: "海に立つ大鳥居と厳島神社で知られる島です。表参道商店街には土産物店や飲食店が並びます。",
+    copy: "海に立つ大鳥居と厳島神社で知られる島です。初日の昼やもう1泊して、どうぞお越しください。",
   },
 };
 
@@ -105,6 +113,7 @@ const busCenterPoint = [
   ((132.4566 - lonMin) / (lonMax - lonMin)) * geo.width,
   ((latMax - 34.3953) / (latMax - latMin)) * geo.height,
 ];
+const routePlans = createRoutePlans(geo, busCenterPoint);
 
 let currentView = "overview";
 let selectedSpot;
@@ -136,9 +145,9 @@ function positionMap() {
   map.style.setProperty("--terrain-height", `${terrainHeight}px`);
 
   const focus = {
-    overview: [geo.width / 2, 270],
+    overview: [geo.width / 2, 253],
     local: geo.spots.itsukaichi.overview,
-    trip: [285, 322],
+    trip: [285, 315],
   }[currentView];
   const scale =
     currentView === "local"
@@ -148,9 +157,9 @@ function positionMap() {
         : 1;
   const x = cameraOffset(focus[0] * unitX, width, width, scale);
   const y = cameraOffset(focus[1] * unitY, terrainHeight, height, scale);
-  const localY = cameraOffset(290 * unitY, terrainHeight, height, 1);
-  overviewCanvas.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
-  localCanvas.style.transform = `translateY(${localY}px) scale(${currentView === "local" ? 1 : 0.9})`;
+  const localY = cameraOffset(322 * unitY, terrainHeight, height, 1);
+  overviewScene.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+  localScene.style.transform = `translateY(${localY}px) scale(${currentView === "local" ? 1 : 0.9})`;
 
   const { terrain, pins } = views[currentView];
   const isLocal = terrain === "local";
@@ -163,6 +172,17 @@ function positionMap() {
     marker.style.left = `${markerOffsetX + (pinX + offset[0]) * unitX * markerScale}px`;
     marker.style.top = `${markerOffsetY + (pinY + offset[1]) * unitY * markerScale}px`;
   });
+  positionPanel();
+}
+
+function positionPanel() {
+  if (!selectedSpot) return;
+  const { left, right } = markers
+    .querySelector(`[data-spot="${selectedSpot}"]`)
+    .getBoundingClientRect();
+  const bounds = map.getBoundingClientRect();
+  panel.dataset.side =
+    left - bounds.left > bounds.right - right ? "left" : "right";
 }
 
 function selectSpot(spot) {
@@ -172,10 +192,37 @@ function selectSpot(spot) {
     spotName.textContent = places[spot].name;
     spotCopy.textContent = places[spot].copy;
   }
+  showRoutes(routePlans[currentView]?.[spot]);
   markers.querySelectorAll("button[aria-pressed]").forEach((marker) => {
     marker.setAttribute("aria-pressed", String(marker.dataset.spot === spot));
   });
-  positionMap();
+  positionPanel();
+}
+
+function showRoutes(plan) {
+  spotRoutes.hidden = !plan;
+  routeTimes.replaceChildren();
+  Object.values(routeLayers).forEach((layer) => layer.replaceChildren());
+  if (!plan) return;
+
+  for (const { mode, points, step } of plan.segments) {
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    const coordinates = points.map(([x, y]) => `${x},${y}`).join(" L ");
+    path.setAttribute("d", `M ${coordinates}`);
+    path.setAttribute("pathLength", "1");
+    path.dataset.mode = mode;
+    path.style.setProperty("--route-delay", `${step * 360}ms`);
+    routeLayers[currentView].append(path);
+  }
+
+  for (const { mode, label, minutes, legs } of plan.options) {
+    const item = document.createElement("li");
+    const heading = document.createElement("strong");
+    item.dataset.mode = mode;
+    heading.textContent = `${label} 約${minutes}分`;
+    item.append(heading, legs);
+    routeTimes.append(item);
+  }
 }
 
 function createMarker({ spot, label, position = "above", next }) {
@@ -188,13 +235,13 @@ function createMarker({ spot, label, position = "above", next }) {
   const caption = document.createElement("span");
   caption.className = "marker-label";
   caption.textContent = label ?? name;
-  const dot = document.createElement("span");
-  dot.className = "marker-dot";
+  const pin = document.createElement("span");
+  pin.className = "marker-pin";
   const image = document.createElement("img");
   image.alt = "";
   image.src = sprites.getIconDataUrl(icon, 2);
-  dot.append(image);
-  marker.append(caption, dot);
+  pin.append(image);
+  marker.append(caption, pin);
 
   if (next) {
     marker.setAttribute("aria-label", `${caption.textContent}の地図を表示`);
@@ -202,10 +249,22 @@ function createMarker({ spot, label, position = "above", next }) {
     marker.setAttribute("aria-controls", panel.id);
     marker.setAttribute("aria-pressed", "false");
   }
+  if (routePlans[currentView]?.[spot]) {
+    marker.addEventListener("focus", () => {
+      if (selectedSpot !== spot && marker.matches(":focus-visible"))
+        selectSpot(spot);
+    });
+  }
   marker.addEventListener("click", (event) => {
     if (next) {
       showView(next);
       if (event.detail === 0) back.focus({ preventScroll: true });
+    } else if (
+      event.detail === 0 &&
+      selectedSpot === spot &&
+      routePlans[currentView]?.[spot]
+    ) {
+      selectSpot(spot);
     } else {
       selectSpot(selectedSpot === spot ? undefined : spot);
     }
@@ -223,6 +282,7 @@ function showView(view) {
   back.hidden = view === "overview";
   markers.replaceChildren(...views[view].pins.map(createMarker));
   selectSpot({ local: "campus", trip: "miyajima" }[view]);
+  positionMap();
 
   if (animate) {
     markers.getAnimations().forEach((animation) => animation.cancel());
@@ -246,10 +306,18 @@ back.addEventListener("click", (event) => {
     markers.querySelector(`[data-spot="${previous}"]`).focus();
 });
 
-panel.querySelector(".spot-close").addEventListener("click", () => {
+function closePanel() {
   const marker = markers.querySelector(`[data-spot="${selectedSpot}"]`);
-  selectSpot();
   marker?.focus({ preventScroll: true });
+  selectSpot();
+}
+
+panel.querySelector(".spot-close").addEventListener("click", closePanel);
+section.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !panel.hidden) {
+    event.stopPropagation();
+    closePanel();
+  }
 });
 
 map.addEventListener("click", (event) => {
@@ -257,8 +325,8 @@ map.addEventListener("click", (event) => {
   const radius = Math.min(96, Math.max(36, map.clientWidth * 0.09));
   const nearby = views.overview.pins.find(({ spot, next }) => {
     if (!next) return false;
-    const dot = markers.querySelector(`[data-spot="${spot}"] .marker-dot`);
-    const { left, top, width, height } = dot.getBoundingClientRect();
+    const pin = markers.querySelector(`[data-spot="${spot}"] .marker-pin`);
+    const { left, top, width, height } = pin.getBoundingClientRect();
     const dx = event.clientX - (left + width / 2);
     const dy = event.clientY - (top + height / 2);
     return Math.hypot(dx, dy) <= radius;
@@ -266,6 +334,14 @@ map.addEventListener("click", (event) => {
   if (nearby) showView(nearby.next);
 });
 
-renderMaps();
+renderMaps({ includeBoats: false });
 showView("overview");
 new ResizeObserver(positionMap).observe(map);
+animateSea(
+  map,
+  {
+    overview: overviewScene.querySelector(".sea-layer"),
+    local: localScene.querySelector(".sea-layer"),
+  },
+  reducedMotion,
+);

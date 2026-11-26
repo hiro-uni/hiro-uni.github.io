@@ -343,7 +343,7 @@ main{min-width:0}
 .world-languages button{padding:.45rem .7rem;border:1px solid #dce8f8;border-radius:999px;background:#f1f7ff;color:#10265b;font:inherit;font-size:.72rem;font-weight:700;cursor:pointer}
 .world-languages button.is-active{background:#2875f2;color:white;border-color:#2875f2}
 .world-stage{display:flex;align-items:center;justify-content:space-between;gap:.5rem;min-height:250px;padding:1rem;background:#eaf6ff;border-radius:20px;overflow:hidden}
-.world-stage button{flex:none;display:grid;place-items:center;width:40px;height:40px;border:1px solid #d6e4f5;border-radius:50%;background:white;color:#10265b;box-shadow:0 3px 10px #10265b1a;font-size:1.8rem;line-height:1;cursor:pointer}
+.world-stage button,.ggj-arrow-button:not([hidden]){flex:none;display:grid;place-items:center;width:40px;height:40px;border:1px solid #d6e4f5;border-radius:50%;background:white;color:#10265b;box-shadow:0 3px 10px #10265b1a;font-size:1.8rem;line-height:1;cursor:pointer}
 .world-scene{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;min-width:0;flex:1;text-align:center}
 .world-bubble{position:relative;z-index:1;max-width:100%;padding:.7rem 1.1rem;border:2px solid #10265b;border-radius:999px;background:white;box-shadow:0 4px #ffda62;color:#10265b;font-size:clamp(1rem,2.3vw,1.5rem);font-weight:800;line-height:1.35}
 .world-bubble:after{content:"";position:absolute;bottom:-11px;left:48%;width:14px;height:14px;background:white;border-right:2px solid #10265b;border-bottom:2px solid #10265b;transform:rotate(45deg)}

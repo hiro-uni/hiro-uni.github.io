@@ -70,11 +70,11 @@
       },
       labelPos: { local: "top", trip: "top" },
       pinOffset: { local: [-12, -14] },
-      copy: "南口から「広島工大入口」方面の路線バスが発着します。隣接する広電五日市駅から楽々園駅へも移動できます。",
+      copy: "南口から「広島工大入口」方面の路線バスが発着します。隣接する広電五日市駅から楽々園電停へも移動できます。",
       link: [universityAccess, "大学公式の交通案内"],
     },
     rakuraku: {
-      name: "楽々園駅",
+      name: "楽々園電停",
       icon: "tram",
       kind: "stop",
       category: "広電宮島線",
@@ -105,7 +105,7 @@
       coords: { local: geo.spots.honoyu.local },
       labelPos: { local: "right" },
       pinOffset: { local: [0, 8] },
-      copy: "楽々園駅から徒歩約5分、イオンタウン楽々園そばの温浴施設。露天風呂や休憩スペースがあります。",
+      copy: "楽々園電停から徒歩約5分、イオンタウン楽々園そばの温浴施設。露天風呂や休憩スペースがあります。",
       link: ["https://www.honoyu.jp/rakurakuen/", "ほの湯の公式サイト"],
     },
     kaikatsu: {
@@ -282,7 +282,7 @@
       const r = geo.local.routes;
       if (placeId === "campus" || placeId === "rakuraku") {
         drawStyledPath(r.walkRakuraku, "#10265b", "#ffd447", [7, 6]);
-        legendItems.push(["#ffd447", "徒歩ルート（楽々園駅→大学 約15分）"]);
+        legendItems.push(["#ffd447", "徒歩ルート（楽々園電停→大学 約15分）"]);
       }
       if (placeId === "campus" || placeId === "bus" || placeId === "jr") {
         drawStyledPath(r.busItsukaichi, "#10265b", "#59b5ff", [10, 6]);
@@ -294,7 +294,7 @@
       }
       if (placeId === "honoyu") {
         drawStyledPath(r.walkHonoyu, "#10265b", "#ff8d6b", [6, 5]);
-        legendItems.push(["#ff8d6b", "楽々園駅からほの湯へ（徒歩約5分）"]);
+        legendItems.push(["#ff8d6b", "楽々園電停からほの湯へ（徒歩約5分）"]);
       }
       if (placeId === "kaikatsu") {
         drawStyledPath(r.walkKaikatsu, "#10265b", "#ff8d6b", [6, 5]);

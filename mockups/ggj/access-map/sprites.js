@@ -559,6 +559,16 @@
       "qqkkkqq..",
     ],
     sailboatSmall: ["...k...", "..kfk..", ".kffk..", "kSSSk..", "qkkkq.."],
+    oysterRaft: [
+      ".eeeeeeeeee.",
+      "ebtbtbtbtbte",
+      "ebtbtbtbtbte",
+      "eeeeeeeeeeee",
+      "jbbbbbbbbbbj",
+      ".q........q.",
+    ],
+    gullGlide: ["ff.......ff", "..ff...ff..", "...zfwfz...", ".....z....."],
+    gullLift: ["f.......f", ".f.....f.", "..f...f..", "...fwf...", "....z...."],
     fishingBoat: ["...kk...", "..kffk..", "kSSSSSk.", "qkkkkkq."],
     harborCrane: ["kkkkkk..", "kO..k...", "k...k...", "k...k...", "k..kkk.."],
   };

@@ -313,7 +313,7 @@
     for (let by = 4; by < th - 4; by += 6) {
       for (let bx = 6; bx < tw - 14; bx += 14) {
         const n = hash2(bx, by, 21);
-        if (n > 0.24) continue;
+        if (n > 0.11) continue;
         const fx = ((bx + 0.5) * gw) / tw - 0.5;
         const fy = ((by + 0.5) * gh) / th - 0.5;
         if (sampleDem(fx, fy) !== 0 || sampleLandDist(fx, fy) < 3) continue;
@@ -322,7 +322,7 @@
         const len = 3 + Math.floor(hash2(bx, by, 24) * 5);
         octx.fillStyle = n < 0.07 ? "#b8f4f2" : "#56c7d2";
         octx.fillRect(rx, ry, len, 1);
-        if (n < 0.14) {
+        if (n < 0.055) {
           octx.fillStyle = "#3baec0";
           octx.fillRect(rx + 2, ry + 2, Math.max(2, len - 2), 1);
         }
@@ -487,7 +487,7 @@
     }
   }
 
-  function renderOverview() {
+  function renderOverview(includeBoats) {
     const canvas = document.querySelector(".terrain-overview");
     if (!canvas || !ns.geo || !ns.sprites) return;
     const { width: W, height: H, gridW: GW, gridH: GH, spots } = ns.geo;
@@ -763,8 +763,10 @@
       ["fishingBoat", 390, 290],
       ["fishingBoat", 820, 315],
     ];
-    for (const [name, sx, sy] of sailboats) {
-      pushSprite(name, sx, sy, 1.25);
+    if (includeBoats) {
+      for (const [name, sx, sy] of sailboats) {
+        pushSprite(name, sx, sy, 1.25);
+      }
     }
 
     // Hero Landmarks at exact projected OSM coordinates
@@ -804,7 +806,7 @@
     }
   }
 
-  function renderLocal() {
+  function renderLocal(includeBoats) {
     const canvas = document.querySelector(".terrain-local");
     if (!canvas || !ns.geo || !ns.sprites) return;
     const { width: W, height: H, gridW: GW, gridH: GH, spots } = ns.geo;
@@ -1003,10 +1005,12 @@
     pushSprite("localBus", busX - 10, busY + 10, 1.25, 15);
 
     // Itsukaichi Harbor boats in southern bay
-    pushSprite("fishingBoat", 625, 610, 1.3);
-    pushSprite("fishingBoat", 652, 622, 1.3);
-    pushSprite("sailboatSmall", 545, 595, 1.3);
-    pushSprite("sailboatLarge", 745, 608, 1.3);
+    if (includeBoats) {
+      pushSprite("fishingBoat", 625, 610, 1.3);
+      pushSprite("fishingBoat", 652, 622, 1.3);
+      pushSprite("sailboatSmall", 545, 595, 1.3);
+      pushSprite("sailboatLarge", 745, 608, 1.3);
+    }
 
     queue.sort((a, b) => a.sortY - b.sortY);
     for (const item of queue) {
@@ -1014,8 +1018,8 @@
     }
   }
 
-  ns.renderMaps = function renderMaps() {
-    renderOverview();
-    renderLocal();
+  ns.renderMaps = function renderMaps({ includeBoats = true } = {}) {
+    renderOverview(includeBoats);
+    renderLocal(includeBoats);
   };
 })();
