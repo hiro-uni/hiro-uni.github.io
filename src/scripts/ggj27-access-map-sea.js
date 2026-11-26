@@ -61,6 +61,23 @@ const decorations = {
   },
 };
 
+function ferryPosition(route, time) {
+  // One second at each pier and eight seconds for each crossing.
+  const cycle = time % 18;
+  const outbound = Math.max(0, Math.min(1, (cycle - 1) / 8));
+  const inbound = Math.max(0, Math.min(1, (cycle - 10) / 8));
+  // Keep the hull in the water just off the pier at each end.
+  const position = 0.3 + (outbound - inbound) * 1.48;
+  const leg = Math.floor(position);
+  const [startX, startY] = route[leg];
+  const [endX, endY] = route[leg + 1];
+  const progress = position - leg;
+  return [
+    startX + (endX - startX) * progress,
+    startY + (endY - startY) * progress,
+  ];
+}
+
 function createSeaLayer(canvas, area) {
   const { geo, decodeDem, sprites } = window.GGJAccessMap;
   const { width, height, gridW, gridH } = geo;
@@ -73,6 +90,8 @@ function createSeaLayer(canvas, area) {
     ] === 0;
 
   const { boats, rafts, gulls, sunlight } = decorations[area];
+  const ferryRoute =
+    area === "overview" ? geo.overview.routes.ferryMiyajima : null;
   const waves = [];
   for (let y = 18; y < height - 12; y += 37) {
     for (let x = 24 + (y % 23); x < width - 20; x += 89) {
@@ -143,6 +162,10 @@ function createSeaLayer(canvas, area) {
         1.9,
       );
     });
+    if (ferryRoute) {
+      const [x, y] = ferryPosition(ferryRoute, time);
+      drawSprite("miyajimaFerry", x, y, 1.7);
+    }
     gulls.forEach(([x, y], index) => {
       const phase = time + index * 0.9;
       drawSprite(

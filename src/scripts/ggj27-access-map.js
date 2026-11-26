@@ -205,6 +205,7 @@ function showRoutes(plan) {
   Object.values(routeLayers).forEach((layer) => layer.replaceChildren());
   if (!plan) return;
 
+  const layer = routeLayers[views[currentView].terrain];
   for (const { mode, points, step } of plan.segments) {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     const coordinates = points.map(([x, y]) => `${x},${y}`).join(" L ");
@@ -212,7 +213,7 @@ function showRoutes(plan) {
     path.setAttribute("pathLength", "1");
     path.dataset.mode = mode;
     path.style.setProperty("--route-delay", `${step * 360}ms`);
-    routeLayers[currentView].append(path);
+    layer.append(path);
   }
 
   for (const { mode, label, minutes, legs } of plan.options) {

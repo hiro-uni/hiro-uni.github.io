@@ -788,7 +788,9 @@
 
     const [fx, fy] = spots.ferry.overview;
     pushSprite("ferryTerminal", fx, fy + 6, 1.25, 10);
-    pushSprite("miyajimaFerry", fx + 22, fy + 24, 1.25, 14);
+    if (includeBoats) {
+      pushSprite("miyajimaFerry", fx + 22, fy + 24, 1.25, 14);
+    }
 
     const [toriiX, toriiY] = spots.miyajima.overview;
     pushSprite("miyajimaTorii", toriiX, toriiY + 8, 1.4, 14);

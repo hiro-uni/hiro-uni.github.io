@@ -1,13 +1,13 @@
 const localOptions = [
   {
     mode: "rail",
-    label: "JR + 広電＋徒歩",
+    label: "広電＋徒歩",
     legs: "広電で楽々園電停へ 約4分 → 徒歩 約15分",
-    minutes: 34,
+    minutes: 19,
   },
   {
     mode: "bus",
-    label: "JR + 路線バス＋徒歩",
+    label: "路線バス＋徒歩",
     legs: "路線バスで広島工大入口へ 約6分 → 徒歩 約3分",
     minutes: 9,
   },
@@ -24,6 +24,7 @@ function project(lat, lon, { bounds }, { width, height }) {
 export function createRoutePlans(geo, busCenterPoint) {
   const { spots, local, overview } = geo;
   const { tramItsukaichi, busItsukaichi, walkRakuraku } = local.routes;
+  const { jrMiyajima, ferryMiyajima } = overview.routes;
   const projectOverview = ([lat, lon]) => project(lat, lon, overview, geo);
   const localToOverview = ([x, y]) => {
     const { latMin, latMax, lonMin, lonMax } = local.bounds;
@@ -92,6 +93,29 @@ export function createRoutePlans(geo, busCenterPoint) {
     }));
 
   return {
+    trip: {
+      miyajima: {
+        options: [
+          {
+            mode: "rail",
+            label: "JR山陽本線",
+            legs: "五日市駅 → JR宮島口駅",
+            minutes: 12,
+          },
+          {
+            mode: "ferry",
+            label: "フェリー",
+            legs: "JR宮島口駅から桟橋へ徒歩で乗り換え → 宮島桟橋",
+            minutes: 10,
+          },
+        ],
+        segments: [
+          { mode: "rail", points: jrMiyajima.slice(0, -1), step: 0 },
+          { mode: "walk", points: jrMiyajima.slice(-2), step: 1 },
+          { mode: "ferry", points: ferryMiyajima.slice(0, 3), step: 2 },
+        ],
+      },
+    },
     local: {
       jr: { options: localOptions, segments: localSegments },
       rakuraku: {
