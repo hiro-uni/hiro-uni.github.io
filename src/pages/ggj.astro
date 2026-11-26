@@ -206,7 +206,18 @@ const eventData = {
                 <a class="refresh-button outline" href="#about">GGJとは？ <span aria-hidden="true">ⓘ</span></a>
               </div>
             </div>
-            <div class="landing-art"><img src="/ggj27/assets/jam/hero-hiroshima-1024.webp" alt="過去の広島会場でゲームを制作する参加者" width="1024" height="768" fetchpriority="high" /><span class="art-badge"><i class="fa-solid fa-gamepad" aria-hidden="true"></i> LET’S MAKE<br />GAMES!</span></div>
+            <div class="landing-art">
+              <img
+                src="/ggj27/assets/jam/hero-hiroshima-1024.webp"
+                srcset="/ggj27/assets/jam/hero-hiroshima-640.webp 640w, /ggj27/assets/jam/hero-hiroshima-1024.webp 1024w"
+                sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1050px) 28vw, (max-width: 1440px) 32vw, 440px"
+                alt="過去の広島会場でゲームを制作する参加者"
+                width="1024"
+                height="768"
+                fetchpriority="high"
+              />
+              <span class="art-badge"><i class="fa-solid fa-gamepad" aria-hidden="true"></i> LET’S MAKE<br />GAMES!</span>
+            </div>
           </section>
           <div class="feature-strip" aria-label="イベントの特徴">
             <div><i class="fa-solid fa-users" aria-hidden="true"></i><strong>チームでつくる<br />初参加も歓迎</strong></div><div><i class="fa-solid fa-code" aria-hidden="true"></i><strong>48時間で<br />ゲームを開発</strong></div><div><i class="fa-solid fa-globe" aria-hidden="true"></i><strong>世界共通の<br />テーマに挑戦</strong></div><div><i class="fa-regular fa-heart" aria-hidden="true"></i><strong>つくることを<br />楽しむイベント</strong></div>
@@ -249,10 +260,12 @@ const eventData = {
           </figure>
           <figure>
             <img
-              src="/ggj27/assets/develop.png"
+              src="/ggj27/assets/develop-960.webp"
+              srcset="/ggj27/assets/develop-480.webp 480w, /ggj27/assets/develop-960.webp 960w"
+              sizes="auto, (max-width: 799px) calc(100vw - 40px), (max-width: 1240px) 30vw, 382px"
               alt="過去の広島会場で制作されたパズルゲームの画面"
-              width="800"
-              height="449"
+              width="960"
+              height="708"
               loading="lazy"
               decoding="async"
             />
@@ -559,7 +572,16 @@ const eventData = {
             <p>
               自己紹介、テーマからのアイデア出し、チームづくり。得意なことも、挑戦したいことも話してみよう。
             </p>
-            <img class="schedule-illustration" src="/ggj27/assets/schedule-day1.png" alt="" loading="lazy" />
+            <img
+              class="schedule-illustration"
+              src="/ggj27/assets/schedule-day1-960.webp"
+              srcset="/ggj27/assets/schedule-day1-480.webp 480w, /ggj27/assets/schedule-day1-960.webp 960w"
+              sizes="auto, (max-width: 800px) calc(100vw - 88px), (max-width: 1240px) 27vw, 337px"
+              width="960"
+              height="491"
+              alt=""
+              loading="lazy"
+            />
             <ul class="jam-timeline" aria-label="金曜日の主な予定">
               <li><time datetime="2027-01-29T16:30:00+09:00">16:30</time><span>受付・入場開始</span></li>
               <li><time datetime="2027-01-29T17:00:00+09:00">17:00</time><span>ルール説明・基調講演</span></li>
@@ -575,7 +597,16 @@ const eventData = {
             <p>
               絵を描く、音をつける、ルールを試す。小さな試作品から、チームで少しずつ形にしていこう。
             </p>
-            <img class="schedule-illustration" src="/ggj27/assets/schedule-day2.png" alt="" loading="lazy" />
+            <img
+              class="schedule-illustration"
+              src="/ggj27/assets/schedule-day2-960.webp"
+              srcset="/ggj27/assets/schedule-day2-480.webp 480w, /ggj27/assets/schedule-day2-960.webp 960w"
+              sizes="auto, (max-width: 800px) calc(100vw - 88px), (max-width: 1240px) 27vw, 337px"
+              width="960"
+              height="541"
+              alt=""
+              loading="lazy"
+            />
             <ul class="jam-timeline" aria-label="土曜日の主な予定">
               <li><time datetime="2027-01-30T09:00:00+09:00">9:00</time><span>一時帰宅者の入場開始</span></li>
               <li><time datetime="2027-01-30T10:15:00+09:00">10:15</time><span>スケジュール説明・GGJ登録・朝の体操</span></li>
