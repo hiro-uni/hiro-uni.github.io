@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>会場アクセス｜GGJ 2027 瀬戸内会場 in 広島</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="geo-data.js"></script>
+    <script defer src="sprites.js"></script>
+    <script defer src="tiles.js"></script>
+    <script defer src="map.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="https://hiro-uni.github.io/ggj/" class="brand">
+          <img
+            src="../../../src/assets/ggj27/ggj27_logo.png"
+            alt="グローバルゲームジャム 2027 瀬戸内会場 in 広島"
+            width="1320"
+            height="410"
+          />
+        </a>
+        <nav aria-label="イベント">
+          <a href="https://hiro-uni.github.io/ggj/#about">GGJとは</a>
+          <a href="https://hiro-uni.github.io/ggj/#schedule">スケジュール</a>
+          <a href="#access" aria-current="location">アクセス</a>
+          <a href="https://hiro-uni.github.io/ggj/#faq">FAQ</a>
+        </nav>
+        <a class="registration" href="https://hiro-uni.github.io/ggj/#entry"
+          >参加登録する ↗</a
+        >
+      </div>
+    </header>
+
+    <main id="access">
+      <div class="intro">
+        <h1>
+          広島工業大学<br class="mobile-break" />
+          五日市キャンパスへの<br class="mobile-break" />アクセス
+        </h1>
+        <p>地図から会場へのルートや、五日市周辺の立ち寄り先を探せます。</p>
+      </div>
+
+      <div class="map-layout">
+        <section class="map-shell" aria-label="アクセスマップ">
+          <div class="map-toolbar" aria-label="表示エリア">
+            <button type="button" data-stage="overview" aria-pressed="true">
+              広島市周辺
+            </button>
+            <button type="button" data-stage="local" aria-pressed="false">
+              五日市
+            </button>
+            <button type="button" data-stage="trip" aria-pressed="false">
+              <span class="plus-day">+1 DAY</span> 宮島
+            </button>
+          </div>
+          <div id="map" class="map" data-view="overview">
+            <canvas
+              class="terrain terrain-overview"
+              width="960"
+              height="640"
+              aria-hidden="true"
+            ></canvas>
+            <canvas
+              class="terrain terrain-local"
+              width="960"
+              height="640"
+              aria-hidden="true"
+            ></canvas>
+            <canvas
+              class="route"
+              width="960"
+              height="640"
+              aria-hidden="true"
+            ></canvas>
+            <div id="map-markers" class="markers"></div>
+            <div id="route-legend" class="route-legend" hidden></div>
+            <span class="compass" aria-hidden="true">▲<br />N</span>
+            <span class="map-credit"
+              >© OpenStreetMap contributors / 国土地理院
+              標高データをもとに作成</span
+            >
+          </div>
+        </section>
+
+        <aside class="destination" aria-label="スポット案内">
+          <div class="destination-heading">
+            <span class="card-icon" id="place-icon" aria-hidden="true"></span>
+            <div>
+              <p id="place-category">会場エリア</p>
+              <h2 id="place-name">五日市</h2>
+            </div>
+          </div>
+          <canvas
+            class="preview-art"
+            id="place-art"
+            width="240"
+            height="90"
+            aria-hidden="true"
+          ></canvas>
+          <div id="place-details" class="place-details"></div>
+          <div id="place-actions" class="place-actions"></div>
+          <span id="place-announcement" class="sr-only" role="status"></span>
+        </aside>
+      </div>
+
+      <section class="access-details" aria-label="会場への行き方">
+        <div class="access-info">
+          <h2>キャンパスまで</h2>
+          <dl>
+            <div class="access-row">
+              <span
+                class="pixel-badge"
+                data-icon="tram"
+                aria-hidden="true"
+              ></span>
+              <div>
+                <dt>広電 楽々園駅から</dt>
+                <dd>大学まで徒歩約15分。</dd>
+              </div>
+            </div>
+            <div class="access-row">
+              <span
+                class="pixel-badge"
+                data-icon="bus"
+                aria-hidden="true"
+              ></span>
+              <div>
+                <dt>JR五日市駅南口から</dt>
+                <dd>路線バスで「広島工大入口」下車。大学まで徒歩約3分。</dd>
+              </div>
+            </div>
+          </dl>
+          <a href="https://www.it-hiroshima.ac.jp/access/itsukaichi/"
+            >大学公式の交通案内 ↗</a
+          >
+        </div>
+        <div class="access-info">
+          <h2>正門から会場まで</h2>
+          <ol class="campus-steps">
+            <li>
+              <span
+                class="pixel-badge"
+                data-icon="gate"
+                aria-hidden="true"
+              ></span>
+              <span>正門から入り、「三宅の森 Nexus21」を目印に進む。</span>
+            </li>
+            <li>
+              <span
+                class="pixel-badge"
+                data-icon="nexus"
+                aria-hidden="true"
+              ></span>
+              <span>構内図で新4号館の位置を確認し、館内の4階へ。</span>
+            </li>
+            <li class="venue-goal">
+              <span
+                class="pixel-badge"
+                data-icon="flag"
+                aria-hidden="true"
+              ></span>
+              <span
+                ><strong>418号室（HIT Innovation Lab）</strong>が会場。</span
+              >
+            </li>
+          </ol>
+          <p class="address">広島県広島市佐伯区三宅2丁目1-1</p>
+          <div class="detail-links">
+            <a href="https://maps.app.goo.gl/nL7KeJcypyKS8SRK9"
+              >Google マップ ↗</a
+            >
+            <a
+              href="https://www.it-hiroshima.ac.jp/campuslife/docs/bf_map20250624.pdf"
+              >大学公式の構内図（PDF） ↗</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
